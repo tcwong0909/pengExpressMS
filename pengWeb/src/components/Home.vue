@@ -3,7 +3,7 @@
       <el-container >
         <el-header class="el-header">
           <div class="header-title" >
-            粤通物流管理平台
+            鹏城速运Express
           </div>
           <el-dropdown  @command="handleCommand" >
             <span class="el-dropdown-link">
