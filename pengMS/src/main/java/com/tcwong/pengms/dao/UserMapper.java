@@ -4,9 +4,11 @@ package com.tcwong.pengms.dao;
 import com.tcwong.pengms.model.User;
 import com.tcwong.pengms.model.UserExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface UserMapper {
     int countByExample(UserExample example);
 

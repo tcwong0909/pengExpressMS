@@ -3,7 +3,7 @@ package com.tcwong.pengms.utils;
 import com.tcwong.pengms.model.Syslog;
 import com.tcwong.pengms.model.User;
 import com.tcwong.pengms.service.ISyslogService;
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -27,7 +27,7 @@ public class LogAdvice {
     @Autowired
     private HttpServletRequest request;
 
-    private Logger logger = Logger.getLogger(LogAdvice.class);
+//    private Logger logger = Logger.getLogger(LogAdvice.class);
 
     @Resource
     private ISyslogService syslogService;
@@ -71,7 +71,7 @@ public class LogAdvice {
                         fkTypeid = method.getAnnotation(Log.class).fkTypeid().getNum();
                     } catch (Exception e) {
 
-                       logger.info("不向库中添加信息");
+//                       logger.info("不向库中添加信息");
                         return;
                     }
                     break;
@@ -117,7 +117,7 @@ public class LogAdvice {
                         fkTypeid = method.getAnnotation(Log.class).fkTypeid().getNum();
                         e.getLocalizedMessage();
                     } catch (Exception e1) {
-                        logger.info("不向库中添加信息");
+//                        logger.info("不向库中添加信息");
                         return;
                     }
                     break;

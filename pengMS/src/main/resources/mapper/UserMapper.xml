@@ -357,4 +357,5 @@
       alterTime = #{altertime,jdbcType=TIMESTAMP}
     where userID = #{userid,jdbcType=INTEGER}
   </update>
+
 </mapper>
