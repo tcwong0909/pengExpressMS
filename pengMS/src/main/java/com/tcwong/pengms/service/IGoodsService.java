@@ -1,6 +1,7 @@
 package com.tcwong.pengms.service;
 
-import com.tcwong.bean.Goods;
+
+import com.tcwong.pengms.model.Goods;
 
 import java.util.List;
 

@@ -1,7 +1,8 @@
 package com.tcwong.pengms.controller;
-import com.tcwong.common.WebPageResponse;
-import com.tcwong.common.WebResponse;
-import com.tcwong.service.ISyslogService;
+
+import com.tcwong.pengms.service.ISyslogService;
+import com.tcwong.pengms.utils.WebPageResponse;
+import com.tcwong.pengms.utils.WebResponse;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,10 +1,10 @@
 package com.tcwong.pengms.controller;
 
-import com.tcwong.bean.Role;
-import com.tcwong.common.Log;
-import com.tcwong.common.LogdicType;
-import com.tcwong.common.WebResponse;
-import com.tcwong.service.IRoleService;
+import com.tcwong.pengms.model.Role;
+import com.tcwong.pengms.service.IRoleService;
+import com.tcwong.pengms.utils.Log;
+import com.tcwong.pengms.utils.LogdicType;
+import com.tcwong.pengms.utils.WebResponse;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

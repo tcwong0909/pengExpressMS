@@ -1,7 +1,8 @@
 package com.tcwong.pengms.service;
 
-import com.tcwong.bean.Carriers;
-import com.tcwong.common.WebPageResponse;
+
+import com.tcwong.pengms.model.Carriers;
+import com.tcwong.pengms.utils.WebPageResponse;
 
 public interface ICarriersService {
     int addCarrier(Carriers carriers);

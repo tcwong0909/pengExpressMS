@@ -1,7 +1,8 @@
 package com.tcwong.pengms.config;
 
-import com.tcwong.bean.User;
-import com.tcwong.service.ILoginService;
+
+import com.tcwong.pengms.model.User;
+import com.tcwong.pengms.service.ILoginService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;

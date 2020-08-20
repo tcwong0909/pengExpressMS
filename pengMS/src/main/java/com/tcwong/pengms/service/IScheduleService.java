@@ -1,7 +1,8 @@
 package com.tcwong.pengms.service;
 
-import com.tcwong.bean.Scheduling;
-import com.tcwong.common.WebPageResponse;
+
+import com.tcwong.pengms.model.Scheduling;
+import com.tcwong.pengms.utils.WebPageResponse;
 
 import java.util.List;
 

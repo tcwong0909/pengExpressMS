@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tcwong.dao.TruckMapper">
-  <resultMap id="BaseResultMap" type="com.tcwong.bean.Truck">
+<mapper namespace="com.tcwong.pengms.dao.TruckMapper">
+  <resultMap id="BaseResultMap" type="com.tcwong.pengms.model.Truck">
     <id column="truckID" jdbcType="INTEGER" property="truckid" />
     <result column="number" jdbcType="VARCHAR" property="number" />
     <result column="buyDate" jdbcType="TIMESTAMP" property="buydate" />
@@ -77,8 +77,8 @@
     truckID, number, buyDate, type, length, tonnage, fk_teamID, state, remark, checkInTime, 
     isDelete, alterTime
   </sql>
-  <resultMap id="BaseResultMap2" type="com.tcwong.bean.Truck" extends="BaseResultMap">
-    <association property="truckteam" javaType="com.tcwong.bean.Truckteam">
+  <resultMap id="BaseResultMap2" type="com.tcwong.pengms.model.Truck" extends="BaseResultMap">
+    <association property="truckteam" javaType="com.tcwong.pengms.model.Truckteam">
       <id column="teamID" jdbcType="INTEGER" property="teamid" />
       <result column="teamName" jdbcType="VARCHAR" property="teamname" />
       <result column="leader" jdbcType="VARCHAR" property="leader" />
@@ -147,7 +147,7 @@
       </if>
     </where>
   </select>
-  <select id="selectByExample" parameterType="com.tcwong.bean.TruckExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tcwong.pengms.model.TruckExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -177,13 +177,13 @@
     delete from truck
     where truckID = #{truckid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.bean.TruckExample">
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.TruckExample">
     delete from truck
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.tcwong.bean.Truck">
+  <insert id="insert" parameterType="com.tcwong.pengms.model.Truck">
     insert into truck (truckID, number, buyDate, 
       type, length, tonnage, 
       fk_teamID, state, remark, 
@@ -195,7 +195,7 @@
       #{checkintime,jdbcType=TIMESTAMP}, #{isdelete,jdbcType=INTEGER}, #{altertime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.tcwong.bean.Truck">
+  <insert id="insertSelective" parameterType="com.tcwong.pengms.model.Truck">
     insert into truck
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="truckid != null">
@@ -274,7 +274,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.bean.TruckExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.TruckExample" resultType="java.lang.Integer">
     select count(*) from truck
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -342,7 +342,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.bean.Truck">
+  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.pengms.model.Truck">
     update truck
     <set>
       <if test="number != null">
@@ -381,7 +381,7 @@
     </set>
     where truckID = #{truckid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.tcwong.bean.Truck">
+  <update id="updateByPrimaryKey" parameterType="com.tcwong.pengms.model.Truck">
     update truck
     set number = #{number,jdbcType=VARCHAR},
       buyDate = #{buydate,jdbcType=TIMESTAMP},

@@ -1,16 +1,17 @@
 package com.tcwong.pengms.service.impl;
 
-import com.tcwong.bean.Contact;
-import com.tcwong.bean.Driver;
-import com.tcwong.common.WebPageResponse;
-import com.tcwong.dao.ContactMapper;
-import com.tcwong.dao.DriverMapper;
-import com.tcwong.service.IDriverService;
+import com.tcwong.pengms.dao.ContactMapper;
+import com.tcwong.pengms.dao.DriverMapper;
+import com.tcwong.pengms.model.Contact;
+import com.tcwong.pengms.model.Driver;
+import com.tcwong.pengms.service.IDriverService;
+import com.tcwong.pengms.utils.WebPageResponse;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
+
 
 @Service
 public class DriverServiceImpl implements IDriverService {
@@ -46,7 +47,7 @@ public class DriverServiceImpl implements IDriverService {
     }
 
     @Override
-    public WebPageResponse getAllDriverByPage(Integer page, Integer size,String name,Integer fkTeamid,Integer state) {
+    public WebPageResponse getAllDriverByPage(Integer page, Integer size, String name, Integer fkTeamid, Integer state) {
         if (page != null && size != null){
             page = (page-1)*size;
         }

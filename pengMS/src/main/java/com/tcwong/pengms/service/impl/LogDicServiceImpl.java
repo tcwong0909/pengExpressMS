@@ -1,8 +1,9 @@
 package com.tcwong.pengms.service.impl;
 
-import com.tcwong.bean.Logdic;
-import com.tcwong.dao.LogdicMapper;
-import com.tcwong.service.ILogDicService;
+
+import com.tcwong.pengms.dao.LogdicMapper;
+import com.tcwong.pengms.model.Logdic;
+import com.tcwong.pengms.service.ILogDicService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

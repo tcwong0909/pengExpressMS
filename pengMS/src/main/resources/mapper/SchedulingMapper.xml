@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tcwong.dao.SchedulingMapper">
-  <resultMap id="BaseResultMap" type="com.tcwong.bean.Scheduling">
+<mapper namespace="com.tcwong.pengms.dao.SchedulingMapper">
+  <resultMap id="BaseResultMap" type="com.tcwong.pengms.model.Scheduling">
     <id column="schedulingID" jdbcType="INTEGER" property="schedulingid" />
     <result column="startTime" jdbcType="TIMESTAMP" property="starttime" />
     <result column="fk_carriersID" jdbcType="INTEGER" property="fkCarriersid" />
@@ -79,8 +79,8 @@
     schedulingID, startTime, fk_carriersID, fk_truckID, oilCost, toll, fine, otherCost, 
     totalCost, fk_userID, remark, checkInTime, isDelete, alterTime
   </sql>
-  <resultMap id="BaseResultMap2" type="com.tcwong.bean.Scheduling" extends="BaseResultMap">
-    <association property="carriers" javaType="com.tcwong.bean.Carriers">
+  <resultMap id="BaseResultMap2" type="com.tcwong.pengms.model.Scheduling" extends="BaseResultMap">
+    <association property="carriers" javaType="com.tcwong.pengms.model.Carriers">
       <id column="carriersID" jdbcType="INTEGER" property="carriersid" />
       <result column="sendCompany" jdbcType="VARCHAR" property="sendcompany" />
       <result column="sendAddress" jdbcType="VARCHAR" property="sendaddress" />
@@ -150,7 +150,7 @@
     </foreach>
     )
   </delete>
-  <select id="selectByExample" parameterType="com.tcwong.bean.SchedulingExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tcwong.pengms.model.SchedulingExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -174,13 +174,13 @@
     delete from scheduling
     where schedulingID = #{schedulingid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.bean.SchedulingExample">
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.SchedulingExample">
     delete from scheduling
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.tcwong.bean.Scheduling">
+  <insert id="insert" parameterType="com.tcwong.pengms.model.Scheduling">
     insert into scheduling (schedulingID, startTime, fk_carriersID, 
       fk_truckID, oilCost, toll, 
       fine, otherCost, totalCost, 
@@ -192,7 +192,7 @@
       #{fkUserid,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{checkintime,jdbcType=TIMESTAMP}, 
       #{isdelete,jdbcType=INTEGER}, #{altertime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.tcwong.bean.Scheduling">
+  <insert id="insertSelective" parameterType="com.tcwong.pengms.model.Scheduling">
     insert into scheduling
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="schedulingid != null">
@@ -283,7 +283,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.bean.SchedulingExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.SchedulingExample" resultType="java.lang.Integer">
     select count(*) from scheduling
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -359,7 +359,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.bean.Scheduling">
+  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.pengms.model.Scheduling">
     update scheduling
     <set>
       <if test="starttime != null">
@@ -404,7 +404,7 @@
     </set>
     where schedulingID = #{schedulingid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.tcwong.bean.Scheduling">
+  <update id="updateByPrimaryKey" parameterType="com.tcwong.pengms.model.Scheduling">
     update scheduling
     set startTime = #{starttime,jdbcType=TIMESTAMP},
       fk_carriersID = #{fkCarriersid,jdbcType=INTEGER},

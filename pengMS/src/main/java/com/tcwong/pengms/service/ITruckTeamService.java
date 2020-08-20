@@ -1,7 +1,8 @@
 package com.tcwong.pengms.service;
 
-import com.tcwong.bean.Truckteam;
-import com.tcwong.common.WebPageResponse;
+
+import com.tcwong.pengms.model.Truckteam;
+import com.tcwong.pengms.utils.WebPageResponse;
 
 public interface ITruckTeamService {
     int addTruckTeam(Truckteam truckteam);

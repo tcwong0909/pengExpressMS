@@ -1,6 +1,7 @@
 package com.tcwong.pengms.service;
 
-import com.tcwong.bean.User;
+
+import com.tcwong.pengms.model.User;
 
 import java.util.List;
 

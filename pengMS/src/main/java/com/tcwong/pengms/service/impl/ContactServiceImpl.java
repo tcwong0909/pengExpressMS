@@ -1,9 +1,9 @@
 package com.tcwong.pengms.service.impl;
 
-import com.tcwong.bean.Contact;
-import com.tcwong.common.WebPageResponse;
-import com.tcwong.dao.ContactMapper;
-import com.tcwong.service.IContactService;
+import com.tcwong.pengms.dao.ContactMapper;
+import com.tcwong.pengms.model.Contact;
+import com.tcwong.pengms.service.IContactService;
+import com.tcwong.pengms.utils.WebPageResponse;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

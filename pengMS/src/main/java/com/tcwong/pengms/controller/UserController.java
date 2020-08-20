@@ -1,11 +1,11 @@
 package com.tcwong.pengms.controller;
 
-import com.tcwong.bean.User;
-import com.tcwong.common.Log;
-import com.tcwong.common.LogdicType;
-import com.tcwong.common.WebPageResponse;
-import com.tcwong.common.WebResponse;
-import com.tcwong.service.IUserService;
+import com.tcwong.pengms.model.User;
+import com.tcwong.pengms.service.IUserService;
+import com.tcwong.pengms.utils.Log;
+import com.tcwong.pengms.utils.LogdicType;
+import com.tcwong.pengms.utils.WebPageResponse;
+import com.tcwong.pengms.utils.WebResponse;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

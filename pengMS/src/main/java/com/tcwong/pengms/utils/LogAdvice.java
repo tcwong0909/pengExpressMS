@@ -1,8 +1,8 @@
 package com.tcwong.pengms.utils;
 
-import com.tcwong.bean.Syslog;
-import com.tcwong.bean.User;
-import com.tcwong.service.ISyslogService;
+import com.tcwong.pengms.model.Syslog;
+import com.tcwong.pengms.model.User;
+import com.tcwong.pengms.service.ISyslogService;
 import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.aspectj.lang.JoinPoint;
@@ -35,7 +35,7 @@ public class LogAdvice {
     /**
      * 切入点
      */
-    @Pointcut("execution(* com.tcwong.controller.*.*(..))")
+    @Pointcut("execution(* com.tcwong.pengms.controller.*.*(..))")
     public void controllerAspect() {
 
     }

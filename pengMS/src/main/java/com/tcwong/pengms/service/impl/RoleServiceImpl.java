@@ -1,8 +1,8 @@
 package com.tcwong.pengms.service.impl;
 
-import com.tcwong.bean.Role;
-import com.tcwong.dao.RoleMapper;
-import com.tcwong.service.IRoleService;
+import com.tcwong.pengms.dao.RoleMapper;
+import com.tcwong.pengms.model.Role;
+import com.tcwong.pengms.service.IRoleService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

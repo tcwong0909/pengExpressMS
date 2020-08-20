@@ -1,7 +1,8 @@
 package com.tcwong.pengms.dao;
 
-import com.tcwong.bean.Role;
-import com.tcwong.bean.RoleExample;
+
+import com.tcwong.pengms.model.Role;
+import com.tcwong.pengms.model.RoleExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

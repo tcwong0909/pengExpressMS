@@ -1,12 +1,12 @@
 package com.tcwong.pengms.service.impl;
 
-import com.tcwong.bean.Carriers;
-import com.tcwong.bean.Goods;
-import com.tcwong.bean.User;
-import com.tcwong.common.WebPageResponse;
-import com.tcwong.dao.CarriersMapper;
-import com.tcwong.service.ICarriersService;
-import com.tcwong.service.IGoodsService;
+import com.tcwong.pengms.dao.CarriersMapper;
+import com.tcwong.pengms.model.Carriers;
+import com.tcwong.pengms.model.Goods;
+import com.tcwong.pengms.model.User;
+import com.tcwong.pengms.service.ICarriersService;
+import com.tcwong.pengms.service.IGoodsService;
+import com.tcwong.pengms.utils.WebPageResponse;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Service;
 

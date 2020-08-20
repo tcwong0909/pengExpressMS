@@ -1,8 +1,8 @@
 package com.tcwong.pengms.controller;
 
-import com.tcwong.bean.Goods;
-import com.tcwong.common.WebResponse;
-import com.tcwong.service.IGoodsService;
+import com.tcwong.pengms.model.Goods;
+import com.tcwong.pengms.service.IGoodsService;
+import com.tcwong.pengms.utils.WebResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

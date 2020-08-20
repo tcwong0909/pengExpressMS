@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tcwong.dao.GoodsMapper">
-  <resultMap id="BaseResultMap" type="com.tcwong.bean.Goods">
+<mapper namespace="com.tcwong.pengms.dao.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.tcwong.pengms.model.Goods">
     <id column="goodsID" jdbcType="INTEGER" property="goodsid" />
     <result column="goodsName" jdbcType="VARCHAR" property="goodsname" />
     <result column="amount" jdbcType="INTEGER" property="amount" />
@@ -78,7 +78,7 @@
     </foreach>
     )
   </delete>
-  <select id="selectByExample" parameterType="com.tcwong.bean.GoodsExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tcwong.pengms.model.GoodsExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -102,13 +102,13 @@
     delete from goods
     where goodsID = #{goodsid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.bean.GoodsExample">
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.GoodsExample">
     delete from goods
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.tcwong.bean.Goods">
+  <insert id="insert" parameterType="com.tcwong.pengms.model.Goods">
     insert into goods (goodsID, goodsName, amount, 
       weight, volume, fk_carriersID, 
       isDelete)
@@ -116,7 +116,7 @@
       #{weight,jdbcType=REAL}, #{volume,jdbcType=REAL}, #{fkCarriersid,jdbcType=INTEGER}, 
       #{isdelete,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.tcwong.bean.Goods">
+  <insert id="insertSelective" parameterType="com.tcwong.pengms.model.Goods">
     insert into goods
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="goodsid != null">
@@ -165,7 +165,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.bean.GoodsExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.GoodsExample" resultType="java.lang.Integer">
     select count(*) from goods
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -213,7 +213,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.bean.Goods">
+  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.pengms.model.Goods">
     update goods
     <set>
       <if test="goodsname != null">
@@ -237,7 +237,7 @@
     </set>
     where goodsID = #{goodsid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.tcwong.bean.Goods">
+  <update id="updateByPrimaryKey" parameterType="com.tcwong.pengms.model.Goods">
     update goods
     set goodsName = #{goodsname,jdbcType=VARCHAR},
       amount = #{amount,jdbcType=INTEGER},

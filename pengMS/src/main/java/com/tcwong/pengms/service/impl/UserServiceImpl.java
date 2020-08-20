@@ -1,19 +1,20 @@
 package com.tcwong.pengms.service.impl;
 
-import com.tcwong.bean.User;
-import com.tcwong.common.WebPageResponse;
-import com.tcwong.dao.UserMapper;
-import com.tcwong.service.IUserService;
+
+import com.tcwong.pengms.dao.UserMapper;
+import com.tcwong.pengms.model.User;
+import com.tcwong.pengms.service.IUserService;
+import com.tcwong.pengms.utils.WebPageResponse;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.Md5Hash;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.Date;
 
 @Service
 public class UserServiceImpl implements IUserService {
-    @Autowired
+    @Resource
     private UserMapper userMapper;
     @Override
     public int addUser(User user) {

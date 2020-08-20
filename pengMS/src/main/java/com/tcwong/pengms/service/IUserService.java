@@ -1,7 +1,8 @@
 package com.tcwong.pengms.service;
 
-import com.tcwong.bean.User;
-import com.tcwong.common.WebPageResponse;
+
+import com.tcwong.pengms.model.User;
+import com.tcwong.pengms.utils.WebPageResponse;
 
 public interface IUserService {
     int addUser(User user);

@@ -1,9 +1,9 @@
 package com.tcwong.pengms.service.impl;
 
-import com.tcwong.bean.Syslog;
-import com.tcwong.common.WebPageResponse;
-import com.tcwong.dao.SyslogMapper;
-import com.tcwong.service.ISyslogService;
+import com.tcwong.pengms.dao.SyslogMapper;
+import com.tcwong.pengms.model.Syslog;
+import com.tcwong.pengms.service.ISyslogService;
+import com.tcwong.pengms.utils.WebPageResponse;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

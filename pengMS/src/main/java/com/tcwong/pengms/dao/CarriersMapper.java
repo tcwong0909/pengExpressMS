@@ -1,8 +1,10 @@
 package com.tcwong.pengms.dao;
 
-import com.tcwong.bean.Carriers;
-import com.tcwong.bean.CarriersExample;
+
+import com.tcwong.pengms.model.Carriers;
+import com.tcwong.pengms.model.CarriersExample;
 import org.apache.ibatis.annotations.Param;
+
 
 import java.util.List;
 

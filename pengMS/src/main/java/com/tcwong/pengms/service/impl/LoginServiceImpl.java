@@ -1,10 +1,10 @@
 package com.tcwong.pengms.service.impl;
 
 
-import com.tcwong.bean.User;
-import com.tcwong.bean.UserExample;
-import com.tcwong.dao.UserMapper;
-import com.tcwong.service.ILoginService;
+import com.tcwong.pengms.dao.UserMapper;
+import com.tcwong.pengms.model.User;
+import com.tcwong.pengms.model.UserExample;
+import com.tcwong.pengms.service.ILoginService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

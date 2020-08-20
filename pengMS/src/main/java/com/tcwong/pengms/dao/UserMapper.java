@@ -1,7 +1,8 @@
 package com.tcwong.pengms.dao;
 
-import com.tcwong.bean.User;
-import com.tcwong.bean.UserExample;
+
+import com.tcwong.pengms.model.User;
+import com.tcwong.pengms.model.UserExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

@@ -1,7 +1,8 @@
 package com.tcwong.pengms.service;
 
-import com.tcwong.bean.Syslog;
-import com.tcwong.common.WebPageResponse;
+
+import com.tcwong.pengms.model.Syslog;
+import com.tcwong.pengms.utils.WebPageResponse;
 
 public interface ISyslogService {
 

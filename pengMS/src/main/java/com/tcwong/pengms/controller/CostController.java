@@ -1,11 +1,11 @@
 package com.tcwong.pengms.controller;
 
-import com.tcwong.bean.Scheduling;
-import com.tcwong.common.Log;
-import com.tcwong.common.LogdicType;
-import com.tcwong.common.WebPageResponse;
-import com.tcwong.common.WebResponse;
-import com.tcwong.service.IScheduleService;
+import com.tcwong.pengms.model.Scheduling;
+import com.tcwong.pengms.service.IScheduleService;
+import com.tcwong.pengms.utils.Log;
+import com.tcwong.pengms.utils.LogdicType;
+import com.tcwong.pengms.utils.WebPageResponse;
+import com.tcwong.pengms.utils.WebResponse;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -22,7 +22,7 @@ public class CostController {
 
 
     @PostMapping("/getAllByPage")
-    public WebResponse getAllByPage(Integer page,Integer size,Integer schedulingid,Integer fkCarriersid){
+    public WebResponse getAllByPage(Integer page, Integer size, Integer schedulingid, Integer fkCarriersid){
         WebPageResponse pageResponse = scheduleService.getSchedules(page, size, schedulingid, fkCarriersid, null, null);
         if (pageResponse != null) {
             return WebResponse.success(pageResponse, "查询成功");

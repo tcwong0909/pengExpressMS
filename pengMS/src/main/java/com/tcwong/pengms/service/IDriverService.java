@@ -1,7 +1,8 @@
 package com.tcwong.pengms.service;
 
-import com.tcwong.bean.Driver;
-import com.tcwong.common.WebPageResponse;
+
+import com.tcwong.pengms.model.Driver;
+import com.tcwong.pengms.utils.WebPageResponse;
 
 public interface IDriverService {
     int addDriver(Driver driver);

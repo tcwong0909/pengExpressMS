@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tcwong.dao.RoleMapper">
-  <resultMap id="BaseResultMap" type="com.tcwong.bean.Role">
+<mapper namespace="com.tcwong.pengms.dao.RoleMapper">
+  <resultMap id="BaseResultMap" type="com.tcwong.pengms.model.Role">
     <id column="roleID" jdbcType="INTEGER" property="roleid" />
     <result column="roleName" jdbcType="VARCHAR" property="rolename" />
     <result column="rolePurview" jdbcType="VARCHAR" property="rolepurview" />
@@ -67,7 +67,7 @@
   <sql id="Base_Column_List">
     roleID, roleName, rolePurview
   </sql>
-  <select id="selectByExample" parameterType="com.tcwong.bean.RoleExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tcwong.pengms.model.RoleExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -91,19 +91,19 @@
     delete from role
     where roleID = #{roleid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.bean.RoleExample">
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.RoleExample">
     delete from role
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.tcwong.bean.Role">
+  <insert id="insert" parameterType="com.tcwong.pengms.model.Role">
     insert into role (roleID, roleName, rolePurview
       )
     values (#{roleid,jdbcType=INTEGER}, #{rolename,jdbcType=VARCHAR}, #{rolepurview,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.tcwong.bean.Role">
+  <insert id="insertSelective" parameterType="com.tcwong.pengms.model.Role">
     insert into role
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="roleid != null">
@@ -128,7 +128,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.bean.RoleExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.RoleExample" resultType="java.lang.Integer">
     select count(*) from role
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -160,7 +160,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.bean.Role">
+  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.pengms.model.Role">
     update role
     <set>
       <if test="rolename != null">
@@ -172,7 +172,7 @@
     </set>
     where roleID = #{roleid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.tcwong.bean.Role">
+  <update id="updateByPrimaryKey" parameterType="com.tcwong.pengms.model.Role">
     update role
     set roleName = #{rolename,jdbcType=VARCHAR},
       rolePurview = #{rolepurview,jdbcType=VARCHAR}

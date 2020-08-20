@@ -1,11 +1,11 @@
 package com.tcwong.pengms.controller;
 
-import com.tcwong.bean.LoginBean;
-import com.tcwong.bean.User;
-import com.tcwong.common.Log;
-import com.tcwong.common.LogdicType;
-import com.tcwong.common.WebResponse;
-import com.tcwong.service.ILoginService;
+import com.tcwong.pengms.dto.LoginBean;
+import com.tcwong.pengms.model.User;
+import com.tcwong.pengms.service.ILoginService;
+import com.tcwong.pengms.utils.Log;
+import com.tcwong.pengms.utils.LogdicType;
+import com.tcwong.pengms.utils.WebResponse;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;

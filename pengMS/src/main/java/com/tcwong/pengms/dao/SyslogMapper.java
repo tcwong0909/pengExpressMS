@@ -1,7 +1,8 @@
 package com.tcwong.pengms.dao;
 
-import com.tcwong.bean.Syslog;
-import com.tcwong.bean.SyslogExample;
+
+import com.tcwong.pengms.model.Syslog;
+import com.tcwong.pengms.model.SyslogExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

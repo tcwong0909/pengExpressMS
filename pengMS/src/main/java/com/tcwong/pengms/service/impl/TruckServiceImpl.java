@@ -1,10 +1,10 @@
 package com.tcwong.pengms.service.impl;
 
-import com.tcwong.bean.Truck;
-import com.tcwong.bean.TruckExample;
-import com.tcwong.common.WebPageResponse;
-import com.tcwong.dao.TruckMapper;
-import com.tcwong.service.ITruckService;
+import com.tcwong.pengms.dao.TruckMapper;
+import com.tcwong.pengms.model.Truck;
+import com.tcwong.pengms.model.TruckExample;
+import com.tcwong.pengms.service.ITruckService;
+import com.tcwong.pengms.utils.WebPageResponse;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

@@ -1,8 +1,8 @@
 package com.tcwong.pengms.service.impl;
 
-import com.tcwong.bean.Goods;
-import com.tcwong.dao.GoodsMapper;
-import com.tcwong.service.IGoodsService;
+import com.tcwong.pengms.dao.GoodsMapper;
+import com.tcwong.pengms.model.Goods;
+import com.tcwong.pengms.service.IGoodsService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

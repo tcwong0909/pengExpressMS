@@ -1,8 +1,10 @@
 package com.tcwong.pengms.dao;
 
-import com.tcwong.bean.Contact;
-import com.tcwong.bean.ContactExample;
+
+import com.tcwong.pengms.model.Contact;
+import com.tcwong.pengms.model.ContactExample;
 import org.apache.ibatis.annotations.Param;
+
 
 import java.util.List;
 

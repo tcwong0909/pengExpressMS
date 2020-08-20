@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tcwong.dao.DriverMapper">
-  <resultMap id="BaseResultMap" type="com.tcwong.bean.Driver">
+<mapper namespace="com.tcwong.pengms.dao.DriverMapper">
+  <resultMap id="BaseResultMap" type="com.tcwong.pengms.model.Driver">
     <id column="driverID" jdbcType="INTEGER" property="driverid" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="sex" jdbcType="INTEGER" property="sex" />
@@ -15,8 +15,8 @@
     <result column="isDelete" jdbcType="INTEGER" property="isdelete" />
     <result column="alterTime" jdbcType="TIMESTAMP" property="altertime" />
   </resultMap>
-  <resultMap id="BaseResultMap2" type="com.tcwong.bean.Driver" extends="BaseResultMap">
-    <association property="truckteam" javaType="com.tcwong.bean.Truckteam">
+  <resultMap id="BaseResultMap2" type="com.tcwong.pengms.model.Driver" extends="BaseResultMap">
+    <association property="truckteam" javaType="com.tcwong.pengms.model.Truckteam">
       <id column="teamID" jdbcType="INTEGER" property="teamid" />
       <result column="teamName" jdbcType="VARCHAR" property="teamname" />
     </association>
@@ -121,7 +121,7 @@
     </foreach>
     )
   </delete>
-  <select id="selectByExample" parameterType="com.tcwong.bean.DriverExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tcwong.pengms.model.DriverExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -145,13 +145,13 @@
     delete from driver
     where driverID = #{driverid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.bean.DriverExample">
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.DriverExample">
     delete from driver
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.tcwong.bean.Driver" keyProperty="driverid" useGeneratedKeys="true">
+  <insert id="insert" parameterType="com.tcwong.pengms.model.Driver" keyProperty="driverid" useGeneratedKeys="true">
     insert into driver (driverID, name, sex, 
       birth, phone, IDCard, 
       fk_teamID, state, remark, 
@@ -163,7 +163,7 @@
       #{checkintime,jdbcType=TIMESTAMP}, #{isdelete,jdbcType=INTEGER}, #{altertime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.tcwong.bean.Driver" useGeneratedKeys="true" keyProperty="driverid">
+  <insert id="insertSelective" parameterType="com.tcwong.pengms.model.Driver" useGeneratedKeys="true" keyProperty="driverid">
     insert into driver
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="driverid != null">
@@ -242,7 +242,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.bean.DriverExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.DriverExample" resultType="java.lang.Integer">
     select count(*) from driver
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -310,7 +310,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.bean.Driver">
+  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.pengms.model.Driver">
     update driver
     <set>
       <if test="name != null">
@@ -349,7 +349,7 @@
     </set>
     where driverID = #{driverid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.tcwong.bean.Driver">
+  <update id="updateByPrimaryKey" parameterType="com.tcwong.pengms.model.Driver">
     update driver
     set name = #{name,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=INTEGER},

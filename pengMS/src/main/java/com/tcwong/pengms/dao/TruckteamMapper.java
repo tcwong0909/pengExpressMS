@@ -1,7 +1,9 @@
 package com.tcwong.pengms.dao;
 
-import com.tcwong.bean.Truckteam;
-import com.tcwong.bean.TruckteamExample;
+
+
+import com.tcwong.pengms.model.Truckteam;
+import com.tcwong.pengms.model.TruckteamExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

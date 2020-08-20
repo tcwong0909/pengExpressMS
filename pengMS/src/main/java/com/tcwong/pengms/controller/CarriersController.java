@@ -1,12 +1,12 @@
 package com.tcwong.pengms.controller;
 
-import com.tcwong.bean.Carriers;
-import com.tcwong.common.Log;
-import com.tcwong.common.LogdicType;
-import com.tcwong.common.WebPageResponse;
-import com.tcwong.common.WebResponse;
-import com.tcwong.service.ICarriersService;
-import com.tcwong.service.IGoodsService;
+import com.tcwong.pengms.model.Carriers;
+import com.tcwong.pengms.service.ICarriersService;
+import com.tcwong.pengms.service.IGoodsService;
+import com.tcwong.pengms.utils.Log;
+import com.tcwong.pengms.utils.LogdicType;
+import com.tcwong.pengms.utils.WebPageResponse;
+import com.tcwong.pengms.utils.WebResponse;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

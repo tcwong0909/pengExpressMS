@@ -1,7 +1,8 @@
 package com.tcwong.pengms.dao;
 
-import com.tcwong.bean.Scheduling;
-import com.tcwong.bean.SchedulingExample;
+
+import com.tcwong.pengms.model.Scheduling;
+import com.tcwong.pengms.model.SchedulingExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

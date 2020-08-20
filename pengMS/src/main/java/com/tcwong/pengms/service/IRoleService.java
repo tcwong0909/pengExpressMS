@@ -1,6 +1,7 @@
 package com.tcwong.pengms.service;
 
-import com.tcwong.bean.Role;
+
+import com.tcwong.pengms.model.Role;
 
 import java.util.List;
 

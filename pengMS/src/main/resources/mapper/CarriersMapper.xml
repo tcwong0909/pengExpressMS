@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tcwong.dao.CarriersMapper">
-  <resultMap id="BaseResultMap" type="com.tcwong.bean.Carriers">
+<mapper namespace="com.tcwong.pengms.dao.CarriersMapper">
+  <resultMap id="BaseResultMap" type="com.tcwong.pengms.model.Carriers">
     <id column="carriersID" jdbcType="INTEGER" property="carriersid" />
     <result column="sendCompany" jdbcType="VARCHAR" property="sendcompany" />
     <result column="sendAddress" jdbcType="VARCHAR" property="sendaddress" />
@@ -87,8 +87,8 @@
     receiveLinkMan, receivePhone, leaverDate, receiveDate, finishedState, insuranceCost, 
     transportCost, otherCost, totalCost, remark, fk_userID, checkInTime, isDelete, alterTime
   </sql>
-  <resultMap id="BaseResultMap2" type="com.tcwong.bean.Carriers" extends="BaseResultMap">
-    <association property="goods" javaType="com.tcwong.bean.Goods">
+  <resultMap id="BaseResultMap2" type="com.tcwong.pengms.model.Carriers" extends="BaseResultMap">
+    <association property="goods" javaType="com.tcwong.pengms.model.Goods">
       <id column="goodsID" jdbcType="INTEGER" property="goodsid" />
       <result column="goodsName" jdbcType="VARCHAR" property="goodsname" />
       <result column="amount" jdbcType="INTEGER" property="amount" />
@@ -144,7 +144,7 @@
       limit #{page},#{size}
     </if>
   </select>
-  <select id="selectByExample" parameterType="com.tcwong.bean.CarriersExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tcwong.pengms.model.CarriersExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -168,13 +168,13 @@
     delete from carriers
     where carriersID = #{carriersid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.bean.CarriersExample">
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.CarriersExample">
     delete from carriers
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.tcwong.bean.Carriers" useGeneratedKeys="true" keyProperty="carriersid">
+  <insert id="insert" parameterType="com.tcwong.pengms.model.Carriers" useGeneratedKeys="true" keyProperty="carriersid">
     insert into carriers (carriersID, sendCompany, sendAddress, 
       sendLinkMan, sendPhone, receiveCompany, 
       fk_receiveAddress, receiveLinkMan, receivePhone, 
@@ -192,7 +192,7 @@
       #{checkintime,jdbcType=TIMESTAMP}, #{isdelete,jdbcType=INTEGER}, #{altertime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.tcwong.bean.Carriers" useGeneratedKeys="true" keyProperty="carriersid">
+  <insert id="insertSelective" parameterType="com.tcwong.pengms.model.Carriers" useGeneratedKeys="true" keyProperty="carriersid">
     insert into carriers
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="carriersid != null">
@@ -325,7 +325,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.bean.CarriersExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.CarriersExample" resultType="java.lang.Integer">
     select count(*) from carriers
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -429,7 +429,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.bean.Carriers">
+  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.pengms.model.Carriers">
     update carriers
     <set>
       <if test="sendcompany != null">
@@ -495,7 +495,7 @@
     </set>
     where carriersID = #{carriersid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.tcwong.bean.Carriers">
+  <update id="updateByPrimaryKey" parameterType="com.tcwong.pengms.model.Carriers">
     update carriers
     set sendCompany = #{sendcompany,jdbcType=VARCHAR},
       sendAddress = #{sendaddress,jdbcType=VARCHAR},
