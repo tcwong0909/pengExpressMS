@@ -11,7 +11,7 @@
         </div>
         <div style="padding-top: 3vh;">
           <el-tag  class="el-tag">密码</el-tag>
-          <el-input placeholder="" v-model="user.password" show-password class="el-input"></el-input>
+          <el-input placeholder="关注公众号，获取登陆密码" v-model="user.password"  class="el-input"></el-input>
         </div>
         <div style="padding-top: 3vh;">
           <el-checkbox v-model="remember">记住密码</el-checkbox>
@@ -22,6 +22,12 @@
 
       </div>
     </el-card>
+    <div>
+      <img src="../assets/TC.jpg">
+    </div>
+    <div>
+      关注公众号，回复   " 鹏城项目 "   获取登陆密码
+    </div>
   </div>
 </template>
 
@@ -34,7 +40,7 @@ export default {
         remember:'false',
         user:{
           account:'admin',
-          password:'123456',
+          password:'',
         }
     }
   },

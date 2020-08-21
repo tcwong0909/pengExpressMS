@@ -53,8 +53,8 @@
     </div>
     <el-card shadow="never" body-style="padding:0;padding-top:1px">
       <div  >
-        <el-button type="primary" icon="el-icon-plus" size="small" @click="showDialog('add')">添加用户</el-button>
-        <el-button type="danger" icon="el-icon-minus" size="small" @click="multiDelete" :disabled="multipleSelection.length===0">批量删除</el-button>
+        <el-button type="primary" icon="el-icon-plus" size="small" @click="showDialog('add')" disabled="false">添加用户</el-button>
+        <el-button type="danger" icon="el-icon-minus" size="small" @click="multiDelete" :disabled="multipleSelection.length===0" disabled="false">批量删除</el-button>
       </div>
       <div>
         <el-dialog :title="dialogTitle" :visible.sync="dialogFormVisible">
@@ -184,9 +184,9 @@
           <el-table-column
             label="操作">
             <template slot-scope="scope">
-              <el-button type="primary" size="mini" @click="showDialog(scope.row)">编辑</el-button>
-              <el-button type="primary" size="mini" @click="bindRole(scope.row)">绑定角色</el-button>
-              <el-button type="danger" size="mini" @click="deleteById(scope.row.userid)">删除</el-button>
+              <el-button type="primary" size="mini" @click="showDialog(scope.row)" disabled="false">编辑</el-button>
+              <el-button type="primary" size="mini" @click="bindRole(scope.row)" disabled="false">绑定角色</el-button>
+              <el-button type="danger" size="mini" @click="deleteById(scope.row.userid)" disabled="false">删除</el-button>
             </template>
           </el-table-column>
         </el-table>

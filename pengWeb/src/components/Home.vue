@@ -35,13 +35,20 @@
             </el-menu>
           </el-aside>
           <el-main>
+            <div v-show="this.$router.currentRoute.path === '/home'" class="welcome" >
+              <div>
+                欢迎进入鹏城Express物流管理平台
+
+              </div>
+              <div>
+                鹏城项目会持续迭代，敬请期待！
+
+              </div>
+            </div>
             <el-breadcrumb separator="/" v-show="this.$router.currentRoute.path !== '/home'">
               <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
               <el-breadcrumb-item >{{this.$router.currentRoute.name}}</el-breadcrumb-item>
             </el-breadcrumb>
-            <div v-show="this.$router.currentRoute.path === '/home'" class="welcome" >
-              欢迎进入粤通物流管理平台
-            </div>
             <router-view/>
           </el-main>
         </el-container>
