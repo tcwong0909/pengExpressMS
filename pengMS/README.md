@@ -34,9 +34,9 @@
 #### 项目结构
 项目开发模式采用，前后端分离。后端负责接口，前端负责页面展示
 
-1、后端采用Maven多模块管理，SpringBoot、Mysql、Redis、MongoDB。
+1、后端采用 SpringBoot、Mysql、Redis、MongoDB。
 
-2、前端采用VUE、VUE-axios、ElementUI等技术框架开。
+2、前端采用 VUE、VUE-axios、ElementUI等技术框架开。
 
 
 #### 本地安装运行
