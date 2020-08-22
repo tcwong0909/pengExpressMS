@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * Description
+ * Description 请求过滤器
  *
  * @author tcwong
  * @date 2020/8/22
