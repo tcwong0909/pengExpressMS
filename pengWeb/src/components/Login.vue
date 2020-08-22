@@ -46,9 +46,9 @@ export default {
   },
   methods:{
     login(){
-      this.user.password = md5(this.user.password);
-        this.postRequest("/login",this.user).then(res=>{
-            if (res){
+      // this.user.password = md5(this.user.password);
+        this.postRequest("/login/doLogin",this.user).then(res=>{
+            if (res.code ==="200"){
               console.log(res.data)
               this.$router.replace("/home");
               window.sessionStorage.setItem("user",JSON.stringify(res.data))
