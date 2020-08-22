@@ -12,7 +12,7 @@ public interface ILoginService {
      * @param account
      * @return
      */
-    List<User> login(String account);
+    List<User> doLogin(String account);
 
     /**
      * 注销登录

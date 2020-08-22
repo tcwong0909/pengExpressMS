@@ -31,7 +31,7 @@ public class LoginRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         String username = (String)authenticationToken.getPrincipal();
         Session session = SecurityUtils.getSubject().getSession();
-        List<User> userList = loginService.login(username);
+        List<User> userList = loginService.doLogin(username);
         User user = userList.get(0);
         session.setAttribute("user",user);
         SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user.getAccount(), user.getPassword(), ByteSource.Util.bytes(user.getAccount()), getName());

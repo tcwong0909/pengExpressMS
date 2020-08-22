@@ -6,7 +6,11 @@ import org.slf4j.LoggerFactory;
 import java.text.SimpleDateFormat;
 
 /**
- * 日志工具
+ * Description
+ *
+ * @author tcwong
+ * @date 2020/8/22
+ * Since 1.8
  */
 public class LogUtil {
 
@@ -19,6 +23,16 @@ public class LogUtil {
 
     }
 
+
+
+    /**
+     * Description
+     *
+     * @param
+     * @return
+     * @author tcwong
+     * @date 2020/8/22
+     */
     public static void error(Exception e){
         LOG.error("ErrorCode is" + -1 +",message is" + e.getMessage());
     }
