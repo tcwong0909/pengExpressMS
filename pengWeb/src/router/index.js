@@ -16,6 +16,7 @@ import LogDic from '@/components/system/LogDic'
 import SysLog from '@/components/system/SysLog'
 import BillCreate from '@/components/waybill/BillCreate'
 import BillReceive from '@/components/waybill/BillReceive'
+import LoginLog from '@/components/system/LoginLog'
 
 
 Vue.use(Router);
@@ -186,6 +187,11 @@ export default new Router({
           path:'/sysLog',
           name:'系统日志',
           component:SysLog
+        },
+        {
+          path:'/loginLog',
+          name:'登陆日志',
+          component:LoginLog
         }
       ]
     },
