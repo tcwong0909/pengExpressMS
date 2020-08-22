@@ -1,16 +1,16 @@
-package com.tcwong.pengms.model;
+package com.tcwong.pengms.model.example;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContactExample {
+public class LogdicExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public ContactExample() {
+    public LogdicExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -104,183 +104,133 @@ public class ContactExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andContactidIsNull() {
-            addCriterion("contactID is null");
+        public Criteria andTypeidIsNull() {
+            addCriterion("typeID is null");
             return (Criteria) this;
         }
 
-        public Criteria andContactidIsNotNull() {
-            addCriterion("contactID is not null");
+        public Criteria andTypeidIsNotNull() {
+            addCriterion("typeID is not null");
             return (Criteria) this;
         }
 
-        public Criteria andContactidEqualTo(Integer value) {
-            addCriterion("contactID =", value, "contactid");
+        public Criteria andTypeidEqualTo(Integer value) {
+            addCriterion("typeID =", value, "typeid");
             return (Criteria) this;
         }
 
-        public Criteria andContactidNotEqualTo(Integer value) {
-            addCriterion("contactID <>", value, "contactid");
+        public Criteria andTypeidNotEqualTo(Integer value) {
+            addCriterion("typeID <>", value, "typeid");
             return (Criteria) this;
         }
 
-        public Criteria andContactidGreaterThan(Integer value) {
-            addCriterion("contactID >", value, "contactid");
+        public Criteria andTypeidGreaterThan(Integer value) {
+            addCriterion("typeID >", value, "typeid");
             return (Criteria) this;
         }
 
-        public Criteria andContactidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("contactID >=", value, "contactid");
+        public Criteria andTypeidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("typeID >=", value, "typeid");
             return (Criteria) this;
         }
 
-        public Criteria andContactidLessThan(Integer value) {
-            addCriterion("contactID <", value, "contactid");
+        public Criteria andTypeidLessThan(Integer value) {
+            addCriterion("typeID <", value, "typeid");
             return (Criteria) this;
         }
 
-        public Criteria andContactidLessThanOrEqualTo(Integer value) {
-            addCriterion("contactID <=", value, "contactid");
+        public Criteria andTypeidLessThanOrEqualTo(Integer value) {
+            addCriterion("typeID <=", value, "typeid");
             return (Criteria) this;
         }
 
-        public Criteria andContactidIn(List<Integer> values) {
-            addCriterion("contactID in", values, "contactid");
+        public Criteria andTypeidIn(List<Integer> values) {
+            addCriterion("typeID in", values, "typeid");
             return (Criteria) this;
         }
 
-        public Criteria andContactidNotIn(List<Integer> values) {
-            addCriterion("contactID not in", values, "contactid");
+        public Criteria andTypeidNotIn(List<Integer> values) {
+            addCriterion("typeID not in", values, "typeid");
             return (Criteria) this;
         }
 
-        public Criteria andContactidBetween(Integer value1, Integer value2) {
-            addCriterion("contactID between", value1, value2, "contactid");
+        public Criteria andTypeidBetween(Integer value1, Integer value2) {
+            addCriterion("typeID between", value1, value2, "typeid");
             return (Criteria) this;
         }
 
-        public Criteria andContactidNotBetween(Integer value1, Integer value2) {
-            addCriterion("contactID not between", value1, value2, "contactid");
+        public Criteria andTypeidNotBetween(Integer value1, Integer value2) {
+            addCriterion("typeID not between", value1, value2, "typeid");
             return (Criteria) this;
         }
 
-        public Criteria andFkTruckidIsNull() {
-            addCriterion("fk_truckID is null");
+        public Criteria andTypenameIsNull() {
+            addCriterion("typeName is null");
             return (Criteria) this;
         }
 
-        public Criteria andFkTruckidIsNotNull() {
-            addCriterion("fk_truckID is not null");
+        public Criteria andTypenameIsNotNull() {
+            addCriterion("typeName is not null");
             return (Criteria) this;
         }
 
-        public Criteria andFkTruckidEqualTo(Integer value) {
-            addCriterion("fk_truckID =", value, "fkTruckid");
+        public Criteria andTypenameEqualTo(String value) {
+            addCriterion("typeName =", value, "typename");
             return (Criteria) this;
         }
 
-        public Criteria andFkTruckidNotEqualTo(Integer value) {
-            addCriterion("fk_truckID <>", value, "fkTruckid");
+        public Criteria andTypenameNotEqualTo(String value) {
+            addCriterion("typeName <>", value, "typename");
             return (Criteria) this;
         }
 
-        public Criteria andFkTruckidGreaterThan(Integer value) {
-            addCriterion("fk_truckID >", value, "fkTruckid");
+        public Criteria andTypenameGreaterThan(String value) {
+            addCriterion("typeName >", value, "typename");
             return (Criteria) this;
         }
 
-        public Criteria andFkTruckidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("fk_truckID >=", value, "fkTruckid");
+        public Criteria andTypenameGreaterThanOrEqualTo(String value) {
+            addCriterion("typeName >=", value, "typename");
             return (Criteria) this;
         }
 
-        public Criteria andFkTruckidLessThan(Integer value) {
-            addCriterion("fk_truckID <", value, "fkTruckid");
+        public Criteria andTypenameLessThan(String value) {
+            addCriterion("typeName <", value, "typename");
             return (Criteria) this;
         }
 
-        public Criteria andFkTruckidLessThanOrEqualTo(Integer value) {
-            addCriterion("fk_truckID <=", value, "fkTruckid");
+        public Criteria andTypenameLessThanOrEqualTo(String value) {
+            addCriterion("typeName <=", value, "typename");
             return (Criteria) this;
         }
 
-        public Criteria andFkTruckidIn(List<Integer> values) {
-            addCriterion("fk_truckID in", values, "fkTruckid");
+        public Criteria andTypenameLike(String value) {
+            addCriterion("typeName like", value, "typename");
             return (Criteria) this;
         }
 
-        public Criteria andFkTruckidNotIn(List<Integer> values) {
-            addCriterion("fk_truckID not in", values, "fkTruckid");
+        public Criteria andTypenameNotLike(String value) {
+            addCriterion("typeName not like", value, "typename");
             return (Criteria) this;
         }
 
-        public Criteria andFkTruckidBetween(Integer value1, Integer value2) {
-            addCriterion("fk_truckID between", value1, value2, "fkTruckid");
+        public Criteria andTypenameIn(List<String> values) {
+            addCriterion("typeName in", values, "typename");
             return (Criteria) this;
         }
 
-        public Criteria andFkTruckidNotBetween(Integer value1, Integer value2) {
-            addCriterion("fk_truckID not between", value1, value2, "fkTruckid");
+        public Criteria andTypenameNotIn(List<String> values) {
+            addCriterion("typeName not in", values, "typename");
             return (Criteria) this;
         }
 
-        public Criteria andFkDriveridIsNull() {
-            addCriterion("fk_driverID is null");
+        public Criteria andTypenameBetween(String value1, String value2) {
+            addCriterion("typeName between", value1, value2, "typename");
             return (Criteria) this;
         }
 
-        public Criteria andFkDriveridIsNotNull() {
-            addCriterion("fk_driverID is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andFkDriveridEqualTo(Integer value) {
-            addCriterion("fk_driverID =", value, "fkDriverid");
-            return (Criteria) this;
-        }
-
-        public Criteria andFkDriveridNotEqualTo(Integer value) {
-            addCriterion("fk_driverID <>", value, "fkDriverid");
-            return (Criteria) this;
-        }
-
-        public Criteria andFkDriveridGreaterThan(Integer value) {
-            addCriterion("fk_driverID >", value, "fkDriverid");
-            return (Criteria) this;
-        }
-
-        public Criteria andFkDriveridGreaterThanOrEqualTo(Integer value) {
-            addCriterion("fk_driverID >=", value, "fkDriverid");
-            return (Criteria) this;
-        }
-
-        public Criteria andFkDriveridLessThan(Integer value) {
-            addCriterion("fk_driverID <", value, "fkDriverid");
-            return (Criteria) this;
-        }
-
-        public Criteria andFkDriveridLessThanOrEqualTo(Integer value) {
-            addCriterion("fk_driverID <=", value, "fkDriverid");
-            return (Criteria) this;
-        }
-
-        public Criteria andFkDriveridIn(List<Integer> values) {
-            addCriterion("fk_driverID in", values, "fkDriverid");
-            return (Criteria) this;
-        }
-
-        public Criteria andFkDriveridNotIn(List<Integer> values) {
-            addCriterion("fk_driverID not in", values, "fkDriverid");
-            return (Criteria) this;
-        }
-
-        public Criteria andFkDriveridBetween(Integer value1, Integer value2) {
-            addCriterion("fk_driverID between", value1, value2, "fkDriverid");
-            return (Criteria) this;
-        }
-
-        public Criteria andFkDriveridNotBetween(Integer value1, Integer value2) {
-            addCriterion("fk_driverID not between", value1, value2, "fkDriverid");
+        public Criteria andTypenameNotBetween(String value1, String value2) {
+            addCriterion("typeName not between", value1, value2, "typename");
             return (Criteria) this;
         }
     }

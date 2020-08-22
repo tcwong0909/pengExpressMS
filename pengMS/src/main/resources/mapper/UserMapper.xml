@@ -130,7 +130,7 @@
       </if>
     </where>
   </select>
-  <select id="selectByExample" parameterType="com.tcwong.pengms.model.UserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tcwong.pengms.model.example.UserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -154,7 +154,7 @@
     delete from user
     where userID = #{userid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.UserExample">
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.example.UserExample">
     delete from user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -243,7 +243,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.pengms.model.UserExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.example.UserExample" resultType="java.lang.Integer">
     select count(*) from user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

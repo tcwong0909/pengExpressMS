@@ -1,4 +1,4 @@
-package com.tcwong.pengms.model;
+package com.tcwong.pengms.model.example;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -78,7 +78,7 @@
     </foreach>
     )
   </delete>
-  <select id="selectByExample" parameterType="com.tcwong.pengms.model.GoodsExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tcwong.pengms.model.example.GoodsExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -102,7 +102,7 @@
     delete from goods
     where goodsID = #{goodsid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.GoodsExample">
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.example.GoodsExample">
     delete from goods
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -165,7 +165,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.pengms.model.GoodsExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.example.GoodsExample" resultType="java.lang.Integer">
     select count(*) from goods
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

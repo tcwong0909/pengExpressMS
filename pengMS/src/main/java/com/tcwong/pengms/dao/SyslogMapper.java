@@ -2,7 +2,7 @@ package com.tcwong.pengms.dao;
 
 
 import com.tcwong.pengms.model.Syslog;
-import com.tcwong.pengms.model.SyslogExample;
+import com.tcwong.pengms.model.example.SyslogExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

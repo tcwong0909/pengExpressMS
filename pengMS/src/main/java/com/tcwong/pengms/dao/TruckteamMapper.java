@@ -3,7 +3,7 @@ package com.tcwong.pengms.dao;
 
 
 import com.tcwong.pengms.model.Truckteam;
-import com.tcwong.pengms.model.TruckteamExample;
+import com.tcwong.pengms.model.example.TruckteamExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

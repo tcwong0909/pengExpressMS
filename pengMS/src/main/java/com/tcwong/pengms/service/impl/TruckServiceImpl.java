@@ -2,7 +2,7 @@ package com.tcwong.pengms.service.impl;
 
 import com.tcwong.pengms.dao.TruckMapper;
 import com.tcwong.pengms.model.Truck;
-import com.tcwong.pengms.model.TruckExample;
+import com.tcwong.pengms.model.example.TruckExample;
 import com.tcwong.pengms.service.ITruckService;
 import com.tcwong.pengms.utils.WebPageResponse;
 import org.springframework.stereotype.Service;

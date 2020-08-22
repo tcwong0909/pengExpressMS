@@ -2,7 +2,7 @@ package com.tcwong.pengms.dao;
 
 
 import com.tcwong.pengms.model.Role;
-import com.tcwong.pengms.model.RoleExample;
+import com.tcwong.pengms.model.example.RoleExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

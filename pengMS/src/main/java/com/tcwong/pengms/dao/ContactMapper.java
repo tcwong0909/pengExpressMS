@@ -2,7 +2,7 @@ package com.tcwong.pengms.dao;
 
 
 import com.tcwong.pengms.model.Contact;
-import com.tcwong.pengms.model.ContactExample;
+import com.tcwong.pengms.model.example.ContactExample;
 import org.apache.ibatis.annotations.Param;
 
 

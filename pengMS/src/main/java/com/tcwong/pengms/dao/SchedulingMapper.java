@@ -2,7 +2,7 @@ package com.tcwong.pengms.dao;
 
 
 import com.tcwong.pengms.model.Scheduling;
-import com.tcwong.pengms.model.SchedulingExample;
+import com.tcwong.pengms.model.example.SchedulingExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

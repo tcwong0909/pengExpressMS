@@ -1,8 +1,9 @@
 package com.tcwong.pengms.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class LoginLog {
+public class LoginLog implements Serializable {
     private Integer id;
 
     private String username;
@@ -10,6 +11,8 @@ public class LoginLog {
     private String loginIp;
 
     private Date loginTime;
+
+    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -41,5 +44,19 @@ public class LoginLog {
 
     public void setLoginTime(Date loginTime) {
         this.loginTime = loginTime;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", username=").append(username);
+        sb.append(", loginIp=").append(loginIp);
+        sb.append(", loginTime=").append(loginTime);
+        sb.append("]");
+        return sb.toString();
     }
 }

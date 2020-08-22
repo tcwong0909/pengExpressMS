@@ -2,7 +2,7 @@ package com.tcwong.pengms.dao;
 
 
 import com.tcwong.pengms.model.Logdic;
-import com.tcwong.pengms.model.LogdicExample;
+import com.tcwong.pengms.model.example.LogdicExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

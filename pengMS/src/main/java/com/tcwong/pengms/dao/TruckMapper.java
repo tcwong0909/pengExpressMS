@@ -2,7 +2,7 @@ package com.tcwong.pengms.dao;
 
 
 import com.tcwong.pengms.model.Truck;
-import com.tcwong.pengms.model.TruckExample;
+import com.tcwong.pengms.model.example.TruckExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

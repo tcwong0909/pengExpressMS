@@ -150,7 +150,7 @@
     </foreach>
     )
   </delete>
-  <select id="selectByExample" parameterType="com.tcwong.pengms.model.SchedulingExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tcwong.pengms.model.example.SchedulingExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -174,7 +174,7 @@
     delete from scheduling
     where schedulingID = #{schedulingid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.SchedulingExample">
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.example.SchedulingExample">
     delete from scheduling
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -283,7 +283,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.pengms.model.SchedulingExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.example.SchedulingExample" resultType="java.lang.Integer">
     select count(*) from scheduling
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

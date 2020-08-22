@@ -162,7 +162,7 @@
       limit #{page},#{size}
     </if>
   </select>
-  <select id="selectByExample" parameterType="com.tcwong.pengms.model.ContactExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tcwong.pengms.model.example.ContactExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -186,7 +186,7 @@
     delete from contact
     where contactID = #{contactid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.ContactExample">
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.example.ContactExample">
     delete from contact
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -223,7 +223,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.pengms.model.ContactExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.example.ContactExample" resultType="java.lang.Integer">
     select count(*) from contact
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

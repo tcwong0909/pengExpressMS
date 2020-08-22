@@ -3,12 +3,12 @@ package com.tcwong.pengms.service.impl;
 
 import com.tcwong.pengms.dao.UserMapper;
 import com.tcwong.pengms.model.LoginLog;
-import com.tcwong.pengms.model.LoginLogExample;
 import com.tcwong.pengms.model.User;
-import com.tcwong.pengms.model.UserExample;
+import com.tcwong.pengms.model.example.UserExample;
 import com.tcwong.pengms.service.ILoginService;
 import com.tcwong.pengms.service.LoginLogService;
 import com.tcwong.pengms.utils.IpUtil;
+import com.tcwong.pengms.utils.SessionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +27,7 @@ public class LoginServiceImpl implements ILoginService {
 
     @Autowired
     private LoginLogService loginLogService;
+
     @Override
     public List<User> doLogin(String account) {
         UserExample userExample = new UserExample();

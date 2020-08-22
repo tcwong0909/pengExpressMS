@@ -67,7 +67,7 @@
   <sql id="Base_Column_List">
     roleID, roleName, rolePurview
   </sql>
-  <select id="selectByExample" parameterType="com.tcwong.pengms.model.RoleExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tcwong.pengms.model.example.RoleExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -91,7 +91,7 @@
     delete from role
     where roleID = #{roleid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.RoleExample">
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.example.RoleExample">
     delete from role
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -128,7 +128,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.pengms.model.RoleExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.example.RoleExample" resultType="java.lang.Integer">
     select count(*) from role
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

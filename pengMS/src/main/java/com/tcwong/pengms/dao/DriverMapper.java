@@ -2,7 +2,7 @@ package com.tcwong.pengms.dao;
 
 
 import com.tcwong.pengms.model.Driver;
-import com.tcwong.pengms.model.DriverExample;
+import com.tcwong.pengms.model.example.DriverExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

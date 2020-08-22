@@ -1,5 +1,7 @@
 package com.tcwong.pengms.service;
 
+import com.github.pagehelper.PageInfo;
+import com.tcwong.pengms.dto.LoginLogRequest;
 import com.tcwong.pengms.model.LoginLog;
 
 /**
@@ -11,4 +13,6 @@ import com.tcwong.pengms.model.LoginLog;
  */
 public interface LoginLogService {
     Integer insert(LoginLog loginLog);
+
+    PageInfo<LoginLog> listLoginLog(LoginLogRequest request);
 }

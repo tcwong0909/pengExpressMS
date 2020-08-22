@@ -2,7 +2,7 @@ package com.tcwong.pengms.dao;
 
 
 import com.tcwong.pengms.model.Carriers;
-import com.tcwong.pengms.model.CarriersExample;
+import com.tcwong.pengms.model.example.CarriersExample;
 import org.apache.ibatis.annotations.Param;
 
 

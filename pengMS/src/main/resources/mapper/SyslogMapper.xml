@@ -130,7 +130,7 @@
       limit #{page},#{size}
     </if>
   </select>
-  <select id="selectByExampleWithBLOBs" parameterType="com.tcwong.pengms.model.SyslogExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExampleWithBLOBs" parameterType="com.tcwong.pengms.model.example.SyslogExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
@@ -146,7 +146,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" parameterType="com.tcwong.pengms.model.SyslogExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tcwong.pengms.model.example.SyslogExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -172,7 +172,7 @@
     delete from syslog
     where logID = #{logid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.SyslogExample">
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.example.SyslogExample">
     delete from syslog
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -255,7 +255,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.pengms.model.SyslogExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.example.SyslogExample" resultType="java.lang.Integer">
     select count(*) from syslog
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

@@ -5,7 +5,7 @@ package com.tcwong.pengms.utils;
  */
 public interface IErrorCode {
 
-    long getCode();
+    String getCode();
 
     String getMessage();
 }

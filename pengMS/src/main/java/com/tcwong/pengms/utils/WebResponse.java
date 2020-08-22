@@ -6,21 +6,21 @@ package com.tcwong.pengms.utils;
  */
 public class WebResponse<T> {
 
-    private long code;
+    private String code;
 
     private String message;
 
     private T data;
 
-    protected WebResponse() {
+    public WebResponse() {
     }
 
-    public WebResponse(long code, String message) {
+    public WebResponse(String code, String message) {
         this.code = code;
         this.message = message;
     }
 
-    protected WebResponse(long code, String message, T data) {
+    protected WebResponse(String code, String message, T data) {
         this.code = code;
         this.message = message;
         this.data = data;
@@ -115,11 +115,11 @@ public class WebResponse<T> {
         return new WebResponse<T>(ResultCode.FORBIDDEN.getCode(),ResultCode.FORBIDDEN.getMessage(),data);
     }
 
-    public long getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(long code) {
+    public void setCode(String code) {
         this.code = code;
     }
 

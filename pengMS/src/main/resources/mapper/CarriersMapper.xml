@@ -144,7 +144,7 @@
       limit #{page},#{size}
     </if>
   </select>
-  <select id="selectByExample" parameterType="com.tcwong.pengms.model.CarriersExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tcwong.pengms.model.example.CarriersExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -168,7 +168,7 @@
     delete from carriers
     where carriersID = #{carriersid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.CarriersExample">
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.example.CarriersExample">
     delete from carriers
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -325,7 +325,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.pengms.model.CarriersExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.example.CarriersExample" resultType="java.lang.Integer">
     select count(*) from carriers
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

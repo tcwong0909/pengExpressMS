@@ -121,7 +121,7 @@
     </foreach>
     )
   </delete>
-  <select id="selectByExample" parameterType="com.tcwong.pengms.model.DriverExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tcwong.pengms.model.example.DriverExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -145,7 +145,7 @@
     delete from driver
     where driverID = #{driverid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.DriverExample">
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.example.DriverExample">
     delete from driver
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -242,7 +242,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.pengms.model.DriverExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.example.DriverExample" resultType="java.lang.Integer">
     select count(*) from driver
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

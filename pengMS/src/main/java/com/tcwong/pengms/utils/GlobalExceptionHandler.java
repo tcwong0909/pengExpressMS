@@ -12,7 +12,7 @@ public class GlobalExceptionHandler  {
     public WebResponse jsonHandler(YTException e){
         e.printStackTrace();
         LogUtil.error(e);
-        return new WebResponse(e.getErrorCode(),e.getMessage());
+        return new WebResponse(e.getErrorCode()+"",e.getMessage());
     }
 
     @ExceptionHandler(Exception.class)
@@ -20,6 +20,6 @@ public class GlobalExceptionHandler  {
     public WebResponse exceptionHandler(Exception e){
         e.printStackTrace();
         LogUtil.error(e);
-        return new WebResponse(-1,e.getMessage());
+        return new WebResponse("-1",e.getMessage());
     }
 }

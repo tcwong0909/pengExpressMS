@@ -68,7 +68,7 @@
   <sql id="Base_Column_List" >
     id, username, login_ip, login_time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tcwong.pengms.model.LoginLogExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tcwong.pengms.model.example.LoginLogExample" >
     select
     <if test="distinct" >
       distinct
@@ -93,7 +93,7 @@
     delete from peng_loginlog
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.LoginLogExample" >
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.example.LoginLogExample" >
     delete from peng_loginlog
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -136,7 +136,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.pengms.model.LoginLogExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.example.LoginLogExample" resultType="java.lang.Integer" >
     select count(*) from peng_loginlog
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
