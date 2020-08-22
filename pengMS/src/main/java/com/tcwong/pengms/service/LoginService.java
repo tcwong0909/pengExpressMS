@@ -1,18 +1,17 @@
 package com.tcwong.pengms.service;
 
 
+import com.tcwong.pengms.dto.LoginRequest;
 import com.tcwong.pengms.model.User;
 
-import java.util.List;
-
-public interface ILoginService {
+public interface LoginService {
 
     /**
      * 登录
-     * @param account
+     * @param request
      * @return
      */
-    List<User> doLogin(String account);
+    User doLogin(LoginRequest request);
 
     /**
      * 注销登录

@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.tcwong.pengms.model.LoginLog" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
     <result column="login_ip" property="loginIp" jdbcType="VARCHAR" />
     <result column="login_time" property="loginTime" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -66,9 +67,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, username, login_ip, login_time
+    id, username, account, login_ip, login_time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tcwong.pengms.model.example.LoginLogExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tcwong.pengms.model.LoginLogExample" >
     select
     <if test="distinct" >
       distinct
@@ -93,17 +94,17 @@
     delete from peng_loginlog
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.example.LoginLogExample" >
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.LoginLogExample" >
     delete from peng_loginlog
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.tcwong.pengms.model.LoginLog" >
-    insert into peng_loginlog (id, username, login_ip, 
-      login_time)
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{loginIp,jdbcType=VARCHAR}, 
-      #{loginTime,jdbcType=TIMESTAMP})
+    insert into peng_loginlog (id, username, account, 
+      login_ip, login_time)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      #{loginIp,jdbcType=VARCHAR}, #{loginTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.tcwong.pengms.model.LoginLog" >
     insert into peng_loginlog
@@ -113,6 +114,9 @@
       </if>
       <if test="username != null" >
         username,
+      </if>
+      <if test="account != null" >
+        account,
       </if>
       <if test="loginIp != null" >
         login_ip,
@@ -128,6 +132,9 @@
       <if test="username != null" >
         #{username,jdbcType=VARCHAR},
       </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
       <if test="loginIp != null" >
         #{loginIp,jdbcType=VARCHAR},
       </if>
@@ -136,7 +143,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.pengms.model.example.LoginLogExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.LoginLogExample" resultType="java.lang.Integer" >
     select count(*) from peng_loginlog
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -150,6 +157,9 @@
       </if>
       <if test="record.username != null" >
         username = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.account != null" >
+        account = #{record.account,jdbcType=VARCHAR},
       </if>
       <if test="record.loginIp != null" >
         login_ip = #{record.loginIp,jdbcType=VARCHAR},
@@ -166,6 +176,7 @@
     update peng_loginlog
     set id = #{record.id,jdbcType=INTEGER},
       username = #{record.username,jdbcType=VARCHAR},
+      account = #{record.account,jdbcType=VARCHAR},
       login_ip = #{record.loginIp,jdbcType=VARCHAR},
       login_time = #{record.loginTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
@@ -177,6 +188,9 @@
     <set >
       <if test="username != null" >
         username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
       </if>
       <if test="loginIp != null" >
         login_ip = #{loginIp,jdbcType=VARCHAR},
@@ -190,6 +204,7 @@
   <update id="updateByPrimaryKey" parameterType="com.tcwong.pengms.model.LoginLog" >
     update peng_loginlog
     set username = #{username,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
       login_ip = #{loginIp,jdbcType=VARCHAR},
       login_time = #{loginTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

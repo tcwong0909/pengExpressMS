@@ -1,6 +1,14 @@
 package com.tcwong.pengms.dto;
 
-public class LoginBean {
+/**
+ * Description 登陆账户
+ *
+ * @author tcwong
+ * @date 2020/8/22
+ * Since 1.8
+ */
+public class LoginRequest {
+
 
     private String account;
     private String password;

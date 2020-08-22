@@ -8,6 +8,8 @@ public class LoginLog implements Serializable {
 
     private String username;
 
+    private String account;
+
     private String loginIp;
 
     private Date loginTime;
@@ -28,6 +30,14 @@ public class LoginLog implements Serializable {
 
     public void setUsername(String username) {
         this.username = username == null ? null : username.trim();
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account == null ? null : account.trim();
     }
 
     public String getLoginIp() {
@@ -54,6 +64,7 @@ public class LoginLog implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", username=").append(username);
+        sb.append(", account=").append(account);
         sb.append(", loginIp=").append(loginIp);
         sb.append(", loginTime=").append(loginTime);
         sb.append("]");
