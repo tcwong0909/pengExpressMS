@@ -21,7 +21,10 @@ axios.interceptors.response.use(data => {
 }, err => {
   if (err.response.status == 504 || err.response.status == 404) {
     Message.error({message: '服务器在开小差，请稍等！'})
-  }else if (err.response.status == 413) {
+  }else if (err.response.status == 433) {
+    Message.error({message:err.response.data.message})
+    return err.response.data;
+  }else if (err.response.status == 434) {
     Message.error({message:err.response.data.message})
     return err.response.data;
   } else if (err.response.status == 403) {
