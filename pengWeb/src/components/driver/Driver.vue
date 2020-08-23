@@ -297,7 +297,7 @@
       adddriver(){
 
         if (this.driver.driverid) {
-          this.putRequest('/driver/put',this.driver).then(res=>{
+          this.putRequest('/pengms/driver/put',this.driver).then(res=>{
             if (res){
               this.dialogFormVisible = false;
               this.initdriver();
@@ -306,7 +306,7 @@
           });
           return;
         }
-        this.postRequest("/driver/add",this.driver).then(res=>{
+        this.postRequest("/pengms/driver/add",this.driver).then(res=>{
           if (res){
             this.dialogFormVisible = false;
             this.initdriver();
@@ -315,7 +315,7 @@
         })
       },
       loaddrivers(){
-        this.postRequest("/driver/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+ "&name="+
+        this.postRequest("/pengms/driver/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+ "&name="+
           this.searchDriver.name+ "&fkTeamid="+this.searchDriver.fkTeamid+"&state="+this.searchDriver.state).then(res=>{
           if (res){
             this.loading=false;
@@ -327,7 +327,7 @@
       doSearch(){
         let page = 1;
         let size = 10;
-        this.postRequest("/driver/getAllByPage?page="+page+"&size="+size+"&name="+this.searchDriver.name+
+        this.postRequest("/pengms/driver/getAllByPage?page="+page+"&size="+size+"&name="+this.searchDriver.name+
         "&fkTeamid="+this.searchDriver.fkTeamid+"&state="+this.searchDriver.state).then(res=>{
           if (res) {
             this.drivers=res.data.data;
@@ -367,7 +367,7 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          this.deleteRequest("/driver/delete/"+data).then(res=>{
+          this.deleteRequest("/pengms/driver/delete/"+data).then(res=>{
               if (res){
                 this.loaddrivers();
               }
@@ -397,7 +397,7 @@
 
       },
       loadTruckTeams(){
-        this.postRequest("/truckTeam/getAllByPage").then(res=>{
+        this.postRequest("/pengms/truckTeam/getAllByPage").then(res=>{
           if (res){
             this.truckTeams=res.data.data;
           }

@@ -117,7 +117,7 @@
 
     mounted(){
 
-      this.postRequest("/schedule/getAllByPage").then(res=>{
+      this.postRequest("/pengms/schedule/getAllByPage").then(res=>{
 
         if (res) {
           this.loading=false;

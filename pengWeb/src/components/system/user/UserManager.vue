@@ -261,7 +261,7 @@
       bindRole(data){
         this.bindDialog=true;
         this.user = data;
-        this.getRequest("/role/getAll").then(res=>{
+        this.getRequest("/pengms/role/getAll").then(res=>{
           if (res){
             this.roles=res.data;
           }
@@ -288,7 +288,7 @@
       addUser(){
 
         if (this.user.userid) {
-          this.putRequest('/user/edit',this.user).then(res=>{
+          this.putRequest('/pengms/user/edit',this.user).then(res=>{
             if (res){
               this.dialogFormVisible = false;
               this.initUser();
@@ -297,7 +297,7 @@
           });
           return;
         }
-        this.postRequest("/user/add",this.user).then(res=>{
+        this.postRequest("/pengms/user/add",this.user).then(res=>{
           if (res){
             this.dialogFormVisible = false;
             this.initUser();
@@ -306,14 +306,14 @@
         })
       },
       selectSearchChanges(){
-        this.getRequest("/role/getAll").then(res=>{
+        this.getRequest("/pengms/role/getAll").then(res=>{
           if (res){
             this.roles=res.data;
           }
         })
       },
       loadUsers(){
-        this.postRequest("/user/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+
+        this.postRequest("/pengms/user/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+
           "&account="+this.searchUser.account+"&username="+this.searchUser.username+"&sex="+this.searchUser.sex+"&fkRoleid="+this.searchUser.fkRoleid).then(res=>{
           if (res){
             this.loading=false;
@@ -325,7 +325,7 @@
       doSearch(){
         let page = 1;
         let size = 10;
-        this.postRequest("/user/getAllByPage?page="+page+"&size="+size+
+        this.postRequest("/pengms/user/getAllByPage?page="+page+"&size="+size+
           "&account="+this.searchUser.account+"&username="+this.searchUser.username+"&sex="+this.searchUser.sex+"&fkRoleid="+this.searchUser.fkRoleid).then(res=>{
           if (res){
             this.users=res.data.data;
@@ -365,7 +365,7 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          this.deleteRequest("/user/delete/"+data).then(res=>{
+          this.deleteRequest("/pengms/user/delete/"+data).then(res=>{
               if (res){
                 this.loadUsers();
               }

@@ -234,7 +234,7 @@
 
       bindTruck(){
         console.log(this.contact);
-          this.putRequest('/contact/put',this.contact).then(res=>{
+          this.putRequest('/pengms/contact/put',this.contact).then(res=>{
             if (res){
               this.dialogFormVisible = false;
               this.initContact();
@@ -269,7 +269,7 @@
       },
 
       unbindByIds(data){
-        this.putRequest("/contact/delete/"+data).then(res=>{
+        this.putRequest("/pengms/contact/delete/"+data).then(res=>{
             if (res){
               this.loadContacts();
             }
@@ -284,7 +284,7 @@
 
       },
       loadTrucks(data){
-        this.postRequest("/truck/getAllByPage?fkTeamid="+data.truckteam.teamid).then(res=>{
+        this.postRequest("/pengms/truck/getAllByPage?fkTeamid="+data.truckteam.teamid).then(res=>{
           if (res) {
             this.trucks = res.data.data;
           }
@@ -293,7 +293,7 @@
 
 
       loadContacts(){
-        this.getRequest("/contact/getAll?page=" +this.currentPage+"&size="+this.pageSize+"&fkTruckid="+this.searchContact.fkTruckid+
+        this.getRequest("/pengms/contact/getAll?page=" +this.currentPage+"&size="+this.pageSize+"&fkTruckid="+this.searchContact.fkTruckid+
           "&fkDriverid="+this.searchContact.fkDriverid+"&drivername="+this.searchContact.drivername+
           "&teamname="+this.searchContact.teamname+"&bindId="+this.searchContact.bindId).then(res=>{
           if (res){

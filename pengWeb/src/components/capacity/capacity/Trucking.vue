@@ -182,7 +182,7 @@
         }
       },
       loadTrucks(){
-        this.postRequest("/truck/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+
+        this.postRequest("/pengms/truck/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+
           "&number="+this.searchTruck.number+"&type="+this.searchTruck.type+"&fkTeamid="+this.searchTruck.fkTeamid).then(res=>{
           if (res){
             this.loading=false;
@@ -197,7 +197,7 @@
         let fkTeamid = encodeURI(encodeURI(this.searchTruck.fkTeamid));
         let page = 1;
         let size = 10;
-        this.getRequest("/truck/search?page="+page+"&size="+size+"&number="+number+"&type="+type+"&fkTeamid="+fkTeamid).then(res=>{
+        this.getRequest("/pengms/truck/search?page="+page+"&size="+size+"&number="+number+"&type="+type+"&fkTeamid="+fkTeamid).then(res=>{
           if (res){
             this.trucks=res.data.data;
             this.total = res.data.total;

@@ -125,7 +125,7 @@
       doSearch(){
         let page = 1;
         let size = 10;
-        this.postRequest("/truckTeam/getAllByPage?page="+page+"&size="+size+
+        this.postRequest("/pengms/truckTeam/getAllByPage?page="+page+"&size="+size+
           "&teamname="+this.searchTeam.teamname+"&leader="+this.searchTeam.leader).then(res=>{
           if (res){
             this.loading=false;
@@ -135,7 +135,7 @@
         })
       },
       loadtruckTeams(){
-        this.postRequest("/truckTeam/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+
+        this.postRequest("/pengms/truckTeam/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+
           "&teamname="+this.searchTeam.teamname+"&leader="+this.searchTeam.leader).then(res=>{
           if (res){
             this.loading=false;

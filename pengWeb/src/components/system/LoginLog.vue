@@ -35,7 +35,7 @@
     },
     methods: {
       getLoginLogs(){
-        this.postRequest("/loginlog/listLoginLog", this.loginLogsRequest).then(res => {
+        this.postRequest("/pengms/loginlog/listLoginLog", this.loginLogsRequest).then(res => {
           this.loginLogs = res.data.list;
         });
       }

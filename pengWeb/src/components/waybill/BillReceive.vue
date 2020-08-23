@@ -208,7 +208,7 @@
         }
       },
       loadCarrierss() {
-        this.postRequest("/carriers/getAll?page=" + this.currentPage + "&size=" + this.pageSize +
+        this.postRequest("/pengms/carriers/getAll?page=" + this.currentPage + "&size=" + this.pageSize +
           "&sendcompany=" + this.searchCarrierss.sendcompany + "&receivecompany=" + this.searchCarrierss.receivecompany +
           "&finishedstate=" + 2).then(res => {
           if (res) {
@@ -221,7 +221,7 @@
       doSearch() {
         let page = 1;
         let size = 10;
-        this.postRequest("/carriers/getAll?page=" + page + "&size=" + size +
+        this.postRequest("/pengms/carriers/getAll?page=" + page + "&size=" + size +
           "&sendcompany=" + this.searchCarrierss.sendcompany + "&receivecompany=" + this.searchCarrierss.receivecompany + "&finishedstate=" + 2).then(res => {
           if (res) {
             this.Carrierss = res.data.data;
@@ -238,7 +238,7 @@
         this.loadCarrierss();
       },
       reveiveById(id) {
-        this.putRequest("/carriers/receive/" + id).then(res => {
+        this.putRequest("/pengms/carriers/receive/" + id).then(res => {
             if (res) {
               this.loadCarrierss();
             }

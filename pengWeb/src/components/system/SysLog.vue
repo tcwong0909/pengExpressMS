@@ -158,7 +158,7 @@
         }
       },
       loadSyslogs(){
-        this.postRequest("/syslog/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+"&behavior="+this.searchSyslog.behavior+
+        this.postRequest("/pengms/syslog/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+"&behavior="+this.searchSyslog.behavior+
           "&fkTypeid="+this.searchSyslog.fkTypeid+"&fkUserid="+this.searchSyslog.fkUserid+"&isexception="+this.searchSyslog.isexception).then(res=>{
           if (res){
             this.loading=false;
@@ -170,7 +170,7 @@
       doSearch(){
         this.currentPage = 1;
         this.pageSize=10;
-        this.postRequest("/syslog/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+"&behavior="+this.searchSyslog.behavior+
+        this.postRequest("/pengms/syslog/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+"&behavior="+this.searchSyslog.behavior+
           "&fkTypeid="+this.searchSyslog.fkTypeid+"&fkUserid="+this.searchSyslog.fkUserid+"&isexception="+this.searchSyslog.isexception).then(res=>{
           if (res){
             this.syslogs=res.data.data;

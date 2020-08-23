@@ -75,7 +75,7 @@
       this.loadRoles();
     },
     methods:{
-     
+
       initRole(){
         this.role={
           rolename:'',
@@ -85,7 +85,7 @@
 
       addRole(){
         if (this.role.roleid) {
-          this.putRequest('/role/edit',this.role).then(res=>{
+          this.putRequest('/pengms/role/edit',this.role).then(res=>{
             if (res){
               this.dialogFormVisible = false;
               this.initRole();
@@ -94,7 +94,7 @@
           });
           return;
         }
-        this.postRequest("/role/add",this.role).then(res=>{
+        this.postRequest("/pengms/role/add",this.role).then(res=>{
           if (res){
             this.dialogFormVisible = false;
             this.initRole();
@@ -103,7 +103,7 @@
         })
       },
       loadRoles(){
-        this.getRequest("/role/getAll").then(res=>{
+        this.getRequest("/pengms/role/getAll").then(res=>{
           if (res){
             this.loading=false;
             this.roles=res.data;
@@ -116,7 +116,7 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          this.deleteRequest("/role/delete/"+id).then(res=>{
+          this.deleteRequest("/pengms/role/delete/"+id).then(res=>{
               if (res){
                 this.loadRoles()
               }

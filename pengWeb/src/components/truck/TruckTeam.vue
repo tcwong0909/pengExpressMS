@@ -179,7 +179,7 @@
       doSearch(){
         let page = 1;
         let size = 10;
-        this.postRequest("/truckTeam/getAllByPage?page="+page+"&size="+size+
+        this.postRequest("/pengms/truckTeam/getAllByPage?page="+page+"&size="+size+
           "&teamname="+this.searchTeam.teamname+"&leader="+this.searchTeam.leader).then(res=>{
           if (res){
             this.truckTeams=res.data.data;
@@ -199,7 +199,7 @@
 
       addtruckTeam(){
         if (this.truckTeam.teamid) {
-          this.putRequest('/truckTeam/put',this.truckTeam).then(res=>{
+          this.putRequest('/pengms/truckTeam/put',this.truckTeam).then(res=>{
             console.log(res);
             if (res){
               this.dialogFormVisible = false;
@@ -208,7 +208,7 @@
           });
           return;
         }
-        this.postRequest("/truckTeam/add",this.truckTeam).then(res=>{
+        this.postRequest("/pengms/truckTeam/add",this.truckTeam).then(res=>{
           if (res){
             this.dialogFormVisible = false;
             this.loadtruckTeams();
@@ -216,7 +216,7 @@
         })
       },
       loadtruckTeams(){
-        this.postRequest("/truckTeam/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+
+        this.postRequest("/pengms/truckTeam/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+
           "&teamname="+this.searchTeam.teamname+"&leader="+this.searchTeam.leader).then(res=>{
           if (res){
             this.loading=false;
@@ -257,7 +257,7 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          this.deleteRequest("/truckTeam/delete/"+data).then(res=>{
+          this.deleteRequest("/pengms/truckTeam/delete/"+data).then(res=>{
               if (res){
                 this.$message({
                   type: 'success',

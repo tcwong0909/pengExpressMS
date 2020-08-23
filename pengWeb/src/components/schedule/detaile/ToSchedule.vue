@@ -303,7 +303,7 @@
       },
       selectTruck(){
         this.innerVisible=true;
-          this.getRequest("/truck/getTrucks").then(res=>{
+          this.getRequest("/pengms/truck/getTrucks").then(res=>{
             if (res){
               this.trucks=res.data;
             }
@@ -316,7 +316,7 @@
         }
       },
       loadCarrierss() {
-        this.postRequest("/carriers/getAll?page=" + this.currentPage + "&size=" + this.pageSize +
+        this.postRequest("/pengms/carriers/getAll?page=" + this.currentPage + "&size=" + this.pageSize +
           "&sendcompany=" + this.searchCarrierss.sendcompany + "&receivecompany=" + this.searchCarrierss.receivecompany +
           "&finishedstate=" + 1).then(res => {
           if (res) {
@@ -329,7 +329,7 @@
       doSearch() {
         let page = 1;
         let size = 10;
-        this.postRequest("/carriers/getAll?page=" + page + "&size=" + size +
+        this.postRequest("/pengms/carriers/getAll?page=" + page + "&size=" + size +
           "&sendcompany=" + this.searchCarrierss.sendcompany + "&receivecompany=" + this.searchCarrierss.receivecompany + "&finishedstate=" + 1).then(res => {
           if (res) {
             this.Carrierss = res.data.data;
@@ -350,7 +350,7 @@
         this.schedule.fkCarriersid=id;
       },
       addSchedule(){
-           this.putRequest("/schedule/dispatch",this.schedule).then(res=>{
+           this.putRequest("/pengms/schedule/dispatch",this.schedule).then(res=>{
              if (res) {
                this.outerVisible=false;
                this.loadCarrierss();

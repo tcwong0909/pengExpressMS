@@ -436,7 +436,7 @@
       addCarrier(){
         if (this.carriers.carriersid) {
           console.log(this.carriers);
-          this.putRequest('/carriers/put',this.carriers).then(res=>{
+          this.putRequest('/pengms/carriers/put',this.carriers).then(res=>{
             if (res){
               this.dialogFormVisible = false;
               this.initCarrier();
@@ -445,7 +445,7 @@
           });
           return;
         }
-        this.postRequest("/carriers/add",this.carriers).then(res=>{
+        this.postRequest("/pengms/carriers/add",this.carriers).then(res=>{
           if (res){
             this.dialogFormVisible = false;
             this.initCarrier();
@@ -454,7 +454,7 @@
         })
       },
       loadCarrierss(){
-        this.postRequest("/carriers/getAll?page=" + this.currentPage + "&size=" + this.pageSize +
+        this.postRequest("/pengms/carriers/getAll?page=" + this.currentPage + "&size=" + this.pageSize +
           "&sendcompany=" + this.searchCarrierss.sendcompany + "&receivecompany=" + this.searchCarrierss.receivecompany +
           "&finishedstate=" + 1).then(res => {
           if (res) {
@@ -467,7 +467,7 @@
       doSearch(){
         let page = 1;
         let size = 10;
-        this.postRequest("/carriers/getAll?page="+page+"&size="+size+
+        this.postRequest("/pengms/carriers/getAll?page="+page+"&size="+size+
           "&sendcompany="+this.searchCarrierss.sendcompany+"&receivecompany="+this.searchCarrierss.receivecompany+"&finishedstate="+1).then(res=>{
           if (res){
             this.Carrierss=res.data.data;
@@ -507,7 +507,7 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          this.deleteRequest("/carriers/delete/"+data).then(res=>{
+          this.deleteRequest("/pengms/carriers/delete/"+data).then(res=>{
               if (res){
                 this.loadCarrierss();
               }

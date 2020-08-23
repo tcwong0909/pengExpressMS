@@ -295,7 +295,7 @@
           addTruck(){
 
             if (this.truck.truckid) {
-              this.putRequest('/truck/put',this.truck).then(res=>{
+              this.putRequest('/pengms/truck/put',this.truck).then(res=>{
                 if (res){
                   this.dialogFormVisible = false;
                   this.loadTrucks();
@@ -303,7 +303,7 @@
               });
               return;
             }
-            this.postRequest("/truck/add",this.truck).then(res=>{
+            this.postRequest("/pengms/truck/add",this.truck).then(res=>{
               if (res){
                 this.dialogFormVisible = false;
                 this.loadTrucks();
@@ -311,7 +311,7 @@
             })
           },
           loadTrucks(){
-            this.postRequest("/truck/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+
+            this.postRequest("/pengms/truck/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+
               "&number="+this.searchTruck.number+"&type="+this.searchTruck.type+"&fkTeamid="+this.searchTruck.fkTeamid).then(res=>{
                 this.loading=false;
               if (res){
@@ -326,7 +326,7 @@
             let fkTeamid = encodeURI(encodeURI(this.searchTruck.fkTeamid));
             let page = 1;
             let size = 10;
-            this.getRequest("/truck/search?page="+page+"&size="+size+"&number="+number+"&type="+type+"&fkTeamid="+fkTeamid).then(res=>{
+            this.getRequest("/pengms/truck/search?page="+page+"&size="+size+"&number="+number+"&type="+type+"&fkTeamid="+fkTeamid).then(res=>{
               this.loading=false;
               if (res){
                 this.trucks=res.data.data;
@@ -366,7 +366,7 @@
               cancelButtonText: '取消',
               type: 'warning'
             }).then(() => {
-              this.deleteRequest("/truck/delete/"+data).then(res=>{
+              this.deleteRequest("/pengms/truck/delete/"+data).then(res=>{
                   if (res){
                     this.$message({
                       type: 'success',
@@ -397,7 +397,7 @@
 
           },
           loadtruckTeams(){
-            this.postRequest("/truckTeam/getAllByPage").then(res=>{
+            this.postRequest("/pengms/truckTeam/getAllByPage").then(res=>{
               if (res){
                 this.truckTeams=res.data.data;
               }

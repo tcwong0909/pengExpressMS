@@ -227,7 +227,7 @@
         }
       },
       loadSchedules(){
-        this.postRequest("/cost/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+
+        this.postRequest("/pengms/cost/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+
           "&schedulingid="+this.searchSchedule.schedulingid+"&fkCarriersid="+this.searchSchedule.fkCarriersid).then(res=>{
           if (res){
             this.loading=false;
@@ -266,7 +266,7 @@
         this.schedule.schedulingid=data.schedulingid;
       },
       addCost(){
-        this.putRequest("/cost/add",this.schedule).then(res=>{
+        this.putRequest("/pengms/cost/add",this.schedule).then(res=>{
           if (res) {
             this.outerVisible=false;
             this.loadSchedules();

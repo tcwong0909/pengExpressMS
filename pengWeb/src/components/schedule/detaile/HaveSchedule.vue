@@ -297,7 +297,7 @@
       },
       selectTruck(){
         this.innerVisible=true;
-        this.getRequest("/truck/getTrucks").then(res=>{
+        this.getRequest("/pengms/truck/getTrucks").then(res=>{
           if (res){
             this.trucks=res.data;
           }
@@ -314,7 +314,7 @@
         }
       },
       loadSchedules(){
-        this.postRequest("/schedule/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+
+        this.postRequest("/pengms/schedule/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+
           "&schedulingid="+this.searchSchedule.schedulingid+"&fkCarriersid="+
           this.searchSchedule.fkCarriersid+"&sendcompany="+this.searchSchedule.carriers.sendcompany+"&receivecompany="+this.searchSchedule.carriers.receivecompany).then(res=>{
           if (res){
@@ -380,7 +380,7 @@
         this.schedule=data;
       },
       editSchedule(){
-        this.putRequest("/schedule/dispatch",this.schedule).then(res=>{
+        this.putRequest("/pengms/schedule/dispatch",this.schedule).then(res=>{
           if (res) {
             this.outerVisible=false;
             this.loadCarrierss();

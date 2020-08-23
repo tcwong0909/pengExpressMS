@@ -48,7 +48,7 @@
         }).then(() => {
           this.newPassword.oldPassword = md5(this.newPassword.oldPassword);
           this.newPassword.password = md5(this.newPassword.password);
-          this.putRequest("/user/password",this.newPassword).then(res=>{
+          this.putRequest("/pengms/user/password",this.newPassword).then(res=>{
             if (res.data) {
               this.$router.replace("/");
             }

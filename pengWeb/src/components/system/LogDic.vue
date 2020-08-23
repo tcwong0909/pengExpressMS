@@ -36,9 +36,9 @@
       console.log(md5(md5(123456+"")));
     },
     methods:{
-      
+
       loadLogDics(){
-        this.getRequest("/logDic/getAll").then(res=>{
+        this.getRequest("/pengms/logDic/getAll").then(res=>{
           if (res){
             this.loading=false;
             this.logDics=res.data;
