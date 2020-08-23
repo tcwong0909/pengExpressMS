@@ -9,10 +9,11 @@ package com.tcwong.pengms.constant;
  */
 public enum LoginResultEnum {
     SUCCESS("200","登陆成功"),
-    FAILED("410","登陆失败"),
-    NOT_EXIST_ACCOUNT("411","账号不存在"),
-    ERROR_PASSWORD("412","密码错误"),
-    GONE_EXPIRE("413","登陆已过期,请重新登陆");
+    FAILED("430","登陆失败"),
+    NOT_EXIST_ACCOUNT("431","账号不存在"),
+    ERROR_PASSWORD("432","密码错误"),
+    GONE_EXPIRE("433","登陆已过期,请重新登陆"),
+    REQUEST_FREQUENT("434","访问频繁，小鹏已经累了，请稍后重试，或联系Tc解锁 0.0");
 
     LoginResultEnum(String resultCode, String resultMessage) {
         this.resultCode = resultCode;

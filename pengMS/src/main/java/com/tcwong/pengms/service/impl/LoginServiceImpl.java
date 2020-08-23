@@ -11,10 +11,12 @@ import com.tcwong.pengms.model.example.UserExample;
 import com.tcwong.pengms.service.LoginLogService;
 import com.tcwong.pengms.service.LoginService;
 import com.tcwong.pengms.utils.IpUtil;
+import com.tcwong.pengms.utils.RateLimitUtil;
 import com.tcwong.pengms.utils.SessionUtil;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.method.HandlerMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -32,8 +34,16 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     private LoginLogService loginLogService;
 
+    @Autowired
+    private RateLimitUtil rateLimitUtil;
+
     @Override
     public User doLogin(LoginRequest request) {
+
+        if (rateLimitUtil.rateLimit(httpServletRequest, new HandlerMethod(this, this.getClass().getMethods()[0]))) {
+            throw new BaseException(LoginResultEnum.REQUEST_FREQUENT.getResultCode()
+                    , LoginResultEnum.REQUEST_FREQUENT.getResultMessage());
+        }
         User user;
         String account = request.getAccount();
         String password = request.getPassword();

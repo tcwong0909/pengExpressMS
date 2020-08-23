@@ -4,11 +4,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.tcwong.pengms.constant.LoginResultEnum;
 import com.tcwong.pengms.constant.SessionConstant;
 import com.tcwong.pengms.model.User;
-import com.tcwong.pengms.utils.LogUtil;
+import com.tcwong.pengms.utils.RateLimitUtil;
 import com.tcwong.pengms.utils.SessionUtil;
 import com.tcwong.pengms.utils.WebResponse;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.http.MediaType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,7 +22,13 @@ import javax.servlet.http.HttpServletResponse;
  * @date 2020/8/22
  * Since 1.8
  */
+
+@Component
 public class LoginHandlerInterceptor implements HandlerInterceptor {
+
+    @Autowired
+    private RateLimitUtil rateLimitUtil;
+
     /**
      * Description 前置拦截
      *
@@ -33,11 +39,20 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        //限流处理
+        if (rateLimitUtil.rateLimit(request, handler)) {
+            response.setStatus(Integer.parseInt(LoginResultEnum.REQUEST_FREQUENT.getResultCode()));
+            response.setContentType("application/json;charset=UTF-8");
+            WebResponse<Object> webResponse = new WebResponse<>();
+            webResponse.setMessage(LoginResultEnum.REQUEST_FREQUENT.getResultMessage());
+            response.getWriter().write(JSONObject.toJSONString(webResponse));
+            return false;
+        }
         User user = SessionUtil.getAttribute(SessionConstant.SESSION_USER, User.class);
         if (user == null) {
             //session 失效时 重新登陆
             response.setStatus(Integer.parseInt(LoginResultEnum.GONE_EXPIRE.getResultCode()));
-            response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
+            response.setContentType("application/json;charset=UTF-8");
             WebResponse<Object> webResponse = new WebResponse<>();
             webResponse.setMessage(LoginResultEnum.GONE_EXPIRE.getResultMessage());
             response.getWriter().write(JSONObject.toJSONString(webResponse));
@@ -45,6 +60,7 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
         }
         return true;
     }
+
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
