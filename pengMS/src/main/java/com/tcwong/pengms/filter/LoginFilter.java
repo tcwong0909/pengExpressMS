@@ -14,11 +14,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class LoginFilter implements WebMvcConfigurer {
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         InterceptorRegistration registration = registry.addInterceptor(new LoginHandlerInterceptor());
-        registration.addPathPatterns("/**");
-        registration.excludePathPatterns("/login/doLogin"
-                ,"/login/doLogout");
+        registration.addPathPatterns("/pengms/**");
+        registration.excludePathPatterns(
+                "/pengms/login/doLogin"
+                ,"/pengms/login/doLogout");
     }
 }

@@ -17,7 +17,7 @@ import java.util.List;
  * 车辆
  */
 @RestController
-@RequestMapping("/truck/")
+@RequestMapping("/pengms/truck/")
 public class TruckController {
 
     @Resource

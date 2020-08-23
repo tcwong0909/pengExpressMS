@@ -16,7 +16,7 @@ import java.util.List;
  * 调度
  */
 @RestController
-@RequestMapping("/schedule/")
+@RequestMapping("/pengms/schedule/")
 public class ScheduleController {
 
     @Resource

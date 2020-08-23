@@ -15,7 +15,7 @@ import javax.annotation.Resource;
  * 承运单
  */
 @RestController
-@RequestMapping("/carriers/")
+@RequestMapping("/pengms/carriers/")
 public class CarriersController  {
 
     @Resource

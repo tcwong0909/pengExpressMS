@@ -14,7 +14,7 @@ import javax.annotation.Resource;
  * 车辆绑定
  */
 @RestController
-@RequestMapping("/contact/")
+@RequestMapping("/pengms/contact/")
 public class ContactController {
 
     @Resource

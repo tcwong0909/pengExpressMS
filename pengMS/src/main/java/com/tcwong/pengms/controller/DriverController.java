@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
  * 驾驶员
  */
 @RestController
-@RequestMapping("/driver/")
+@RequestMapping("/pengms/driver/")
 public class DriverController {
 
     @Autowired

@@ -14,7 +14,7 @@ import javax.annotation.Resource;
  * 成本维护
  */
 @RestController
-@RequestMapping("/cost/")
+@RequestMapping("/pengms/cost/")
 public class CostController {
 
     @Resource

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Since 1.8
  */
 @RestController
-@RequestMapping("/loginlog")
+@RequestMapping("/pengms/loginlog")
 public class LoginLogController {
 
     @Autowired

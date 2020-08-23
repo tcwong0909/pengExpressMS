@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 @RestController
-@RequestMapping("/syslog/")
+@RequestMapping("/pengms/syslog/")
 public class SyslogController {
 
     @Resource

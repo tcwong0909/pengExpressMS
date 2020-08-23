@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 登录
  */
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/pengms/login")
 public class LoginController {
 
     @Autowired

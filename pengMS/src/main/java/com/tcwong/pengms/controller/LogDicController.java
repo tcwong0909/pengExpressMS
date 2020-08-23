@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@RequestMapping("/logDic/")
+@RequestMapping("/pengms/logDic/")
 public class LogDicController {
 
     @Resource

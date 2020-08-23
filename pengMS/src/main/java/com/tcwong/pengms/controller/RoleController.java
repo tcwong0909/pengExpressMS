@@ -14,7 +14,7 @@ import java.util.List;
  * 角色
  */
 @RestController
-@RequestMapping("/role/")
+@RequestMapping("/pengms/role/")
 public class RoleController {
 
     @Resource

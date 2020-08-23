@@ -14,7 +14,7 @@ import javax.annotation.Resource;
  * 车队
  */
 @RestController
-@RequestMapping("/truckTeam/")
+@RequestMapping("/pengms/truckTeam/")
 public class TruckTeamController {
 
     @Resource
