@@ -26,5 +26,6 @@ public class LoginFilter implements WebMvcConfigurer {
         registration.excludePathPatterns(
                 "/pengms/login/doLogin"
                 ,"/pengms/login/doLogout");
+
     }
 }

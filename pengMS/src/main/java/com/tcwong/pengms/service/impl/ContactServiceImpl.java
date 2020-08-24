@@ -2,14 +2,14 @@ package com.tcwong.pengms.service.impl;
 
 import com.tcwong.pengms.dao.ContactMapper;
 import com.tcwong.pengms.model.Contact;
-import com.tcwong.pengms.service.IContactService;
-import com.tcwong.pengms.utils.WebPageResponse;
+import com.tcwong.pengms.service.ContactService;
+import com.tcwong.pengms.base.WebPageResponse;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
 @Service
-public class ContactServiceImpl implements IContactService {
+public class ContactServiceImpl implements ContactService {
 
     @Resource
     private ContactMapper contactMapper;

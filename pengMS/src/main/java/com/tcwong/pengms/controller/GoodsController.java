@@ -1,8 +1,8 @@
 package com.tcwong.pengms.controller;
 
+import com.tcwong.pengms.base.WebResponse;
 import com.tcwong.pengms.model.Goods;
-import com.tcwong.pengms.service.IGoodsService;
-import com.tcwong.pengms.utils.WebResponse;
+import com.tcwong.pengms.service.GoodsService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +18,7 @@ import java.util.List;
 public class GoodsController {
 
     @Resource
-    private IGoodsService goodsService;
+    private GoodsService goodsService;
 
     @GetMapping("/goodslist")
     public WebResponse getGoods(){

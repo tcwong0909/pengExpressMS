@@ -2,14 +2,14 @@ package com.tcwong.pengms.service.impl;
 
 import com.tcwong.pengms.dao.RoleMapper;
 import com.tcwong.pengms.model.Role;
-import com.tcwong.pengms.service.IRoleService;
+import com.tcwong.pengms.service.RoleService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @Service
-public class RoleServiceImpl implements IRoleService {
+public class RoleServiceImpl implements RoleService {
 
     @Resource
     private RoleMapper roleMapper;

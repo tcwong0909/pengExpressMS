@@ -6,6 +6,6 @@ import com.tcwong.pengms.model.Logdic;
 import java.util.List;
 
 
-public interface ILogDicService {
+public interface LogDicService {
     List<Logdic> getAll();
 }

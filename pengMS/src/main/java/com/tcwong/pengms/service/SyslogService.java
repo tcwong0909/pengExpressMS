@@ -2,9 +2,9 @@ package com.tcwong.pengms.service;
 
 
 import com.tcwong.pengms.model.Syslog;
-import com.tcwong.pengms.utils.WebPageResponse;
+import com.tcwong.pengms.base.WebPageResponse;
 
-public interface ISyslogService {
+public interface SyslogService {
 
     int addSyslog(Syslog syslog);
 

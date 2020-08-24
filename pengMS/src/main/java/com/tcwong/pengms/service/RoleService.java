@@ -5,7 +5,7 @@ import com.tcwong.pengms.model.Role;
 
 import java.util.List;
 
-public interface IRoleService {
+public interface RoleService {
     int addRole(Role role);
 
     int deleteById(Integer id);

@@ -4,8 +4,8 @@ import com.tcwong.pengms.dao.ContactMapper;
 import com.tcwong.pengms.dao.DriverMapper;
 import com.tcwong.pengms.model.Contact;
 import com.tcwong.pengms.model.Driver;
-import com.tcwong.pengms.service.IDriverService;
-import com.tcwong.pengms.utils.WebPageResponse;
+import com.tcwong.pengms.service.DriverService;
+import com.tcwong.pengms.base.WebPageResponse;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @Service
-public class DriverServiceImpl implements IDriverService {
+public class DriverServiceImpl implements DriverService {
 
     @Resource
     private DriverMapper driverMapper;

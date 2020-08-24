@@ -1,4 +1,4 @@
-package com.tcwong.pengms.utils;
+package com.tcwong.pengms.base;
 
 /**
  * 自定义异常

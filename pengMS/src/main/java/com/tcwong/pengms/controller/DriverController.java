@@ -1,11 +1,11 @@
 package com.tcwong.pengms.controller;
 
+import com.tcwong.pengms.base.LogFilter;
+import com.tcwong.pengms.base.WebPageResponse;
+import com.tcwong.pengms.base.WebResponse;
+import com.tcwong.pengms.constant.LogOperationType;
 import com.tcwong.pengms.model.Driver;
-import com.tcwong.pengms.service.IDriverService;
-import com.tcwong.pengms.utils.Log;
-import com.tcwong.pengms.utils.LogdicType;
-import com.tcwong.pengms.utils.WebPageResponse;
-import com.tcwong.pengms.utils.WebResponse;
+import com.tcwong.pengms.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.*;
 public class DriverController {
 
     @Autowired
-    private IDriverService driverService;
+    private DriverService driverService;
 
-    @Log(behavior = "驾驶员添加",fkTypeid = LogdicType.ADD)
+    @LogFilter(description = "驾驶员添加",logOperationType = LogOperationType.ADD)
     @PostMapping("/add")
     public WebResponse addDriver(@RequestBody Driver driver) {
         int num = driverService.addDriver(driver);
@@ -29,7 +29,7 @@ public class DriverController {
         return WebResponse.failed("添加失败");
     }
 
-    @Log(behavior = "驾驶员删除",fkTypeid = LogdicType.DELETE)
+    @LogFilter(description = "驾驶员删除",logOperationType = LogOperationType.DELETE)
     @DeleteMapping("/delete/{ids}")
     public WebResponse deleteByIds(@PathVariable String ids) {
         int num = driverService.deleteByIds(ids);
@@ -39,7 +39,7 @@ public class DriverController {
         return WebResponse.failed("删除失败");
     }
 
-    @Log(behavior = "驾驶员修改",fkTypeid = LogdicType.UPDATE)
+    @LogFilter(description = "驾驶员修改",logOperationType = LogOperationType.UPDATE)
     @PutMapping("/put")
     public WebResponse editDriver(@RequestBody Driver driver) {
         int num = driverService.editDriver(driver);

@@ -2,8 +2,8 @@ package com.tcwong.pengms.config;
 
 import com.tcwong.pengms.base.BaseException;
 import com.tcwong.pengms.utils.LogUtil;
-import com.tcwong.pengms.utils.WebResponse;
-import com.tcwong.pengms.utils.YTException;
+import com.tcwong.pengms.base.WebResponse;
+import com.tcwong.pengms.base.YTException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

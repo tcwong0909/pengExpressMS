@@ -1,4 +1,4 @@
-package com.tcwong.pengms.utils;
+package com.tcwong.pengms.base;
 
 /**
  * 常用的错误码

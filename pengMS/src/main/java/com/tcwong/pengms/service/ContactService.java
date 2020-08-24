@@ -2,9 +2,9 @@ package com.tcwong.pengms.service;
 
 
 import com.tcwong.pengms.model.Contact;
-import com.tcwong.pengms.utils.WebPageResponse;
+import com.tcwong.pengms.base.WebPageResponse;
 
-public interface IContactService {
+public interface ContactService {
      WebPageResponse getAll(Integer page, Integer size, Integer fkTruckid, Integer fkDriverid, String drivername,
                             String teamname, Integer bindId) ;
 

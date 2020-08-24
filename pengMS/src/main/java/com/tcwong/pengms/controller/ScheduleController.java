@@ -1,12 +1,12 @@
 package com.tcwong.pengms.controller;
 
 
+import com.tcwong.pengms.base.LogFilter;
+import com.tcwong.pengms.base.WebPageResponse;
+import com.tcwong.pengms.base.WebResponse;
+import com.tcwong.pengms.constant.LogOperationType;
 import com.tcwong.pengms.model.Scheduling;
-import com.tcwong.pengms.service.IScheduleService;
-import com.tcwong.pengms.utils.Log;
-import com.tcwong.pengms.utils.LogdicType;
-import com.tcwong.pengms.utils.WebPageResponse;
-import com.tcwong.pengms.utils.WebResponse;
+import com.tcwong.pengms.service.ScheduleService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -20,9 +20,9 @@ import java.util.List;
 public class ScheduleController {
 
     @Resource
-    private IScheduleService scheduleService;
+    private ScheduleService scheduleService;
 
-    @Log(behavior = "承运单调度",fkTypeid = LogdicType.UPDATE)
+    @LogFilter(description = "承运单调度",logOperationType = LogOperationType.UPDATE)
     @PutMapping("/dispatch")
     public WebResponse dispatchById(@RequestBody Scheduling scheduling) {
 
@@ -42,7 +42,7 @@ public class ScheduleController {
         return WebResponse.failed("查询失败");
     }
 
-    @Log(behavior = "调度单删除",fkTypeid = LogdicType.DELETE)
+    @LogFilter(description = "调度单删除",logOperationType = LogOperationType.DELETE)
     @PostMapping("/delete")
     public WebResponse deleteMore(@RequestBody List<Scheduling> scheduleList) {
         int num = scheduleService.deleteMore(scheduleList);

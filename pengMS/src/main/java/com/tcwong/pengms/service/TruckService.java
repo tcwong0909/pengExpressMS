@@ -2,11 +2,11 @@ package com.tcwong.pengms.service;
 
 
 import com.tcwong.pengms.model.Truck;
-import com.tcwong.pengms.utils.WebPageResponse;
+import com.tcwong.pengms.base.WebPageResponse;
 
 import java.util.List;
 
-public interface ITruckService {
+public interface TruckService {
     int addTruck(Truck truck);
 
 

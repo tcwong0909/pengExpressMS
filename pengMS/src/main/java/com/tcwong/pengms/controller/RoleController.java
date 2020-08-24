@@ -1,10 +1,10 @@
 package com.tcwong.pengms.controller;
 
+import com.tcwong.pengms.base.LogFilter;
+import com.tcwong.pengms.base.WebResponse;
+import com.tcwong.pengms.constant.LogOperationType;
 import com.tcwong.pengms.model.Role;
-import com.tcwong.pengms.service.IRoleService;
-import com.tcwong.pengms.utils.Log;
-import com.tcwong.pengms.utils.LogdicType;
-import com.tcwong.pengms.utils.WebResponse;
+import com.tcwong.pengms.service.RoleService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -18,9 +18,9 @@ import java.util.List;
 public class RoleController {
 
     @Resource
-    private IRoleService roleService;
+    private RoleService roleService;
 
-    @Log(behavior = "角色添加",fkTypeid = LogdicType.ADD)
+    @LogFilter(description = "角色添加",logOperationType = LogOperationType.ADD)
     @PostMapping("/add")
     public WebResponse addRole(@RequestBody Role role) {
         int num = roleService.addRole(role);
@@ -30,7 +30,7 @@ public class RoleController {
         return WebResponse.failed("添加失败");
     }
 
-    @Log(behavior = "角色删除",fkTypeid = LogdicType.DELETE)
+    @LogFilter(description = "角色删除",logOperationType = LogOperationType.DELETE)
     @DeleteMapping("/delete/{id}")
     public WebResponse deleteById(@PathVariable Integer id) {
         int num = roleService.deleteById(id);
@@ -40,7 +40,7 @@ public class RoleController {
         return WebResponse.failed("删除失败");
     }
 
-    @Log(behavior = "角色修改",fkTypeid = LogdicType.UPDATE)
+    @LogFilter(description = "角色修改",logOperationType = LogOperationType.UPDATE)
     @PutMapping("/edit")
     public WebResponse editRole(@RequestBody Role role) {
         int num = roleService.editRole(role);

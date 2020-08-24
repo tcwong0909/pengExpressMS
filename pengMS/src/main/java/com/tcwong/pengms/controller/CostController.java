@@ -1,11 +1,11 @@
 package com.tcwong.pengms.controller;
 
+import com.tcwong.pengms.base.LogFilter;
+import com.tcwong.pengms.base.WebPageResponse;
+import com.tcwong.pengms.base.WebResponse;
+import com.tcwong.pengms.constant.LogOperationType;
 import com.tcwong.pengms.model.Scheduling;
-import com.tcwong.pengms.service.IScheduleService;
-import com.tcwong.pengms.utils.Log;
-import com.tcwong.pengms.utils.LogdicType;
-import com.tcwong.pengms.utils.WebPageResponse;
-import com.tcwong.pengms.utils.WebResponse;
+import com.tcwong.pengms.service.ScheduleService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -18,7 +18,7 @@ import javax.annotation.Resource;
 public class CostController {
 
     @Resource
-    private IScheduleService scheduleService;
+    private ScheduleService scheduleService;
 
 
     @PostMapping("/getAllByPage")
@@ -30,7 +30,7 @@ public class CostController {
         return WebResponse.failed("查询失败");
     }
 
-    @Log(behavior = "成本添加",fkTypeid = LogdicType.ADD)
+    @LogFilter(description = "成本添加",logOperationType = LogOperationType.ADD)
     @PutMapping("/add")
     public WebResponse addCost(@RequestBody Scheduling scheduling){
         int num = scheduleService.addCost(scheduling);

@@ -1,6 +1,6 @@
 package com.tcwong.pengms.controller;
 
-import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -12,7 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class DemoController {
-    public static void main(String[] args) {
-        System.out.println(StringUtils.isBlank(" "));
+
+    @GetMapping("/test1")
+    public void test1() {
+        System.out.println("test");
+    }
+
+    @GetMapping("/test2")
+    public String test2(String param) {
+        return "response>>>>>"+param;
     }
 }

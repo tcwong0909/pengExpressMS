@@ -4,7 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.tcwong.pengms.dto.LoginLogRequest;
 import com.tcwong.pengms.model.LoginLog;
 import com.tcwong.pengms.service.LoginLogService;
-import com.tcwong.pengms.utils.WebResponse;
+import com.tcwong.pengms.base.WebResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -1,8 +1,8 @@
 package com.tcwong.pengms.controller;
 
-import com.tcwong.pengms.service.ISyslogService;
-import com.tcwong.pengms.utils.WebPageResponse;
-import com.tcwong.pengms.utils.WebResponse;
+import com.tcwong.pengms.base.WebPageResponse;
+import com.tcwong.pengms.base.WebResponse;
+import com.tcwong.pengms.service.SyslogService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 public class SyslogController {
 
     @Resource
-    private ISyslogService syslogService;
+    private SyslogService syslogService;
 
     @PostMapping("/getAllByPage")
     public WebResponse getAllSyslog(Integer page, Integer size, String behavior, String fkTypeid,

@@ -6,7 +6,7 @@ import com.tcwong.pengms.constant.SessionConstant;
 import com.tcwong.pengms.model.User;
 import com.tcwong.pengms.utils.RateLimitUtil;
 import com.tcwong.pengms.utils.SessionUtil;
-import com.tcwong.pengms.utils.WebResponse;
+import com.tcwong.pengms.base.WebResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;

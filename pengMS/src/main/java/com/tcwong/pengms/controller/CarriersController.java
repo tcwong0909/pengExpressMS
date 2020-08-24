@@ -1,12 +1,12 @@
 package com.tcwong.pengms.controller;
 
+import com.tcwong.pengms.base.LogFilter;
+import com.tcwong.pengms.base.WebPageResponse;
+import com.tcwong.pengms.base.WebResponse;
+import com.tcwong.pengms.constant.LogOperationType;
 import com.tcwong.pengms.model.Carriers;
-import com.tcwong.pengms.service.ICarriersService;
-import com.tcwong.pengms.service.IGoodsService;
-import com.tcwong.pengms.utils.Log;
-import com.tcwong.pengms.utils.LogdicType;
-import com.tcwong.pengms.utils.WebPageResponse;
-import com.tcwong.pengms.utils.WebResponse;
+import com.tcwong.pengms.service.CarriersService;
+import com.tcwong.pengms.service.GoodsService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -19,11 +19,11 @@ import javax.annotation.Resource;
 public class CarriersController  {
 
     @Resource
-    private ICarriersService carriersService;
+    private CarriersService carriersService;
     @Resource
-    private IGoodsService goodsService;
+    private GoodsService goodsService;
 
-    @Log(behavior = "添加承运单货物",fkTypeid = LogdicType.ADD)
+    @LogFilter(description = "添加承运单货物",logOperationType = LogOperationType.ADD)
     @PostMapping("/add")
     public WebResponse addCarriersGoods(@RequestBody Carriers carriers) {
 
@@ -34,7 +34,7 @@ public class CarriersController  {
         return WebResponse.failed("添加失败");
     }
 
-    @Log(behavior = "删除承运单",fkTypeid = LogdicType.DELETE)
+    @LogFilter(description = "删除承运单",logOperationType = LogOperationType.DELETE)
     @DeleteMapping("/delete/{ids}")
     public WebResponse deleteCarriersGoods(@PathVariable String ids) {
         int num1 = carriersService.deleteCarrier(ids);
@@ -45,7 +45,7 @@ public class CarriersController  {
         return WebResponse.failed("删除失败");
     }
 
-    @Log(behavior = "修改承运单",fkTypeid = LogdicType.UPDATE)
+    @LogFilter(description = "修改承运单",logOperationType = LogOperationType.UPDATE)
     @PutMapping("/put")
     public WebResponse editCarriersGoods(@RequestBody Carriers carriers) {
         int num = carriersService.editCarrier(carriers);
@@ -65,7 +65,7 @@ public class CarriersController  {
         return WebResponse.failed("查询失败");
     }
 
-    @Log(behavior = "承运单接收",fkTypeid = LogdicType.UPDATE)
+    @LogFilter(description = "承运单接收",logOperationType = LogOperationType.UPDATE)
     @PutMapping("/receive/{id}")
     public WebResponse reveiveById(@PathVariable Integer id ){
         int num = carriersService.reveiveById(id);

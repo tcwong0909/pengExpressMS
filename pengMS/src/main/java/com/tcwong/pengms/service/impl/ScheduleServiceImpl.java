@@ -8,8 +8,8 @@ import com.tcwong.pengms.model.Carriers;
 import com.tcwong.pengms.model.Scheduling;
 import com.tcwong.pengms.model.Truck;
 import com.tcwong.pengms.model.User;
-import com.tcwong.pengms.service.IScheduleService;
-import com.tcwong.pengms.utils.WebPageResponse;
+import com.tcwong.pengms.service.ScheduleService;
+import com.tcwong.pengms.base.WebPageResponse;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class ScheduleServiceImpl implements IScheduleService {
+public class ScheduleServiceImpl implements ScheduleService {
 
     @Resource
     private SchedulingMapper schedulingMapper;

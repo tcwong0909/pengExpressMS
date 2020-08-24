@@ -2,14 +2,14 @@ package com.tcwong.pengms.service.impl;
 
 import com.tcwong.pengms.dao.SyslogMapper;
 import com.tcwong.pengms.model.Syslog;
-import com.tcwong.pengms.service.ISyslogService;
-import com.tcwong.pengms.utils.WebPageResponse;
+import com.tcwong.pengms.service.SyslogService;
+import com.tcwong.pengms.base.WebPageResponse;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
 @Service
-public class SyslogServiceImpl implements ISyslogService {
+public class SyslogServiceImpl implements SyslogService {
 
     @Resource
     private SyslogMapper syslogMapper;

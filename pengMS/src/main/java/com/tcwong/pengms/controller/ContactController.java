@@ -1,11 +1,11 @@
 package com.tcwong.pengms.controller;
 
+import com.tcwong.pengms.base.LogFilter;
+import com.tcwong.pengms.base.WebPageResponse;
+import com.tcwong.pengms.base.WebResponse;
+import com.tcwong.pengms.constant.LogOperationType;
 import com.tcwong.pengms.model.Contact;
-import com.tcwong.pengms.service.IContactService;
-import com.tcwong.pengms.utils.Log;
-import com.tcwong.pengms.utils.LogdicType;
-import com.tcwong.pengms.utils.WebPageResponse;
-import com.tcwong.pengms.utils.WebResponse;
+import com.tcwong.pengms.service.ContactService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -18,9 +18,9 @@ import javax.annotation.Resource;
 public class ContactController {
 
     @Resource
-    private IContactService contactService;
+    private ContactService contactService;
 
-    @Log(behavior = "车辆绑定",fkTypeid = LogdicType.UPDATE)
+    @LogFilter(description = "车辆绑定",logOperationType = LogOperationType.UPDATE)
     @PutMapping("/put")
     public WebResponse bindTruck(@RequestBody Contact contact) {
         int num = contactService.bindTruck(contact);
@@ -30,7 +30,7 @@ public class ContactController {
         return WebResponse.failed("绑定失败");
     }
 
-    @Log(behavior = "解除车辆绑定",fkTypeid = LogdicType.UPDATE)
+    @LogFilter(description = "解除车辆绑定",logOperationType = LogOperationType.UPDATE)
     @PutMapping("/delete/{ids}")
     public WebResponse unbindTrucks(@PathVariable String ids) {
         int num = contactService.unbindTrucks(ids);

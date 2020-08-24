@@ -5,7 +5,7 @@ import com.tcwong.pengms.model.Goods;
 
 import java.util.List;
 
-public interface IGoodsService {
+public interface GoodsService {
     List<Goods> getAll();
 
     int addGoods(Goods goods);

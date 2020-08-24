@@ -4,9 +4,9 @@ import com.tcwong.pengms.dao.CarriersMapper;
 import com.tcwong.pengms.model.Carriers;
 import com.tcwong.pengms.model.Goods;
 import com.tcwong.pengms.model.User;
-import com.tcwong.pengms.service.ICarriersService;
-import com.tcwong.pengms.service.IGoodsService;
-import com.tcwong.pengms.utils.WebPageResponse;
+import com.tcwong.pengms.service.CarriersService;
+import com.tcwong.pengms.service.GoodsService;
+import com.tcwong.pengms.base.WebPageResponse;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +14,11 @@ import javax.annotation.Resource;
 import java.util.Date;
 
 @Service
-public class CarriersServiceImpl implements ICarriersService {
+public class CarriersServiceImpl implements CarriersService {
     @Resource
     private CarriersMapper carriersMapper;
     @Resource
-    private IGoodsService goodsService;
+    private GoodsService goodsService;
     @Override
     public int addCarrier(Carriers carriers) {
         Integer userid = ((User) (SecurityUtils.getSubject().getSession().getAttribute("user"))).getUserid();

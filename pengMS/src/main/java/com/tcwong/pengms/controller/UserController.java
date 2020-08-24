@@ -1,11 +1,11 @@
 package com.tcwong.pengms.controller;
 
+import com.tcwong.pengms.base.LogFilter;
+import com.tcwong.pengms.base.WebPageResponse;
+import com.tcwong.pengms.base.WebResponse;
+import com.tcwong.pengms.constant.LogOperationType;
 import com.tcwong.pengms.model.User;
-import com.tcwong.pengms.service.IUserService;
-import com.tcwong.pengms.utils.Log;
-import com.tcwong.pengms.utils.LogdicType;
-import com.tcwong.pengms.utils.WebPageResponse;
-import com.tcwong.pengms.utils.WebResponse;
+import com.tcwong.pengms.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -18,9 +18,9 @@ import javax.annotation.Resource;
 public class UserController {
 
     @Resource
-    private IUserService userService;
+    private UserService userService;
 
-    @Log(behavior = "用户添加",fkTypeid = LogdicType.ADD)
+    @LogFilter(description = "用户添加",logOperationType = LogOperationType.ADD)
     @PostMapping("/add")
     public WebResponse addUser(@RequestBody User user) {
         int num = userService.addUser(user);
@@ -30,7 +30,7 @@ public class UserController {
         return WebResponse.failed("添加失败");
     }
 
-    @Log(behavior = "用户删除",fkTypeid = LogdicType.DELETE)
+    @LogFilter(description = "用户删除",logOperationType = LogOperationType.DELETE)
     @DeleteMapping("/delete/{ids}")
     public WebResponse deleteByIds(@PathVariable String ids) {
         int num = userService.deleteByIds(ids);
@@ -40,7 +40,7 @@ public class UserController {
         return WebResponse.failed("删除失败");
     }
 
-    @Log(behavior = "用户修改",fkTypeid = LogdicType.UPDATE)
+    @LogFilter(description = "用户修改",logOperationType = LogOperationType.UPDATE)
     @PutMapping("/edit")
     public WebResponse editUser(@RequestBody User user) {
         int num = userService.editUser(user);
@@ -60,7 +60,7 @@ public class UserController {
         return WebResponse.failed("查询失败");
     }
 
-    @Log(behavior = "修改密码",fkTypeid = LogdicType.UPDATE)
+    @LogFilter(description = "修改密码",logOperationType = LogOperationType.UPDATE)
     @PutMapping("/password")
     public WebResponse editPassword(@RequestBody User user) {
         int num = userService.editPassword(user);

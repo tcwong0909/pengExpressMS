@@ -1,5 +1,6 @@
 package com.tcwong.pengms.utils;
 
+import com.tcwong.pengms.base.YTException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -2,9 +2,9 @@ package com.tcwong.pengms.service;
 
 
 import com.tcwong.pengms.model.User;
-import com.tcwong.pengms.utils.WebPageResponse;
+import com.tcwong.pengms.base.WebPageResponse;
 
-public interface IUserService {
+public interface UserService {
     int addUser(User user);
 
     int deleteByIds(String ids);

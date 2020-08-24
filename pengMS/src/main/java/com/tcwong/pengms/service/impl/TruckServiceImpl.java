@@ -3,8 +3,8 @@ package com.tcwong.pengms.service.impl;
 import com.tcwong.pengms.dao.TruckMapper;
 import com.tcwong.pengms.model.Truck;
 import com.tcwong.pengms.model.example.TruckExample;
-import com.tcwong.pengms.service.ITruckService;
-import com.tcwong.pengms.utils.WebPageResponse;
+import com.tcwong.pengms.service.TruckService;
+import com.tcwong.pengms.base.WebPageResponse;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class TruckServiceImpl implements ITruckService {
+public class TruckServiceImpl implements TruckService {
 
     @Resource
     private TruckMapper truckMapper;

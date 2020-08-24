@@ -1,11 +1,11 @@
 package com.tcwong.pengms.controller;
 
+import com.tcwong.pengms.base.LogFilter;
+import com.tcwong.pengms.base.WebPageResponse;
+import com.tcwong.pengms.base.WebResponse;
+import com.tcwong.pengms.constant.LogOperationType;
 import com.tcwong.pengms.model.Truckteam;
-import com.tcwong.pengms.service.ITruckTeamService;
-import com.tcwong.pengms.utils.Log;
-import com.tcwong.pengms.utils.LogdicType;
-import com.tcwong.pengms.utils.WebPageResponse;
-import com.tcwong.pengms.utils.WebResponse;
+import com.tcwong.pengms.service.TruckTeamService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -18,9 +18,9 @@ import javax.annotation.Resource;
 public class TruckTeamController {
 
     @Resource
-    private ITruckTeamService truckTeamService;
+    private TruckTeamService truckTeamService;
 
-    @Log(behavior = "车队添加",fkTypeid = LogdicType.ADD)
+    @LogFilter(description = "车队添加",logOperationType = LogOperationType.ADD)
     @PostMapping("/add")
     public WebResponse addTruckTeam(@RequestBody Truckteam truckteam){
 
@@ -31,7 +31,7 @@ public class TruckTeamController {
         return WebResponse.failed("添加失败");
     }
 
-    @Log(behavior = "车队删除",fkTypeid = LogdicType.DELETE)
+    @LogFilter(description = "车队删除",logOperationType = LogOperationType.DELETE)
     @DeleteMapping("/delete/{ids}")
     public WebResponse deleteByIds(@PathVariable String ids) {
         int num = truckTeamService.deleteByIds(ids);
@@ -41,7 +41,7 @@ public class TruckTeamController {
         return WebResponse.failed("删除失败");
     }
 
-    @Log(behavior = "车队修改",fkTypeid = LogdicType.UPDATE)
+    @LogFilter(description = "车队修改",logOperationType = LogOperationType.UPDATE)
     @PutMapping("/put")
     public WebResponse editTruckTeam(@RequestBody Truckteam truckteam) {
         int num = truckTeamService.editTruckTeam(truckteam);

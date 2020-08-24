@@ -2,9 +2,9 @@ package com.tcwong.pengms.service;
 
 
 import com.tcwong.pengms.model.Driver;
-import com.tcwong.pengms.utils.WebPageResponse;
+import com.tcwong.pengms.base.WebPageResponse;
 
-public interface IDriverService {
+public interface DriverService {
     int addDriver(Driver driver);
 
     int deleteByIds(String ids);

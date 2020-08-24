@@ -3,8 +3,8 @@ package com.tcwong.pengms.service.impl;
 
 import com.tcwong.pengms.dao.UserMapper;
 import com.tcwong.pengms.model.User;
-import com.tcwong.pengms.service.IUserService;
-import com.tcwong.pengms.utils.WebPageResponse;
+import com.tcwong.pengms.service.UserService;
+import com.tcwong.pengms.base.WebPageResponse;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 import java.util.Date;
 
 @Service
-public class UserServiceImpl implements IUserService {
+public class UserServiceImpl implements UserService {
     @Resource
     private UserMapper userMapper;
     @Override

@@ -2,9 +2,9 @@ package com.tcwong.pengms.service;
 
 
 import com.tcwong.pengms.model.Carriers;
-import com.tcwong.pengms.utils.WebPageResponse;
+import com.tcwong.pengms.base.WebPageResponse;
 
-public interface ICarriersService {
+public interface CarriersService {
     int addCarrier(Carriers carriers);
 
     int editCarrier(Carriers carriers);
