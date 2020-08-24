@@ -4,17 +4,18 @@ import com.alibaba.fastjson.JSONObject;
 import com.tcwong.pengms.base.LogFilter;
 import com.tcwong.pengms.dto.LogDTO;
 import com.tcwong.pengms.listen.LogEvent;
-import com.tcwong.pengms.service.SyslogService;
 import com.tcwong.pengms.utils.ApplicationPublishUtil;
+import com.tcwong.pengms.utils.IpUtil;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
@@ -30,6 +31,9 @@ import java.util.Arrays;
 public class ControllerAspect {
 
     private ThreadLocal<Long> threadLocal = new ThreadLocal<>();
+
+    @Autowired
+    private HttpServletRequest httpServletRequest;
 
     /**
      * Description 定义切点
@@ -76,6 +80,7 @@ public class ControllerAspect {
         String methodName = joinPoint.getSignature().getName();
         //获取参数
         Object[] args = joinPoint.getArgs();
+        String paramJSON = JSONObject.toJSONString(args);
         //获取类字节码
         Class<?> targetClazz = joinPoint.getTarget().getClass();
         //类名
@@ -87,9 +92,9 @@ public class ControllerAspect {
                 .filter(method -> method.getParameterCount() == args.length).findFirst().get();
         LogFilter logFilter = targetMethod.getAnnotation(LogFilter.class);
         if (logFilter != null) {
-            ApplicationPublishUtil.publish(new LogEvent(new LogDTO(null)));
+            ApplicationPublishUtil.publish(new LogEvent(new LogDTO(logFilter.logOperationType().getDescription()
+                    ,logFilter.description(),paramJSON, IpUtil.getIpAddr(httpServletRequest))));
         }
-
     }
 
 }

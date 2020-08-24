@@ -50,7 +50,7 @@
         </javaClientGenerator>
 
         <!-- 指定数据库表 -->
-        <table tableName="peng_loginlog" domainObjectName="LoginLog"
+        <table tableName="peng_operatelog" domainObjectName="OperateLog"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true" />

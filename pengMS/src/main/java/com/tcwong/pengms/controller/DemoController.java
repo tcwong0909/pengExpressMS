@@ -1,5 +1,7 @@
 package com.tcwong.pengms.controller;
 
+import com.tcwong.pengms.base.LogFilter;
+import com.tcwong.pengms.constant.LogOperationType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,6 +21,7 @@ public class DemoController {
     }
 
     @GetMapping("/test2")
+    @LogFilter(logOperationType = LogOperationType.UPDATE,description = "测试test")
     public String test2(String param) {
         return "response>>>>>"+param;
     }

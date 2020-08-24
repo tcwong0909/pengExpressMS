@@ -5,6 +5,7 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -15,7 +16,6 @@ import javax.servlet.http.HttpSession;
  * Since 1.8
  */
 public class SessionUtil {
-
 
     private static HttpSession session = getSession();
 
@@ -28,11 +28,17 @@ public class SessionUtil {
     }
 
     public static void setAttribute(String sessionKey, Object sessionValue) {
+        if (session == null) {
+            session = getSession();
+        }
         String attributeString = JSONObject.toJSONString(sessionValue);
         session.setAttribute(sessionKey,attributeString);
     }
 
     public static <V> V getAttribute(String sessionKey,Class<V> clazz) {
+        if (session == null) {
+            session = getSession();
+        }
         String attribute = (String)session.getAttribute(sessionKey);
         return JSONObject.parseObject(attribute,clazz);
     }

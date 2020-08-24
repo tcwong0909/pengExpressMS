@@ -24,7 +24,7 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @LogFilter(description = "登录", logOperationType = LogOperationType.LOGIN)
+    @LogFilter(description = "用户登录", logOperationType = LogOperationType.LOGIN)
     @PostMapping("/doLogin")
     public WebResponse doLogin(@RequestBody LoginRequest request) {
         User user = loginService.doLogin(request);
