@@ -28,12 +28,8 @@ public class LoginLogController {
     @PostMapping("/listLoginLog")
     public WebResponse listLoginLog(@RequestBody LoginLogRequest request) {
         WebResponse<PageInfo<LoginLog>> response = new WebResponse<>();
-        try {
-            PageInfo<LoginLog> loginLogPageInfo = loginLogService.listLoginLog(request);
-            response.setData(loginLogPageInfo);
-        } catch (Exception e) {
-
-        }
+        PageInfo<LoginLog> loginLogPageInfo = loginLogService.listLoginLog(request);
+        response.setData(loginLogPageInfo);
         return response;
     }
 

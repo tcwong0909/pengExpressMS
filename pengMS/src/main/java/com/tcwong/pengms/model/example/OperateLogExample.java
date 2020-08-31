@@ -644,6 +644,136 @@ public class OperateLogExample {
             addCriterion("creat_time not between", value1, value2, "creatTime");
             return (Criteria) this;
         }
+
+        public Criteria andExceptionFlagIsNull() {
+            addCriterion("exception_flag is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionFlagIsNotNull() {
+            addCriterion("exception_flag is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionFlagEqualTo(Byte value) {
+            addCriterion("exception_flag =", value, "exceptionFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionFlagNotEqualTo(Byte value) {
+            addCriterion("exception_flag <>", value, "exceptionFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionFlagGreaterThan(Byte value) {
+            addCriterion("exception_flag >", value, "exceptionFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionFlagGreaterThanOrEqualTo(Byte value) {
+            addCriterion("exception_flag >=", value, "exceptionFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionFlagLessThan(Byte value) {
+            addCriterion("exception_flag <", value, "exceptionFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionFlagLessThanOrEqualTo(Byte value) {
+            addCriterion("exception_flag <=", value, "exceptionFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionFlagIn(List<Byte> values) {
+            addCriterion("exception_flag in", values, "exceptionFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionFlagNotIn(List<Byte> values) {
+            addCriterion("exception_flag not in", values, "exceptionFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionFlagBetween(Byte value1, Byte value2) {
+            addCriterion("exception_flag between", value1, value2, "exceptionFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionFlagNotBetween(Byte value1, Byte value2) {
+            addCriterion("exception_flag not between", value1, value2, "exceptionFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionErrorIsNull() {
+            addCriterion("exception_error is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionErrorIsNotNull() {
+            addCriterion("exception_error is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionErrorEqualTo(String value) {
+            addCriterion("exception_error =", value, "exceptionError");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionErrorNotEqualTo(String value) {
+            addCriterion("exception_error <>", value, "exceptionError");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionErrorGreaterThan(String value) {
+            addCriterion("exception_error >", value, "exceptionError");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionErrorGreaterThanOrEqualTo(String value) {
+            addCriterion("exception_error >=", value, "exceptionError");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionErrorLessThan(String value) {
+            addCriterion("exception_error <", value, "exceptionError");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionErrorLessThanOrEqualTo(String value) {
+            addCriterion("exception_error <=", value, "exceptionError");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionErrorLike(String value) {
+            addCriterion("exception_error like", value, "exceptionError");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionErrorNotLike(String value) {
+            addCriterion("exception_error not like", value, "exceptionError");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionErrorIn(List<String> values) {
+            addCriterion("exception_error in", values, "exceptionError");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionErrorNotIn(List<String> values) {
+            addCriterion("exception_error not in", values, "exceptionError");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionErrorBetween(String value1, String value2) {
+            addCriterion("exception_error between", value1, value2, "exceptionError");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceptionErrorNotBetween(String value1, String value2) {
+            addCriterion("exception_error not between", value1, value2, "exceptionError");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -20,6 +20,10 @@ public class OperateLog implements Serializable {
 
     private Date creatTime;
 
+    private Byte exceptionFlag;
+
+    private String exceptionError;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -86,6 +90,22 @@ public class OperateLog implements Serializable {
         this.creatTime = creatTime;
     }
 
+    public Byte getExceptionFlag() {
+        return exceptionFlag;
+    }
+
+    public void setExceptionFlag(Byte exceptionFlag) {
+        this.exceptionFlag = exceptionFlag;
+    }
+
+    public String getExceptionError() {
+        return exceptionError;
+    }
+
+    public void setExceptionError(String exceptionError) {
+        this.exceptionError = exceptionError == null ? null : exceptionError.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -100,6 +120,8 @@ public class OperateLog implements Serializable {
         sb.append(", username=").append(username);
         sb.append(", params=").append(params);
         sb.append(", creatTime=").append(creatTime);
+        sb.append(", exceptionFlag=").append(exceptionFlag);
+        sb.append(", exceptionError=").append(exceptionError);
         sb.append("]");
         return sb.toString();
     }

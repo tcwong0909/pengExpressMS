@@ -2,6 +2,7 @@ package com.tcwong.pengms.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.tcwong.pengms.base.BaseException;
 import com.tcwong.pengms.dao.LoginLogMapper;
 import com.tcwong.pengms.dto.LoginLogRequest;
 import com.tcwong.pengms.model.LoginLog;

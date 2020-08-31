@@ -17,15 +17,20 @@ public class LogDTO {
 
     private String ip;
 
+    private Byte exceptionFlag;
+
+    private String exceptionError;
 
     public LogDTO() {
     }
 
-    public LogDTO(String operationType, String description, String params, String ip) {
+    public LogDTO(String operationType, String description, String params, String ip, Byte exceptionFlag, String exceptionError) {
         this.operationType = operationType;
         this.description = description;
         this.params = params;
         this.ip = ip;
+        this.exceptionFlag = exceptionFlag;
+        this.exceptionError = exceptionError;
     }
 
     public String getOperationType() {
@@ -60,6 +65,22 @@ public class LogDTO {
         this.ip = ip;
     }
 
+    public Byte getExceptionFlag() {
+        return exceptionFlag;
+    }
+
+    public void setExceptionFlag(Byte exceptionFlag) {
+        this.exceptionFlag = exceptionFlag;
+    }
+
+    public String getExceptionError() {
+        return exceptionError;
+    }
+
+    public void setExceptionError(String exceptionError) {
+        this.exceptionError = exceptionError;
+    }
+
     @Override
     public String toString() {
         return "LogDTO{" +
@@ -67,6 +88,8 @@ public class LogDTO {
                 ", description='" + description + '\'' +
                 ", params='" + params + '\'' +
                 ", ip='" + ip + '\'' +
+                ", exceptionFlag=" + exceptionFlag +
+                ", exceptionError='" + exceptionError + '\'' +
                 '}';
     }
 }

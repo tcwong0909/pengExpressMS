@@ -10,6 +10,8 @@
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="params" property="params" jdbcType="VARCHAR" />
     <result column="creat_time" property="creatTime" jdbcType="TIMESTAMP" />
+    <result column="exception_flag" property="exceptionFlag" jdbcType="TINYINT" />
+    <result column="exception_error" property="exceptionError" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -70,7 +72,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, operation_type, description, user_account, ip, username, params, creat_time
+    id, operation_type, description, user_account, ip, username, params, creat_time, 
+    exception_flag, exception_error
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tcwong.pengms.model.example.OperateLogExample" >
     select
@@ -106,10 +109,12 @@
   <insert id="insert" parameterType="com.tcwong.pengms.model.OperateLog" >
     insert into peng_operatelog (id, operation_type, description, 
       user_account, ip, username, 
-      params, creat_time)
+      params, creat_time, exception_flag, 
+      exception_error)
     values (#{id,jdbcType=INTEGER}, #{operationType,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
       #{userAccount,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
-      #{params,jdbcType=VARCHAR}, #{creatTime,jdbcType=TIMESTAMP})
+      #{params,jdbcType=VARCHAR}, #{creatTime,jdbcType=TIMESTAMP}, #{exceptionFlag,jdbcType=TINYINT}, 
+      #{exceptionError,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.tcwong.pengms.model.OperateLog" >
     insert into peng_operatelog
@@ -138,6 +143,12 @@
       <if test="creatTime != null" >
         creat_time,
       </if>
+      <if test="exceptionFlag != null" >
+        exception_flag,
+      </if>
+      <if test="exceptionError != null" >
+        exception_error,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -163,6 +174,12 @@
       </if>
       <if test="creatTime != null" >
         #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exceptionFlag != null" >
+        #{exceptionFlag,jdbcType=TINYINT},
+      </if>
+      <if test="exceptionError != null" >
+        #{exceptionError,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -199,6 +216,12 @@
       <if test="record.creatTime != null" >
         creat_time = #{record.creatTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.exceptionFlag != null" >
+        exception_flag = #{record.exceptionFlag,jdbcType=TINYINT},
+      </if>
+      <if test="record.exceptionError != null" >
+        exception_error = #{record.exceptionError,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -213,7 +236,9 @@
       ip = #{record.ip,jdbcType=VARCHAR},
       username = #{record.username,jdbcType=VARCHAR},
       params = #{record.params,jdbcType=VARCHAR},
-      creat_time = #{record.creatTime,jdbcType=TIMESTAMP}
+      creat_time = #{record.creatTime,jdbcType=TIMESTAMP},
+      exception_flag = #{record.exceptionFlag,jdbcType=TINYINT},
+      exception_error = #{record.exceptionError,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -242,6 +267,12 @@
       <if test="creatTime != null" >
         creat_time = #{creatTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="exceptionFlag != null" >
+        exception_flag = #{exceptionFlag,jdbcType=TINYINT},
+      </if>
+      <if test="exceptionError != null" >
+        exception_error = #{exceptionError,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -253,7 +284,9 @@
       ip = #{ip,jdbcType=VARCHAR},
       username = #{username,jdbcType=VARCHAR},
       params = #{params,jdbcType=VARCHAR},
-      creat_time = #{creatTime,jdbcType=TIMESTAMP}
+      creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      exception_flag = #{exceptionFlag,jdbcType=TINYINT},
+      exception_error = #{exceptionError,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
