@@ -2,16 +2,14 @@ package com.tcwong.pengms.filter;
 
 import com.alibaba.fastjson.JSONObject;
 import com.tcwong.pengms.base.LogFilter;
+import com.tcwong.pengms.constant.ExceptionTypeEnum;
 import com.tcwong.pengms.dto.LogDTO;
 import com.tcwong.pengms.listen.LogEvent;
 import com.tcwong.pengms.utils.ApplicationPublishUtil;
 import com.tcwong.pengms.utils.IpUtil;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -75,7 +73,7 @@ public class ControllerAspect {
      * Since 1.8
      */
     @AfterReturning(pointcut = "pointcut()",returning = "object")
-    public void afterReturning(JoinPoint joinPoint,Object object) throws ClassNotFoundException {
+    public void afterReturning(JoinPoint joinPoint,Object object) {
         //获取方法名
         String methodName = joinPoint.getSignature().getName();
         //获取参数
@@ -83,8 +81,6 @@ public class ControllerAspect {
         String paramJSON = JSONObject.toJSONString(args);
         //获取类字节码
         Class<?> targetClazz = joinPoint.getTarget().getClass();
-        //类名
-        String targetClassName = targetClazz.getSimpleName();
         //获取类下所有方法
         Method[] methods = targetClazz.getDeclaredMethods();
         //获取切点目标方法
@@ -93,8 +89,36 @@ public class ControllerAspect {
         LogFilter logFilter = targetMethod.getAnnotation(LogFilter.class);
         if (logFilter != null) {
             ApplicationPublishUtil.publish(new LogEvent(new LogDTO(logFilter.logOperationType().getDescription()
-                    ,logFilter.description(),paramJSON, IpUtil.getIpAddr(httpServletRequest))));
+                    ,logFilter.description(),paramJSON, IpUtil.getIpAddr(httpServletRequest)
+                    , ExceptionTypeEnum.NORMAL.getType(),"")));
         }
+    }
+
+    @AfterThrowing(pointcut = "pointcut()",throwing = "throwable")
+    public void AfterThrowing(JoinPoint joinPoint,Throwable throwable) {
+        //获取方法名
+        String methodName = joinPoint.getSignature().getName();
+        //获取参数
+        Object[] args = joinPoint.getArgs();
+        String paramJSON = JSONObject.toJSONString(args);
+        //获取类字节码
+        Class<?> targetClazz = joinPoint.getTarget().getClass();
+        //获取类下所有方法
+        Method[] methods = targetClazz.getDeclaredMethods();
+        //获取切点目标方法
+        Method targetMethod = Arrays.stream(methods).filter(method -> method.getName().equals(methodName))
+                .filter(method -> method.getParameterCount() == args.length).findFirst().get();
+        LogFilter logFilter = targetMethod.getAnnotation(LogFilter.class);
+        LogDTO logDTO = null;
+        if (logFilter != null) {
+            logDTO = new LogDTO(logFilter.logOperationType().getDescription()
+                    , logFilter.description(), paramJSON, IpUtil.getIpAddr(httpServletRequest)
+                    , ExceptionTypeEnum.NORMAL.getType(), "");
+        } else {
+            logDTO = new LogDTO("其他", methodName, paramJSON, IpUtil.getIpAddr(httpServletRequest)
+                    , ExceptionTypeEnum.EXCEPTION.getType(), throwable.getMessage());
+        }
+        ApplicationPublishUtil.publish(new LogEvent(logDTO));
     }
 
 }
