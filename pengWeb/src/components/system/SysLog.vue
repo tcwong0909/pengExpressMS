@@ -6,17 +6,12 @@
           <tr>
             <td>
               <el-input placeholder="请输入内容" suffix-icon="el-icon-search" v-model="searchSyslog.fkTypeid">
-                <template slot="prepend">行为类型</template>
-              </el-input>
-            </td>
-            <td>
-              <el-input placeholder="请输入内容" suffix-icon="el-icon-search" v-model="searchSyslog.fkUserid">
-                <template slot="prepend">用户ID</template>
+                <template slot="prepend">操作类型</template>
               </el-input>
             </td>
             <td>
               <el-input placeholder="请输入内容" suffix-icon="el-icon-search" v-model="searchSyslog.behavior">
-                <template slot="prepend">操作行为</template>
+                <template slot="prepend">内容关键字</template>
               </el-input>
             </td>
             <td style="padding-left: 10px">
@@ -42,28 +37,27 @@
     <el-card shadow="never" body-style="padding:0;padding-top:1px">
       <div style="margin-top: 5px;">
         <el-table
-          :data="syslogs"
+          :data="systemLogs"
           border
           style="width: 100%">
           <el-table-column
-            prop="logid"
-            label="编号"
-            width="50">
+            type="index"
+            label="序号">
           </el-table-column>
           <el-table-column
-            prop="logdic.typename"
-            label="行为类型"
+            prop="operationType"
+            label="操作类型"
             width="80">
           </el-table-column>
           <el-table-column
-            prop="user.username"
+            prop="username"
             width="80"
             label="用户名">
           </el-table-column>
           <el-table-column
-            prop="procname"
-            width="180"
-            label="存储过程名">
+            prop="userAccount"
+            width="80"
+            label="用户账号">
           </el-table-column>
           <el-table-column
             prop="ip"
@@ -71,31 +65,31 @@
             label="登录IP">
           </el-table-column>
           <el-table-column
-            prop="checkintime"
-            label="操作时间"
-            width="100">
+            prop="description"
+            label="操作描述"
+            width="150">
           </el-table-column>
           <el-table-column
-            prop="behavior"
-            label="操作行为"
-            width="80">
+            prop="creatTime"
+            label="操作时间"
+            width="180">
           </el-table-column>
           <el-table-column
             width="80"
             label="是否异常">
             <template slot-scope="scope">
-              <el-tag v-if="scope.row.isexception===1" type="success">正常</el-tag>
-              <el-tag v-else-if="scope.row.isexception===2" >异常</el-tag>
+              <el-tag v-if="scope.row.exceptionFlag===1" type="success">正常</el-tag>
+              <el-tag v-else-if="scope.row.exceptionFlag===0" >异常</el-tag>
               <el-tag v-else type="warning">未知</el-tag>
             </template>
           </el-table-column>
           <el-table-column
-            prop="parameters"
-            label="参数"
+            prop="params"
+            label="操作内容"
             width="600">
           </el-table-column>
           <el-table-column
-            prop="exception"
+            prop="exceptionError"
             width="800"
             label="异常信息">
           </el-table-column>
@@ -133,7 +127,9 @@
           isexception:'',
           behavior:''
         },
-        syslogs:[]
+        syslogs:[],
+        systemLogRequest:{},
+        systemLogs:[],
       }
     },
     watch:{
@@ -147,6 +143,7 @@
     },
     mounted(){
       this.loadSyslogs();
+      this.getSystemLogs();
     },
     methods:{
       resetSearch(){
@@ -156,6 +153,16 @@
           isexception:'',
           behavior:''
         }
+      },
+
+      getSystemLogs() {
+        this.systemLogRequest.pageNum = this.currentPage;
+        this.systemLogRequest.pageSize = this.pageSize;
+        this.postRequest("/pengms/operateLog/listOperateLog", this.systemLogRequest).then(res => {
+          this.systemLogs = res.data.list;
+          this.total = res.data.total;
+
+        });
       },
       loadSyslogs(){
         this.postRequest("/pengms/syslog/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+"&behavior="+this.searchSyslog.behavior+
@@ -180,11 +187,11 @@
       },
       handleSizeChange(size){
         this.pageSize = size;
-        this.loadSyslogs();
+        this.getSystemLogs();
       },
       handleCurrentChange(page){
         this.currentPage = page;
-        this.loadSyslogs();
+        this.getSystemLogs();
       },
     }
   }
