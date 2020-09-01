@@ -9,36 +9,15 @@ axios.interceptors.request.use(config => {
 
 //响应拦截
 axios.interceptors.response.use(data => {
-  if (data.status && data.status == 200 && data.data.code == 500) {
-    //后台报错
+  if (data.status && data.status === 200 && data.data.code !== "0000") {
+    //自定义异常
     Message.error({message: data.data.message});
-    return;
-  }
-  if (data.data.message) {
-    Message.success({message: data.data.message})
   }
   return data.data;
 }, err => {
-  if (err.response.status == 504 || err.response.status == 404) {
-    Message.error({message: '服务器在开小差，请稍等！'})
-  }else if (err.response.status == 433) {
     Message.error({message:err.response.data.message})
-    return err.response.data;
-  }else if (err.response.status == 434) {
-    Message.error({message:err.response.data.message})
-    return err.response.data;
-  } else if (err.response.status == 403) {
-    Message.error({message: '权限不足，请联系管理员'});
-  } else if (err.response.status == 401) {
-    Message.error({message: err.response.data.message});
-  } else {
-    if (err.response.data.message) {
-      Message.error({message: err.response.data.message})
-    } else {
-      Message.error({message: "未知错误"})
-    }
-  }
-})
+  return err.response;
+});
 
 let base = '';
 

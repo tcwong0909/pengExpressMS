@@ -5,22 +5,28 @@
         <el-form>
           <tr>
             <td>
-              <el-input placeholder="请输入内容" suffix-icon="el-icon-search" v-model="searchSyslog.fkTypeid">
-                <template slot="prepend">操作类型</template>
-              </el-input>
+              <el-tag>操作类型</el-tag>
+              <template>
+                <el-select v-model="systemLogRequest.operationType" placeholder="请选择类型">
+                  <el-option label="登录" :value="'登录'"></el-option>
+                  <el-option label="添加数据" :value="'添加数据'"></el-option>
+                  <el-option label="删除数据" :value="'删除数据'"></el-option>
+                  <el-option label="更新数据" :value="'更新数据'"></el-option>
+                  <el-option label="其他" :value="'其他'"></el-option>
+                </el-select>
+              </template>
             </td>
             <td>
-              <el-input placeholder="请输入内容" suffix-icon="el-icon-search" v-model="searchSyslog.behavior">
+              <el-input placeholder="请输入关键字" suffix-icon="el-icon-search" v-model="systemLogRequest.paramsKeyWord">
                 <template slot="prepend">内容关键字</template>
               </el-input>
             </td>
             <td style="padding-left: 10px">
               <el-tag>异常状态</el-tag>
               <template>
-                <el-select v-model="searchSyslog.isexception" placeholder="请选择">
-                  <el-option label="全部" :value="''"></el-option>
+                <el-select v-model="systemLogRequest.exceptionFlag" placeholder="请选择状态">
                   <el-option label="正常" :value="1"></el-option>
-                  <el-option label="异常" :value="2"></el-option>
+                  <el-option label="异常" :value="0"></el-option>
                 </el-select>
               </template>
             </td>
@@ -121,13 +127,6 @@
         total:null,
         pageSize:10,
         currentPage:1,
-        searchSyslog:{
-          fkTypeid:'',
-          fkUserid:'',
-          isexception:'',
-          behavior:''
-        },
-        syslogs:[],
         systemLogRequest:{},
         systemLogs:[],
       }
@@ -142,48 +141,28 @@
       }
     },
     mounted(){
-      this.loadSyslogs();
       this.getSystemLogs();
     },
     methods:{
       resetSearch(){
-        this.searchSyslog={
-          fkTypeid:'',
-          fkUserid:'',
-          isexception:'',
-          behavior:''
+        this.systemLogRequest={
+          operationType:'',
+          paramsKeyWord:'',
+          exceptionFlag:'',
         }
       },
-
       getSystemLogs() {
         this.systemLogRequest.pageNum = this.currentPage;
         this.systemLogRequest.pageSize = this.pageSize;
         this.postRequest("/pengms/operateLog/listOperateLog", this.systemLogRequest).then(res => {
           this.systemLogs = res.data.list;
           this.total = res.data.total;
+          this.loading = false;
 
         });
       },
-      loadSyslogs(){
-        this.postRequest("/pengms/syslog/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+"&behavior="+this.searchSyslog.behavior+
-          "&fkTypeid="+this.searchSyslog.fkTypeid+"&fkUserid="+this.searchSyslog.fkUserid+"&isexception="+this.searchSyslog.isexception).then(res=>{
-          if (res){
-            this.loading=false;
-            this.syslogs=res.data.data;
-            this.total = res.data.total;
-          }
-        })
-      },
       doSearch(){
-        this.currentPage = 1;
-        this.pageSize=10;
-        this.postRequest("/pengms/syslog/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+"&behavior="+this.searchSyslog.behavior+
-          "&fkTypeid="+this.searchSyslog.fkTypeid+"&fkUserid="+this.searchSyslog.fkUserid+"&isexception="+this.searchSyslog.isexception).then(res=>{
-          if (res){
-            this.syslogs=res.data.data;
-            this.total = res.data.total;
-          }
-        })
+        this.getSystemLogs();
       },
       handleSizeChange(size){
         this.pageSize = size;

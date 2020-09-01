@@ -48,8 +48,7 @@ export default {
     login(){
       // this.user.password = md5(this.user.password);
         this.postRequest("/pengms/login/doLogin",this.user).then(res=>{
-            if (res.code ==="200"){
-              console.log(res.data)
+            if (res.code ==="0000"){
               this.$router.replace("/home");
               window.sessionStorage.setItem("user",JSON.stringify(res.data))
             }
