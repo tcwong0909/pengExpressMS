@@ -1,7 +1,6 @@
 package com.tcwong.pengms.service.impl;
 
 import com.tcwong.pengms.base.BaseException;
-import com.tcwong.pengms.constant.LoginResultEnum;
 import com.tcwong.pengms.constant.SessionConstant;
 import com.tcwong.pengms.dao.UserMapper;
 import com.tcwong.pengms.dto.LoginRequest;
@@ -41,8 +40,7 @@ public class LoginServiceImpl implements LoginService {
     public User doLogin(LoginRequest request) {
 
         if (rateLimitUtil.rateLimit(httpServletRequest, new HandlerMethod(this, this.getClass().getMethods()[0]))) {
-            throw new BaseException(LoginResultEnum.REQUEST_FREQUENT.getResultCode()
-                    , LoginResultEnum.REQUEST_FREQUENT.getResultMessage());
+            throw new BaseException("0115");
         }
         User user;
         String account = request.getAccount();
@@ -51,8 +49,7 @@ public class LoginServiceImpl implements LoginService {
         accountExample.createCriteria().andAccountEqualTo(account);
         List<User> accountUserList = userMapper.selectByExample(accountExample);
         if (CollectionUtils.isEmpty(accountUserList)) {
-            throw  new BaseException(LoginResultEnum.NOT_EXIST_ACCOUNT.getResultCode()
-                    ,LoginResultEnum.NOT_EXIST_ACCOUNT.getResultMessage());
+            throw  new BaseException("0112");
         }
         UserExample accountPasswordExample = new UserExample();
         accountPasswordExample.createCriteria().andAccountEqualTo(account)
@@ -70,8 +67,7 @@ public class LoginServiceImpl implements LoginService {
             loginLogService.insert(loginLog);
             SessionUtil.setAttribute(SessionConstant.SESSION_USER,user);
         } else {
-            throw new BaseException(LoginResultEnum.ERROR_PASSWORD.getResultCode()
-                    , LoginResultEnum.ERROR_PASSWORD.getResultMessage());
+            throw new BaseException("0113");
         }
         return user;
     }

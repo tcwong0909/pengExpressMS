@@ -1,6 +1,5 @@
 package com.tcwong.pengms.utils;
 
-import com.tcwong.pengms.base.YTException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,13 +17,6 @@ public class LogUtil {
     private static final Logger LOG = LoggerFactory.getLogger("pengMSProject");
 
     public static SimpleDateFormat DATE_FORMAT =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-    public static void error(YTException e){
-        LOG.error("ErrorCode is" +e.getErrorCode()+",message is" + e.getMessage());
-
-    }
-
-
 
     /**
      * Description

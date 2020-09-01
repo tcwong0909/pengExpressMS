@@ -2,11 +2,10 @@ package com.tcwong.pengms.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.tcwong.pengms.base.BaseException;
 import com.tcwong.pengms.dao.LoginLogMapper;
 import com.tcwong.pengms.dto.LoginLogRequest;
 import com.tcwong.pengms.model.LoginLog;
-import com.tcwong.pengms.model.LoginLogExample;
+import com.tcwong.pengms.model.example.LoginLogExample;
 import com.tcwong.pengms.service.LoginLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

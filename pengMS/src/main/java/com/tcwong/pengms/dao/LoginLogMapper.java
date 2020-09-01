@@ -1,7 +1,7 @@
 package com.tcwong.pengms.dao;
 
 import com.tcwong.pengms.model.LoginLog;
-import com.tcwong.pengms.model.LoginLogExample;
+import com.tcwong.pengms.model.example.LoginLogExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;

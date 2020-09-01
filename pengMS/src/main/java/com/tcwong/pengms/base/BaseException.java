@@ -1,5 +1,7 @@
 package com.tcwong.pengms.base;
 
+import com.tcwong.pengms.utils.LocaleMessageUtil;
+
 /**
  * Description 自定义异常
  *
@@ -11,19 +13,25 @@ public class BaseException extends RuntimeException{
 
     private String exceptionCode;
 
-    private String exceptionMessage;
+    private Object[] args;
 
-    public BaseException(String exceptionCode, String exceptionMessage) {
-        super(exceptionMessage);
+    public BaseException(String exceptionCode) {
+        super(LocaleMessageUtil.getMessage(exceptionCode));
         this.exceptionCode = exceptionCode;
-        this.exceptionMessage = exceptionMessage;
+        this.args = null;
+    }
+
+    public BaseException(String exceptionCode,Object[] args) {
+        super(LocaleMessageUtil.getMessage(exceptionCode));
+        this.exceptionCode = exceptionCode;
+        this.args = args;
     }
 
     public String getExceptionCode() {
         return exceptionCode;
     }
 
-    public String getExceptionMessage() {
-        return exceptionMessage;
+    public Object[] getArgs() {
+        return args;
     }
 }

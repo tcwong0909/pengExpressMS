@@ -3,6 +3,7 @@ package com.tcwong.pengms.filter;
 import com.alibaba.fastjson.JSONObject;
 import com.tcwong.pengms.base.LogFilter;
 import com.tcwong.pengms.constant.ExceptionTypeEnum;
+import com.tcwong.pengms.constant.LogOperationType;
 import com.tcwong.pengms.dto.LogDTO;
 import com.tcwong.pengms.listen.LogEvent;
 import com.tcwong.pengms.utils.ApplicationPublishUtil;
@@ -94,6 +95,15 @@ public class ControllerAspect {
         }
     }
 
+    /**
+     * Description 切面异常时处理
+     *
+     * @param joinPoint 切入点
+     * @param throwable 异常
+     * @return
+     * @author tcwong
+     * @date 2020/9/1
+     */
     @AfterThrowing(pointcut = "pointcut()",throwing = "throwable")
     public void AfterThrowing(JoinPoint joinPoint,Throwable throwable) {
         //获取方法名
@@ -115,7 +125,7 @@ public class ControllerAspect {
                     , logFilter.description(), paramJSON, IpUtil.getIpAddr(httpServletRequest)
                     , ExceptionTypeEnum.NORMAL.getType(), "");
         } else {
-            logDTO = new LogDTO("其他", methodName, paramJSON, IpUtil.getIpAddr(httpServletRequest)
+            logDTO = new LogDTO(LogOperationType.OTHER.getDescription(), methodName, paramJSON, IpUtil.getIpAddr(httpServletRequest)
                     , ExceptionTypeEnum.EXCEPTION.getType(), throwable.getMessage());
         }
         ApplicationPublishUtil.publish(new LogEvent(logDTO));

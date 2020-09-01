@@ -35,9 +35,7 @@ public class OperateLogController {
      */
     @PostMapping("/listOperateLog")
     public WebResponse listOperateLog(@RequestBody OperateLogRequest request) {
-        WebResponse<Object> response = new WebResponse<>();
         PageInfo<OperateLog> operateLogPageInfo = operateLogService.listOperateLog(request);
-        response.setData(operateLogPageInfo);
-        return response;
+        return WebResponse.success(operateLogPageInfo);
     }
 }

@@ -2,11 +2,13 @@ package com.tcwong.pengms.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.tcwong.pengms.constant.ExceptionTypeEnum;
 import com.tcwong.pengms.dao.OperateLogMapper;
 import com.tcwong.pengms.dto.OperateLogRequest;
 import com.tcwong.pengms.model.OperateLog;
 import com.tcwong.pengms.model.example.OperateLogExample;
 import com.tcwong.pengms.service.OperateLogService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +45,21 @@ public class OperateLogServiceImpl implements OperateLogService {
     public PageInfo<OperateLog> listOperateLog(OperateLogRequest request) {
         PageHelper.startPage(request.getPageNum(), request.getPageSize());
         OperateLogExample operateLogExample = new OperateLogExample();
+        OperateLogExample.Criteria criteria = operateLogExample.createCriteria();
+        String operationType = request.getOperationType();
+        Byte exceptionFlag = request.getExceptionFlag();
+        String paramsKeyWord = request.getParamsKeyWord();
+        if (StringUtils.isNotBlank(operationType)) {
+            criteria.andOperationTypeEqualTo(operationType);
+        }
+        if (StringUtils.isNotBlank(paramsKeyWord)) {
+            paramsKeyWord = "%" + paramsKeyWord + "%";
+            criteria.andParamsLike(paramsKeyWord);
+        }
+        if (ExceptionTypeEnum.NORMAL.getType().equals(exceptionFlag)
+                || ExceptionTypeEnum.EXCEPTION.getType().equals(exceptionFlag)) {
+            criteria.andExceptionFlagEqualTo(exceptionFlag);
+        }
         List<OperateLog> operateLogs = operateLogMapper.selectByExample(operateLogExample);
         return new PageInfo<>(operateLogs);
     }

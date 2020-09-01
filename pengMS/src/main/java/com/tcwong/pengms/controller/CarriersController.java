@@ -60,7 +60,7 @@ public class CarriersController  {
                                     Integer finishedstate){
         WebPageResponse pageResponse = carriersService.getAllByPage(page, size, sendcompany, receivecompany, finishedstate);
         if (pageResponse != null) {
-            return WebResponse.success(pageResponse, "查询成功");
+            return WebResponse.success(pageResponse);
         }
         return WebResponse.failed("查询失败");
     }

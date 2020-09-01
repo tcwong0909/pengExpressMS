@@ -11,7 +11,8 @@ public enum LogOperationType {
     LOGIN("登录"),
     ADD("添加数据"),
     DELETE("删除数据"),
-    UPDATE("更新数据");
+    UPDATE("更新数据"),
+    OTHER("其他");
 
     private String description;
 

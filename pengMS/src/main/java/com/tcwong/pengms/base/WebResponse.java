@@ -1,8 +1,13 @@
 package com.tcwong.pengms.base;
 
+import com.tcwong.pengms.utils.LocaleMessageUtil;
+
 /**
- * 通用返回对象
- * @param <T>
+ * Description 同意response相应
+ *
+ * @author tcwong
+ * @date 2020/9/1
+ * Since 1.8
  */
 public class WebResponse<T> {
 
@@ -33,7 +38,7 @@ public class WebResponse<T> {
      * @return
      */
     public static <T> WebResponse<T> success (T data){
-        return  new WebResponse<T>( ResultCode.SUCCESS.getCode(),ResultCode.SUCCESS.getMessage(),data);
+        return  new WebResponse<T>( "0000", LocaleMessageUtil.getMessage("0000"),data);
     }
 
     /**
@@ -44,27 +49,32 @@ public class WebResponse<T> {
      * @return
      */
     public static <T> WebResponse<T> success (T data,String message){
-        return  new WebResponse<T>( ResultCode.SUCCESS.getCode(),message,data);
+        return  new WebResponse<T>( "0000",message,data);
     }
 
     /**
-     * 失败返回结果
-     * @param errorCode
-     * @param <T>
+     * Description 异常信息
+     *
+     * @param errorCode 错误码
      * @return
+     * @author tcwong
+     * @date 2020/9/1
      */
-    public static <T> WebResponse<T> failed (IErrorCode errorCode){
-        return new WebResponse<T>( errorCode.getCode(),errorCode.getMessage(),null);
+    public static <T> WebResponse<T> failed (String errorCode){
+        return new WebResponse<T>( errorCode,LocaleMessageUtil.getMessage(errorCode),null);
     }
 
     /**
-     * 失败返回结果
-     * @param message
-     * @param <T>
+     * Description
+     *
+     * @param errorCode 错误码
+     * @param data 异常信息
      * @return
+     * @author tcwong
+     * @date 2020/9/1
      */
-    public static <T> WebResponse<T> failed (String message){
-        return new WebResponse<T>( ResultCode.FAILED.getCode(),message,null);
+    public static <T> WebResponse<T> failed (String errorCode,T data){
+        return new WebResponse<T>( errorCode,LocaleMessageUtil.getMessage(errorCode),data);
     }
 
     /**
@@ -73,46 +83,7 @@ public class WebResponse<T> {
      * @return
      */
     public static <T> WebResponse<T> failed(){
-        return failed(ResultCode.FAILED);
-    }
-
-    /**
-     * 参数验证失败返回结果
-     * @param <T>
-     * @return
-     */
-    public static <T> WebResponse<T> validateFailed(){
-        return failed(ResultCode.VALIDATE_FAILED);
-    }
-
-    /**
-     * 参数验证失败返回结果
-     * @param message
-     * @param <T>
-     * @return
-     */
-    public static <T> WebResponse<T> validateFailed(String message){
-        return new WebResponse<T>(ResultCode.VALIDATE_FAILED.getCode(),message,null);
-    }
-
-    /**
-     * 未登录返回结果
-     * @param data
-     * @param <T>
-     * @return
-     */
-    public static <T> WebResponse<T> unauthorized(T data){
-        return new WebResponse<T>(ResultCode.UNAUTHORIZED.getCode(),ResultCode.UNAUTHORIZED.getMessage(),data);
-    }
-
-    /**
-     * 未授权返回结果
-     * @param data
-     * @param <T>
-     * @return
-     */
-    public static <T> WebResponse<T> forbidden(T data){
-        return new WebResponse<T>(ResultCode.FORBIDDEN.getCode(),ResultCode.FORBIDDEN.getMessage(),data);
+        return failed("9999");
     }
 
     public String getCode() {
