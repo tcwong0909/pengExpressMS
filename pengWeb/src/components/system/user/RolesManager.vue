@@ -28,9 +28,9 @@
           border
           style="width: 100%">
           <el-table-column
-            prop="roleid"
-            label="编号"
-            width="50">
+            type="index"
+            width="50"
+            label="序号">
           </el-table-column>
           <el-table-column
             prop="rolename"

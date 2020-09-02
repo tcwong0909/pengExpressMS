@@ -15,7 +15,7 @@
       </el-row>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button type="primary" @click="editPassword" disabled="false">修改密码</el-button>
+      <el-button type="primary" @click="editPassword" :disabled="true">修改密码</el-button>
     </div>
   </div>
 </template>

@@ -40,14 +40,16 @@
         </el-form>
       </el-card>
     </div>
-    <el-card shadow="never" body-style="padding:0;padding-top:1px">
+    <el-card shadow="never"  body-style="padding:0;padding-top:1px">
       <div style="margin-top: 5px;">
         <el-table
           :data="systemLogs"
           border
+          fit="false"
           style="width: 100%">
           <el-table-column
             type="index"
+            width="50"
             label="序号">
           </el-table-column>
           <el-table-column
@@ -92,11 +94,13 @@
           <el-table-column
             prop="params"
             label="操作内容"
-            width="600">
+            show-overflow-tooltip="true"
+            width="400">
           </el-table-column>
           <el-table-column
             prop="exceptionError"
             width="800"
+            show-overflow-tooltip="true"
             label="异常信息">
           </el-table-column>
         </el-table>

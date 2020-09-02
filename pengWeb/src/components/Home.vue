@@ -7,7 +7,7 @@
           </div>
           <el-dropdown  @command="handleCommand" >
             <span class="el-dropdown-link">
-              {{user.account}}<i class="el-icon-arrow-down el-icon--right"></i>
+              {{user.userAccount}}<i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown" >
               <el-dropdown-item command="myMessage">个人信息</el-dropdown-item>
@@ -21,7 +21,7 @@
             <el-menu
               @select="handleSelect"
               class="el-menu-vertical-demo">
-              <div v-for="(item,index) in routes" :key="index" v-if="!item.hidden && item.meta.rolesId.indexOf(user.fkRoleid)!==-1">
+              <div v-for="(item,index) in routes" :key="index" v-if="!item.hidden && item.meta.rolesId.indexOf(user.roleId)!==-1">
                 <el-submenu :index="String(index)">
                   <template slot="title">
                     <i :class="item.icon"></i>

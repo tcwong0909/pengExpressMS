@@ -5,22 +5,21 @@
         <el-form>
           <tr>
             <td style="width: 16vw">
-              <el-input placeholder="请输入内容" suffix-icon="el-icon-search" v-model="searchUser.username">
+              <el-input placeholder="请输入姓名" suffix-icon="el-icon-search" v-model="userRequest.username">
                 <template slot="prepend">用户姓名</template>
               </el-input>
             </td >
             <td style="width: 16vw">
-              <el-input placeholder="请输入内容" suffix-icon="el-icon-search" v-model="searchUser.account">
+              <el-input placeholder="请输入账号" suffix-icon="el-icon-search" v-model="userRequest.userAccount">
                 <template slot="prepend" >用户账号</template>
               </el-input>
             </td>
             <td style="padding-left: 10px">
               <el-tag>性别</el-tag>
               <template>
-                <el-select v-model="searchUser.sex" placeholder="请选择">
-                  <el-option label="全部" :value="''"></el-option>
+                <el-select v-model="userRequest.sex" placeholder="请选择">
                   <el-option label="男" :value="1"></el-option>
-                  <el-option label="女" :value="2"></el-option>
+                  <el-option label="女" :value="0"></el-option>
                 </el-select>
               </template>
             </td>
@@ -28,10 +27,9 @@
               <el-tag>角色</el-tag>
               <template >
                 <el-select
-                  v-model="searchUser.fkRoleid"
+                  v-model="userRequest.roleId"
                   @visible-change="selectSearchChanges"
                   placeholder="请选择">
-                  <el-option label="全部" :value="''"></el-option>
                   <el-option
                     v-for="role in roles"
                     :key="role.roleid"
@@ -53,8 +51,8 @@
     </div>
     <el-card shadow="never" body-style="padding:0;padding-top:1px">
       <div  >
-        <el-button type="primary" icon="el-icon-plus" size="small" @click="showDialog('add')" disabled="false">添加用户</el-button>
-        <el-button type="danger" icon="el-icon-minus" size="small" @click="multiDelete" :disabled="multipleSelection.length===0" disabled="false">批量删除</el-button>
+        <el-button type="primary" icon="el-icon-plus" size="small" @click="showDialog('add')" :disabled="true">添加用户</el-button>
+        <el-button type="danger" icon="el-icon-minus" size="small" @click="multiDelete" :disabled="multipleSelection.length===0 || true">批量删除</el-button>
       </div>
       <div>
         <el-dialog :title="dialogTitle" :visible.sync="dialogFormVisible">
@@ -100,7 +98,7 @@
           <el-form :model="user">
             <el-row style="margin-bottom: 10px">
               <el-tag style="width: 6vw">用户账号</el-tag>
-              <el-input  disabled="true" v-model="user.account" style="width: 10vw" placeholder="吨"></el-input>
+              <el-input  :disabled="true" v-model="user.account" style="width: 10vw" placeholder="吨"></el-input>
             </el-row>
             <el-row style="margin-bottom: 6px">
               <el-tag style="width: 6vw">要绑定角色</el-tag>
@@ -124,18 +122,18 @@
       </div>
       <div style="margin-top: 5px;">
         <el-table
-          :data="users"
+          :data="userList"
           border
           style="width: 100%"
           @selection-change="handleSelectionChange">
           <el-table-column
             type="selection"
-            width="35">
+            width="50">
           </el-table-column>
           <el-table-column
-            prop="userid"
-            label="编号"
-            width="50">
+            type="index"
+            width="50"
+            label="序号">
           </el-table-column>
           <el-table-column
             prop="username"
@@ -147,46 +145,36 @@
             label="性别">
             <template slot-scope="scope">
               <el-tag v-if="scope.row.sex===1" type="success">男</el-tag>
-              <el-tag v-else-if="scope.row.sex===2" >女</el-tag>
+              <el-tag v-else-if="scope.row.sex===0" >女</el-tag>
               <el-tag v-else type="warning">未知</el-tag>
             </template>
           </el-table-column>
           <el-table-column
-            prop="account"
+            prop="userAccount"
             width="80"
             label="用户账号">
           </el-table-column>
           <el-table-column
-            prop="phone"
-            width="120"
-            label="联系电话">
-          </el-table-column>
-          <el-table-column
-            prop="email"
-            width="200"
-            label="邮箱">
-          </el-table-column>
-          <el-table-column
-            prop="role.rolename"
+            prop="roleName"
             label="角色"
             width="120">
           </el-table-column>
           <el-table-column
-            prop="checkintime"
+            prop="createTime"
             label="创建时间"
-            width="110">
+            width="180">
           </el-table-column>
           <el-table-column
-            prop="altertime"
+            prop="updateTime"
             label="修改时间"
-            width="110">
+            width="180">
           </el-table-column>
           <el-table-column
             label="操作">
             <template slot-scope="scope">
-              <el-button type="primary" size="mini" @click="showDialog(scope.row)" disabled="false">编辑</el-button>
-              <el-button type="primary" size="mini" @click="bindRole(scope.row)" disabled="false">绑定角色</el-button>
-              <el-button type="danger" size="mini" @click="deleteById(scope.row.userid)" disabled="false">删除</el-button>
+              <el-button type="primary" size="mini" @click="showDialog(scope.row)" :disabled="true">编辑</el-button>
+              <el-button type="primary" size="mini" @click="bindRole(scope.row)" :disabled="true">绑定角色</el-button>
+              <el-button type="danger" size="mini" @click="deleteById(scope.row.id)" :disabled="true">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -222,12 +210,6 @@
         bindDialog:false,
         dialogFormVisible:false,
         dialogTitle:'',
-        searchUser:{
-          username:'',
-          account:'',
-          fkRoleid:'',
-          sex:''
-        },
         user:{
           userid:'',
           username:'',
@@ -237,21 +219,13 @@
           email:'',
           fkRoleid:''
         },
-        users:[],
-        roles:[]
-      }
-    },
-    watch:{
-      searchUser:{
-        handler(){
-          this.doSearch();
-        },
-        immediate:true,
-        deep:true
+        roles:[],
+        userRequest:{},
+        userList:[]
       }
     },
     mounted(){
-      this.loadUsers();
+      this.getUserList();
     },
     methods:{
       toBind(){
@@ -268,10 +242,10 @@
         })
       },
       resetSearch(){
-        this.searchUser={
+        this.userRequest={
           username:'',
-          account:'',
-          fkRoleid:'',
+          userAccount:'',
+          roleId:'',
           sex:''
         }
       },
@@ -285,8 +259,10 @@
         }
       },
 
+      doSearch() {
+        this.getUserList();
+      },
       addUser(){
-
         if (this.user.userid) {
           this.putRequest('/pengms/user/edit',this.user).then(res=>{
             if (res){
@@ -312,24 +288,15 @@
           }
         })
       },
-      loadUsers(){
-        this.postRequest("/pengms/user/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+
-          "&account="+this.searchUser.account+"&username="+this.searchUser.username+"&sex="+this.searchUser.sex+"&fkRoleid="+this.searchUser.fkRoleid).then(res=>{
-          if (res){
-            this.loading=false;
-            this.users=res.data.data;
-            this.total = res.data.total;
-          }
-        })
-      },
-      doSearch(){
-        let page = 1;
-        let size = 10;
-        this.postRequest("/pengms/user/getAllByPage?page="+page+"&size="+size+
-          "&account="+this.searchUser.account+"&username="+this.searchUser.username+"&sex="+this.searchUser.sex+"&fkRoleid="+this.searchUser.fkRoleid).then(res=>{
-          if (res){
-            this.users=res.data.data;
-            this.total = res.data.total;
+      getUserList() {
+        const request = this.userRequest;
+        request.pageNum = this.currentPage;
+        request.pageSize = this.pageSize;
+        this.postRequest("/pengms/user/listUsers",request).then(result => {
+          if (result.code === "0000") {
+            this.loading = false;
+            this.total = result.data.total;
+            this.userList = result.data.list;
           }
         })
       },
@@ -356,7 +323,7 @@
           ids  += data.userid+',';
         });
         this.deleteByIds(ids);
-        this.loadUsers();
+        this.getUserList();
       },
 
       deleteByIds(data){
@@ -367,7 +334,7 @@
         }).then(() => {
           this.deleteRequest("/pengms/user/delete/"+data).then(res=>{
               if (res){
-                this.loadUsers();
+                this.getUserList();
               }
             }
           );
