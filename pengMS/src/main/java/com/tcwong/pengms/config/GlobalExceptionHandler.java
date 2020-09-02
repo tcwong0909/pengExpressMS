@@ -49,6 +49,7 @@ public class GlobalExceptionHandler  {
     @ResponseBody
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public WebResponse exceptionHandler(Exception e){
+        e.printStackTrace();
         LogUtil.error("异常信息:{}",e.getMessage());
         return WebResponse.failed("9999");
     }

@@ -1,8 +1,11 @@
 package com.tcwong.pengms.service;
 
 
-import com.tcwong.pengms.model.User;
+import com.github.pagehelper.PageInfo;
 import com.tcwong.pengms.base.WebPageResponse;
+import com.tcwong.pengms.dto.UserRequest;
+import com.tcwong.pengms.dto.UserVO;
+import com.tcwong.pengms.model.User;
 
 public interface UserService {
     int addUser(User user);
@@ -11,7 +14,15 @@ public interface UserService {
 
     int editUser(User user);
 
-    WebPageResponse getAllByPage(Integer page, Integer size, String username, String account, Integer sex, Integer fkRoleid);
-
     int editPassword(User user);
+
+    /**
+     * Description 查询用户列表
+     *
+     * @param request 用户管理请求
+     * @return
+     * @author tcwong
+     * @date 2020/9/2
+     */
+    PageInfo<UserVO> listUsers(UserRequest request);
 }

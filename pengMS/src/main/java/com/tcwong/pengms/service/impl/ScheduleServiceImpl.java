@@ -1,16 +1,14 @@
 package com.tcwong.pengms.service.impl;
 
 
+import com.tcwong.pengms.base.WebPageResponse;
 import com.tcwong.pengms.dao.CarriersMapper;
 import com.tcwong.pengms.dao.SchedulingMapper;
 import com.tcwong.pengms.dao.TruckMapper;
 import com.tcwong.pengms.model.Carriers;
 import com.tcwong.pengms.model.Scheduling;
 import com.tcwong.pengms.model.Truck;
-import com.tcwong.pengms.model.User;
 import com.tcwong.pengms.service.ScheduleService;
-import com.tcwong.pengms.base.WebPageResponse;
-import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -29,7 +27,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public int dispatchById(Scheduling scheduling) {
-        scheduling.setFkUserid(((User)(SecurityUtils.getSubject().getSession().getAttribute("user"))).getUserid());
+//        scheduling.setFkUserid(((User)(SecurityUtils.getSubject().getSession().getAttribute("user"))).getUserid());
         scheduling.setCheckintime(new Date());
         scheduling.setAltertime(new Date());
         schedulingMapper.insert(scheduling);

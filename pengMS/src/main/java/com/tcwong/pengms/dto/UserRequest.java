@@ -1,5 +1,6 @@
 package com.tcwong.pengms.dto;
 
+import com.tcwong.pengms.base.BaseRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,28 +9,21 @@ import lombok.NoArgsConstructor;
  * Description
  *
  * @author tcwong
- * @date 2020/8/24
+ * @date 2020/9/2
  * Since 1.8
  */
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class LogDTO {
+public class UserRequest extends BaseRequest {
 
-    private String operationType;
-
-    private String description;
-
-    private String params;
-
-    private String ip;
-
-    private Byte exceptionFlag;
-
-    private String exceptionError;
+    private String username;
 
     private String userAccount;
 
-    private String username;
+    private Byte sex;
+
+    private Integer roleId;
 
 }

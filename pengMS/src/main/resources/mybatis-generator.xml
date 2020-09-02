@@ -5,6 +5,7 @@
 
 <generatorConfiguration>
     <context id="mybatisGenerator" targetRuntime="MyBatis3">
+        <property name="javaFileEncoding" value="UTF-8"/>
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
         <commentGenerator>
@@ -50,7 +51,7 @@
         </javaClientGenerator>
 
         <!-- 指定数据库表 -->
-        <table tableName="peng_operatelog" domainObjectName="OperateLog"
+        <table tableName="peng_user" domainObjectName="User"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true" />

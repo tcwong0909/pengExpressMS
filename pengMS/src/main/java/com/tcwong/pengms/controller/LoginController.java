@@ -6,8 +6,6 @@ import com.tcwong.pengms.constant.LogOperationType;
 import com.tcwong.pengms.dto.LoginRequest;
 import com.tcwong.pengms.model.User;
 import com.tcwong.pengms.service.LoginService;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,8 +32,6 @@ public class LoginController {
 
     @PostMapping("/doLogout")
     public WebResponse logout() {
-        Session session = SecurityUtils.getSubject().getSession();
-        session.stop();
         return WebResponse.success("注销成功");
     }
 }

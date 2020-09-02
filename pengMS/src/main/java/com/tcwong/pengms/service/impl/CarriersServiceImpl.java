@@ -1,13 +1,11 @@
 package com.tcwong.pengms.service.impl;
 
+import com.tcwong.pengms.base.WebPageResponse;
 import com.tcwong.pengms.dao.CarriersMapper;
 import com.tcwong.pengms.model.Carriers;
 import com.tcwong.pengms.model.Goods;
-import com.tcwong.pengms.model.User;
 import com.tcwong.pengms.service.CarriersService;
 import com.tcwong.pengms.service.GoodsService;
-import com.tcwong.pengms.base.WebPageResponse;
-import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,8 +19,8 @@ public class CarriersServiceImpl implements CarriersService {
     private GoodsService goodsService;
     @Override
     public int addCarrier(Carriers carriers) {
-        Integer userid = ((User) (SecurityUtils.getSubject().getSession().getAttribute("user"))).getUserid();
-        carriers.setFkUserid(userid);
+//        Integer userid = ((User) (SecurityUtils.getSubject().getSession().getAttribute("user"))).getUserid();
+//        carriers.setFkUserid(userid);
         Goods goods = carriers.getGoods();
         carriers.setAltertime(new Date());
         carriers.setCheckintime(new Date());

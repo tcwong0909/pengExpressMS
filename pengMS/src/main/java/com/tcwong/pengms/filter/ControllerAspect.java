@@ -4,10 +4,13 @@ import com.alibaba.fastjson.JSONObject;
 import com.tcwong.pengms.base.LogFilter;
 import com.tcwong.pengms.constant.ExceptionTypeEnum;
 import com.tcwong.pengms.constant.LogOperationType;
+import com.tcwong.pengms.constant.SessionConstant;
 import com.tcwong.pengms.dto.LogDTO;
 import com.tcwong.pengms.listen.LogEvent;
+import com.tcwong.pengms.model.User;
 import com.tcwong.pengms.utils.ApplicationPublishUtil;
 import com.tcwong.pengms.utils.IpUtil;
+import com.tcwong.pengms.utils.SessionUtil;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.*;
@@ -89,9 +92,12 @@ public class ControllerAspect {
                 .filter(method -> method.getParameterCount() == args.length).findFirst().get();
         LogFilter logFilter = targetMethod.getAnnotation(LogFilter.class);
         if (logFilter != null) {
-            ApplicationPublishUtil.publish(new LogEvent(new LogDTO(logFilter.logOperationType().getDescription()
-                    ,logFilter.description(),paramJSON, IpUtil.getIpAddr(httpServletRequest)
-                    , ExceptionTypeEnum.NORMAL.getType(),"")));
+            User user = SessionUtil.getAttribute(SessionConstant.SESSION_USER, User.class);
+            LogDTO logDTO = new LogDTO(logFilter.logOperationType().getDescription()
+                    , logFilter.description(), paramJSON, IpUtil.getIpAddr(httpServletRequest)
+                    , ExceptionTypeEnum.NORMAL.getType(), "",user.getUserAccount()
+                    ,user.getUsername());
+            ApplicationPublishUtil.publish(new LogEvent(logDTO));
         }
     }
 
@@ -119,14 +125,15 @@ public class ControllerAspect {
         Method targetMethod = Arrays.stream(methods).filter(method -> method.getName().equals(methodName))
                 .filter(method -> method.getParameterCount() == args.length).findFirst().get();
         LogFilter logFilter = targetMethod.getAnnotation(LogFilter.class);
-        LogDTO logDTO = null;
+        LogDTO logDTO;
+        User user = SessionUtil.getAttribute(SessionConstant.SESSION_USER, User.class);
         if (logFilter != null) {
             logDTO = new LogDTO(logFilter.logOperationType().getDescription()
                     , logFilter.description(), paramJSON, IpUtil.getIpAddr(httpServletRequest)
-                    , ExceptionTypeEnum.NORMAL.getType(), "");
+                    , ExceptionTypeEnum.NORMAL.getType(), "",user.getUserAccount(),user.getUsername());
         } else {
             logDTO = new LogDTO(LogOperationType.OTHER.getDescription(), methodName, paramJSON, IpUtil.getIpAddr(httpServletRequest)
-                    , ExceptionTypeEnum.EXCEPTION.getType(), throwable.getMessage());
+                    , ExceptionTypeEnum.EXCEPTION.getType(), throwable.getMessage(),user.getUserAccount(),user.getUsername());
         }
         ApplicationPublishUtil.publish(new LogEvent(logDTO));
     }

@@ -4,74 +4,32 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class User implements Serializable {
-    private Integer userid;
+    private Integer id;
 
     private String username;
 
-    private Integer sex;
-
-    private String account;
+    private String userAccount;
 
     private String password;
 
-    private String oldPassword;
+    private Byte sex;
 
-    private String phone;
+    private Integer roleId;
 
-    private String email;
+    private Date updateTime;
 
-    private Integer fkRoleid;
+    private Date createTime;
 
-    private Date checkintime;
-
-    private Integer isdelete;
-
-    private Date altertime;
-
-    private Role role;
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userid=" + userid +
-                ", username='" + username + '\'' +
-                ", sex=" + sex +
-                ", account='" + account + '\'' +
-                ", password='" + password + '\'' +
-                ", oldPassword='" + oldPassword + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", fkRoleid=" + fkRoleid +
-                ", checkintime=" + checkintime +
-                ", isdelete=" + isdelete +
-                ", altertime=" + altertime +
-                ", role=" + role +
-                '}';
-    }
-
-    public String getOldPassword() {
-        return oldPassword;
-    }
-
-    public void setOldPassword(String oldPassword) {
-        this.oldPassword = oldPassword;
-    }
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
+    private Byte cancelFlag;
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getUserid() {
-        return userid;
+    public Integer getId() {
+        return id;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -79,23 +37,15 @@ public class User implements Serializable {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username = username == null ? null : username.trim();
     }
 
-    public Integer getSex() {
-        return sex;
+    public String getUserAccount() {
+        return userAccount;
     }
 
-    public void setSex(Integer sex) {
-        this.sex = sex;
-    }
-
-    public String getAccount() {
-        return account;
-    }
-
-    public void setAccount(String account) {
-        this.account = account;
+    public void setUserAccount(String userAccount) {
+        this.userAccount = userAccount == null ? null : userAccount.trim();
     }
 
     public String getPassword() {
@@ -103,55 +53,65 @@ public class User implements Serializable {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password == null ? null : password.trim();
     }
 
-    public String getPhone() {
-        return phone;
+    public Byte getSex() {
+        return sex;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setSex(Byte sex) {
+        this.sex = sex;
     }
 
-    public String getEmail() {
-        return email;
+    public Integer getRoleId() {
+        return roleId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 
-    public Integer getFkRoleid() {
-        return fkRoleid;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setFkRoleid(Integer fkRoleid) {
-        this.fkRoleid = fkRoleid;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
-    public Date getCheckintime() {
-        return checkintime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCheckintime(Date checkintime) {
-        this.checkintime = checkintime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Integer getIsdelete() {
-        return isdelete;
+    public Byte getCancelFlag() {
+        return cancelFlag;
     }
 
-    public void setIsdelete(Integer isdelete) {
-        this.isdelete = isdelete;
+    public void setCancelFlag(Byte cancelFlag) {
+        this.cancelFlag = cancelFlag;
     }
 
-    public Date getAltertime() {
-        return altertime;
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", username=").append(username);
+        sb.append(", userAccount=").append(userAccount);
+        sb.append(", password=").append(password);
+        sb.append(", sex=").append(sex);
+        sb.append(", roleId=").append(roleId);
+        sb.append(", updateTime=").append(updateTime);
+        sb.append(", createTime=").append(createTime);
+        sb.append(", cancelFlag=").append(cancelFlag);
+        sb.append("]");
+        return sb.toString();
     }
-
-    public void setAltertime(Date altertime) {
-        this.altertime = altertime;
-    }
-
 }
