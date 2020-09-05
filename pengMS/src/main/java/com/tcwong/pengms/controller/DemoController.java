@@ -1,16 +1,10 @@
 package com.tcwong.pengms.controller;
 
-import com.tcwong.pengms.base.BaseException;
 import com.tcwong.pengms.base.LogFilter;
 import com.tcwong.pengms.constant.LogOperationType;
 import com.tcwong.pengms.utils.LocaleMessageUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Locale;
 
 /**
  * Description
@@ -21,9 +15,6 @@ import java.util.Locale;
  */
 @RestController
 public class DemoController {
-
-    @Autowired
-    private MessageSource messageSource;
 
     @GetMapping("/test1")
     public Object test1() {

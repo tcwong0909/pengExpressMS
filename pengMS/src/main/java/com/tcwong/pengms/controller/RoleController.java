@@ -1,8 +1,10 @@
 package com.tcwong.pengms.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.tcwong.pengms.base.LogFilter;
 import com.tcwong.pengms.base.WebResponse;
 import com.tcwong.pengms.constant.LogOperationType;
+import com.tcwong.pengms.dto.RoleRequest;
 import com.tcwong.pengms.model.Role;
 import com.tcwong.pengms.service.RoleService;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +13,11 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * 角色
+ * Description 角色管理
+ *
+ * @author tcwong
+ * @date 2020/9/3
+ * Since 1.8
  */
 @RestController
 @RequestMapping("/pengms/role/")
@@ -19,6 +25,22 @@ public class RoleController {
 
     @Resource
     private RoleService roleService;
+
+
+    /**
+     * Description 获取用户列表
+     *
+     * @param request 角色统一请求
+     * @return
+     * @author tcwong
+     * @date 2020/9/3
+     */
+    @PostMapping("/listRoles")
+    public WebResponse listRoles(@RequestBody RoleRequest request) {
+        PageInfo<Role> rolePageInfo = roleService.listRoles(request);
+        return WebResponse.success(rolePageInfo);
+
+    }
 
     @LogFilter(description = "角色添加",logOperationType = LogOperationType.ADD)
     @PostMapping("/add")

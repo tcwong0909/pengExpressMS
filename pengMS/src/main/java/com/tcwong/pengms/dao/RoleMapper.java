@@ -1,18 +1,18 @@
 package com.tcwong.pengms.dao;
 
-
 import com.tcwong.pengms.model.Role;
 import com.tcwong.pengms.model.example.RoleExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface RoleMapper {
     int countByExample(RoleExample example);
 
     int deleteByExample(RoleExample example);
 
-    int deleteByPrimaryKey(Integer roleid);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(Role record);
 
@@ -20,7 +20,7 @@ public interface RoleMapper {
 
     List<Role> selectByExample(RoleExample example);
 
-    Role selectByPrimaryKey(Integer roleid);
+    Role selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") Role record, @Param("example") RoleExample example);
 

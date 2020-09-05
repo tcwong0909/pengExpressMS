@@ -1,6 +1,5 @@
 package com.tcwong.pengms.dto;
 
-import com.tcwong.pengms.model.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

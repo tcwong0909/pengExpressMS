@@ -51,7 +51,7 @@
         </javaClientGenerator>
 
         <!-- 指定数据库表 -->
-        <table tableName="peng_user" domainObjectName="User"
+        <table tableName="peng_role" domainObjectName="Role"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true" />

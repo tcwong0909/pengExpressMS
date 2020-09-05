@@ -81,7 +81,7 @@ public class UserServiceImpl implements UserService {
             BeanUtils.copyProperties(userDO,userVO);
             Role role = userDO.getRole();
             if (role != null) {
-                userVO.setRoleName(role.getRolename());
+                userVO.setRoleName(role.getName());
             }
             userVOS.add(userVO);
         });
