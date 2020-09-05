@@ -25,10 +25,10 @@
                 <el-submenu :index="String(index)">
                   <template slot="title">
                     <i :class="item.icon"></i>
-                    <span>{{item.name}}</span>
+                    <span>{{item.label}}</span>
                   </template>
                   <div v-for="(citem,cindex) in item.children" :key="cindex" >
-                    <el-menu-item :index="citem.path" >{{citem.name}}</el-menu-item>
+                    <el-menu-item :index="citem.path" >{{citem.label}}</el-menu-item>
                   </div>
                 </el-submenu>
               </div>
@@ -47,7 +47,7 @@
             </div>
             <el-breadcrumb separator="/" v-show="this.$router.currentRoute.path !== '/home'">
               <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-              <el-breadcrumb-item >{{this.$router.currentRoute.name}}</el-breadcrumb-item>
+              <el-breadcrumb-item >{{this.$router.currentRoute.label}}</el-breadcrumb-item>
             </el-breadcrumb>
             <router-view/>
           </el-main>

@@ -12,8 +12,8 @@
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="cancel_flag" property="cancelFlag" jdbcType="TINYINT" />
     <association property="role" javaType="com.tcwong.pengms.model.Role">
-      <id column="roleID" jdbcType="INTEGER" property="roleid" />
-      <result column="roleName" jdbcType="VARCHAR" property="rolename" />
+      <id column="role_id" property="id" jdbcType="INTEGER" />
+      <result column="role_name" property="name" jdbcType="VARCHAR" />
     </association>
   </resultMap>
 
@@ -21,9 +21,10 @@
     id, username, user_account, password, sex, role_id, update_time, create_time, cancel_flag
   </sql>
   <select id="listUsers" resultMap="BaseResultMap">
-    select id, username, user_account, password, sex, role_id, update_time, create_time, cancel_flag,roleID, roleName
+    select u.id, u.username, u.user_account, u.password, u.sex, u.role_id, u.update_time, u.create_time, u.cancel_flag
+    ,r.id role_id ,r.name role_name
     from peng_user u
-    left join role r on u.role_id = r.roleID
+    left join peng_role r on u.role_id = r.id
     <where>
       <if test="username !=null and username != '' ">
         and u.username like concat('%', #{username } ,'%')

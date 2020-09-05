@@ -24,7 +24,7 @@
       </div>
       <div style="margin-top: 5px;">
         <el-table
-          :data="roles"
+          :data="roleList"
           border
           style="width: 100%">
           <el-table-column
@@ -33,23 +33,46 @@
             label="序号">
           </el-table-column>
           <el-table-column
-            prop="rolename"
+            prop="name"
             label="角色名称"
             width="110">
           </el-table-column>
           <el-table-column
-            prop="rolepurview"
-            label="角色权限"
+            prop="description"
+            label="角色描述"
+            width="200">
+          </el-table-column>
+          <el-table-column
+            prop="editorAccount"
+            label="编辑人"
             width="110">
+          </el-table-column>
+          <el-table-column
+            prop="updateTime"
+            label="编辑时间"
+            width="180">
           </el-table-column>
           <el-table-column
             label="操作">
             <template slot-scope="scope">
               <el-button type="primary" size="mini" @click="showDialog(scope.row)">编辑</el-button>
-              <el-button type="danger" size="mini" @click="deleteById(scope.row.roleid)">删除</el-button>
+              <el-button type="primary" size="mini" @click="showDialog(scope.row)">权限管理</el-button>
+              <el-button type="danger" size="mini" @click="deleteById(scope.row.id)">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
+      </div>
+      <div style="display: flex;justify-content: flex-end;padding: 15px">
+        <el-pagination
+          background
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page="currentPage"
+          layout="total, sizes, prev, pager, next, jumper"
+          :page-sizes="[5, 10, 15, 20]"
+          :page-size="pageSize"
+          :total="total">
+        </el-pagination>
       </div>
     </el-card>
 
@@ -62,19 +85,32 @@
     data(){
       return{
         loading:true,
+        total:0,
+        pageSize:10,
+        currentPage:1,
         dialogFormVisible:false,
         dialogTitle:'',
         role:{
           rolename:'',
           rolepurview:''
         },
-        roles:[]
+        roleRequest:{},
+        roleList:[],
       }
     },
     mounted(){
-      this.loadRoles();
+      this.getRoleList();
     },
     methods:{
+
+      handleSizeChange(size){
+        this.pageSize = size;
+        this.getRoleList();
+      },
+      handleCurrentChange(page){
+        this.currentPage = page;
+        this.getRoleList();
+      },
 
       initRole(){
         this.role={
@@ -89,7 +125,7 @@
             if (res){
               this.dialogFormVisible = false;
               this.initRole();
-              this.loadRoles();
+              this.getRoleList();
             }
           });
           return;
@@ -98,17 +134,21 @@
           if (res){
             this.dialogFormVisible = false;
             this.initRole();
-            this.loadRoles();
+            this.getRoleList();
           }
         })
       },
-      loadRoles(){
-        this.getRequest("/pengms/role/getAll").then(res=>{
-          if (res){
-            this.loading=false;
-            this.roles=res.data;
+      getRoleList() {
+        const roleRequest = this.roleRequest;
+        roleRequest.pageNum = this.currentPage;
+        roleRequest.pageSize = this.pageSize;
+        this.postRequest("/pengms/role/listRoles", roleRequest).then(result => {
+          if (result.code === "0000") {
+            this.loading = false;
+            this.roleList = result.data.list;
+            this.total = result.data.total;
           }
-        })
+        });
       },
       deleteById(id){
         this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
@@ -118,7 +158,7 @@
         }).then(() => {
           this.deleteRequest("/pengms/role/delete/"+id).then(res=>{
               if (res){
-                this.loadRoles()
+                this.getRoleList();
               }
             }
           );

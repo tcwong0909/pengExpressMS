@@ -25,19 +25,21 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: '登陆',
+      label: '登陆',
+      name:'login',
       hidden:true,
       component: ()=>import('@/components/Login'),
     },
     {
       path:'/home',
-      name:'首页',
+      label:'首页',
+      name:'home',
       hidden:true,
       component: ()=>import('@/components/Home'),
     },
     {
       path:'/home',
-      name:'车辆管理',
+      label:'车辆管理',
       component: ()=>import('@/components/Home'),
       icon:'el-icon-truck',
       meta:
@@ -48,24 +50,24 @@ export default new Router({
       children:[
         {
           path:'/truck',
-          name:'车辆信息维护',
+          label:'车辆信息维护',
           component: ()=>import('@/components/truck/Truck'),
         },
         {
           path:'/bindTruck',
-          name:'绑定车辆信息',
+          label:'绑定车辆信息',
           component: ()=>import('@/components/truck/BindTruck'),
         },
         {
           path:'/truckTeam',
-          name:'车队信息维护',
+          label:'车队信息维护',
           component: ()=>import('@/components/truck/TruckTeam'),
         }
       ]
     },
     {
       path:'/home',
-      name:'驾驶员管理',
+      label:'驾驶员管理',
       component: ()=>import('@/components/Home'),
       icon:'el-icon-user',
       meta:
@@ -76,13 +78,13 @@ export default new Router({
       children:[
         {
           path:'/driver',
-          name:'驾驶员信息维护',
+          label:'驾驶员信息维护',
           component: ()=>import('@/components/driver/Driver'),
         }
       ]
     }, {
       path:'/home',
-      name:'运力查询',
+      label:'运力查询',
       component: ()=>import('@/components/Home'),
       icon: 'el-icon-wind-power',
       meta:
@@ -93,17 +95,17 @@ export default new Router({
       children:[
         {
           path:'/capacity',
-          name:'运力综合查询',
+          label:'运力综合查询',
           component: ()=>import('@/components/capacity/Capacity'),
         },{
           path:'/capacityHistory',
-          name:'历史承运任务查询',
+          label:'历史承运任务查询',
           component: ()=>import('@/components/capacity/CapacityHistory'),
         }
       ]
     }, {
       path:'/home',
-      name:'运输成本核算',
+      label:'运输成本核算',
       component: ()=>import('@/components/Home'),
       meta:
         {
@@ -114,18 +116,18 @@ export default new Router({
       children:[
         {
           path:'/costMaintenance',
-          name:'车队运输成本维护',
+          label:'车队运输成本维护',
           component: ()=>import('@/components/cost/CostMaintenance'),
         },
         {
           path:'/costAccounting',
-          name:'车队运输成本核算',
+          label:'车队运输成本核算',
           component: ()=>import('@/components/cost/CostAccounting'),
         }
       ]
     }, {
       path:'/home',
-      name:'调度任务',
+      label:'调度任务',
       component: ()=>import('@/components/Home'),
       meta:
         {
@@ -136,13 +138,13 @@ export default new Router({
       children:[
         {
           path:'/schedule',
-          name:'调度承运任务',
+          label:'调度承运任务',
           component: ()=>import('@/components/schedule/Schedule'),
         }
       ]
     }, {
       path:'/home',
-      name:'承运任务管理',
+      label:'承运任务管理',
       component:()=>import('@/components/Home'),
       meta:
         {
@@ -153,18 +155,18 @@ export default new Router({
       children:[
         {
           path:'/billCreate',
-          name:'承运单开出',
+          label:'承运单开出',
           component: ()=>import('@/components/waybill/BillCreate'),
         },
         {
           path:'/billReceive',
-          name:'承运单接收',
+          label:'承运单接收',
           component: ()=>import('@/components/waybill/BillReceive'),
         }
       ]
     }, {
       path:'/home',
-      name:'系统维护',
+      label:'系统维护',
       component:()=>import('@/components/Home'),
       icon:'el-icon-s-custom',
       meta:
@@ -175,22 +177,22 @@ export default new Router({
       children:[
         {
           path:'/user',
-          name:'用户维护',
+          label:'用户维护',
           component: ()=>import('@/components/system/User'),
         },
         {
           path:'/logDic',
-          name:'日志字典',
+          label:'日志字典',
           component: ()=>import('@/components/system/LogDic'),
         },
         {
           path:'/sysLog',
-          name:'系统日志',
+          label:'系统日志',
           component: ()=>import('@/components/system/SysLog'),
         },
         {
           path:'/loginLog',
-          name:'登陆日志',
+          label:'登陆日志',
           component: ()=>import('@/components/system/LoginLog'),
         }
       ]

@@ -204,7 +204,7 @@
         loading:true,
         multipleSelection: [],
         ids:"",
-        total:null,
+        total:0,
         pageSize:10,
         currentPage:1,
         bindDialog:false,
