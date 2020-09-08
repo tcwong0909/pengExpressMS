@@ -40,6 +40,7 @@ export default new Router({
     {
       path:'/home',
       label:'车辆管理',
+      name:'truckManager',
       component: ()=>import('@/components/Home'),
       icon:'el-icon-truck',
       meta:
@@ -50,16 +51,19 @@ export default new Router({
       children:[
         {
           path:'/truck',
+          name:'truckMessage',
           label:'车辆信息维护',
           component: ()=>import('@/components/truck/Truck'),
         },
         {
           path:'/bindTruck',
+          name:'truckBind',
           label:'绑定车辆信息',
           component: ()=>import('@/components/truck/BindTruck'),
         },
         {
           path:'/truckTeam',
+          name:'truckTeamMessage',
           label:'车队信息维护',
           component: ()=>import('@/components/truck/TruckTeam'),
         }
@@ -67,6 +71,7 @@ export default new Router({
     },
     {
       path:'/home',
+      name:'driverManager',
       label:'驾驶员管理',
       component: ()=>import('@/components/Home'),
       icon:'el-icon-user',
@@ -78,6 +83,7 @@ export default new Router({
       children:[
         {
           path:'/driver',
+          name:'driverMessage',
           label:'驾驶员信息维护',
           component: ()=>import('@/components/driver/Driver'),
         }
@@ -85,6 +91,7 @@ export default new Router({
     }, {
       path:'/home',
       label:'运力查询',
+      name:'capacityManager',
       component: ()=>import('@/components/Home'),
       icon: 'el-icon-wind-power',
       meta:
@@ -95,16 +102,19 @@ export default new Router({
       children:[
         {
           path:'/capacity',
+          name:'capacityMessage',
           label:'运力综合查询',
           component: ()=>import('@/components/capacity/Capacity'),
         },{
           path:'/capacityHistory',
+          name:'capacityHistory',
           label:'历史承运任务查询',
           component: ()=>import('@/components/capacity/CapacityHistory'),
         }
       ]
     }, {
       path:'/home',
+      name:'costManager',
       label:'运输成本核算',
       component: ()=>import('@/components/Home'),
       meta:
@@ -116,17 +126,20 @@ export default new Router({
       children:[
         {
           path:'/costMaintenance',
+          name:'costMaintenance',
           label:'车队运输成本维护',
           component: ()=>import('@/components/cost/CostMaintenance'),
         },
         {
           path:'/costAccounting',
+          name:'costAccounting',
           label:'车队运输成本核算',
           component: ()=>import('@/components/cost/CostAccounting'),
         }
       ]
     }, {
       path:'/home',
+      name:'scheduleManager',
       label:'调度任务',
       component: ()=>import('@/components/Home'),
       meta:
@@ -138,12 +151,14 @@ export default new Router({
       children:[
         {
           path:'/schedule',
+          name:'scheduleMessage',
           label:'调度承运任务',
           component: ()=>import('@/components/schedule/Schedule'),
         }
       ]
     }, {
       path:'/home',
+      name:'billManager',
       label:'承运任务管理',
       component:()=>import('@/components/Home'),
       meta:
@@ -155,17 +170,20 @@ export default new Router({
       children:[
         {
           path:'/billCreate',
+          name:'billCreate',
           label:'承运单开出',
           component: ()=>import('@/components/waybill/BillCreate'),
         },
         {
           path:'/billReceive',
+          name:'billReceive',
           label:'承运单接收',
           component: ()=>import('@/components/waybill/BillReceive'),
         }
       ]
     }, {
       path:'/home',
+      name:'systemManager',
       label:'系统维护',
       component:()=>import('@/components/Home'),
       icon:'el-icon-s-custom',
@@ -177,6 +195,7 @@ export default new Router({
       children:[
         {
           path:'/user',
+          name:'userMessage',
           label:'用户维护',
           component: ()=>import('@/components/system/User'),
         },
@@ -187,11 +206,13 @@ export default new Router({
         },
         {
           path:'/sysLog',
+          name:'systemLogMessage',
           label:'系统日志',
           component: ()=>import('@/components/system/SysLog'),
         },
         {
           path:'/loginLog',
+          name:'loginLogMessage',
           label:'登陆日志',
           component: ()=>import('@/components/system/LoginLog'),
         }
