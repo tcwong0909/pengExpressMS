@@ -102,7 +102,7 @@
     display: flex;
     align-items: center;
     justify-content:space-between;
-    background-color: #409EFF;
+    background-color: rgba(229, 233, 242, 0.23);
   }
   .header-title{
     font-family: 华文行楷;
