@@ -1,23 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Login from '@/components/Login'
-// import Home from '@/components/Home'
-// import Truck from '@/components/truck/Truck'
-// import TruckTeam from '@/components/truck/TruckTeam'
-// import BindTruck from '@/components/truck/BindTruck'
-// import Driver from '@/components/driver/Driver'
-// import Capacity from '@/components/capacity/Capacity'
-// import CapacityHistory from '@/components/capacity/CapacityHistory'
-// import CostAccounting from '@/components/cost/CostAccounting'
-// import CostMaintenance from '@/components/cost/CostMaintenance'
-// import Schedule from '@/components/schedule/Schedule'
-// import User from '@/components/system/User'
-// import LogDic from '@/components/system/LogDic'
-// import SysLog from '@/components/system/SysLog'
-// import BillCreate from '@/components/waybill/BillCreate'
-// import BillReceive from '@/components/waybill/BillReceive'
-// import LoginLog from '@/components/system/LoginLog'
-
 
 Vue.use(Router);
 
@@ -25,199 +7,164 @@ export default new Router({
   routes: [
     {
       path: '/',
-      label: '登陆',
-      name:'login',
+      name: '登陆',
+      title:'login',
       hidden:true,
       component: ()=>import('@/components/Login'),
     },
     {
       path:'/home',
-      label:'首页',
-      name:'home',
-      hidden:true,
+      name:'首页',
+      title:'home',
+      hidden:false,
+      icon:'el-icon-s-home',
       component: ()=>import('@/components/Home'),
     },
     {
       path:'/home',
-      label:'车辆管理',
-      name:'truckManager',
+      name:'车辆管理',
+      title:'truckManager',
       component: ()=>import('@/components/Home'),
       icon:'el-icon-truck',
-      meta:
-        {
-          rolesId:[2,9],
-          rolesName:['运输管理员']
-        },
       children:[
         {
           path:'/truck',
-          name:'truckMessage',
-          label:'车辆信息维护',
+          title:'truckMessage',
+          name:'车辆信息维护',
           component: ()=>import('@/components/truck/Truck'),
         },
         {
           path:'/bindTruck',
-          name:'truckBind',
-          label:'绑定车辆信息',
+          title:'truckBind',
+          name:'绑定车辆信息',
           component: ()=>import('@/components/truck/BindTruck'),
         },
         {
           path:'/truckTeam',
-          name:'truckTeamMessage',
-          label:'车队信息维护',
+          title:'truckTeamMessage',
+          name:'车队信息维护',
           component: ()=>import('@/components/truck/TruckTeam'),
         }
       ]
     },
     {
       path:'/home',
-      name:'driverManager',
-      label:'驾驶员管理',
+      title:'driverManager',
+      name:'驾驶员管理',
       component: ()=>import('@/components/Home'),
       icon:'el-icon-user',
-      meta:
-        {
-          rolesId:[2,9],
-          rolesName:['运输管理员']
-        },
       children:[
         {
           path:'/driver',
-          name:'driverMessage',
-          label:'驾驶员信息维护',
+          title:'driverMessage',
+          name:'驾驶员信息维护',
           component: ()=>import('@/components/driver/Driver'),
         }
       ]
     }, {
       path:'/home',
-      label:'运力查询',
-      name:'capacityManager',
+      name:'运力查询',
+      title:'capacityManager',
       component: ()=>import('@/components/Home'),
       icon: 'el-icon-wind-power',
-      meta:
-        {
-          rolesId:[5,3,9],
-          rolesName:['调度员','财务人员']
-        },
       children:[
         {
           path:'/capacity',
-          name:'capacityMessage',
-          label:'运力综合查询',
+          title:'capacityMessage',
+          name:'运力综合查询',
           component: ()=>import('@/components/capacity/Capacity'),
         },{
           path:'/capacityHistory',
-          name:'capacityHistory',
-          label:'历史承运任务查询',
+          title:'capacityHistory',
+          name:'历史承运任务查询',
           component: ()=>import('@/components/capacity/CapacityHistory'),
         }
       ]
     }, {
       path:'/home',
-      name:'costManager',
-      label:'运输成本核算',
+      title:'costManager',
+      name:'运输成本核算',
       component: ()=>import('@/components/Home'),
-      meta:
-        {
-          rolesId:[3,9],
-          rolesName:['财务人员']
-        },
       icon: 'el-icon-circle-check',
       children:[
         {
           path:'/costMaintenance',
-          name:'costMaintenance',
-          label:'车队运输成本维护',
+          title:'costMaintenance',
+          name:'车队运输成本维护',
           component: ()=>import('@/components/cost/CostMaintenance'),
         },
         {
           path:'/costAccounting',
-          name:'costAccounting',
-          label:'车队运输成本核算',
+          title:'costAccounting',
+          name:'车队运输成本核算',
           component: ()=>import('@/components/cost/CostAccounting'),
         }
       ]
     }, {
       path:'/home',
-      name:'scheduleManager',
-      label:'调度任务',
+      title:'scheduleManager',
+      name:'调度任务',
       component: ()=>import('@/components/Home'),
-      meta:
-        {
-          rolesId:[5,9],
-          rolesName:['调度员']
-        },
       icon:'el-icon-office-building',
       children:[
         {
           path:'/schedule',
-          name:'scheduleMessage',
-          label:'调度承运任务',
+          title:'scheduleMessage',
+          name:'调度承运任务',
           component: ()=>import('@/components/schedule/Schedule'),
         }
       ]
     }, {
       path:'/home',
-      name:'billManager',
-      label:'承运任务管理',
+      title:'billManager',
+      name:'承运任务管理',
       component:()=>import('@/components/Home'),
-      meta:
-        {
-          rolesId:[4,9],
-          rolesName:['承运业务员']
-        },
       icon: 'el-icon-document',
       children:[
         {
           path:'/billCreate',
-          name:'billCreate',
-          label:'承运单开出',
+          title:'billCreate',
+          name:'承运单开出',
           component: ()=>import('@/components/waybill/BillCreate'),
         },
         {
           path:'/billReceive',
-          name:'billReceive',
-          label:'承运单接收',
+          title:'billReceive',
+          name:'承运单接收',
           component: ()=>import('@/components/waybill/BillReceive'),
         }
       ]
     }, {
       path:'/home',
-      name:'systemManager',
-      label:'系统维护',
+      title:'systemManager',
+      name:'系统维护',
       component:()=>import('@/components/Home'),
       icon:'el-icon-s-custom',
-      meta:
-        {
-          rolesId:[1,9],
-          rolesName:['系统管理员']
-        },
       children:[
         {
           path:'/user',
-          name:'userMessage',
-          label:'用户维护',
+          title:'userMessage',
+          name:'用户维护',
           component: ()=>import('@/components/system/User'),
         },
         {
           path:'/logDic',
-          label:'日志字典',
+          name:'日志字典',
           component: ()=>import('@/components/system/LogDic'),
         },
         {
           path:'/sysLog',
-          name:'systemLogMessage',
-          label:'系统日志',
+          title:'systemLogMessage',
+          name:'系统日志',
           component: ()=>import('@/components/system/SysLog'),
         },
         {
           path:'/loginLog',
-          name:'loginLogMessage',
-          label:'登陆日志',
+          title:'loginLogMessage',
+          name:'登陆日志',
           component: ()=>import('@/components/system/LoginLog'),
         }
       ]
     },
-
   ]
 })

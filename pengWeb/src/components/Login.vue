@@ -40,7 +40,7 @@ export default {
         remember:'false',
         user:{
           account:'admin',
-          password:'',
+          password:'admin-TcTalking1234',
         }
     }
   },
