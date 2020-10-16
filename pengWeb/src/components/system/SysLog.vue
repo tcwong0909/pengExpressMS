@@ -69,7 +69,7 @@
           </el-table-column>
           <el-table-column
             prop="ip"
-            width="100"
+            width="150"
             label="登录IP">
           </el-table-column>
           <el-table-column
@@ -86,8 +86,8 @@
             width="80"
             label="是否异常">
             <template slot-scope="scope">
-              <el-tag v-if="scope.row.exceptionFlag===1" type="success">正常</el-tag>
-              <el-tag v-else-if="scope.row.exceptionFlag===0" >异常</el-tag>
+              <el-tag v-if="scope.row.exceptionFlag===0" type="success">正常</el-tag>
+              <el-tag v-else-if="scope.row.exceptionFlag===1"  >异常</el-tag>
               <el-tag v-else type="warning">未知</el-tag>
             </template>
           </el-table-column>
