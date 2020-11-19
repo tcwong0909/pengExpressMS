@@ -26,7 +26,15 @@
       <img src="../assets/TC.jpg">
     </div>
     <div>
-      关注公众号，回复   " 鹏城项目 "   获取登陆密码
+      <span>
+        关注公众号，回复   " 鹏城项目 "   获取登陆密码
+      </span>
+      <a href="https://gitee.com/tcwong/pengExpressMS">
+        Gitee地址
+      </a>
+      <a href="https://github.com/tcwong0909/pengExpressMS">
+        GitHub地址
+      </a>
     </div>
   </div>
 </template>
