@@ -1,11 +1,9 @@
 package com.tcwong.pengms.dao;
 
-
 import com.tcwong.pengms.model.Logdic;
 import com.tcwong.pengms.model.example.LogdicExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface LogdicMapper {
     int countByExample(LogdicExample example);
@@ -22,7 +20,8 @@ public interface LogdicMapper {
 
     Logdic selectByPrimaryKey(Integer typeid);
 
-    int updateByExampleSelective(@Param("record") Logdic record, @Param("example") LogdicExample example);
+    int updateByExampleSelective(
+            @Param("record") Logdic record, @Param("example") LogdicExample example);
 
     int updateByExample(@Param("record") Logdic record, @Param("example") LogdicExample example);
 

@@ -9,8 +9,7 @@ import org.springframework.stereotype.Component;
  * Description 获取Bean类
  *
  * @author tcwong
- * @date 2020/8/24
- * Since 1.8
+ * @date 2020/8/24 Since 1.8
  */
 @Component
 public class ApplicationBeanUtil implements ApplicationContextAware {
@@ -42,7 +41,7 @@ public class ApplicationBeanUtil implements ApplicationContextAware {
      * @author tcwong
      * @date 2020/8/24
      */
-    public static  <T> T getBean(Class<T> clazz) {
+    public static <T> T getBean(Class<T> clazz) {
         return applicationContext.getBean(clazz);
     }
 }

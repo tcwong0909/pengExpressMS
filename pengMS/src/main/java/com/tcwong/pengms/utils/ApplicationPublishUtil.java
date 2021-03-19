@@ -7,8 +7,7 @@ import org.springframework.context.ApplicationEvent;
  * Description 时间发布工具类
  *
  * @author tcwong
- * @date 2020/8/24
- * Since 1.8
+ * @date 2020/8/24 Since 1.8
  */
 public class ApplicationPublishUtil {
 

@@ -1,8 +1,6 @@
 package com.tcwong.pengms.service;
 
-
 import com.tcwong.pengms.model.Goods;
-
 import java.util.List;
 
 public interface GoodsService {

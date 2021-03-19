@@ -99,7 +99,8 @@ public class DriverExample {
             criteria.add(new Criterion(condition, value));
         }
 
-        protected void addCriterion(String condition, Object value1, Object value2, String property) {
+        protected void addCriterion(
+                String condition, Object value1, Object value2, String property) {
             if (value1 == null || value2 == null) {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
@@ -113,9 +114,11 @@ public class DriverExample {
             addCriterion(condition, new java.sql.Date(value.getTime()), property);
         }
 
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
+        protected void addCriterionForJDBCDate(
+                String condition, List<Date> values, String property) {
             if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
+                throw new RuntimeException(
+                        "Value list for " + property + " cannot be null or empty");
             }
             List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
             Iterator<Date> iter = values.iterator();
@@ -125,11 +128,16 @@ public class DriverExample {
             addCriterion(condition, dateList, property);
         }
 
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
+        protected void addCriterionForJDBCDate(
+                String condition, Date value1, Date value2, String property) {
             if (value1 == null || value2 == null) {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
+            addCriterion(
+                    condition,
+                    new java.sql.Date(value1.getTime()),
+                    new java.sql.Date(value2.getTime()),
+                    property);
         }
 
         public Criteria andDriveridIsNull() {
@@ -972,7 +980,8 @@ public class DriverExample {
             this(condition, value, null);
         }
 
-        protected Criterion(String condition, Object value, Object secondValue, String typeHandler) {
+        protected Criterion(
+                String condition, Object value, Object secondValue, String typeHandler) {
             super();
             this.condition = condition;
             this.value = value;

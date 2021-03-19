@@ -1,11 +1,9 @@
 package com.tcwong.pengms.dao;
 
-
 import com.tcwong.pengms.model.Driver;
 import com.tcwong.pengms.model.example.DriverExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface DriverMapper {
     int countByExample(DriverExample example);
@@ -22,7 +20,8 @@ public interface DriverMapper {
 
     Driver selectByPrimaryKey(Integer driverid);
 
-    int updateByExampleSelective(@Param("record") Driver record, @Param("example") DriverExample example);
+    int updateByExampleSelective(
+            @Param("record") Driver record, @Param("example") DriverExample example);
 
     int updateByExample(@Param("record") Driver record, @Param("example") DriverExample example);
 
@@ -32,7 +31,15 @@ public interface DriverMapper {
 
     int deleteByIds(@Param("ids") String[] ids);
 
-    List<Driver> getAllDriverByPage(@Param("page") Integer page, @Param("size") Integer size, @Param("name") String name, @Param("fkTeamid") Integer fkTeamid, @Param("state") Integer state);
+    List<Driver> getAllDriverByPage(
+            @Param("page") Integer page,
+            @Param("size") Integer size,
+            @Param("name") String name,
+            @Param("fkTeamid") Integer fkTeamid,
+            @Param("state") Integer state);
 
-    Long getTotal(@Param("name") String name, @Param("fkTeamid") Integer fkTeamid, @Param("state") Integer state);
+    Long getTotal(
+            @Param("name") String name,
+            @Param("fkTeamid") Integer fkTeamid,
+            @Param("state") Integer state);
 }

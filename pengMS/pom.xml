@@ -186,6 +186,26 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <plugin>
+                <groupId>com.coveo</groupId>
+                <artifactId>fmt-maven-plugin</artifactId>
+                <version>2.4.0</version>
+                <configuration>
+                    <style>aosp</style>
+                    <verbose>true</verbose>
+                    <skip>false</skip>
+                    <skipSortingImports>true</skipSortingImports>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>google-aosp-style-check</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 

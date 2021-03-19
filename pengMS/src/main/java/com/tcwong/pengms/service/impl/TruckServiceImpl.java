@@ -1,21 +1,20 @@
 package com.tcwong.pengms.service.impl;
 
+import com.tcwong.pengms.base.WebPageResponse;
 import com.tcwong.pengms.dao.TruckMapper;
 import com.tcwong.pengms.model.Truck;
 import com.tcwong.pengms.model.example.TruckExample;
 import com.tcwong.pengms.service.TruckService;
-import com.tcwong.pengms.base.WebPageResponse;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
+import javax.annotation.Resource;
+import org.springframework.stereotype.Service;
 
 @Service
 public class TruckServiceImpl implements TruckService {
 
-    @Resource
-    private TruckMapper truckMapper;
+    @Resource private TruckMapper truckMapper;
+
     @Override
     public int addTruck(Truck truck) {
         truck.setAltertime(new Date());
@@ -24,13 +23,13 @@ public class TruckServiceImpl implements TruckService {
         return truckMapper.insert(truck);
     }
 
-
     @Override
     public WebPageResponse getAllTrucksByPage(Integer page, Integer size) {
-        if (page!=null && size!=null){
+        if (page != null && size != null) {
             page = (page - 1) * size;
         }
-        return new WebPageResponse(truckMapper.getTotal(),truckMapper.getAllTrucksByPage(page, size));
+        return new WebPageResponse(
+                truckMapper.getTotal(), truckMapper.getAllTrucksByPage(page, size));
     }
 
     @Override
@@ -47,11 +46,14 @@ public class TruckServiceImpl implements TruckService {
     }
 
     @Override
-    public WebPageResponse search(Integer page, Integer size, String number, String type, Integer fkTeamid) {
-        if (page!=null && size!=null){
+    public WebPageResponse search(
+            Integer page, Integer size, String number, String type, Integer fkTeamid) {
+        if (page != null && size != null) {
             page = (page - 1) * size;
         }
-        return new WebPageResponse(truckMapper.getSearchTotal(number,type,fkTeamid),truckMapper.getALLSearch(page,size,number,type,fkTeamid));
+        return new WebPageResponse(
+                truckMapper.getSearchTotal(number, type, fkTeamid),
+                truckMapper.getALLSearch(page, size, number, type, fkTeamid));
     }
 
     @Override
@@ -62,6 +64,4 @@ public class TruckServiceImpl implements TruckService {
         List<Truck> trucks = truckMapper.selectByExample(truckExample);
         return trucks;
     }
-
-
 }

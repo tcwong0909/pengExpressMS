@@ -6,17 +6,14 @@ import com.tcwong.pengms.base.BaseRequest;
  * Description 日志查询 请求
  *
  * @author tcwong
- * @date 2020/8/31
- * Since 1.8
+ * @date 2020/8/31 Since 1.8
  */
 public class OperateLogRequest extends BaseRequest {
     private String operationType;
     private String paramsKeyWord;
     private Byte exceptionFlag;
 
-
-    public OperateLogRequest() {
-    }
+    public OperateLogRequest() {}
 
     public OperateLogRequest(String operationType, String paramsKeyWord, Byte exceptionFlag) {
         this.operationType = operationType;
@@ -50,10 +47,15 @@ public class OperateLogRequest extends BaseRequest {
 
     @Override
     public String toString() {
-        return "OperateLogRequest{" +
-                "operationType='" + operationType + '\'' +
-                ", paramsKeyWord='" + paramsKeyWord + '\'' +
-                ", exceptionFlag=" + exceptionFlag +
-                '}';
+        return "OperateLogRequest{"
+                + "operationType='"
+                + operationType
+                + '\''
+                + ", paramsKeyWord='"
+                + paramsKeyWord
+                + '\''
+                + ", exceptionFlag="
+                + exceptionFlag
+                + '}';
     }
 }

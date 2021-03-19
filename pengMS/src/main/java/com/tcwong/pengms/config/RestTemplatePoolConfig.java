@@ -1,5 +1,7 @@
 package com.tcwong.pengms.config;
 
+import java.nio.charset.StandardCharsets;
+import java.util.List;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.client.DefaultHttpRequestRetryHandler;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -13,15 +15,11 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-
 /**
  * Description restTemplate 扩展配置
  *
  * @author tcwong
- * @date 2020/9/15
- * Since 1.8
+ * @date 2020/9/15 Since 1.8
  */
 @Configuration
 public class RestTemplatePoolConfig {
@@ -38,7 +36,8 @@ public class RestTemplatePoolConfig {
         List<HttpMessageConverter<?>> messageConverters = restTemplate.getMessageConverters();
         for (HttpMessageConverter<?> messageConverter : messageConverters) {
             if (messageConverter instanceof StringHttpMessageConverter) {
-                ((StringHttpMessageConverter)messageConverter).setDefaultCharset(StandardCharsets.UTF_8);
+                ((StringHttpMessageConverter) messageConverter)
+                        .setDefaultCharset(StandardCharsets.UTF_8);
             }
         }
         return restTemplate;
@@ -51,7 +50,8 @@ public class RestTemplatePoolConfig {
      */
     @Bean
     public ClientHttpRequestFactory clientHttpRequestFactory() {
-        HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();
+        HttpComponentsClientHttpRequestFactory clientHttpRequestFactory =
+                new HttpComponentsClientHttpRequestFactory();
         clientHttpRequestFactory.setHttpClient(httpClientBuilder().build());
         // 连接超时时间/毫秒
         clientHttpRequestFactory.setConnectTimeout(6000);
@@ -76,15 +76,15 @@ public class RestTemplatePoolConfig {
     }
 
     /**
-     * 链接线程池管理,可以keep-alive不断开链接请求,这样速度会更快 MaxTotal 连接池最大连接数 DefaultMaxPerRoute
-     * 每个主机的并发 ValidateAfterInactivity
-     * 可用空闲连接过期时间,重用空闲连接时会先检查是否空闲时间超过这个时间，如果超过，释放socket重新建立
+     * 链接线程池管理,可以keep-alive不断开链接请求,这样速度会更快 MaxTotal 连接池最大连接数 DefaultMaxPerRoute 每个主机的并发
+     * ValidateAfterInactivity 可用空闲连接过期时间,重用空闲连接时会先检查是否空闲时间超过这个时间，如果超过，释放socket重新建立
      *
      * @return HttpClientConnectionManager
      */
     @Bean
     public HttpClientConnectionManager poolingConnectionManager() {
-        PoolingHttpClientConnectionManager poolingConnectionManager = new PoolingHttpClientConnectionManager();
+        PoolingHttpClientConnectionManager poolingConnectionManager =
+                new PoolingHttpClientConnectionManager();
         poolingConnectionManager.setMaxTotal(1000);
         poolingConnectionManager.setDefaultMaxPerRoute(5000);
         poolingConnectionManager.setValidateAfterInactivity(30000);

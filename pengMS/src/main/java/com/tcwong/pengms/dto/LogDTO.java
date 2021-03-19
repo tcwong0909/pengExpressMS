@@ -8,8 +8,7 @@ import lombok.NoArgsConstructor;
  * Description
  *
  * @author tcwong
- * @date 2020/8/24
- * Since 1.8
+ * @date 2020/8/24 Since 1.8
  */
 @Data
 @NoArgsConstructor
@@ -31,5 +30,4 @@ public class LogDTO {
     private String userAccount;
 
     private String username;
-
 }

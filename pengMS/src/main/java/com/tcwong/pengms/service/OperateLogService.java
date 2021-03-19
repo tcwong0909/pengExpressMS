@@ -8,8 +8,7 @@ import com.tcwong.pengms.model.OperateLog;
  * Description
  *
  * @author tcwong
- * @date 2020/8/24
- * Since 1.8
+ * @date 2020/8/24 Since 1.8
  */
 public interface OperateLogService {
 

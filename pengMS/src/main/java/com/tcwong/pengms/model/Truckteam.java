@@ -1,7 +1,6 @@
 package com.tcwong.pengms.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -18,6 +17,7 @@ public class Truckteam implements Serializable {
     private Date checkintime;
 
     private Integer isdelete;
+
     @JSONField(format = "yyyy-MM-dd")
     private Date altertime;
 
@@ -55,8 +55,6 @@ public class Truckteam implements Serializable {
         this.remark = remark;
     }
 
-
-
     public Integer getIsdelete() {
         return isdelete;
     }
@@ -67,15 +65,25 @@ public class Truckteam implements Serializable {
 
     @Override
     public String toString() {
-        return "Truckteam{" +
-                "teamid=" + teamid +
-                ", teamname='" + teamname + '\'' +
-                ", leader='" + leader + '\'' +
-                ", remark='" + remark + '\'' +
-                ", checkintime=" + checkintime +
-                ", isdelete=" + isdelete +
-                ", altertime=" + altertime +
-                '}';
+        return "Truckteam{"
+                + "teamid="
+                + teamid
+                + ", teamname='"
+                + teamname
+                + '\''
+                + ", leader='"
+                + leader
+                + '\''
+                + ", remark='"
+                + remark
+                + '\''
+                + ", checkintime="
+                + checkintime
+                + ", isdelete="
+                + isdelete
+                + ", altertime="
+                + altertime
+                + '}';
     }
 
     public Date getCheckintime() {

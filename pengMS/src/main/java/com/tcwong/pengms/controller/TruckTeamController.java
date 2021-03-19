@@ -6,23 +6,19 @@ import com.tcwong.pengms.base.WebResponse;
 import com.tcwong.pengms.constant.LogOperationType;
 import com.tcwong.pengms.model.Truckteam;
 import com.tcwong.pengms.service.TruckTeamService;
+import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
-
-/**
- * 车队
- */
+/** 车队 */
 @RestController
 @RequestMapping("/pengms/truckTeam/")
 public class TruckTeamController {
 
-    @Resource
-    private TruckTeamService truckTeamService;
+    @Resource private TruckTeamService truckTeamService;
 
-    @LogFilter(description = "车队添加",logOperationType = LogOperationType.ADD)
+    @LogFilter(description = "车队添加", logOperationType = LogOperationType.ADD)
     @PostMapping("/add")
-    public WebResponse addTruckTeam(@RequestBody Truckteam truckteam){
+    public WebResponse addTruckTeam(@RequestBody Truckteam truckteam) {
 
         int num = truckTeamService.addTruckTeam(truckteam);
         if (num > 0) {
@@ -31,7 +27,7 @@ public class TruckTeamController {
         return WebResponse.failed("添加失败");
     }
 
-    @LogFilter(description = "车队删除",logOperationType = LogOperationType.DELETE)
+    @LogFilter(description = "车队删除", logOperationType = LogOperationType.DELETE)
     @DeleteMapping("/delete/{ids}")
     public WebResponse deleteByIds(@PathVariable String ids) {
         int num = truckTeamService.deleteByIds(ids);
@@ -41,22 +37,23 @@ public class TruckTeamController {
         return WebResponse.failed("删除失败");
     }
 
-    @LogFilter(description = "车队修改",logOperationType = LogOperationType.UPDATE)
+    @LogFilter(description = "车队修改", logOperationType = LogOperationType.UPDATE)
     @PutMapping("/put")
     public WebResponse editTruckTeam(@RequestBody Truckteam truckteam) {
         int num = truckTeamService.editTruckTeam(truckteam);
         if (num > 0) {
-            return WebResponse.success(num,"修改成功");
+            return WebResponse.success(num, "修改成功");
         }
         return WebResponse.failed("修改失败");
     }
+
     @PostMapping("/getAllByPage")
-    public WebResponse getAllByPage(Integer page,Integer size,String teamname,String leader) {
-        WebPageResponse webPageResponse = truckTeamService.getAllByPage(page, size,teamname,leader);
+    public WebResponse getAllByPage(Integer page, Integer size, String teamname, String leader) {
+        WebPageResponse webPageResponse =
+                truckTeamService.getAllByPage(page, size, teamname, leader);
         if (webPageResponse != null) {
             return WebResponse.success(webPageResponse, "查询成功");
         }
         return WebResponse.failed("查询失败");
     }
-
 }

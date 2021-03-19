@@ -22,9 +22,11 @@ public interface LoginLogMapper {
 
     LoginLog selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") LoginLog record, @Param("example") LoginLogExample example);
+    int updateByExampleSelective(
+            @Param("record") LoginLog record, @Param("example") LoginLogExample example);
 
-    int updateByExample(@Param("record") LoginLog record, @Param("example") LoginLogExample example);
+    int updateByExample(
+            @Param("record") LoginLog record, @Param("example") LoginLogExample example);
 
     int updateByPrimaryKeySelective(LoginLog record);
 

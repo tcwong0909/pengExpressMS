@@ -1,7 +1,6 @@
 package com.tcwong.pengms.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,7 +9,7 @@ public class Truck implements Serializable {
 
     private String number;
 
-    @JSONField(format ="yyyy-MM-dd")
+    @JSONField(format = "yyyy-MM-dd")
     private Date buydate;
 
     private String type;
@@ -25,12 +24,12 @@ public class Truck implements Serializable {
 
     private String remark;
 
-    @JSONField(format ="yyyy-MM-dd")
+    @JSONField(format = "yyyy-MM-dd")
     private Date checkintime;
 
     private Integer isdelete;
 
-    @JSONField(format ="yyyy-MM-dd")
+    @JSONField(format = "yyyy-MM-dd")
     private Date altertime;
 
     private Truckteam truckteam;
@@ -143,20 +142,37 @@ public class Truck implements Serializable {
 
     @Override
     public String toString() {
-        return "Truck{" +
-                "truckid=" + truckid +
-                ", number='" + number + '\'' +
-                ", buydate=" + buydate +
-                ", type='" + type + '\'' +
-                ", length='" + length + '\'' +
-                ", tonnage=" + tonnage +
-                ", fkTeamid=" + fkTeamid +
-                ", state=" + state +
-                ", remark='" + remark + '\'' +
-                ", checkintime=" + checkintime +
-                ", isdelete=" + isdelete +
-                ", altertime=" + altertime +
-                ", truckteam=" + truckteam +
-                '}';
+        return "Truck{"
+                + "truckid="
+                + truckid
+                + ", number='"
+                + number
+                + '\''
+                + ", buydate="
+                + buydate
+                + ", type='"
+                + type
+                + '\''
+                + ", length='"
+                + length
+                + '\''
+                + ", tonnage="
+                + tonnage
+                + ", fkTeamid="
+                + fkTeamid
+                + ", state="
+                + state
+                + ", remark='"
+                + remark
+                + '\''
+                + ", checkintime="
+                + checkintime
+                + ", isdelete="
+                + isdelete
+                + ", altertime="
+                + altertime
+                + ", truckteam="
+                + truckteam
+                + '}';
     }
 }

@@ -9,10 +9,8 @@ import lombok.NoArgsConstructor;
  * Description
  *
  * @author tcwong
- * @date 2020/9/2
- * Since 1.8
+ * @date 2020/9/2 Since 1.8
  */
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,5 +23,4 @@ public class UserRequest extends BaseRequest {
     private Byte sex;
 
     private Integer roleId;
-
 }

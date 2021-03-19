@@ -6,8 +6,7 @@ import com.tcwong.pengms.utils.LocaleMessageUtil;
  * Description 同意response相应
  *
  * @author tcwong
- * @date 2020/9/1
- * Since 1.8
+ * @date 2020/9/1 Since 1.8
  */
 public class WebResponse<T> {
 
@@ -17,8 +16,7 @@ public class WebResponse<T> {
 
     private T data;
 
-    public WebResponse() {
-    }
+    public WebResponse() {}
 
     public WebResponse(String code, String message) {
         this.code = code;
@@ -33,23 +31,25 @@ public class WebResponse<T> {
 
     /**
      * 成功返回结果
+     *
      * @param data
      * @param <T>
      * @return
      */
-    public static <T> WebResponse<T> success (T data){
-        return  new WebResponse<T>( "0000", LocaleMessageUtil.getMessage("0000"),data);
+    public static <T> WebResponse<T> success(T data) {
+        return new WebResponse<T>("0000", LocaleMessageUtil.getMessage("0000"), data);
     }
 
     /**
      * 成功返回结果
+     *
      * @param data
      * @param message
      * @param <T>
      * @return
      */
-    public static <T> WebResponse<T> success (T data,String message){
-        return  new WebResponse<T>( "0000",message,data);
+    public static <T> WebResponse<T> success(T data, String message) {
+        return new WebResponse<T>("0000", message, data);
     }
 
     /**
@@ -60,8 +60,8 @@ public class WebResponse<T> {
      * @author tcwong
      * @date 2020/9/1
      */
-    public static <T> WebResponse<T> failed (String errorCode){
-        return new WebResponse<T>( errorCode,LocaleMessageUtil.getMessage(errorCode),null);
+    public static <T> WebResponse<T> failed(String errorCode) {
+        return new WebResponse<T>(errorCode, LocaleMessageUtil.getMessage(errorCode), null);
     }
 
     /**
@@ -73,16 +73,17 @@ public class WebResponse<T> {
      * @author tcwong
      * @date 2020/9/1
      */
-    public static <T> WebResponse<T> failed (String errorCode,T data){
-        return new WebResponse<T>( errorCode,LocaleMessageUtil.getMessage(errorCode),data);
+    public static <T> WebResponse<T> failed(String errorCode, T data) {
+        return new WebResponse<T>(errorCode, LocaleMessageUtil.getMessage(errorCode), data);
     }
 
     /**
      * 失败返回结果
+     *
      * @param <T>
      * @return
      */
-    public static <T> WebResponse<T> failed(){
+    public static <T> WebResponse<T> failed() {
         return failed("9999");
     }
 

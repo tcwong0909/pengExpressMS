@@ -9,17 +9,14 @@ import com.tcwong.pengms.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-/**
- * 驾驶员
- */
+/** 驾驶员 */
 @RestController
 @RequestMapping("/pengms/driver/")
 public class DriverController {
 
-    @Autowired
-    private DriverService driverService;
+    @Autowired private DriverService driverService;
 
-    @LogFilter(description = "驾驶员添加",logOperationType = LogOperationType.ADD)
+    @LogFilter(description = "驾驶员添加", logOperationType = LogOperationType.ADD)
     @PostMapping("/add")
     public WebResponse addDriver(@RequestBody Driver driver) {
         int num = driverService.addDriver(driver);
@@ -29,7 +26,7 @@ public class DriverController {
         return WebResponse.failed("添加失败");
     }
 
-    @LogFilter(description = "驾驶员删除",logOperationType = LogOperationType.DELETE)
+    @LogFilter(description = "驾驶员删除", logOperationType = LogOperationType.DELETE)
     @DeleteMapping("/delete/{ids}")
     public WebResponse deleteByIds(@PathVariable String ids) {
         int num = driverService.deleteByIds(ids);
@@ -39,7 +36,7 @@ public class DriverController {
         return WebResponse.failed("删除失败");
     }
 
-    @LogFilter(description = "驾驶员修改",logOperationType = LogOperationType.UPDATE)
+    @LogFilter(description = "驾驶员修改", logOperationType = LogOperationType.UPDATE)
     @PutMapping("/put")
     public WebResponse editDriver(@RequestBody Driver driver) {
         int num = driverService.editDriver(driver);
@@ -50,9 +47,10 @@ public class DriverController {
     }
 
     @PostMapping("/getAllByPage")
-    public WebResponse getAllDriverByPage(Integer page, Integer size,String name,Integer fkTeamid,
-                                          Integer state) {
-        WebPageResponse pageResponse = driverService.getAllDriverByPage(page, size,name,fkTeamid,state);
+    public WebResponse getAllDriverByPage(
+            Integer page, Integer size, String name, Integer fkTeamid, Integer state) {
+        WebPageResponse pageResponse =
+                driverService.getAllDriverByPage(page, size, name, fkTeamid, state);
         if (pageResponse != null) {
             return WebResponse.success(pageResponse, "查询成功");
         }

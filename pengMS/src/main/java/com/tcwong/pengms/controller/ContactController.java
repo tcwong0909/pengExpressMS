@@ -6,21 +6,17 @@ import com.tcwong.pengms.base.WebResponse;
 import com.tcwong.pengms.constant.LogOperationType;
 import com.tcwong.pengms.model.Contact;
 import com.tcwong.pengms.service.ContactService;
+import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
-
-/**
- * 车辆绑定
- */
+/** 车辆绑定 */
 @RestController
 @RequestMapping("/pengms/contact/")
 public class ContactController {
 
-    @Resource
-    private ContactService contactService;
+    @Resource private ContactService contactService;
 
-    @LogFilter(description = "车辆绑定",logOperationType = LogOperationType.UPDATE)
+    @LogFilter(description = "车辆绑定", logOperationType = LogOperationType.UPDATE)
     @PutMapping("/put")
     public WebResponse bindTruck(@RequestBody Contact contact) {
         int num = contactService.bindTruck(contact);
@@ -30,7 +26,7 @@ public class ContactController {
         return WebResponse.failed("绑定失败");
     }
 
-    @LogFilter(description = "解除车辆绑定",logOperationType = LogOperationType.UPDATE)
+    @LogFilter(description = "解除车辆绑定", logOperationType = LogOperationType.UPDATE)
     @PutMapping("/delete/{ids}")
     public WebResponse unbindTrucks(@PathVariable String ids) {
         int num = contactService.unbindTrucks(ids);
@@ -41,14 +37,20 @@ public class ContactController {
     }
 
     @GetMapping("/getAll")
-    public WebResponse getContact(Integer page,Integer size,Integer fkTruckid,Integer fkDriverid,String drivername,
-                                  String teamname,Integer bindId) {
-        WebPageResponse pageResponse = contactService.getAll( page,size,fkTruckid,fkDriverid,drivername,
-                teamname, bindId);
+    public WebResponse getContact(
+            Integer page,
+            Integer size,
+            Integer fkTruckid,
+            Integer fkDriverid,
+            String drivername,
+            String teamname,
+            Integer bindId) {
+        WebPageResponse pageResponse =
+                contactService.getAll(
+                        page, size, fkTruckid, fkDriverid, drivername, teamname, bindId);
         if (pageResponse != null) {
-            return WebResponse.success(pageResponse,"查询成功");
+            return WebResponse.success(pageResponse, "查询成功");
         }
         return WebResponse.failed("查询失败");
     }
-
 }

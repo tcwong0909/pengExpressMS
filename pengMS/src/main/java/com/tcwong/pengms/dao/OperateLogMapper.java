@@ -22,9 +22,11 @@ public interface OperateLogMapper {
 
     OperateLog selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") OperateLog record, @Param("example") OperateLogExample example);
+    int updateByExampleSelective(
+            @Param("record") OperateLog record, @Param("example") OperateLogExample example);
 
-    int updateByExample(@Param("record") OperateLog record, @Param("example") OperateLogExample example);
+    int updateByExample(
+            @Param("record") OperateLog record, @Param("example") OperateLogExample example);
 
     int updateByPrimaryKeySelective(OperateLog record);
 

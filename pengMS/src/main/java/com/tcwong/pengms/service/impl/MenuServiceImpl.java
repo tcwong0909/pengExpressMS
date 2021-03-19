@@ -6,24 +6,20 @@ import com.tcwong.pengms.model.Menu;
 import com.tcwong.pengms.model.example.MenuExample;
 import com.tcwong.pengms.service.MenuService;
 import com.tcwong.pengms.utils.MenuTreeUtil;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * Description
  *
  * @author tcwong
- * @date 2020/10/14
- * Since 1.8
+ * @date 2020/10/14 Since 1.8
  */
 @Service
 public class MenuServiceImpl implements MenuService {
 
-    @Autowired
-    private MenuMapper menuMapper;
+    @Autowired private MenuMapper menuMapper;
 
     @Override
     public List<MenuVO> listMenus() {

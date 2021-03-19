@@ -7,16 +7,14 @@ import com.tcwong.pengms.dto.RoleRequest;
 import com.tcwong.pengms.model.Role;
 import com.tcwong.pengms.model.example.RoleExample;
 import com.tcwong.pengms.service.RoleService;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 import java.util.List;
+import javax.annotation.Resource;
+import org.springframework.stereotype.Service;
 
 @Service
 public class RoleServiceImpl implements RoleService {
 
-    @Resource
-    private RoleMapper roleMapper;
+    @Resource private RoleMapper roleMapper;
 
     @Override
     public int addRole(Role role) {

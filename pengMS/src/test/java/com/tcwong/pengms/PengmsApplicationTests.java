@@ -7,7 +7,5 @@ import org.springframework.boot.test.context.SpringBootTest;
 class PengmsApplicationTests {
 
     @Test
-    void contextLoads() {
-    }
-
+    void contextLoads() {}
 }

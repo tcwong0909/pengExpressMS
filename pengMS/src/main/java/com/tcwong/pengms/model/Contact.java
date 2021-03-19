@@ -17,14 +17,20 @@ public class Contact implements Serializable {
 
     @Override
     public String toString() {
-        return "Contact{" +
-                "contactid=" + contactid +
-                ", fkTruckid=" + fkTruckid +
-                ", fkDriverid=" + fkDriverid +
-                ", truck=" + truck +
-                ", driver=" + driver +
-                ", truckteam=" + truckteam +
-                '}';
+        return "Contact{"
+                + "contactid="
+                + contactid
+                + ", fkTruckid="
+                + fkTruckid
+                + ", fkDriverid="
+                + fkDriverid
+                + ", truck="
+                + truck
+                + ", driver="
+                + driver
+                + ", truckteam="
+                + truckteam
+                + '}';
     }
 
     public Truckteam getTruckteam() {
@@ -76,5 +82,4 @@ public class Contact implements Serializable {
     public void setFkDriverid(Integer fkDriverid) {
         this.fkDriverid = fkDriverid;
     }
-
 }

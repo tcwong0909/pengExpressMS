@@ -12,15 +12,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * 登录
- */
+/** 登录 */
 @RestController
 @RequestMapping("/pengms/login")
 public class LoginController {
 
-    @Autowired
-    private LoginService loginService;
+    @Autowired private LoginService loginService;
 
     @LogFilter(description = "用户登录", logOperationType = LogOperationType.LOGIN)
     @PostMapping("/doLogin")

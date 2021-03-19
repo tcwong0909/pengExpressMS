@@ -1,7 +1,6 @@
 package com.tcwong.pengms.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -37,21 +36,38 @@ public class Driver implements Serializable {
 
     @Override
     public String toString() {
-        return "Driver{" +
-                "driverid=" + driverid +
-                ", name='" + name + '\'' +
-                ", sex=" + sex +
-                ", birth=" + birth +
-                ", phone='" + phone + '\'' +
-                ", idcard='" + idcard + '\'' +
-                ", fkTeamid=" + fkTeamid +
-                ", state=" + state +
-                ", remark='" + remark + '\'' +
-                ", checkintime=" + checkintime +
-                ", isdelete=" + isdelete +
-                ", altertime=" + altertime +
-                ", truckteam=" + truckteam +
-                '}';
+        return "Driver{"
+                + "driverid="
+                + driverid
+                + ", name='"
+                + name
+                + '\''
+                + ", sex="
+                + sex
+                + ", birth="
+                + birth
+                + ", phone='"
+                + phone
+                + '\''
+                + ", idcard='"
+                + idcard
+                + '\''
+                + ", fkTeamid="
+                + fkTeamid
+                + ", state="
+                + state
+                + ", remark='"
+                + remark
+                + '\''
+                + ", checkintime="
+                + checkintime
+                + ", isdelete="
+                + isdelete
+                + ", altertime="
+                + altertime
+                + ", truckteam="
+                + truckteam
+                + '}';
     }
 
     public Truckteam getTruckteam() {
@@ -159,5 +175,4 @@ public class Driver implements Serializable {
     public void setAltertime(Date altertime) {
         this.altertime = altertime;
     }
-
 }

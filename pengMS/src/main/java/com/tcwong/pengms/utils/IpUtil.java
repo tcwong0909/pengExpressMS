@@ -1,11 +1,9 @@
 package com.tcwong.pengms.utils;
 
-import org.springframework.util.StringUtils;
-
-import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-
+import javax.servlet.http.HttpServletRequest;
+import org.springframework.util.StringUtils;
 
 public class IpUtil {
     public static String getIpAddr(HttpServletRequest request) {
@@ -159,5 +157,4 @@ public class IpUtil {
         }
         return "未知";
     }
-
 }

@@ -1,11 +1,9 @@
 package com.tcwong.pengms.dao;
 
-
 import com.tcwong.pengms.model.Goods;
 import com.tcwong.pengms.model.example.GoodsExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface GoodsMapper {
     int countByExample(GoodsExample example);
@@ -22,7 +20,8 @@ public interface GoodsMapper {
 
     Goods selectByPrimaryKey(Integer goodsid);
 
-    int updateByExampleSelective(@Param("record") Goods record, @Param("example") GoodsExample example);
+    int updateByExampleSelective(
+            @Param("record") Goods record, @Param("example") GoodsExample example);
 
     int updateByExample(@Param("record") Goods record, @Param("example") GoodsExample example);
 

@@ -2,16 +2,14 @@ package com.tcwong.pengms.utils;
 
 import com.tcwong.pengms.dto.MenuVO;
 import com.tcwong.pengms.model.Menu;
-import org.springframework.beans.BeanUtils;
-
 import java.util.*;
+import org.springframework.beans.BeanUtils;
 
 /**
  * Description 菜单树工具
  *
  * @author tcwong
- * @date 2020/10/14
- * Since 1.8
+ * @date 2020/10/14 Since 1.8
  */
 public class MenuTreeUtil {
 
@@ -32,7 +30,7 @@ public class MenuTreeUtil {
             } else {
                 MenuVO menuEntry = menuVOMap.get(parentId);
                 MenuVO.MenuChild menuChild = new MenuVO.MenuChild();
-                BeanUtils.copyProperties(menu,menuChild);
+                BeanUtils.copyProperties(menu, menuChild);
                 if (menuEntry == null) {
                     menuEntry = new MenuVO();
                     List<MenuVO.MenuChild> children = new ArrayList<>();

@@ -8,25 +8,22 @@ import com.tcwong.pengms.dto.OperateLogRequest;
 import com.tcwong.pengms.model.OperateLog;
 import com.tcwong.pengms.model.example.OperateLogExample;
 import com.tcwong.pengms.service.OperateLogService;
+import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * Description
  *
  * @author tcwong
- * @date 2020/8/24
- * Since 1.8
+ * @date 2020/8/24 Since 1.8
  */
-
 @Service
 public class OperateLogServiceImpl implements OperateLogService {
 
-    @Autowired
-    private OperateLogMapper operateLogMapper;
+    @Autowired private OperateLogMapper operateLogMapper;
+
     @Override
     public Integer insert(OperateLog operateLog) {
         int resultNum = operateLogMapper.insertSelective(operateLog);

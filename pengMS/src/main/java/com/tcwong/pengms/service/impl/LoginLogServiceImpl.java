@@ -7,23 +7,20 @@ import com.tcwong.pengms.dto.LoginLogRequest;
 import com.tcwong.pengms.model.LoginLog;
 import com.tcwong.pengms.model.example.LoginLogExample;
 import com.tcwong.pengms.service.LoginLogService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * Description
  *
  * @author tcwong
- * @date 2020/8/22
- * Since 1.8
+ * @date 2020/8/22 Since 1.8
  */
 @Service
 public class LoginLogServiceImpl implements LoginLogService {
 
-    @Autowired
-    private LoginLogMapper loginLogMapper;
+    @Autowired private LoginLogMapper loginLogMapper;
 
     @Override
     public Integer insert(LoginLog loginLog) {

@@ -8,8 +8,7 @@ import com.tcwong.pengms.model.LoginLog;
  * Description
  *
  * @author tcwong
- * @date 2020/8/22
- * Since 1.8
+ * @date 2020/8/22 Since 1.8
  */
 public interface LoginLogService {
     Integer insert(LoginLog loginLog);

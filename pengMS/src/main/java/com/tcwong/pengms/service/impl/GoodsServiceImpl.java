@@ -3,15 +3,14 @@ package com.tcwong.pengms.service.impl;
 import com.tcwong.pengms.dao.GoodsMapper;
 import com.tcwong.pengms.model.Goods;
 import com.tcwong.pengms.service.GoodsService;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 import java.util.List;
+import javax.annotation.Resource;
+import org.springframework.stereotype.Service;
 
 @Service
 public class GoodsServiceImpl implements GoodsService {
-    @Resource
-    private GoodsMapper goodsMapper;
+    @Resource private GoodsMapper goodsMapper;
+
     @Override
     public List<Goods> getAll() {
         return goodsMapper.selectByExample(null);
@@ -32,6 +31,5 @@ public class GoodsServiceImpl implements GoodsService {
         String[] fkIds = ids.split(",");
         goodsMapper.deleteByFkIds(fkIds);
         return fkIds.length;
-
     }
 }

@@ -15,15 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
  * Description
  *
  * @author tcwong
- * @date 2020/8/31
- * Since 1.8
+ * @date 2020/8/31 Since 1.8
  */
 @RestController
 @RequestMapping("/pengms/operateLog")
 public class OperateLogController {
 
-    @Autowired
-    private OperateLogService operateLogService;
+    @Autowired private OperateLogService operateLogService;
 
     /**
      * Description 系统日志查询

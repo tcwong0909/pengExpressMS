@@ -1,19 +1,16 @@
 package com.tcwong.pengms.utils;
 
 import com.alibaba.fastjson.JSONObject;
-import org.springframework.stereotype.Component;
+import javax.servlet.http.HttpSession;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
-import javax.servlet.http.HttpSession;
 
 /**
  * Description
  *
  * @author tcwong
- * @date 2020/8/22
- * Since 1.8
+ * @date 2020/8/22 Since 1.8
  */
 public class SessionUtil {
 
@@ -21,9 +18,10 @@ public class SessionUtil {
 
     private static HttpSession getSession() {
         RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-        HttpSession session = ((ServletRequestAttributes) requestAttributes).getRequest().getSession();
-        //设置session 过期时间2小时
-        session.setMaxInactiveInterval(2*60*60);
+        HttpSession session =
+                ((ServletRequestAttributes) requestAttributes).getRequest().getSession();
+        // 设置session 过期时间2小时
+        session.setMaxInactiveInterval(2 * 60 * 60);
         return session;
     }
 
@@ -32,15 +30,14 @@ public class SessionUtil {
             session = getSession();
         }
         String attributeString = JSONObject.toJSONString(sessionValue);
-        session.setAttribute(sessionKey,attributeString);
+        session.setAttribute(sessionKey, attributeString);
     }
 
-    public static <V> V getAttribute(String sessionKey,Class<V> clazz) {
+    public static <V> V getAttribute(String sessionKey, Class<V> clazz) {
         if (session == null) {
             session = getSession();
         }
-        String attribute = (String)session.getAttribute(sessionKey);
-        return JSONObject.parseObject(attribute,clazz);
+        String attribute = (String) session.getAttribute(sessionKey);
+        return JSONObject.parseObject(attribute, clazz);
     }
-
 }

@@ -4,8 +4,7 @@ package com.tcwong.pengms.constant;
  * Description 操作类型
  *
  * @author tcwong
- * @date 2020/8/24
- * Since 1.8
+ * @date 2020/8/24 Since 1.8
  */
 public enum LogOperationType {
     LOGIN("登录"),

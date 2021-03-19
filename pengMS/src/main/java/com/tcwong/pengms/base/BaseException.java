@@ -6,10 +6,9 @@ import com.tcwong.pengms.utils.LocaleMessageUtil;
  * Description 自定义异常
  *
  * @author tcwong
- * @date 2020/8/22
- * Since 1.8
+ * @date 2020/8/22 Since 1.8
  */
-public class BaseException extends RuntimeException{
+public class BaseException extends RuntimeException {
 
     private String exceptionCode;
 
@@ -21,7 +20,7 @@ public class BaseException extends RuntimeException{
         this.args = null;
     }
 
-    public BaseException(String exceptionCode,Object[] args) {
+    public BaseException(String exceptionCode, Object[] args) {
         super(LocaleMessageUtil.getMessage(exceptionCode));
         this.exceptionCode = exceptionCode;
         this.args = args;

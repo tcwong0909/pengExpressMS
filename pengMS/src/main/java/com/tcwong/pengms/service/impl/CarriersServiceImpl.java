@@ -6,21 +6,20 @@ import com.tcwong.pengms.model.Carriers;
 import com.tcwong.pengms.model.Goods;
 import com.tcwong.pengms.service.CarriersService;
 import com.tcwong.pengms.service.GoodsService;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 import java.util.Date;
+import javax.annotation.Resource;
+import org.springframework.stereotype.Service;
 
 @Service
 public class CarriersServiceImpl implements CarriersService {
-    @Resource
-    private CarriersMapper carriersMapper;
-    @Resource
-    private GoodsService goodsService;
+    @Resource private CarriersMapper carriersMapper;
+    @Resource private GoodsService goodsService;
+
     @Override
     public int addCarrier(Carriers carriers) {
-//        Integer userid = ((User) (SecurityUtils.getSubject().getSession().getAttribute("user"))).getUserid();
-//        carriers.setFkUserid(userid);
+        //        Integer userid = ((User)
+        // (SecurityUtils.getSubject().getSession().getAttribute("user"))).getUserid();
+        //        carriers.setFkUserid(userid);
         Goods goods = carriers.getGoods();
         carriers.setAltertime(new Date());
         carriers.setCheckintime(new Date());
@@ -29,7 +28,6 @@ public class CarriersServiceImpl implements CarriersService {
         goods.setFkCarriersid(carriers.getCarriersid());
         int num2 = goodsService.addGoods(goods);
         return num2;
-
     }
 
     @Override
@@ -41,20 +39,27 @@ public class CarriersServiceImpl implements CarriersService {
     }
 
     @Override
-    public WebPageResponse getAllByPage(Integer page, Integer size, String sendcompany, String receivecompany, Integer finishedstate) {
+    public WebPageResponse getAllByPage(
+            Integer page,
+            Integer size,
+            String sendcompany,
+            String receivecompany,
+            Integer finishedstate) {
         if (page != null && size != null) {
-            page = (page-1)*size;
+            page = (page - 1) * size;
         }
 
-        return new WebPageResponse(carriersMapper.getTotal(sendcompany,receivecompany,finishedstate),
-                carriersMapper.getAllByPage(page,size,sendcompany,receivecompany,finishedstate));
+        return new WebPageResponse(
+                carriersMapper.getTotal(sendcompany, receivecompany, finishedstate),
+                carriersMapper.getAllByPage(
+                        page, size, sendcompany, receivecompany, finishedstate));
     }
 
     @Override
     public int deleteCarrier(String ids) {
         String[] carrierIds = ids.split(",");
         carriersMapper.deleteByIds(carrierIds);
-        return carrierIds.length ;
+        return carrierIds.length;
     }
 
     @Override

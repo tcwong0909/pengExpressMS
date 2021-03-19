@@ -1,6 +1,5 @@
 package com.tcwong.pengms.service.impl;
 
-
 import com.tcwong.pengms.base.WebPageResponse;
 import com.tcwong.pengms.dao.CarriersMapper;
 import com.tcwong.pengms.dao.SchedulingMapper;
@@ -9,25 +8,22 @@ import com.tcwong.pengms.model.Carriers;
 import com.tcwong.pengms.model.Scheduling;
 import com.tcwong.pengms.model.Truck;
 import com.tcwong.pengms.service.ScheduleService;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
+import javax.annotation.Resource;
+import org.springframework.stereotype.Service;
 
 @Service
 public class ScheduleServiceImpl implements ScheduleService {
 
-    @Resource
-    private SchedulingMapper schedulingMapper;
-    @Resource
-    private CarriersMapper carriersMapper;
-    @Resource
-    private TruckMapper truckMapper;
+    @Resource private SchedulingMapper schedulingMapper;
+    @Resource private CarriersMapper carriersMapper;
+    @Resource private TruckMapper truckMapper;
 
     @Override
     public int dispatchById(Scheduling scheduling) {
-//        scheduling.setFkUserid(((User)(SecurityUtils.getSubject().getSession().getAttribute("user"))).getUserid());
+        //
+        // scheduling.setFkUserid(((User)(SecurityUtils.getSubject().getSession().getAttribute("user"))).getUserid());
         scheduling.setCheckintime(new Date());
         scheduling.setAltertime(new Date());
         schedulingMapper.insert(scheduling);
@@ -42,35 +38,45 @@ public class ScheduleServiceImpl implements ScheduleService {
         carriersMapper.updateByPrimaryKeySelective(carriers);
         return 1;
     }
+
     @Override
-    public WebPageResponse getSchedules(Integer page, Integer size, Integer schedulingid,
-                                        Integer fkCarriersid, String sendcompany, String receivecompany) {
+    public WebPageResponse getSchedules(
+            Integer page,
+            Integer size,
+            Integer schedulingid,
+            Integer fkCarriersid,
+            String sendcompany,
+            String receivecompany) {
         if (page != null && size != null) {
-            page = (page-1)*size;
+            page = (page - 1) * size;
         }
-        return new WebPageResponse(schedulingMapper.getTotal(schedulingid,fkCarriersid,sendcompany,receivecompany),
-                schedulingMapper.getAllByPage(page,size,schedulingid,fkCarriersid,sendcompany,receivecompany));
+        return new WebPageResponse(
+                schedulingMapper.getTotal(schedulingid, fkCarriersid, sendcompany, receivecompany),
+                schedulingMapper.getAllByPage(
+                        page, size, schedulingid, fkCarriersid, sendcompany, receivecompany));
     }
+
     @Override
     public int deleteMore(List<Scheduling> scheduleList) {
         int size = scheduleList.size();
         StringBuilder schedulingidBuilder = new StringBuilder();
         StringBuilder fkTruckidBuilder = new StringBuilder();
         StringBuilder fkCarriersidBuilder = new StringBuilder();
-        scheduleList.forEach((schedule)->{
-            Integer schedulingid = schedule.getSchedulingid();
-            Integer fkTruckid = schedule.getFkTruckid();
-            Integer fkCarriersid = schedule.getFkCarriersid();
-            if (schedulingid != null) {
-                schedulingidBuilder.append(schedulingid).append(",");
-            }
-            if (fkTruckid != null) {
-                fkTruckidBuilder.append(fkTruckid).append(",");
-            }
-            if (fkCarriersid != null) {
-                fkCarriersidBuilder.append(fkCarriersid).append(",");
-            }
-        });
+        scheduleList.forEach(
+                (schedule) -> {
+                    Integer schedulingid = schedule.getSchedulingid();
+                    Integer fkTruckid = schedule.getFkTruckid();
+                    Integer fkCarriersid = schedule.getFkCarriersid();
+                    if (schedulingid != null) {
+                        schedulingidBuilder.append(schedulingid).append(",");
+                    }
+                    if (fkTruckid != null) {
+                        fkTruckidBuilder.append(fkTruckid).append(",");
+                    }
+                    if (fkCarriersid != null) {
+                        fkCarriersidBuilder.append(fkCarriersid).append(",");
+                    }
+                });
         String[] schedulingIds = schedulingidBuilder.toString().split(",");
         String[] carriersIds = fkCarriersidBuilder.toString().split(",");
         String[] truckIds = fkTruckidBuilder.toString().split(",");

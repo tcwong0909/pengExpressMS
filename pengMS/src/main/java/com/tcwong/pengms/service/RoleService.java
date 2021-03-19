@@ -1,10 +1,8 @@
 package com.tcwong.pengms.service;
 
-
 import com.github.pagehelper.PageInfo;
 import com.tcwong.pengms.dto.RoleRequest;
 import com.tcwong.pengms.model.Role;
-
 import java.util.List;
 
 public interface RoleService {

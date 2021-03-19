@@ -1,7 +1,6 @@
 package com.tcwong.pengms.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -41,23 +40,39 @@ public class Scheduling implements Serializable {
 
     @Override
     public String toString() {
-        return "Scheduling{" +
-                "schedulingid=" + schedulingid +
-                ", starttime=" + starttime +
-                ", fkCarriersid=" + fkCarriersid +
-                ", fkTruckid=" + fkTruckid +
-                ", oilcost=" + oilcost +
-                ", toll=" + toll +
-                ", fine=" + fine +
-                ", othercost=" + othercost +
-                ", totalcost=" + totalcost +
-                ", fkUserid=" + fkUserid +
-                ", remark='" + remark + '\'' +
-                ", checkintime=" + checkintime +
-                ", isdelete=" + isdelete +
-                ", altertime=" + altertime +
-                ", carriers=" + carriers +
-                '}';
+        return "Scheduling{"
+                + "schedulingid="
+                + schedulingid
+                + ", starttime="
+                + starttime
+                + ", fkCarriersid="
+                + fkCarriersid
+                + ", fkTruckid="
+                + fkTruckid
+                + ", oilcost="
+                + oilcost
+                + ", toll="
+                + toll
+                + ", fine="
+                + fine
+                + ", othercost="
+                + othercost
+                + ", totalcost="
+                + totalcost
+                + ", fkUserid="
+                + fkUserid
+                + ", remark='"
+                + remark
+                + '\''
+                + ", checkintime="
+                + checkintime
+                + ", isdelete="
+                + isdelete
+                + ", altertime="
+                + altertime
+                + ", carriers="
+                + carriers
+                + '}';
     }
 
     public Carriers getCarriers() {
@@ -181,5 +196,4 @@ public class Scheduling implements Serializable {
     public void setAltertime(Date altertime) {
         this.altertime = altertime;
     }
-
 }

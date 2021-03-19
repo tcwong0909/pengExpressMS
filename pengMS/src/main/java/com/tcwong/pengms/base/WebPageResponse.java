@@ -6,8 +6,7 @@ public class WebPageResponse {
     private Long total;
     private List<?> data;
 
-    public WebPageResponse() {
-    }
+    public WebPageResponse() {}
 
     public WebPageResponse(Long total, List<?> data) {
         this.total = total;

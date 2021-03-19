@@ -1,7 +1,6 @@
 package com.tcwong.pengms.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -23,6 +22,7 @@ public class Carriers implements Serializable {
     private String receivelinkman;
 
     private String receivephone;
+
     @JSONField(format = "yyyy-MM-dd")
     private Date leaverdate;
 
@@ -48,6 +48,7 @@ public class Carriers implements Serializable {
     private Date checkintime;
 
     private Integer isdelete;
+
     @JSONField(format = "yyyy-MM-dd")
     private Date altertime;
 
@@ -55,30 +56,61 @@ public class Carriers implements Serializable {
 
     @Override
     public String toString() {
-        return "Carriers{" +
-                "carriersid=" + carriersid +
-                ", sendcompany='" + sendcompany + '\'' +
-                ", sendaddress='" + sendaddress + '\'' +
-                ", sendlinkman='" + sendlinkman + '\'' +
-                ", sendphone='" + sendphone + '\'' +
-                ", receivecompany='" + receivecompany + '\'' +
-                ", fkReceiveaddress='" + fkReceiveaddress + '\'' +
-                ", receivelinkman='" + receivelinkman + '\'' +
-                ", receivephone='" + receivephone + '\'' +
-                ", leaverdate=" + leaverdate +
-                ", receivedate=" + receivedate +
-                ", finishedstate=" + finishedstate +
-                ", insurancecost=" + insurancecost +
-                ", transportcost=" + transportcost +
-                ", othercost=" + othercost +
-                ", totalcost=" + totalcost +
-                ", remark='" + remark + '\'' +
-                ", fkUserid=" + fkUserid +
-                ", checkintime=" + checkintime +
-                ", isdelete=" + isdelete +
-                ", altertime=" + altertime +
-                ", goods=" + goods +
-                '}';
+        return "Carriers{"
+                + "carriersid="
+                + carriersid
+                + ", sendcompany='"
+                + sendcompany
+                + '\''
+                + ", sendaddress='"
+                + sendaddress
+                + '\''
+                + ", sendlinkman='"
+                + sendlinkman
+                + '\''
+                + ", sendphone='"
+                + sendphone
+                + '\''
+                + ", receivecompany='"
+                + receivecompany
+                + '\''
+                + ", fkReceiveaddress='"
+                + fkReceiveaddress
+                + '\''
+                + ", receivelinkman='"
+                + receivelinkman
+                + '\''
+                + ", receivephone='"
+                + receivephone
+                + '\''
+                + ", leaverdate="
+                + leaverdate
+                + ", receivedate="
+                + receivedate
+                + ", finishedstate="
+                + finishedstate
+                + ", insurancecost="
+                + insurancecost
+                + ", transportcost="
+                + transportcost
+                + ", othercost="
+                + othercost
+                + ", totalcost="
+                + totalcost
+                + ", remark='"
+                + remark
+                + '\''
+                + ", fkUserid="
+                + fkUserid
+                + ", checkintime="
+                + checkintime
+                + ", isdelete="
+                + isdelete
+                + ", altertime="
+                + altertime
+                + ", goods="
+                + goods
+                + '}';
     }
 
     public Goods getGoods() {
@@ -258,5 +290,4 @@ public class Carriers implements Serializable {
     public void setAltertime(Date altertime) {
         this.altertime = altertime;
     }
-
 }

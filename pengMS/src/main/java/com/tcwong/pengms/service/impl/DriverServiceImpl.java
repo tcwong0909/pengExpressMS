@@ -1,25 +1,21 @@
 package com.tcwong.pengms.service.impl;
 
+import com.tcwong.pengms.base.WebPageResponse;
 import com.tcwong.pengms.dao.ContactMapper;
 import com.tcwong.pengms.dao.DriverMapper;
 import com.tcwong.pengms.model.Contact;
 import com.tcwong.pengms.model.Driver;
 import com.tcwong.pengms.service.DriverService;
-import com.tcwong.pengms.base.WebPageResponse;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
-
+import javax.annotation.Resource;
+import org.springframework.stereotype.Service;
 
 @Service
 public class DriverServiceImpl implements DriverService {
 
-    @Resource
-    private DriverMapper driverMapper;
-    @Resource
-    private ContactMapper contactMapper;
+    @Resource private DriverMapper driverMapper;
+    @Resource private ContactMapper contactMapper;
 
     @Override
     public int addDriver(Driver driver) {
@@ -37,7 +33,7 @@ public class DriverServiceImpl implements DriverService {
         String[] split = ids.split(",");
         driverMapper.deleteByIds(split);
         contactMapper.deleteByIds(split);
-        return split.length ;
+        return split.length;
     }
 
     @Override
@@ -47,11 +43,13 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
-    public WebPageResponse getAllDriverByPage(Integer page, Integer size, String name, Integer fkTeamid, Integer state) {
-        if (page != null && size != null){
-            page = (page-1)*size;
+    public WebPageResponse getAllDriverByPage(
+            Integer page, Integer size, String name, Integer fkTeamid, Integer state) {
+        if (page != null && size != null) {
+            page = (page - 1) * size;
         }
-        List<Driver> allDrivers = driverMapper.getAllDriverByPage(page, size,name,fkTeamid,state);
-        return new WebPageResponse(driverMapper.getTotal(name,fkTeamid,state),allDrivers);
+        List<Driver> allDrivers =
+                driverMapper.getAllDriverByPage(page, size, name, fkTeamid, state);
+        return new WebPageResponse(driverMapper.getTotal(name, fkTeamid, state), allDrivers);
     }
 }

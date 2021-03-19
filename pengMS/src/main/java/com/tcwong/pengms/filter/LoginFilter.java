@@ -10,22 +10,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * Description 请求过滤器
  *
  * @author tcwong
- * @date 2020/8/22
- * Since 1.8
+ * @date 2020/8/22 Since 1.8
  */
 @Configuration
 public class LoginFilter implements WebMvcConfigurer {
 
-    @Autowired
-    private LoginHandlerInterceptor loginHandlerInterceptor;
+    @Autowired private LoginHandlerInterceptor loginHandlerInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         InterceptorRegistration registration = registry.addInterceptor(loginHandlerInterceptor);
         registration.addPathPatterns("/pengms/**");
-        registration.excludePathPatterns(
-                "/pengms/login/doLogin"
-                ,"/pengms/login/doLogout");
-
+        registration.excludePathPatterns("/pengms/login/doLogin", "/pengms/login/doLogout");
     }
 }

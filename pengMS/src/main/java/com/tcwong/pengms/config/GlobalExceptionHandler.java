@@ -14,11 +14,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * Description 全局异常处理
  *
  * @author tcwong
- * @date 2020/8/22
- * Since 1.8
+ * @date 2020/8/22 Since 1.8
  */
 @ControllerAdvice
-public class GlobalExceptionHandler  {
+public class GlobalExceptionHandler {
 
     /**
      * Description 自定义异常同意处理
@@ -34,7 +33,7 @@ public class GlobalExceptionHandler  {
     public WebResponse baseExceptionHandler(BaseException baseException) {
         String exceptionCode = baseException.getExceptionCode();
         LogUtil.error("异常信息:{}", LocaleMessageUtil.getMessage(exceptionCode));
-        return WebResponse.failed(exceptionCode,baseException.getArgs());
+        return WebResponse.failed(exceptionCode, baseException.getArgs());
     }
 
     /**
@@ -48,9 +47,9 @@ public class GlobalExceptionHandler  {
     @ExceptionHandler(Exception.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public WebResponse exceptionHandler(Exception e){
+    public WebResponse exceptionHandler(Exception e) {
         e.printStackTrace();
-        LogUtil.error("异常信息:{}",e.getMessage());
+        LogUtil.error("异常信息:{}", e.getMessage());
         return WebResponse.failed("9999");
     }
 }
