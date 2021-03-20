@@ -92,7 +92,7 @@
       <result column="fk_teamID" jdbcType="INTEGER" property="fkTeamid" />
       <result column="state" jdbcType="INTEGER" property="state" />
     </association>
-    <association property="truckteam" javaType="com.tcwong.pengms.model.Truckteam">
+    <association property="truckteam" javaType="com.tcwong.pengms.model.TruckTeam">
       <id column="teamID" jdbcType="INTEGER" property="teamid" />
       <result column="teamName" jdbcType="VARCHAR" property="teamname" />
       <result column="leader" jdbcType="VARCHAR" property="leader" />

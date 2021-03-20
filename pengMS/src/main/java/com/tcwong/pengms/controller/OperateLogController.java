@@ -5,7 +5,7 @@ import com.tcwong.pengms.base.WebResponse;
 import com.tcwong.pengms.dto.OperateLogRequest;
 import com.tcwong.pengms.model.OperateLog;
 import com.tcwong.pengms.service.OperateLogService;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/pengms/operateLog")
 public class OperateLogController {
 
-    @Autowired private OperateLogService operateLogService;
+    @Resource private OperateLogService operateLogService;
 
     /**
      * Description 系统日志查询

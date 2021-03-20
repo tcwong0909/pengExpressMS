@@ -28,7 +28,6 @@ public class ScheduleServiceImpl implements ScheduleService {
         scheduling.setAltertime(new Date());
         schedulingMapper.insert(scheduling);
         Truck truck = new Truck();
-        truck.setTruckid(scheduling.getFkTruckid());
         truck.setState(1);
         truckMapper.updateByPrimaryKeySelective(truck);
         Carriers carriers = new Carriers();
@@ -82,7 +81,6 @@ public class ScheduleServiceImpl implements ScheduleService {
         String[] truckIds = fkTruckidBuilder.toString().split(",");
         schedulingMapper.deleteByIds(schedulingIds);
         carriersMapper.updateByIds(carriersIds);
-        truckMapper.updateByIds(truckIds);
         return size;
     }
 

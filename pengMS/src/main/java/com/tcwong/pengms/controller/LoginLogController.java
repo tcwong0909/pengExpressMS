@@ -5,14 +5,14 @@ import com.tcwong.pengms.base.WebResponse;
 import com.tcwong.pengms.dto.LoginLogRequest;
 import com.tcwong.pengms.model.LoginLog;
 import com.tcwong.pengms.service.LoginLogService;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Description
+ * Description 登陆日志接口
  *
  * @author tcwong
  * @date 2020/8/22 Since 1.8
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/pengms/loginlog")
 public class LoginLogController {
 
-    @Autowired private LoginLogService loginLogService;
+    @Resource private LoginLogService loginLogService;
 
     @PostMapping("/listLoginLog")
     public WebResponse listLoginLog(@RequestBody LoginLogRequest request) {

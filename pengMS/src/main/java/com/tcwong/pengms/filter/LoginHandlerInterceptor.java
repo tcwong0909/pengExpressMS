@@ -5,6 +5,7 @@ import com.tcwong.pengms.base.WebResponse;
 import com.tcwong.pengms.constant.LoginResultEnum;
 import com.tcwong.pengms.constant.SessionConstant;
 import com.tcwong.pengms.model.User;
+import com.tcwong.pengms.utils.PengContext;
 import com.tcwong.pengms.utils.RateLimitUtil;
 import com.tcwong.pengms.utils.SessionUtil;
 import javax.servlet.http.HttpServletRequest;
@@ -56,6 +57,7 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
             response.getWriter().write(JSONObject.toJSONString(webResponse));
             return false;
         }
+        PengContext.setUser(user);
         return true;
     }
 

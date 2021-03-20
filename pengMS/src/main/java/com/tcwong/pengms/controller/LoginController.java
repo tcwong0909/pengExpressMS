@@ -6,18 +6,23 @@ import com.tcwong.pengms.constant.LogOperationType;
 import com.tcwong.pengms.dto.LoginRequest;
 import com.tcwong.pengms.model.User;
 import com.tcwong.pengms.service.LoginService;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/** 登录 */
+/**
+ * Description 登陆接口
+ *
+ * @author tcwong
+ * @date 2021/3/20 Since 1.8
+ */
 @RestController
 @RequestMapping("/pengms/login")
 public class LoginController {
 
-    @Autowired private LoginService loginService;
+    @Resource private LoginService loginService;
 
     @LogFilter(description = "用户登录", logOperationType = LogOperationType.LOGIN)
     @PostMapping("/doLogin")

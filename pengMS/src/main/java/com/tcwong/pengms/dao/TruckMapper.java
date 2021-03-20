@@ -10,7 +10,7 @@ public interface TruckMapper {
 
     int deleteByExample(TruckExample example);
 
-    int deleteByPrimaryKey(Integer truckid);
+    int deleteByPrimaryKey(Long id);
 
     int insert(Truck record);
 
@@ -18,7 +18,7 @@ public interface TruckMapper {
 
     List<Truck> selectByExample(TruckExample example);
 
-    Truck selectByPrimaryKey(Integer truckid);
+    Truck selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(
             @Param("record") Truck record, @Param("example") TruckExample example);
@@ -28,24 +28,4 @@ public interface TruckMapper {
     int updateByPrimaryKeySelective(Truck record);
 
     int updateByPrimaryKey(Truck record);
-
-    List<Truck> getAllTrucksByPage(@Param("page") Integer page, @Param("size") Integer size);
-
-    Long getTotal();
-
-    int deleteByIds(@Param("ids") String[] ids);
-
-    Long getSearchTotal(
-            @Param("number") String number,
-            @Param("type") String type,
-            @Param("fkTeamid") Integer fkTeamid);
-
-    List<Truck> getALLSearch(
-            @Param("page") Integer page,
-            @Param("size") Integer size,
-            @Param("number") String number,
-            @Param("type") String type,
-            @Param("fkTeamid") Integer fkTeamid);
-
-    int updateByIds(@Param("ids") String[] toString);
 }

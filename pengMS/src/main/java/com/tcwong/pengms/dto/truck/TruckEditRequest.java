@@ -1,4 +1,4 @@
-package com.tcwong.pengms.model;
+package com.tcwong.pengms.dto.truck;
 
 import java.util.Date;
 import lombok.AllArgsConstructor;
@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Description 车辆实体
+ * Description 车辆编辑请求
  *
  * @author tcwong
  * @date 2021/3/20 Since 1.8
@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Truck {
+public class TruckEditRequest {
 
     private Long id;
 
@@ -35,16 +35,4 @@ public class Truck {
     private Date buyTime;
 
     private String remark;
-
-    private Integer isDelete;
-
-    private Date checkTime;
-
-    private String updateBy;
-
-    private String createBy;
-
-    private Date updateTime;
-
-    private Date createTime;
 }

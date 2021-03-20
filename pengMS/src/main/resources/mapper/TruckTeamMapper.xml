@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.tcwong.pengms.dao.TruckMapper" >
-  <resultMap id="BaseResultMap" type="com.tcwong.pengms.model.Truck" >
+<mapper namespace="com.tcwong.pengms.dao.TruckTeamMapper" >
+  <resultMap id="BaseResultMap" type="com.tcwong.pengms.model.TruckTeam" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="plate_no" property="plateNo" jdbcType="VARCHAR" />
-    <result column="type" property="type" jdbcType="TINYINT" />
-    <result column="dead_weight" property="deadWeight" jdbcType="REAL" />
-    <result column="weight_unit" property="weightUnit" jdbcType="VARCHAR" />
-    <result column="driver_id" property="driverId" jdbcType="BIGINT" />
-    <result column="state" property="state" jdbcType="TINYINT" />
-    <result column="buy_time" property="buyTime" jdbcType="TIMESTAMP" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="leader" property="leader" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
     <result column="check_time" property="checkTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
     <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
     <result column="create_by" property="createBy" jdbcType="VARCHAR" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
@@ -77,17 +72,17 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, plate_no, type, dead_weight, weight_unit, driver_id, state, buy_time, remark, 
-    is_delete, check_time, update_by, create_by, update_time, create_time
+    id, name, leader, remark, check_time, is_delete, update_by, create_by, update_time, 
+    create_time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tcwong.pengms.model.example.TruckExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tcwong.pengms.model.example.TruckTeamExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from peng_truck
+    from peng_truck_team
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -98,68 +93,49 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from peng_truck
+    from peng_truck_team
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from peng_truck
+    delete from peng_truck_team
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.example.TruckExample" >
-    delete from peng_truck
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.example.TruckTeamExample" >
+    delete from peng_truck_team
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.tcwong.pengms.model.Truck" >
-    insert into peng_truck (id, plate_no, type, 
-      dead_weight, weight_unit, driver_id, 
-      state, buy_time, remark, 
-      is_delete, check_time, update_by, 
-      create_by, update_time, create_time
-      )
-    values (#{id,jdbcType=BIGINT}, #{plateNo,jdbcType=VARCHAR}, #{type,jdbcType=TINYINT}, 
-      #{deadWeight,jdbcType=REAL}, #{weightUnit,jdbcType=VARCHAR}, #{driverId,jdbcType=BIGINT}, 
-      #{state,jdbcType=TINYINT}, #{buyTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, 
-      #{isDelete,jdbcType=TINYINT}, #{checkTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
-      #{createBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}
-      )
+  <insert id="insert" parameterType="com.tcwong.pengms.model.TruckTeam" >
+    insert into peng_truck_team (id, name, leader, 
+      remark, check_time, is_delete, 
+      update_by, create_by, update_time, 
+      create_time)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{leader,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{checkTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT}, 
+      #{updateBy,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.tcwong.pengms.model.Truck" >
-    insert into peng_truck
+  <insert id="insertSelective" parameterType="com.tcwong.pengms.model.TruckTeam" >
+    insert into peng_truck_team
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="plateNo != null" >
-        plate_no,
+      <if test="name != null" >
+        name,
       </if>
-      <if test="type != null" >
-        type,
-      </if>
-      <if test="deadWeight != null" >
-        dead_weight,
-      </if>
-      <if test="weightUnit != null" >
-        weight_unit,
-      </if>
-      <if test="driverId != null" >
-        driver_id,
-      </if>
-      <if test="state != null" >
-        state,
-      </if>
-      <if test="buyTime != null" >
-        buy_time,
+      <if test="leader != null" >
+        leader,
       </if>
       <if test="remark != null" >
         remark,
       </if>
-      <if test="isDelete != null" >
-        is_delete,
-      </if>
       <if test="checkTime != null" >
         check_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
       </if>
       <if test="updateBy != null" >
         update_by,
@@ -178,35 +154,20 @@
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="plateNo != null" >
-        #{plateNo,jdbcType=VARCHAR},
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
       </if>
-      <if test="type != null" >
-        #{type,jdbcType=TINYINT},
-      </if>
-      <if test="deadWeight != null" >
-        #{deadWeight,jdbcType=REAL},
-      </if>
-      <if test="weightUnit != null" >
-        #{weightUnit,jdbcType=VARCHAR},
-      </if>
-      <if test="driverId != null" >
-        #{driverId,jdbcType=BIGINT},
-      </if>
-      <if test="state != null" >
-        #{state,jdbcType=TINYINT},
-      </if>
-      <if test="buyTime != null" >
-        #{buyTime,jdbcType=TIMESTAMP},
+      <if test="leader != null" >
+        #{leader,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="isDelete != null" >
-        #{isDelete,jdbcType=TINYINT},
-      </if>
       <if test="checkTime != null" >
         #{checkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
       </if>
       <if test="updateBy != null" >
         #{updateBy,jdbcType=VARCHAR},
@@ -222,47 +183,32 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.pengms.model.example.TruckExample" resultType="java.lang.Integer" >
-    select count(*) from peng_truck
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.example.TruckTeamExample" resultType="java.lang.Integer" >
+    select count(*) from peng_truck_team
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update peng_truck
+    update peng_truck_team
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.plateNo != null" >
-        plate_no = #{record.plateNo,jdbcType=VARCHAR},
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.type != null" >
-        type = #{record.type,jdbcType=TINYINT},
-      </if>
-      <if test="record.deadWeight != null" >
-        dead_weight = #{record.deadWeight,jdbcType=REAL},
-      </if>
-      <if test="record.weightUnit != null" >
-        weight_unit = #{record.weightUnit,jdbcType=VARCHAR},
-      </if>
-      <if test="record.driverId != null" >
-        driver_id = #{record.driverId,jdbcType=BIGINT},
-      </if>
-      <if test="record.state != null" >
-        state = #{record.state,jdbcType=TINYINT},
-      </if>
-      <if test="record.buyTime != null" >
-        buy_time = #{record.buyTime,jdbcType=TIMESTAMP},
+      <if test="record.leader != null" >
+        leader = #{record.leader,jdbcType=VARCHAR},
       </if>
       <if test="record.remark != null" >
         remark = #{record.remark,jdbcType=VARCHAR},
       </if>
-      <if test="record.isDelete != null" >
-        is_delete = #{record.isDelete,jdbcType=TINYINT},
-      </if>
       <if test="record.checkTime != null" >
         check_time = #{record.checkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isDelete != null" >
+        is_delete = #{record.isDelete,jdbcType=TINYINT},
       </if>
       <if test="record.updateBy != null" >
         update_by = #{record.updateBy,jdbcType=VARCHAR},
@@ -282,18 +228,13 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update peng_truck
+    update peng_truck_team
     set id = #{record.id,jdbcType=BIGINT},
-      plate_no = #{record.plateNo,jdbcType=VARCHAR},
-      type = #{record.type,jdbcType=TINYINT},
-      dead_weight = #{record.deadWeight,jdbcType=REAL},
-      weight_unit = #{record.weightUnit,jdbcType=VARCHAR},
-      driver_id = #{record.driverId,jdbcType=BIGINT},
-      state = #{record.state,jdbcType=TINYINT},
-      buy_time = #{record.buyTime,jdbcType=TIMESTAMP},
+      name = #{record.name,jdbcType=VARCHAR},
+      leader = #{record.leader,jdbcType=VARCHAR},
       remark = #{record.remark,jdbcType=VARCHAR},
-      is_delete = #{record.isDelete,jdbcType=TINYINT},
       check_time = #{record.checkTime,jdbcType=TIMESTAMP},
+      is_delete = #{record.isDelete,jdbcType=TINYINT},
       update_by = #{record.updateBy,jdbcType=VARCHAR},
       create_by = #{record.createBy,jdbcType=VARCHAR},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
@@ -302,38 +243,23 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.pengms.model.Truck" >
-    update peng_truck
+  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.pengms.model.TruckTeam" >
+    update peng_truck_team
     <set >
-      <if test="plateNo != null" >
-        plate_no = #{plateNo,jdbcType=VARCHAR},
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="type != null" >
-        type = #{type,jdbcType=TINYINT},
-      </if>
-      <if test="deadWeight != null" >
-        dead_weight = #{deadWeight,jdbcType=REAL},
-      </if>
-      <if test="weightUnit != null" >
-        weight_unit = #{weightUnit,jdbcType=VARCHAR},
-      </if>
-      <if test="driverId != null" >
-        driver_id = #{driverId,jdbcType=BIGINT},
-      </if>
-      <if test="state != null" >
-        state = #{state,jdbcType=TINYINT},
-      </if>
-      <if test="buyTime != null" >
-        buy_time = #{buyTime,jdbcType=TIMESTAMP},
+      <if test="leader != null" >
+        leader = #{leader,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="isDelete != null" >
-        is_delete = #{isDelete,jdbcType=TINYINT},
-      </if>
       <if test="checkTime != null" >
         check_time = #{checkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
       </if>
       <if test="updateBy != null" >
         update_by = #{updateBy,jdbcType=VARCHAR},
@@ -350,18 +276,13 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.tcwong.pengms.model.Truck" >
-    update peng_truck
-    set plate_no = #{plateNo,jdbcType=VARCHAR},
-      type = #{type,jdbcType=TINYINT},
-      dead_weight = #{deadWeight,jdbcType=REAL},
-      weight_unit = #{weightUnit,jdbcType=VARCHAR},
-      driver_id = #{driverId,jdbcType=BIGINT},
-      state = #{state,jdbcType=TINYINT},
-      buy_time = #{buyTime,jdbcType=TIMESTAMP},
+  <update id="updateByPrimaryKey" parameterType="com.tcwong.pengms.model.TruckTeam" >
+    update peng_truck_team
+    set name = #{name,jdbcType=VARCHAR},
+      leader = #{leader,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR},
-      is_delete = #{isDelete,jdbcType=TINYINT},
       check_time = #{checkTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT},
       update_by = #{updateBy,jdbcType=VARCHAR},
       create_by = #{createBy,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=TIMESTAMP},

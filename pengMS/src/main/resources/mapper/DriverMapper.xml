@@ -16,7 +16,7 @@
     <result column="alterTime" jdbcType="TIMESTAMP" property="altertime" />
   </resultMap>
   <resultMap id="BaseResultMap2" type="com.tcwong.pengms.model.Driver" extends="BaseResultMap">
-    <association property="truckteam" javaType="com.tcwong.pengms.model.Truckteam">
+    <association property="truckteam" javaType="com.tcwong.pengms.model.TruckTeam">
       <id column="teamID" jdbcType="INTEGER" property="teamid" />
       <result column="teamName" jdbcType="VARCHAR" property="teamname" />
     </association>
