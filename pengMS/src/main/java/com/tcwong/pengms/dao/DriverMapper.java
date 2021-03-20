@@ -10,7 +10,7 @@ public interface DriverMapper {
 
     int deleteByExample(DriverExample example);
 
-    int deleteByPrimaryKey(Integer driverid);
+    int deleteByPrimaryKey(Long id);
 
     int insert(Driver record);
 
@@ -18,7 +18,7 @@ public interface DriverMapper {
 
     List<Driver> selectByExample(DriverExample example);
 
-    Driver selectByPrimaryKey(Integer driverid);
+    Driver selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(
             @Param("record") Driver record, @Param("example") DriverExample example);
@@ -28,18 +28,4 @@ public interface DriverMapper {
     int updateByPrimaryKeySelective(Driver record);
 
     int updateByPrimaryKey(Driver record);
-
-    int deleteByIds(@Param("ids") String[] ids);
-
-    List<Driver> getAllDriverByPage(
-            @Param("page") Integer page,
-            @Param("size") Integer size,
-            @Param("name") String name,
-            @Param("fkTeamid") Integer fkTeamid,
-            @Param("state") Integer state);
-
-    Long getTotal(
-            @Param("name") String name,
-            @Param("fkTeamid") Integer fkTeamid,
-            @Param("state") Integer state);
 }

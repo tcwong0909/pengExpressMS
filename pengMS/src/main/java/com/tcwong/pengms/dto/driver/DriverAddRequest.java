@@ -1,4 +1,4 @@
-package com.tcwong.pengms.model;
+package com.tcwong.pengms.dto.driver;
 
 import java.util.Date;
 import lombok.AllArgsConstructor;
@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Description 司机实体类
+ * Description 司机添加请求
  *
  * @author tcwong
  * @date 2021/3/20 Since 1.8
@@ -16,8 +16,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Driver {
-    private Long id;
+public class DriverAddRequest {
 
     private String name;
 
@@ -29,21 +28,7 @@ public class Driver {
 
     private String identityNo;
 
-    private Long truckTeamId;
-
     private Integer state;
 
     private String remark;
-
-    private Date checkTime;
-
-    private Integer isDelete;
-
-    private String updateBy;
-
-    private String createBy;
-
-    private Date updateTime;
-
-    private Date createTime;
 }

@@ -4,53 +4,91 @@ import com.tcwong.pengms.base.LogFilter;
 import com.tcwong.pengms.base.WebPageResponse;
 import com.tcwong.pengms.base.WebResponse;
 import com.tcwong.pengms.constant.LogOperationType;
-import com.tcwong.pengms.model.Driver;
+import com.tcwong.pengms.dto.driver.DriverAddRequest;
+import com.tcwong.pengms.dto.driver.DriverDeleteRequest;
+import com.tcwong.pengms.dto.driver.DriverEditRequest;
+import com.tcwong.pengms.dto.driver.DriverPageRequest;
 import com.tcwong.pengms.service.DriverService;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
-/** 驾驶员 */
+/**
+ * Description 司机管理
+ *
+ * @author tcwong
+ * @date 2021/3/20 Since 1.8
+ */
 @RestController
 @RequestMapping("/pengms/driver/")
 public class DriverController {
 
-    @Autowired private DriverService driverService;
+    @Resource private DriverService driverService;
 
-    @LogFilter(description = "驾驶员添加", logOperationType = LogOperationType.ADD)
+    /**
+     * Description 添加司机
+     *
+     * @param request 司机添加请求
+     * @return Integer 成功条数
+     * @author tcwong
+     * @date 2021/3/20
+     */
+    @LogFilter(description = "司机添加", logOperationType = LogOperationType.ADD)
     @PostMapping("/add")
-    public WebResponse addDriver(@RequestBody Driver driver) {
-        int num = driverService.addDriver(driver);
+    public WebResponse addDriver(@RequestBody DriverAddRequest request) {
+        Integer num = driverService.addDriver(request);
         if (num > 0) {
             return WebResponse.success("添加成功");
         }
         return WebResponse.failed("添加失败");
     }
 
-    @LogFilter(description = "驾驶员删除", logOperationType = LogOperationType.DELETE)
-    @DeleteMapping("/delete/{ids}")
-    public WebResponse deleteByIds(@PathVariable String ids) {
-        int num = driverService.deleteByIds(ids);
+    /**
+     * Description 删除司机
+     *
+     * @param request 司机删除参数
+     * @return Integer 成功条数
+     * @author tcwong
+     * @date 2021/3/20
+     */
+    @LogFilter(description = "司机删除", logOperationType = LogOperationType.DELETE)
+    @DeleteMapping("/delete")
+    public WebResponse deleteDriver(@RequestBody DriverDeleteRequest request) {
+        Integer num = driverService.deleteDriver(request);
         if (num > 0) {
             return WebResponse.success("删除成功");
         }
         return WebResponse.failed("删除失败");
     }
 
-    @LogFilter(description = "驾驶员修改", logOperationType = LogOperationType.UPDATE)
-    @PutMapping("/put")
-    public WebResponse editDriver(@RequestBody Driver driver) {
-        int num = driverService.editDriver(driver);
+    /**
+     * Description 司机编辑
+     *
+     * @param request 司机编辑参数
+     * @return Integer 成功条数
+     * @author tcwong
+     * @date 2021/3/20
+     */
+    @LogFilter(description = "司机编辑", logOperationType = LogOperationType.UPDATE)
+    @PutMapping("/edit")
+    public WebResponse editDriver(@RequestBody DriverEditRequest request) {
+        Integer num = driverService.editDriver(request);
         if (num > 0) {
             return WebResponse.success("修改成功");
         }
         return WebResponse.failed("修改失败");
     }
 
-    @PostMapping("/getAllByPage")
-    public WebResponse getAllDriverByPage(
-            Integer page, Integer size, String name, Integer fkTeamid, Integer state) {
-        WebPageResponse pageResponse =
-                driverService.getAllDriverByPage(page, size, name, fkTeamid, state);
+    /**
+     * Description 司机分页查询
+     *
+     * @param request 司机分页查询请求
+     * @return 司机分页结果
+     * @author tcwong
+     * @date 2021/3/20
+     */
+    @PostMapping("/page")
+    public WebResponse pageDriver(@RequestBody DriverPageRequest request) {
+        WebPageResponse pageResponse = driverService.pageDriver(request);
         if (pageResponse != null) {
             return WebResponse.success(pageResponse, "查询成功");
         }

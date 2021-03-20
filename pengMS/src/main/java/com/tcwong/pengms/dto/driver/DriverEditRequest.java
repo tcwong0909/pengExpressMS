@@ -1,13 +1,14 @@
-package com.tcwong.pengms.model;
+package com.tcwong.pengms.dto.driver;
 
 import java.util.Date;
+import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Description 司机实体类
+ * Description 司机编辑请求
  *
  * @author tcwong
  * @date 2021/3/20 Since 1.8
@@ -16,7 +17,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Driver {
+public class DriverEditRequest {
+
+    @NotNull(message = "司机Id不能为空")
     private Long id;
 
     private String name;
@@ -29,21 +32,7 @@ public class Driver {
 
     private String identityNo;
 
-    private Long truckTeamId;
-
     private Integer state;
 
     private String remark;
-
-    private Date checkTime;
-
-    private Integer isDelete;
-
-    private String updateBy;
-
-    private String createBy;
-
-    private Date updateTime;
-
-    private Date createTime;
 }

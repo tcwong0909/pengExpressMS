@@ -57,13 +57,21 @@
 <!--               selectByExampleQueryId="true">-->
 <!--            <columnOverride column="is_delete" javaType="Integer" />-->
 <!--        </table>        -->
-        <table tableName="peng_truck" domainObjectName="Truck"
+<!--        <table tableName="peng_truck" domainObjectName="Truck"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">
             <columnOverride column="is_delete" javaType="Integer" />
             <columnOverride column="type" javaType="Integer" />
             <columnOverride column="state" javaType="Integer" />
+        </table>      -->
+        <table tableName="peng_driver" domainObjectName="Driver"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+            <columnOverride column="is_delete" javaType="Integer" />
+            <columnOverride column="state" javaType="Integer" />
+            <columnOverride column="sex" javaType="Integer" />
         </table>
 <!--      有些表的字段需要指定java类型-->
 <!--         <table tableName="peng_truck_team">-->
