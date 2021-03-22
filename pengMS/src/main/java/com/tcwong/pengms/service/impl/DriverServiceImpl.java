@@ -121,6 +121,7 @@ public class DriverServiceImpl implements DriverService {
     public WebPageResponse pageDriver(DriverPageRequest request) {
         PageHelper.startPage(request.getPageNum(), request.getPageSize());
         DriverExample driverExample = new DriverExample();
+        driverExample.setOrderByClause("id DESC");
         DriverExample.Criteria criteria = driverExample.createCriteria();
         if (ObjectUtil.isNotEmpty(request.getName())) {
             criteria.andNameEqualTo(request.getName());

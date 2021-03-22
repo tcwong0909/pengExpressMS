@@ -91,6 +91,7 @@ public class RoadBillServiceImpl implements RoadBillService {
     @Override
     public WebPageResponse pageRoadBill(RoadBillPageRequest request) {
         RoadBillExample roadBillExample = new RoadBillExample();
+        roadBillExample.setOrderByClause("id DESC");
         RoadBillExample.Criteria criteria = roadBillExample.createCriteria();
         if (ObjectUtil.isNotEmpty(request.getState())) {
             criteria.andStateEqualTo(request.getState());
