@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.tcwong.pengms.dao.GoodsMapper" >
-  <resultMap id="BaseResultMap" type="com.tcwong.pengms.model.Goods" >
+<mapper namespace="com.tcwong.pengms.dao.CostMapper" >
+  <resultMap id="BaseResultMap" type="com.tcwong.pengms.model.Cost" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="amount" property="amount" jdbcType="INTEGER" />
-    <result column="weight" property="weight" jdbcType="REAL" />
-    <result column="volume" property="volume" jdbcType="REAL" />
+    <result column="insurance" property="insurance" jdbcType="DECIMAL" />
+    <result column="transport" property="transport" jdbcType="DECIMAL" />
+    <result column="extra" property="extra" jdbcType="DECIMAL" />
+    <result column="total" property="total" jdbcType="DECIMAL" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
     <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
     <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
     <result column="create_by" property="createBy" jdbcType="VARCHAR" />
@@ -72,16 +73,17 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, amount, weight, volume, is_delete, update_by, create_by, update_time, create_time
+    id, insurance, transport, extra, total, remark, is_delete, update_by, create_by, 
+    update_time, create_time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tcwong.pengms.model.example.GoodsExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tcwong.pengms.model.example.CostExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from peng_goods
+    from peng_cost
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -92,46 +94,49 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from peng_goods
+    from peng_cost
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from peng_goods
+    delete from peng_cost
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.example.GoodsExample" >
-    delete from peng_goods
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.example.CostExample" >
+    delete from peng_cost
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.tcwong.pengms.model.Goods" >
-    insert into peng_goods (id, name, amount, 
-      weight, volume, is_delete, 
-      update_by, create_by, update_time, 
-      create_time)
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{amount,jdbcType=INTEGER}, 
-      #{weight,jdbcType=REAL}, #{volume,jdbcType=REAL}, #{isDelete,jdbcType=TINYINT}, 
-      #{updateBy,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{createTime,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="com.tcwong.pengms.model.Cost" >
+    insert into peng_cost (id, insurance, transport, 
+      extra, total, remark, 
+      is_delete, update_by, create_by, 
+      update_time, create_time)
+    values (#{id,jdbcType=BIGINT}, #{insurance,jdbcType=DECIMAL}, #{transport,jdbcType=DECIMAL}, 
+      #{extra,jdbcType=DECIMAL}, #{total,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, 
+      #{isDelete,jdbcType=TINYINT}, #{updateBy,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.tcwong.pengms.model.Goods" >
-    insert into peng_goods
+  <insert id="insertSelective" parameterType="com.tcwong.pengms.model.Cost" >
+    insert into peng_cost
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="name != null" >
-        name,
+      <if test="insurance != null" >
+        insurance,
       </if>
-      <if test="amount != null" >
-        amount,
+      <if test="transport != null" >
+        transport,
       </if>
-      <if test="weight != null" >
-        weight,
+      <if test="extra != null" >
+        extra,
       </if>
-      <if test="volume != null" >
-        volume,
+      <if test="total != null" >
+        total,
+      </if>
+      <if test="remark != null" >
+        remark,
       </if>
       <if test="isDelete != null" >
         is_delete,
@@ -153,17 +158,20 @@
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+      <if test="insurance != null" >
+        #{insurance,jdbcType=DECIMAL},
       </if>
-      <if test="amount != null" >
-        #{amount,jdbcType=INTEGER},
+      <if test="transport != null" >
+        #{transport,jdbcType=DECIMAL},
       </if>
-      <if test="weight != null" >
-        #{weight,jdbcType=REAL},
+      <if test="extra != null" >
+        #{extra,jdbcType=DECIMAL},
       </if>
-      <if test="volume != null" >
-        #{volume,jdbcType=REAL},
+      <if test="total != null" >
+        #{total,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
       </if>
       <if test="isDelete != null" >
         #{isDelete,jdbcType=TINYINT},
@@ -182,29 +190,32 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.pengms.model.example.GoodsExample" resultType="java.lang.Integer" >
-    select count(*) from peng_goods
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.example.CostExample" resultType="java.lang.Integer" >
+    select count(*) from peng_cost
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update peng_goods
+    update peng_cost
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.name != null" >
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="record.insurance != null" >
+        insurance = #{record.insurance,jdbcType=DECIMAL},
       </if>
-      <if test="record.amount != null" >
-        amount = #{record.amount,jdbcType=INTEGER},
+      <if test="record.transport != null" >
+        transport = #{record.transport,jdbcType=DECIMAL},
       </if>
-      <if test="record.weight != null" >
-        weight = #{record.weight,jdbcType=REAL},
+      <if test="record.extra != null" >
+        extra = #{record.extra,jdbcType=DECIMAL},
       </if>
-      <if test="record.volume != null" >
-        volume = #{record.volume,jdbcType=REAL},
+      <if test="record.total != null" >
+        total = #{record.total,jdbcType=DECIMAL},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
       </if>
       <if test="record.isDelete != null" >
         is_delete = #{record.isDelete,jdbcType=TINYINT},
@@ -227,12 +238,13 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update peng_goods
+    update peng_cost
     set id = #{record.id,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      amount = #{record.amount,jdbcType=INTEGER},
-      weight = #{record.weight,jdbcType=REAL},
-      volume = #{record.volume,jdbcType=REAL},
+      insurance = #{record.insurance,jdbcType=DECIMAL},
+      transport = #{record.transport,jdbcType=DECIMAL},
+      extra = #{record.extra,jdbcType=DECIMAL},
+      total = #{record.total,jdbcType=DECIMAL},
+      remark = #{record.remark,jdbcType=VARCHAR},
       is_delete = #{record.isDelete,jdbcType=TINYINT},
       update_by = #{record.updateBy,jdbcType=VARCHAR},
       create_by = #{record.createBy,jdbcType=VARCHAR},
@@ -242,20 +254,23 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.pengms.model.Goods" >
-    update peng_goods
+  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.pengms.model.Cost" >
+    update peng_cost
     <set >
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+      <if test="insurance != null" >
+        insurance = #{insurance,jdbcType=DECIMAL},
       </if>
-      <if test="amount != null" >
-        amount = #{amount,jdbcType=INTEGER},
+      <if test="transport != null" >
+        transport = #{transport,jdbcType=DECIMAL},
       </if>
-      <if test="weight != null" >
-        weight = #{weight,jdbcType=REAL},
+      <if test="extra != null" >
+        extra = #{extra,jdbcType=DECIMAL},
       </if>
-      <if test="volume != null" >
-        volume = #{volume,jdbcType=REAL},
+      <if test="total != null" >
+        total = #{total,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
       </if>
       <if test="isDelete != null" >
         is_delete = #{isDelete,jdbcType=TINYINT},
@@ -275,12 +290,13 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.tcwong.pengms.model.Goods" >
-    update peng_goods
-    set name = #{name,jdbcType=VARCHAR},
-      amount = #{amount,jdbcType=INTEGER},
-      weight = #{weight,jdbcType=REAL},
-      volume = #{volume,jdbcType=REAL},
+  <update id="updateByPrimaryKey" parameterType="com.tcwong.pengms.model.Cost" >
+    update peng_cost
+    set insurance = #{insurance,jdbcType=DECIMAL},
+      transport = #{transport,jdbcType=DECIMAL},
+      extra = #{extra,jdbcType=DECIMAL},
+      total = #{total,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=VARCHAR},
       is_delete = #{isDelete,jdbcType=TINYINT},
       update_by = #{updateBy,jdbcType=VARCHAR},
       create_by = #{createBy,jdbcType=VARCHAR},

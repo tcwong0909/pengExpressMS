@@ -36,7 +36,7 @@ public class Scheduling implements Serializable {
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date altertime;
 
-    private Carriers carriers;
+    //    private Carriers carriers;
 
     @Override
     public String toString() {
@@ -70,18 +70,16 @@ public class Scheduling implements Serializable {
                 + isdelete
                 + ", altertime="
                 + altertime
-                + ", carriers="
-                + carriers
                 + '}';
     }
 
-    public Carriers getCarriers() {
-        return carriers;
-    }
-
-    public void setCarriers(Carriers carriers) {
-        this.carriers = carriers;
-    }
+    //    public Carriers getCarriers() {
+    //        return carriers;
+    //    }
+    //
+    //    public void setCarriers(Carriers carriers) {
+    //        this.carriers = carriers;
+    //    }
 
     private static final long serialVersionUID = 1L;
 

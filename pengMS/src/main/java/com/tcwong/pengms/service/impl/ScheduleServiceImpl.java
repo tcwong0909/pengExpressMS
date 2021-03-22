@@ -1,10 +1,8 @@
 package com.tcwong.pengms.service.impl;
 
 import com.tcwong.pengms.base.WebPageResponse;
-import com.tcwong.pengms.dao.CarriersMapper;
 import com.tcwong.pengms.dao.SchedulingMapper;
 import com.tcwong.pengms.dao.TruckMapper;
-import com.tcwong.pengms.model.Carriers;
 import com.tcwong.pengms.model.Scheduling;
 import com.tcwong.pengms.model.Truck;
 import com.tcwong.pengms.service.ScheduleService;
@@ -17,7 +15,6 @@ import org.springframework.stereotype.Service;
 public class ScheduleServiceImpl implements ScheduleService {
 
     @Resource private SchedulingMapper schedulingMapper;
-    @Resource private CarriersMapper carriersMapper;
     @Resource private TruckMapper truckMapper;
 
     @Override
@@ -30,11 +27,11 @@ public class ScheduleServiceImpl implements ScheduleService {
         Truck truck = new Truck();
         truck.setState(1);
         truckMapper.updateByPrimaryKeySelective(truck);
-        Carriers carriers = new Carriers();
-        carriers.setCarriersid(scheduling.getFkCarriersid());
-        carriers.setFinishedstate(2);
-        carriers.setAltertime(new Date());
-        carriersMapper.updateByPrimaryKeySelective(carriers);
+        //        Carriers carriers = new Carriers();
+        //        carriers.setCarriersid(scheduling.getFkCarriersid());
+        //        carriers.setFinishedstate(2);
+        //        carriers.setAltertime(new Date());
+        //        carriersMapper.updateByPrimaryKeySelective(carriers);
         return 1;
     }
 
@@ -80,7 +77,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         String[] carriersIds = fkCarriersidBuilder.toString().split(",");
         String[] truckIds = fkTruckidBuilder.toString().split(",");
         schedulingMapper.deleteByIds(schedulingIds);
-        carriersMapper.updateByIds(carriersIds);
+        //        carriersMapper.updateByIds(carriersIds);
         return size;
     }
 
@@ -88,10 +85,10 @@ public class ScheduleServiceImpl implements ScheduleService {
     public int addCost(Scheduling scheduling) {
         scheduling.setAltertime(new Date());
         Integer fkCarriersid = scheduling.getFkCarriersid();
-        Carriers carriers = new Carriers();
-        carriers.setFinishedstate(4);
-        carriers.setCarriersid(fkCarriersid);
-        carriersMapper.updateByPrimaryKeySelective(carriers);
+        //        Carriers carriers = new Carriers();
+        //        carriers.setFinishedstate(4);
+        //        carriers.setCarriersid(fkCarriersid);
+        //        carriersMapper.updateByPrimaryKeySelective(carriers);
         return schedulingMapper.updateByPrimaryKeySelective(scheduling);
     }
 }

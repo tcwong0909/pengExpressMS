@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.tcwong.pengms.dao.GoodsMapper" >
-  <resultMap id="BaseResultMap" type="com.tcwong.pengms.model.Goods" >
+<mapper namespace="com.tcwong.pengms.dao.DriverTruckMappingMapper" >
+  <resultMap id="BaseResultMap" type="com.tcwong.pengms.model.DriverTruckMapping" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="amount" property="amount" jdbcType="INTEGER" />
-    <result column="weight" property="weight" jdbcType="REAL" />
-    <result column="volume" property="volume" jdbcType="REAL" />
+    <result column="driver_id" property="driverId" jdbcType="BIGINT" />
+    <result column="truck_id" property="truckId" jdbcType="BIGINT" />
     <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
     <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
     <result column="create_by" property="createBy" jdbcType="VARCHAR" />
@@ -72,16 +70,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, amount, weight, volume, is_delete, update_by, create_by, update_time, create_time
+    id, driver_id, truck_id, is_delete, update_by, create_by, update_time, create_time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tcwong.pengms.model.example.GoodsExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tcwong.pengms.model.example.DriverTruckMappingExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from peng_goods
+    from peng_driver_truck_mapping
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -92,46 +90,38 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from peng_goods
+    from peng_driver_truck_mapping
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from peng_goods
+    delete from peng_driver_truck_mapping
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.example.GoodsExample" >
-    delete from peng_goods
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.example.DriverTruckMappingExample" >
+    delete from peng_driver_truck_mapping
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.tcwong.pengms.model.Goods" >
-    insert into peng_goods (id, name, amount, 
-      weight, volume, is_delete, 
-      update_by, create_by, update_time, 
-      create_time)
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{amount,jdbcType=INTEGER}, 
-      #{weight,jdbcType=REAL}, #{volume,jdbcType=REAL}, #{isDelete,jdbcType=TINYINT}, 
-      #{updateBy,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{createTime,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="com.tcwong.pengms.model.DriverTruckMapping" >
+    insert into peng_driver_truck_mapping (id, driver_id, truck_id, 
+      is_delete, update_by, create_by, 
+      update_time, create_time)
+    values (#{id,jdbcType=BIGINT}, #{driverId,jdbcType=BIGINT}, #{truckId,jdbcType=BIGINT}, 
+      #{isDelete,jdbcType=TINYINT}, #{updateBy,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.tcwong.pengms.model.Goods" >
-    insert into peng_goods
+  <insert id="insertSelective" parameterType="com.tcwong.pengms.model.DriverTruckMapping" >
+    insert into peng_driver_truck_mapping
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="name != null" >
-        name,
+      <if test="driverId != null" >
+        driver_id,
       </if>
-      <if test="amount != null" >
-        amount,
-      </if>
-      <if test="weight != null" >
-        weight,
-      </if>
-      <if test="volume != null" >
-        volume,
+      <if test="truckId != null" >
+        truck_id,
       </if>
       <if test="isDelete != null" >
         is_delete,
@@ -153,17 +143,11 @@
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+      <if test="driverId != null" >
+        #{driverId,jdbcType=BIGINT},
       </if>
-      <if test="amount != null" >
-        #{amount,jdbcType=INTEGER},
-      </if>
-      <if test="weight != null" >
-        #{weight,jdbcType=REAL},
-      </if>
-      <if test="volume != null" >
-        #{volume,jdbcType=REAL},
+      <if test="truckId != null" >
+        #{truckId,jdbcType=BIGINT},
       </if>
       <if test="isDelete != null" >
         #{isDelete,jdbcType=TINYINT},
@@ -182,29 +166,23 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.pengms.model.example.GoodsExample" resultType="java.lang.Integer" >
-    select count(*) from peng_goods
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.example.DriverTruckMappingExample" resultType="java.lang.Integer" >
+    select count(*) from peng_driver_truck_mapping
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update peng_goods
+    update peng_driver_truck_mapping
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.name != null" >
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="record.driverId != null" >
+        driver_id = #{record.driverId,jdbcType=BIGINT},
       </if>
-      <if test="record.amount != null" >
-        amount = #{record.amount,jdbcType=INTEGER},
-      </if>
-      <if test="record.weight != null" >
-        weight = #{record.weight,jdbcType=REAL},
-      </if>
-      <if test="record.volume != null" >
-        volume = #{record.volume,jdbcType=REAL},
+      <if test="record.truckId != null" >
+        truck_id = #{record.truckId,jdbcType=BIGINT},
       </if>
       <if test="record.isDelete != null" >
         is_delete = #{record.isDelete,jdbcType=TINYINT},
@@ -227,12 +205,10 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update peng_goods
+    update peng_driver_truck_mapping
     set id = #{record.id,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      amount = #{record.amount,jdbcType=INTEGER},
-      weight = #{record.weight,jdbcType=REAL},
-      volume = #{record.volume,jdbcType=REAL},
+      driver_id = #{record.driverId,jdbcType=BIGINT},
+      truck_id = #{record.truckId,jdbcType=BIGINT},
       is_delete = #{record.isDelete,jdbcType=TINYINT},
       update_by = #{record.updateBy,jdbcType=VARCHAR},
       create_by = #{record.createBy,jdbcType=VARCHAR},
@@ -242,20 +218,14 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.pengms.model.Goods" >
-    update peng_goods
+  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.pengms.model.DriverTruckMapping" >
+    update peng_driver_truck_mapping
     <set >
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+      <if test="driverId != null" >
+        driver_id = #{driverId,jdbcType=BIGINT},
       </if>
-      <if test="amount != null" >
-        amount = #{amount,jdbcType=INTEGER},
-      </if>
-      <if test="weight != null" >
-        weight = #{weight,jdbcType=REAL},
-      </if>
-      <if test="volume != null" >
-        volume = #{volume,jdbcType=REAL},
+      <if test="truckId != null" >
+        truck_id = #{truckId,jdbcType=BIGINT},
       </if>
       <if test="isDelete != null" >
         is_delete = #{isDelete,jdbcType=TINYINT},
@@ -275,12 +245,10 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.tcwong.pengms.model.Goods" >
-    update peng_goods
-    set name = #{name,jdbcType=VARCHAR},
-      amount = #{amount,jdbcType=INTEGER},
-      weight = #{weight,jdbcType=REAL},
-      volume = #{volume,jdbcType=REAL},
+  <update id="updateByPrimaryKey" parameterType="com.tcwong.pengms.model.DriverTruckMapping" >
+    update peng_driver_truck_mapping
+    set driver_id = #{driverId,jdbcType=BIGINT},
+      truck_id = #{truckId,jdbcType=BIGINT},
       is_delete = #{isDelete,jdbcType=TINYINT},
       update_by = #{updateBy,jdbcType=VARCHAR},
       create_by = #{createBy,jdbcType=VARCHAR},

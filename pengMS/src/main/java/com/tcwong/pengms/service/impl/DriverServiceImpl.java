@@ -5,7 +5,6 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.tcwong.pengms.base.WebPageResponse;
 import com.tcwong.pengms.constant.DeletedEnum;
-import com.tcwong.pengms.dao.ContactMapper;
 import com.tcwong.pengms.dao.DriverMapper;
 import com.tcwong.pengms.dto.driver.DriverAddRequest;
 import com.tcwong.pengms.dto.driver.DriverDeleteRequest;
@@ -31,8 +30,6 @@ import org.springframework.stereotype.Service;
 public class DriverServiceImpl implements DriverService {
 
     @Resource private DriverMapper driverMapper;
-    @Resource private ContactMapper contactMapper;
-
     /**
      * Description 添加司机
      *

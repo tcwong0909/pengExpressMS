@@ -6,7 +6,7 @@ import com.tcwong.pengms.dao.UserMapper;
 import com.tcwong.pengms.dto.LoginRequest;
 import com.tcwong.pengms.model.LoginLog;
 import com.tcwong.pengms.model.User;
-import com.tcwong.pengms.model.UserExample;
+import com.tcwong.pengms.model.example.UserExample;
 import com.tcwong.pengms.service.LoginLogService;
 import com.tcwong.pengms.service.LoginService;
 import com.tcwong.pengms.utils.IpUtil;

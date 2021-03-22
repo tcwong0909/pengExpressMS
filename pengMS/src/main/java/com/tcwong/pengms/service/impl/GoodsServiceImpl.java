@@ -7,6 +7,12 @@ import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
+/**
+ * Description 货物管理服务
+ *
+ * @author tcwong
+ * @date 2021/3/22 Since 1.8
+ */
 @Service
 public class GoodsServiceImpl implements GoodsService {
     @Resource private GoodsMapper goodsMapper;
@@ -29,7 +35,6 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public int deleteGoods(String ids) {
         String[] fkIds = ids.split(",");
-        goodsMapper.deleteByFkIds(fkIds);
         return fkIds.length;
     }
 }

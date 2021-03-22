@@ -1,17 +1,18 @@
 package com.tcwong.pengms.model.example;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class GoodsExample {
+public class CostExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public GoodsExample() {
+    public CostExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -166,253 +167,313 @@ public class GoodsExample {
             return (Criteria) this;
         }
 
-        public Criteria andNameIsNull() {
-            addCriterion("name is null");
+        public Criteria andInsuranceIsNull() {
+            addCriterion("insurance is null");
             return (Criteria) this;
         }
 
-        public Criteria andNameIsNotNull() {
-            addCriterion("name is not null");
+        public Criteria andInsuranceIsNotNull() {
+            addCriterion("insurance is not null");
             return (Criteria) this;
         }
 
-        public Criteria andNameEqualTo(String value) {
-            addCriterion("name =", value, "name");
+        public Criteria andInsuranceEqualTo(BigDecimal value) {
+            addCriterion("insurance =", value, "insurance");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotEqualTo(String value) {
-            addCriterion("name <>", value, "name");
+        public Criteria andInsuranceNotEqualTo(BigDecimal value) {
+            addCriterion("insurance <>", value, "insurance");
             return (Criteria) this;
         }
 
-        public Criteria andNameGreaterThan(String value) {
-            addCriterion("name >", value, "name");
+        public Criteria andInsuranceGreaterThan(BigDecimal value) {
+            addCriterion("insurance >", value, "insurance");
             return (Criteria) this;
         }
 
-        public Criteria andNameGreaterThanOrEqualTo(String value) {
-            addCriterion("name >=", value, "name");
+        public Criteria andInsuranceGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("insurance >=", value, "insurance");
             return (Criteria) this;
         }
 
-        public Criteria andNameLessThan(String value) {
-            addCriterion("name <", value, "name");
+        public Criteria andInsuranceLessThan(BigDecimal value) {
+            addCriterion("insurance <", value, "insurance");
             return (Criteria) this;
         }
 
-        public Criteria andNameLessThanOrEqualTo(String value) {
-            addCriterion("name <=", value, "name");
+        public Criteria andInsuranceLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("insurance <=", value, "insurance");
             return (Criteria) this;
         }
 
-        public Criteria andNameLike(String value) {
-            addCriterion("name like", value, "name");
+        public Criteria andInsuranceIn(List<BigDecimal> values) {
+            addCriterion("insurance in", values, "insurance");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotLike(String value) {
-            addCriterion("name not like", value, "name");
+        public Criteria andInsuranceNotIn(List<BigDecimal> values) {
+            addCriterion("insurance not in", values, "insurance");
             return (Criteria) this;
         }
 
-        public Criteria andNameIn(List<String> values) {
-            addCriterion("name in", values, "name");
+        public Criteria andInsuranceBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("insurance between", value1, value2, "insurance");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotIn(List<String> values) {
-            addCriterion("name not in", values, "name");
+        public Criteria andInsuranceNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("insurance not between", value1, value2, "insurance");
             return (Criteria) this;
         }
 
-        public Criteria andNameBetween(String value1, String value2) {
-            addCriterion("name between", value1, value2, "name");
+        public Criteria andTransportIsNull() {
+            addCriterion("transport is null");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotBetween(String value1, String value2) {
-            addCriterion("name not between", value1, value2, "name");
+        public Criteria andTransportIsNotNull() {
+            addCriterion("transport is not null");
             return (Criteria) this;
         }
 
-        public Criteria andAmountIsNull() {
-            addCriterion("amount is null");
+        public Criteria andTransportEqualTo(BigDecimal value) {
+            addCriterion("transport =", value, "transport");
             return (Criteria) this;
         }
 
-        public Criteria andAmountIsNotNull() {
-            addCriterion("amount is not null");
+        public Criteria andTransportNotEqualTo(BigDecimal value) {
+            addCriterion("transport <>", value, "transport");
             return (Criteria) this;
         }
 
-        public Criteria andAmountEqualTo(Integer value) {
-            addCriterion("amount =", value, "amount");
+        public Criteria andTransportGreaterThan(BigDecimal value) {
+            addCriterion("transport >", value, "transport");
             return (Criteria) this;
         }
 
-        public Criteria andAmountNotEqualTo(Integer value) {
-            addCriterion("amount <>", value, "amount");
+        public Criteria andTransportGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("transport >=", value, "transport");
             return (Criteria) this;
         }
 
-        public Criteria andAmountGreaterThan(Integer value) {
-            addCriterion("amount >", value, "amount");
+        public Criteria andTransportLessThan(BigDecimal value) {
+            addCriterion("transport <", value, "transport");
             return (Criteria) this;
         }
 
-        public Criteria andAmountGreaterThanOrEqualTo(Integer value) {
-            addCriterion("amount >=", value, "amount");
+        public Criteria andTransportLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("transport <=", value, "transport");
             return (Criteria) this;
         }
 
-        public Criteria andAmountLessThan(Integer value) {
-            addCriterion("amount <", value, "amount");
+        public Criteria andTransportIn(List<BigDecimal> values) {
+            addCriterion("transport in", values, "transport");
             return (Criteria) this;
         }
 
-        public Criteria andAmountLessThanOrEqualTo(Integer value) {
-            addCriterion("amount <=", value, "amount");
+        public Criteria andTransportNotIn(List<BigDecimal> values) {
+            addCriterion("transport not in", values, "transport");
             return (Criteria) this;
         }
 
-        public Criteria andAmountIn(List<Integer> values) {
-            addCriterion("amount in", values, "amount");
+        public Criteria andTransportBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("transport between", value1, value2, "transport");
             return (Criteria) this;
         }
 
-        public Criteria andAmountNotIn(List<Integer> values) {
-            addCriterion("amount not in", values, "amount");
+        public Criteria andTransportNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("transport not between", value1, value2, "transport");
             return (Criteria) this;
         }
 
-        public Criteria andAmountBetween(Integer value1, Integer value2) {
-            addCriterion("amount between", value1, value2, "amount");
+        public Criteria andExtraIsNull() {
+            addCriterion("extra is null");
             return (Criteria) this;
         }
 
-        public Criteria andAmountNotBetween(Integer value1, Integer value2) {
-            addCriterion("amount not between", value1, value2, "amount");
+        public Criteria andExtraIsNotNull() {
+            addCriterion("extra is not null");
             return (Criteria) this;
         }
 
-        public Criteria andWeightIsNull() {
-            addCriterion("weight is null");
+        public Criteria andExtraEqualTo(BigDecimal value) {
+            addCriterion("extra =", value, "extra");
             return (Criteria) this;
         }
 
-        public Criteria andWeightIsNotNull() {
-            addCriterion("weight is not null");
+        public Criteria andExtraNotEqualTo(BigDecimal value) {
+            addCriterion("extra <>", value, "extra");
             return (Criteria) this;
         }
 
-        public Criteria andWeightEqualTo(Float value) {
-            addCriterion("weight =", value, "weight");
+        public Criteria andExtraGreaterThan(BigDecimal value) {
+            addCriterion("extra >", value, "extra");
             return (Criteria) this;
         }
 
-        public Criteria andWeightNotEqualTo(Float value) {
-            addCriterion("weight <>", value, "weight");
+        public Criteria andExtraGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("extra >=", value, "extra");
             return (Criteria) this;
         }
 
-        public Criteria andWeightGreaterThan(Float value) {
-            addCriterion("weight >", value, "weight");
+        public Criteria andExtraLessThan(BigDecimal value) {
+            addCriterion("extra <", value, "extra");
             return (Criteria) this;
         }
 
-        public Criteria andWeightGreaterThanOrEqualTo(Float value) {
-            addCriterion("weight >=", value, "weight");
+        public Criteria andExtraLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("extra <=", value, "extra");
             return (Criteria) this;
         }
 
-        public Criteria andWeightLessThan(Float value) {
-            addCriterion("weight <", value, "weight");
+        public Criteria andExtraIn(List<BigDecimal> values) {
+            addCriterion("extra in", values, "extra");
             return (Criteria) this;
         }
 
-        public Criteria andWeightLessThanOrEqualTo(Float value) {
-            addCriterion("weight <=", value, "weight");
+        public Criteria andExtraNotIn(List<BigDecimal> values) {
+            addCriterion("extra not in", values, "extra");
             return (Criteria) this;
         }
 
-        public Criteria andWeightIn(List<Float> values) {
-            addCriterion("weight in", values, "weight");
+        public Criteria andExtraBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("extra between", value1, value2, "extra");
             return (Criteria) this;
         }
 
-        public Criteria andWeightNotIn(List<Float> values) {
-            addCriterion("weight not in", values, "weight");
+        public Criteria andExtraNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("extra not between", value1, value2, "extra");
             return (Criteria) this;
         }
 
-        public Criteria andWeightBetween(Float value1, Float value2) {
-            addCriterion("weight between", value1, value2, "weight");
+        public Criteria andTotalIsNull() {
+            addCriterion("total is null");
             return (Criteria) this;
         }
 
-        public Criteria andWeightNotBetween(Float value1, Float value2) {
-            addCriterion("weight not between", value1, value2, "weight");
+        public Criteria andTotalIsNotNull() {
+            addCriterion("total is not null");
             return (Criteria) this;
         }
 
-        public Criteria andVolumeIsNull() {
-            addCriterion("volume is null");
+        public Criteria andTotalEqualTo(BigDecimal value) {
+            addCriterion("total =", value, "total");
             return (Criteria) this;
         }
 
-        public Criteria andVolumeIsNotNull() {
-            addCriterion("volume is not null");
+        public Criteria andTotalNotEqualTo(BigDecimal value) {
+            addCriterion("total <>", value, "total");
             return (Criteria) this;
         }
 
-        public Criteria andVolumeEqualTo(Float value) {
-            addCriterion("volume =", value, "volume");
+        public Criteria andTotalGreaterThan(BigDecimal value) {
+            addCriterion("total >", value, "total");
             return (Criteria) this;
         }
 
-        public Criteria andVolumeNotEqualTo(Float value) {
-            addCriterion("volume <>", value, "volume");
+        public Criteria andTotalGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("total >=", value, "total");
             return (Criteria) this;
         }
 
-        public Criteria andVolumeGreaterThan(Float value) {
-            addCriterion("volume >", value, "volume");
+        public Criteria andTotalLessThan(BigDecimal value) {
+            addCriterion("total <", value, "total");
             return (Criteria) this;
         }
 
-        public Criteria andVolumeGreaterThanOrEqualTo(Float value) {
-            addCriterion("volume >=", value, "volume");
+        public Criteria andTotalLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("total <=", value, "total");
             return (Criteria) this;
         }
 
-        public Criteria andVolumeLessThan(Float value) {
-            addCriterion("volume <", value, "volume");
+        public Criteria andTotalIn(List<BigDecimal> values) {
+            addCriterion("total in", values, "total");
             return (Criteria) this;
         }
 
-        public Criteria andVolumeLessThanOrEqualTo(Float value) {
-            addCriterion("volume <=", value, "volume");
+        public Criteria andTotalNotIn(List<BigDecimal> values) {
+            addCriterion("total not in", values, "total");
             return (Criteria) this;
         }
 
-        public Criteria andVolumeIn(List<Float> values) {
-            addCriterion("volume in", values, "volume");
+        public Criteria andTotalBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("total between", value1, value2, "total");
             return (Criteria) this;
         }
 
-        public Criteria andVolumeNotIn(List<Float> values) {
-            addCriterion("volume not in", values, "volume");
+        public Criteria andTotalNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("total not between", value1, value2, "total");
             return (Criteria) this;
         }
 
-        public Criteria andVolumeBetween(Float value1, Float value2) {
-            addCriterion("volume between", value1, value2, "volume");
+        public Criteria andRemarkIsNull() {
+            addCriterion("remark is null");
             return (Criteria) this;
         }
 
-        public Criteria andVolumeNotBetween(Float value1, Float value2) {
-            addCriterion("volume not between", value1, value2, "volume");
+        public Criteria andRemarkIsNotNull() {
+            addCriterion("remark is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkEqualTo(String value) {
+            addCriterion("remark =", value, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkNotEqualTo(String value) {
+            addCriterion("remark <>", value, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkGreaterThan(String value) {
+            addCriterion("remark >", value, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkGreaterThanOrEqualTo(String value) {
+            addCriterion("remark >=", value, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkLessThan(String value) {
+            addCriterion("remark <", value, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkLessThanOrEqualTo(String value) {
+            addCriterion("remark <=", value, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkLike(String value) {
+            addCriterion("remark like", value, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkNotLike(String value) {
+            addCriterion("remark not like", value, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkIn(List<String> values) {
+            addCriterion("remark in", values, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkNotIn(List<String> values) {
+            addCriterion("remark not in", values, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkBetween(String value1, String value2) {
+            addCriterion("remark between", value1, value2, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkNotBetween(String value1, String value2) {
+            addCriterion("remark not between", value1, value2, "remark");
             return (Criteria) this;
         }
 

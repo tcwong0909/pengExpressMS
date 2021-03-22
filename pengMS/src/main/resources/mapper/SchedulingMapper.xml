@@ -80,7 +80,7 @@
     totalCost, fk_userID, remark, checkInTime, isDelete, alterTime
   </sql>
   <resultMap id="BaseResultMap2" type="com.tcwong.pengms.model.Scheduling" extends="BaseResultMap">
-    <association property="carriers" javaType="com.tcwong.pengms.model.Carriers">
+    <association property="carriers" javaType="com.tcwong.pengms.model.RoadBill">
       <id column="carriersID" jdbcType="INTEGER" property="carriersid" />
       <result column="sendCompany" jdbcType="VARCHAR" property="sendcompany" />
       <result column="sendAddress" jdbcType="VARCHAR" property="sendaddress" />

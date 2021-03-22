@@ -1,5 +1,6 @@
 package com.tcwong.pengms.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,7 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Description 货物实体类
+ * Description 成本实体类
  *
  * @author tcwong
  * @date 2021/3/22 Since 1.8
@@ -16,16 +17,18 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Goods {
+public class Cost {
     private Long id;
 
-    private String name;
+    private BigDecimal insurance;
 
-    private Integer amount;
+    private BigDecimal transport;
 
-    private Float weight;
+    private BigDecimal extra;
 
-    private Float volume;
+    private BigDecimal total;
+
+    private String remark;
 
     private Integer isDelete;
 

@@ -9,14 +9,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/** 货物 */
+/**
+ * Description 货物管理
+ *
+ * @author tcwong
+ * @date 2021/3/22 Since 1.8
+ */
 @RestController
-@RequestMapping("/pengms")
+@RequestMapping("/pengms/goods/")
 public class GoodsController {
 
     @Resource private GoodsService goodsService;
 
-    @GetMapping("/goodslist")
+    /**
+     * Description 货物列表
+     *
+     * @return
+     * @author tcwong
+     * @date 2021/3/22
+     */
+    @GetMapping("/list")
     public WebResponse getGoods() {
         List<Goods> goodsList = goodsService.getAll();
         return WebResponse.success(goodsList);

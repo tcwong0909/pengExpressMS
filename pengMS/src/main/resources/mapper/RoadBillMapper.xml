@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.tcwong.pengms.dao.GoodsMapper" >
-  <resultMap id="BaseResultMap" type="com.tcwong.pengms.model.Goods" >
+<mapper namespace="com.tcwong.pengms.dao.RoadBillMapper" >
+  <resultMap id="BaseResultMap" type="com.tcwong.pengms.model.RoadBill" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="amount" property="amount" jdbcType="INTEGER" />
-    <result column="weight" property="weight" jdbcType="REAL" />
-    <result column="volume" property="volume" jdbcType="REAL" />
+    <result column="bill_no" property="billNo" jdbcType="BIGINT" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="TINYINT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
     <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
     <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
     <result column="create_by" property="createBy" jdbcType="VARCHAR" />
@@ -72,16 +73,17 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, amount, weight, volume, is_delete, update_by, create_by, update_time, create_time
+    id, bill_no, start_time, end_time, state, remark, is_delete, update_by, create_by, 
+    update_time, create_time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tcwong.pengms.model.example.GoodsExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tcwong.pengms.model.example.RoadBillExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from peng_goods
+    from peng_roadbill
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -92,46 +94,49 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from peng_goods
+    from peng_roadbill
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from peng_goods
+    delete from peng_roadbill
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.example.GoodsExample" >
-    delete from peng_goods
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.example.RoadBillExample" >
+    delete from peng_roadbill
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.tcwong.pengms.model.Goods" >
-    insert into peng_goods (id, name, amount, 
-      weight, volume, is_delete, 
-      update_by, create_by, update_time, 
-      create_time)
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{amount,jdbcType=INTEGER}, 
-      #{weight,jdbcType=REAL}, #{volume,jdbcType=REAL}, #{isDelete,jdbcType=TINYINT}, 
-      #{updateBy,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{createTime,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="com.tcwong.pengms.model.RoadBill" >
+    insert into peng_roadbill (id, bill_no, start_time, 
+      end_time, state, remark, 
+      is_delete, update_by, create_by, 
+      update_time, create_time)
+    values (#{id,jdbcType=BIGINT}, #{billNo,jdbcType=BIGINT}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{state,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR}, 
+      #{isDelete,jdbcType=TINYINT}, #{updateBy,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.tcwong.pengms.model.Goods" >
-    insert into peng_goods
+  <insert id="insertSelective" parameterType="com.tcwong.pengms.model.RoadBill" >
+    insert into peng_roadbill
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="name != null" >
-        name,
+      <if test="billNo != null" >
+        bill_no,
       </if>
-      <if test="amount != null" >
-        amount,
+      <if test="startTime != null" >
+        start_time,
       </if>
-      <if test="weight != null" >
-        weight,
+      <if test="endTime != null" >
+        end_time,
       </if>
-      <if test="volume != null" >
-        volume,
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="remark != null" >
+        remark,
       </if>
       <if test="isDelete != null" >
         is_delete,
@@ -153,17 +158,20 @@
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+      <if test="billNo != null" >
+        #{billNo,jdbcType=BIGINT},
       </if>
-      <if test="amount != null" >
-        #{amount,jdbcType=INTEGER},
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="weight != null" >
-        #{weight,jdbcType=REAL},
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="volume != null" >
-        #{volume,jdbcType=REAL},
+      <if test="state != null" >
+        #{state,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
       </if>
       <if test="isDelete != null" >
         #{isDelete,jdbcType=TINYINT},
@@ -182,29 +190,32 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.pengms.model.example.GoodsExample" resultType="java.lang.Integer" >
-    select count(*) from peng_goods
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.example.RoadBillExample" resultType="java.lang.Integer" >
+    select count(*) from peng_roadbill
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update peng_goods
+    update peng_roadbill
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.name != null" >
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="record.billNo != null" >
+        bill_no = #{record.billNo,jdbcType=BIGINT},
       </if>
-      <if test="record.amount != null" >
-        amount = #{record.amount,jdbcType=INTEGER},
+      <if test="record.startTime != null" >
+        start_time = #{record.startTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.weight != null" >
-        weight = #{record.weight,jdbcType=REAL},
+      <if test="record.endTime != null" >
+        end_time = #{record.endTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.volume != null" >
-        volume = #{record.volume,jdbcType=REAL},
+      <if test="record.state != null" >
+        state = #{record.state,jdbcType=TINYINT},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
       </if>
       <if test="record.isDelete != null" >
         is_delete = #{record.isDelete,jdbcType=TINYINT},
@@ -227,12 +238,13 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update peng_goods
+    update peng_roadbill
     set id = #{record.id,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      amount = #{record.amount,jdbcType=INTEGER},
-      weight = #{record.weight,jdbcType=REAL},
-      volume = #{record.volume,jdbcType=REAL},
+      bill_no = #{record.billNo,jdbcType=BIGINT},
+      start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      end_time = #{record.endTime,jdbcType=TIMESTAMP},
+      state = #{record.state,jdbcType=TINYINT},
+      remark = #{record.remark,jdbcType=VARCHAR},
       is_delete = #{record.isDelete,jdbcType=TINYINT},
       update_by = #{record.updateBy,jdbcType=VARCHAR},
       create_by = #{record.createBy,jdbcType=VARCHAR},
@@ -242,20 +254,23 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.pengms.model.Goods" >
-    update peng_goods
+  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.pengms.model.RoadBill" >
+    update peng_roadbill
     <set >
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+      <if test="billNo != null" >
+        bill_no = #{billNo,jdbcType=BIGINT},
       </if>
-      <if test="amount != null" >
-        amount = #{amount,jdbcType=INTEGER},
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="weight != null" >
-        weight = #{weight,jdbcType=REAL},
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="volume != null" >
-        volume = #{volume,jdbcType=REAL},
+      <if test="state != null" >
+        state = #{state,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
       </if>
       <if test="isDelete != null" >
         is_delete = #{isDelete,jdbcType=TINYINT},
@@ -275,12 +290,13 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.tcwong.pengms.model.Goods" >
-    update peng_goods
-    set name = #{name,jdbcType=VARCHAR},
-      amount = #{amount,jdbcType=INTEGER},
-      weight = #{weight,jdbcType=REAL},
-      volume = #{volume,jdbcType=REAL},
+  <update id="updateByPrimaryKey" parameterType="com.tcwong.pengms.model.RoadBill" >
+    update peng_roadbill
+    set bill_no = #{billNo,jdbcType=BIGINT},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR},
       is_delete = #{isDelete,jdbcType=TINYINT},
       update_by = #{updateBy,jdbcType=VARCHAR},
       create_by = #{createBy,jdbcType=VARCHAR},

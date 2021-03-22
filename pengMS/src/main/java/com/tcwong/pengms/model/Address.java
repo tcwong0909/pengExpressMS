@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Description 货物实体类
+ * Description 收发货地址
  *
  * @author tcwong
  * @date 2021/3/22 Since 1.8
@@ -16,16 +16,18 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Goods {
+public class Address {
     private Long id;
 
-    private String name;
+    private String companyName;
 
-    private Integer amount;
+    private String address;
 
-    private Float weight;
+    private String person;
 
-    private Float volume;
+    private String phone;
+
+    private Integer type;
 
     private Integer isDelete;
 

@@ -10,7 +10,7 @@ public interface GoodsMapper {
 
     int deleteByExample(GoodsExample example);
 
-    int deleteByPrimaryKey(Integer goodsid);
+    int deleteByPrimaryKey(Long id);
 
     int insert(Goods record);
 
@@ -18,7 +18,7 @@ public interface GoodsMapper {
 
     List<Goods> selectByExample(GoodsExample example);
 
-    Goods selectByPrimaryKey(Integer goodsid);
+    Goods selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(
             @Param("record") Goods record, @Param("example") GoodsExample example);
@@ -28,6 +28,4 @@ public interface GoodsMapper {
     int updateByPrimaryKeySelective(Goods record);
 
     int updateByPrimaryKey(Goods record);
-
-    int deleteByFkIds(@Param("fkIds") String[] fkIds);
 }

@@ -6,26 +6,30 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Description 司机-车辆映射
+ *
+ * @author tcwong
+ * @date 2021/3/22 Since 1.8
+ */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
-    private Integer id;
+public class DriverTruckMapping {
+    private Long id;
 
-    private String username;
+    private Long driverId;
 
-    private String userAccount;
+    private Long truckId;
 
-    private String password;
+    private Integer isDelete;
 
-    private Byte sex;
+    private String updateBy;
 
-    private Integer roleId;
+    private String createBy;
 
     private Date updateTime;
 
     private Date createTime;
-
-    private Byte cancelFlag;
 }
