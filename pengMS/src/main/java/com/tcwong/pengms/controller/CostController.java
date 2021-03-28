@@ -48,7 +48,7 @@ public class CostController {
      * @date 2021/3/22
      */
     @LogFilter(description = "成本添加", logOperationType = LogOperationType.ADD)
-    @PutMapping("/add")
+    @PostMapping("/add")
     public Integer addCost(@RequestBody CostAddRequest request) {
         return costService.addCost(request);
     }
