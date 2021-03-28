@@ -1,6 +1,6 @@
 package com.tcwong.pengms.dto.driver;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,7 +22,7 @@ public class DriverAddRequest {
 
     private Integer sex;
 
-    private Date birthTime;
+    private LocalDateTime birthTime;
 
     private String phoneNo;
 

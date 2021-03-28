@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
  * @date 2021/3/20 Since 1.8
  */
 @RestController
-@RequestMapping("/pengms/driver/")
+@RequestMapping("/pengms/driver")
 public class DriverController {
 
     @Resource private DriverService driverService;
@@ -51,7 +51,7 @@ public class DriverController {
      * @date 2021/3/20
      */
     @LogFilter(description = "司机删除", logOperationType = LogOperationType.DELETE)
-    @DeleteMapping("/delete")
+    @PostMapping("/delete")
     public WebResponse deleteDriver(@RequestBody DriverDeleteRequest request) {
         Integer num = driverService.deleteDriver(request);
         if (num > 0) {
@@ -69,7 +69,7 @@ public class DriverController {
      * @date 2021/3/20
      */
     @LogFilter(description = "司机编辑", logOperationType = LogOperationType.UPDATE)
-    @PutMapping("/edit")
+    @PostMapping("/edit")
     public WebResponse editDriver(@RequestBody DriverEditRequest request) {
         Integer num = driverService.editDriver(request);
         if (num > 0) {

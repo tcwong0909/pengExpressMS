@@ -6,6 +6,7 @@ import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import {postRequest,putRequest,deleteRequest,getRequest,postKeyValueRequest} from "@/utils/api";
+import qs from 'qs'
 
 Vue.prototype.getRequest = getRequest;
 Vue.prototype.postRequest = postRequest;
@@ -16,6 +17,7 @@ Vue.prototype.postKeyValueRequest=postKeyValueRequest;
 
 Vue.config.productionTip = false
 Vue.use(ElementUI);
+Vue.use(qs);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

@@ -12,6 +12,7 @@ import com.tcwong.pengms.model.User;
 import com.tcwong.pengms.model.example.CostExample;
 import com.tcwong.pengms.service.CostService;
 import com.tcwong.pengms.utils.PengContext;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
@@ -74,5 +75,17 @@ public class CostServiceImpl implements CostService {
                         .createTime(nowDate)
                         .build();
         return costMapper.insertSelective(cost);
+    }
+
+    public static void main(String[] args) {
+        List<User> users = new ArrayList<>();
+        User user = new User();
+        user.setUsername("AAAA");
+        users.add(user);
+        user = null;
+        System.out.println(users);
+        User user1 = users.get(0);
+        user1 = null;
+        System.out.println(users);
     }
 }

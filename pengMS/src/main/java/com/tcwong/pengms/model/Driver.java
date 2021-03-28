@@ -1,6 +1,7 @@
 package com.tcwong.pengms.model;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +11,7 @@ import lombok.NoArgsConstructor;
  * Description 司机实体类
  *
  * @author tcwong
- * @date 2021/3/20 Since 1.8
+ * @date 2021/3/25 Since 1.8
  */
 @Data
 @Builder
@@ -23,7 +24,8 @@ public class Driver {
 
     private Integer sex;
 
-    private Date birthTime;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDateTime birthTime;
 
     private String phoneNo;
 
@@ -35,7 +37,7 @@ public class Driver {
 
     private String remark;
 
-    private Date checkTime;
+    private LocalDateTime checkTime;
 
     private Integer isDelete;
 
@@ -43,7 +45,7 @@ public class Driver {
 
     private String createBy;
 
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 }

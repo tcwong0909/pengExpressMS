@@ -24,6 +24,7 @@
             NUMERIC 类型解析为java.math.BigDecimal -->
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false" />
+            <property name="useJSR310Types" value="true"/>
         </javaTypeResolver>
 
         <!-- targetProject:生成modoe类的位置 -->
@@ -65,14 +66,14 @@
             <columnOverride column="type" javaType="Integer" />
             <columnOverride column="state" javaType="Integer" />
         </table>      -->
-<!--        <table tableName="peng_driver" domainObjectName="Driver"-->
-<!--               enableCountByExample="true" enableUpdateByExample="true"-->
-<!--               enableDeleteByExample="true" enableSelectByExample="true"-->
-<!--               selectByExampleQueryId="true">-->
-<!--            <columnOverride column="is_delete" javaType="Integer" />-->
-<!--            <columnOverride column="state" javaType="Integer" />-->
-<!--            <columnOverride column="sex" javaType="Integer" />-->
-<!--        </table>        -->
+        <table tableName="peng_driver" domainObjectName="Driver"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+            <columnOverride column="is_delete" javaType="Integer" />
+            <columnOverride column="state" javaType="Integer" />
+            <columnOverride column="sex" javaType="Integer" />
+        </table>
 <!--        <table tableName="peng_driver_truck_mapping" domainObjectName="DriverTruckMapping"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
@@ -85,25 +86,25 @@
 <!--               selectByExampleQueryId="true">-->
 <!--            <columnOverride column="is_delete" javaType="Integer" />-->
 <!--        </table>       -->
-        <table tableName="peng_roadbill" domainObjectName="RoadBill"
-               enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true"
-               selectByExampleQueryId="true">
-            <columnOverride column="is_delete" javaType="Integer" />
-            <columnOverride column="state" javaType="Integer" />
-        </table>
-        <table tableName="peng_cost" domainObjectName="Cost"
-               enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true"
-               selectByExampleQueryId="true">
-            <columnOverride column="is_delete" javaType="Integer" />
-        </table>
-        <table tableName="peng_address" domainObjectName="Address"
-               enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true"
-               selectByExampleQueryId="true">
-            <columnOverride column="is_delete" javaType="Integer" />
-            <columnOverride column="type" javaType="Integer" />
-        </table>
+<!--        <table tableName="peng_roadbill" domainObjectName="RoadBill"-->
+<!--               enableCountByExample="true" enableUpdateByExample="true"-->
+<!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="true">-->
+<!--            <columnOverride column="is_delete" javaType="Integer" />-->
+<!--            <columnOverride column="state" javaType="Integer" />-->
+<!--        </table>-->
+<!--        <table tableName="peng_cost" domainObjectName="Cost"-->
+<!--               enableCountByExample="true" enableUpdateByExample="true"-->
+<!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="true">-->
+<!--            <columnOverride column="is_delete" javaType="Integer" />-->
+<!--        </table>-->
+<!--        <table tableName="peng_address" domainObjectName="Address"-->
+<!--               enableCountByExample="true" enableUpdateByExample="true"-->
+<!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="true">-->
+<!--            <columnOverride column="is_delete" javaType="Integer" />-->
+<!--            <columnOverride column="type" javaType="Integer" />-->
+<!--        </table>-->
     </context>
 </generatorConfiguration>

@@ -1,42 +1,42 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.tcwong.pengms.dao.DriverMapper" >
-  <resultMap id="BaseResultMap" type="com.tcwong.pengms.model.Driver" >
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="sex" property="sex" jdbcType="TINYINT" />
-    <result column="birth_time" property="birthTime" jdbcType="TIMESTAMP" />
-    <result column="phone_no" property="phoneNo" jdbcType="VARCHAR" />
-    <result column="identity_no" property="identityNo" jdbcType="VARCHAR" />
-    <result column="truck_team_id" property="truckTeamId" jdbcType="BIGINT" />
-    <result column="state" property="state" jdbcType="TINYINT" />
-    <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="check_time" property="checkTime" jdbcType="TIMESTAMP" />
-    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
-    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
-    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tcwong.pengms.dao.DriverMapper">
+  <resultMap id="BaseResultMap" type="com.tcwong.pengms.model.Driver">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sex" jdbcType="TINYINT" property="sex" />
+    <result column="birth_time" jdbcType="TIMESTAMP" property="birthTime" />
+    <result column="phone_no" jdbcType="VARCHAR" property="phoneNo" />
+    <result column="identity_no" jdbcType="VARCHAR" property="identityNo" />
+    <result column="truck_team_id" jdbcType="BIGINT" property="truckTeamId" />
+    <result column="state" jdbcType="TINYINT" property="state" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="check_time" jdbcType="TIMESTAMP" property="checkTime" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -47,25 +47,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -76,42 +76,42 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     id, name, sex, birth_time, phone_no, identity_no, truck_team_id, state, remark, check_time, 
     is_delete, update_by, create_by, update_time, create_time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tcwong.pengms.model.example.DriverExample" >
+  <select id="selectByExample" parameterType="com.tcwong.pengms.model.DriverExample" resultMap="BaseResultMap">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
     from peng_driver
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from peng_driver
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from peng_driver
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.example.DriverExample" >
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.DriverExample">
     delete from peng_driver
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.tcwong.pengms.model.Driver" >
+  <insert id="insert" parameterType="com.tcwong.pengms.model.Driver">
     insert into peng_driver (id, name, sex, 
       birth_time, phone_no, identity_no, 
       truck_team_id, state, remark, 
@@ -125,163 +125,163 @@
       #{createBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.tcwong.pengms.model.Driver" >
+  <insert id="insertSelective" parameterType="com.tcwong.pengms.model.Driver">
     insert into peng_driver
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         id,
       </if>
-      <if test="name != null" >
+      <if test="name != null">
         name,
       </if>
-      <if test="sex != null" >
+      <if test="sex != null">
         sex,
       </if>
-      <if test="birthTime != null" >
+      <if test="birthTime != null">
         birth_time,
       </if>
-      <if test="phoneNo != null" >
+      <if test="phoneNo != null">
         phone_no,
       </if>
-      <if test="identityNo != null" >
+      <if test="identityNo != null">
         identity_no,
       </if>
-      <if test="truckTeamId != null" >
+      <if test="truckTeamId != null">
         truck_team_id,
       </if>
-      <if test="state != null" >
+      <if test="state != null">
         state,
       </if>
-      <if test="remark != null" >
+      <if test="remark != null">
         remark,
       </if>
-      <if test="checkTime != null" >
+      <if test="checkTime != null">
         check_time,
       </if>
-      <if test="isDelete != null" >
+      <if test="isDelete != null">
         is_delete,
       </if>
-      <if test="updateBy != null" >
+      <if test="updateBy != null">
         update_by,
       </if>
-      <if test="createBy != null" >
+      <if test="createBy != null">
         create_by,
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         update_time,
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         create_time,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="name != null" >
+      <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="sex != null" >
+      <if test="sex != null">
         #{sex,jdbcType=TINYINT},
       </if>
-      <if test="birthTime != null" >
+      <if test="birthTime != null">
         #{birthTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="phoneNo != null" >
+      <if test="phoneNo != null">
         #{phoneNo,jdbcType=VARCHAR},
       </if>
-      <if test="identityNo != null" >
+      <if test="identityNo != null">
         #{identityNo,jdbcType=VARCHAR},
       </if>
-      <if test="truckTeamId != null" >
+      <if test="truckTeamId != null">
         #{truckTeamId,jdbcType=BIGINT},
       </if>
-      <if test="state != null" >
+      <if test="state != null">
         #{state,jdbcType=TINYINT},
       </if>
-      <if test="remark != null" >
+      <if test="remark != null">
         #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="checkTime != null" >
+      <if test="checkTime != null">
         #{checkTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="isDelete != null" >
+      <if test="isDelete != null">
         #{isDelete,jdbcType=TINYINT},
       </if>
-      <if test="updateBy != null" >
+      <if test="updateBy != null">
         #{updateBy,jdbcType=VARCHAR},
       </if>
-      <if test="createBy != null" >
+      <if test="createBy != null">
         #{createBy,jdbcType=VARCHAR},
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.pengms.model.example.DriverExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.DriverExample" resultType="java.lang.Long">
     select count(*) from peng_driver
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective" parameterType="map">
     update peng_driver
-    <set >
-      <if test="record.id != null" >
+    <set>
+      <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.name != null" >
+      <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.sex != null" >
+      <if test="record.sex != null">
         sex = #{record.sex,jdbcType=TINYINT},
       </if>
-      <if test="record.birthTime != null" >
+      <if test="record.birthTime != null">
         birth_time = #{record.birthTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.phoneNo != null" >
+      <if test="record.phoneNo != null">
         phone_no = #{record.phoneNo,jdbcType=VARCHAR},
       </if>
-      <if test="record.identityNo != null" >
+      <if test="record.identityNo != null">
         identity_no = #{record.identityNo,jdbcType=VARCHAR},
       </if>
-      <if test="record.truckTeamId != null" >
+      <if test="record.truckTeamId != null">
         truck_team_id = #{record.truckTeamId,jdbcType=BIGINT},
       </if>
-      <if test="record.state != null" >
+      <if test="record.state != null">
         state = #{record.state,jdbcType=TINYINT},
       </if>
-      <if test="record.remark != null" >
+      <if test="record.remark != null">
         remark = #{record.remark,jdbcType=VARCHAR},
       </if>
-      <if test="record.checkTime != null" >
+      <if test="record.checkTime != null">
         check_time = #{record.checkTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.isDelete != null" >
+      <if test="record.isDelete != null">
         is_delete = #{record.isDelete,jdbcType=TINYINT},
       </if>
-      <if test="record.updateBy != null" >
+      <if test="record.updateBy != null">
         update_by = #{record.updateBy,jdbcType=VARCHAR},
       </if>
-      <if test="record.createBy != null" >
+      <if test="record.createBy != null">
         create_by = #{record.createBy,jdbcType=VARCHAR},
       </if>
-      <if test="record.updateTime != null" >
+      <if test="record.updateTime != null">
         update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.createTime != null" >
+      <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample" parameterType="map">
     update peng_driver
     set id = #{record.id,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR},
@@ -298,59 +298,59 @@
       create_by = #{record.createBy,jdbcType=VARCHAR},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.pengms.model.Driver" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.pengms.model.Driver">
     update peng_driver
-    <set >
-      <if test="name != null" >
+    <set>
+      <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="sex != null" >
+      <if test="sex != null">
         sex = #{sex,jdbcType=TINYINT},
       </if>
-      <if test="birthTime != null" >
+      <if test="birthTime != null">
         birth_time = #{birthTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="phoneNo != null" >
+      <if test="phoneNo != null">
         phone_no = #{phoneNo,jdbcType=VARCHAR},
       </if>
-      <if test="identityNo != null" >
+      <if test="identityNo != null">
         identity_no = #{identityNo,jdbcType=VARCHAR},
       </if>
-      <if test="truckTeamId != null" >
+      <if test="truckTeamId != null">
         truck_team_id = #{truckTeamId,jdbcType=BIGINT},
       </if>
-      <if test="state != null" >
+      <if test="state != null">
         state = #{state,jdbcType=TINYINT},
       </if>
-      <if test="remark != null" >
+      <if test="remark != null">
         remark = #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="checkTime != null" >
+      <if test="checkTime != null">
         check_time = #{checkTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="isDelete != null" >
+      <if test="isDelete != null">
         is_delete = #{isDelete,jdbcType=TINYINT},
       </if>
-      <if test="updateBy != null" >
+      <if test="updateBy != null">
         update_by = #{updateBy,jdbcType=VARCHAR},
       </if>
-      <if test="createBy != null" >
+      <if test="createBy != null">
         create_by = #{createBy,jdbcType=VARCHAR},
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.tcwong.pengms.model.Driver" >
+  <update id="updateByPrimaryKey" parameterType="com.tcwong.pengms.model.Driver">
     update peng_driver
     set name = #{name,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=TINYINT},

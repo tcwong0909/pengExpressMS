@@ -1,12 +1,12 @@
 package com.tcwong.pengms.dao;
 
 import com.tcwong.pengms.model.Driver;
-import com.tcwong.pengms.model.example.DriverExample;
+import com.tcwong.pengms.model.DriverExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface DriverMapper {
-    int countByExample(DriverExample example);
+    long countByExample(DriverExample example);
 
     int deleteByExample(DriverExample example);
 

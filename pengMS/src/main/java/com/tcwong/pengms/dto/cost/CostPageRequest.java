@@ -16,4 +16,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CostPageRequest extends BaseRequest {}
+public class CostPageRequest extends BaseRequest {
+    private Integer param;
+}

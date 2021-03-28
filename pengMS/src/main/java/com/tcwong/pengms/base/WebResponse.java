@@ -3,7 +3,7 @@ package com.tcwong.pengms.base;
 import com.tcwong.pengms.utils.LocaleMessageUtil;
 
 /**
- * Description 同意response相应
+ * Description 统一response
  *
  * @author tcwong
  * @date 2020/9/1 Since 1.8

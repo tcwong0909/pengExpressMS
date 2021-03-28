@@ -5,31 +5,14 @@
         <el-form>
           <tr>
             <td>
-              <el-input placeholder="请输入内容" suffix-icon="el-icon-search" v-model="searchDriver.name">
+              <el-input placeholder="请输入内容" suffix-icon="el-icon-search" v-model="pageRequest.name">
                 <template slot="prepend">司机姓名</template>
               </el-input>
             </td>
             <td style="padding-left: 10px">
-              <el-tag>所属车队</el-tag>
-              <template >
-                <el-select
-                  v-model="searchDriver.fkTeamid"
-                  @visible-change="selectChanges"
-                  placeholder="请选择">
-                  <el-option label="全部" :value="''"></el-option>
-                  <el-option
-                    v-for="truckTeam in truckTeams"
-                    :key="truckTeam.teamid"
-                    :label="truckTeam.teamname"
-                    :value="truckTeam.teamid">
-                  </el-option>
-                </el-select>
-              </template>
-            </td>
-            <td style="padding-left: 10px">
               <el-tag>工作状态</el-tag>
               <template>
-                <el-select v-model="searchDriver.state" placeholder="请选择">
+                <el-select v-model="pageRequest.state" placeholder="请选择">
                   <el-option label="全部" :value="''"></el-option>
                   <el-option label="承运中" :value="1"></el-option>
                   <el-option label="空闲" :value="2"></el-option>
@@ -40,7 +23,7 @@
               <el-button type="danger" icon="el-icon-full-screen" @click="resetSearch">重置</el-button>
             </td>
             <td style="padding-left: 10px">
-              <el-button type="primary" icon="el-icon-search" @click="doSearch">搜索</el-button>
+              <el-button type="primary" icon="el-icon-search" @click="pageDriver">搜索</el-button>
             </td>
           </tr>
         </el-form>
@@ -70,33 +53,21 @@
             <el-tag style="width:80px" >出生日期</el-tag>
             <el-date-picker
               style="width: 10vw"
-              v-model="driver.birth"
+              v-model="driver.birthTime"
               type="date"
-              placeholder="选择日期">
+              placeholder="选择日期"
+              value-format="yyyy-MM-dd HH:mm:ss">
             </el-date-picker>
             </el-col>
             <el-col :span="12">
             <el-tag >联系电话</el-tag>
-            <el-input v-model="driver.phone" style="width: 10vw" ></el-input>
+            <el-input v-model="driver.phoneNo" style="width: 10vw" ></el-input>
             </el-col>
           </el-row>
           <el-row style="margin-bottom: 5px">
             <el-col :span="12">
             <el-tag style="width:80px">身份证号码</el-tag>
-            <el-input v-model="driver.idcard" style="width: 10vw" ></el-input>
-            </el-col>
-            <el-col :span="12">
-            <el-tag>所属车队</el-tag>
-            <template >
-              <el-select v-model="driver.fkTeamid" placeholder="请选择" style="width: 10vw">
-                <el-option
-                  v-for="truckTeam in truckTeams"
-                  :key="truckTeam.teamid"
-                  :label="truckTeam.teamname"
-                  :value="truckTeam.teamid">
-                </el-option>
-              </el-select>
-            </template>
+            <el-input v-model="driver.identityNo" style="width: 10vw" ></el-input>
             </el-col>
           </el-row>
           <el-row style="margin-bottom: 5px">
@@ -113,7 +84,7 @@
         </el-form>
         <div slot="footer" class="dialog-footer">
           <el-button @click="dialogFormVisible = false">取 消</el-button>
-          <el-button type="primary" @click="adddriver">确 定</el-button>
+          <el-button type="primary" @click="addDriver">确 定</el-button>
         </div>
       </el-dialog>
     </div>
@@ -127,11 +98,6 @@
         @selection-change="handleSelectionChange">
         <el-table-column
           type="selection"
-          width="35">
-        </el-table-column>
-        <el-table-column
-          prop="driverid"
-          label="编号"
           width="50">
         </el-table-column>
         <el-table-column
@@ -149,17 +115,17 @@
           </template>
         </el-table-column>
         <el-table-column
-          prop="birth"
-          width="100"
+          prop="birthTime"
+          width="120"
           label="出生日期">
         </el-table-column>
         <el-table-column
-          prop="phone"
+          prop="phoneNo"
           width="120"
           label="电话">
         </el-table-column>
         <el-table-column
-          prop="idcard"
+          prop="identityNo"
           label="身份证号码"
           width="130">
         </el-table-column>
@@ -183,29 +149,20 @@
           label="备注">
         </el-table-column>
         <el-table-column
-          prop="checkintime"
-          width="100"
+          prop="checkTime"
+          width="200"
           label="加入时间">
         </el-table-column>
-       <!-- <el-table-column
-          label="数据记录状态"
-          width="110">
-          <template slot-scope="scope">
-            <el-tag v-if="scope.row.isdelete ===1" type="success" > 使用中</el-tag>
-            <el-tag v-else-if="scope.row.isdelete ===2" type="danger"> 该记录已删除</el-tag>
-            <el-tag v-else>未知</el-tag>
-          </template>
-        </el-table-column>-->
         <el-table-column
-          prop="altertime"
-          width="100"
+          prop="updateTime"
+          width="200"
           label="修改时间">
         </el-table-column>
         <el-table-column
           label="操作">
           <template slot-scope="scope">
             <el-button type="primary" size="mini" @click="showDialog(scope.row)">编辑</el-button>
-            <el-button type="danger" size="mini" @click="deleteById(scope.row.driverid)">删除</el-button>
+            <el-button type="danger" size="mini" @click="deleteDriver(scope.row.id)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -215,10 +172,10 @@
         background
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
-        :current-page="currentPage"
+        :current-page="pageRequest.pageNum"
         layout="total, sizes, prev, pager, next, jumper"
         :page-sizes="[5, 10, 15, 20]"
-        :page-size="pageSize"
+        :page-size="pageRequest.pageSize"
         :total="total">
       </el-pagination>
     </div>
@@ -236,26 +193,32 @@
         multipleSelection: [],
         ids:"",
         total:null,
-        pageSize:10,
-        currentPage:1,
         dialogFormVisible:false,
         dialogTitle:'',
         searchDriver:{
           name:'',
-          fkTeamid:'',
           state:''
         },
         driver:{
+          id:"",
           name:'',
           sex:null,
-          birth: null,
-          phone:'',
-          idcard:'',
+          birthTime: null,
+          phoneNo:'',
+          identityNo:'',
           state:null,
           remark:'',
-          fkTeamid:null
         },
         drivers:[],
+        pageRequest:{
+          name:"",
+          state:"",
+          pageNum:1,
+          pageSize:10,
+        },
+        deleteRequest:{
+          idList:[]
+        },
       }
     },
     watch:{
@@ -268,7 +231,7 @@
       }
     },
     mounted(){
-      this.loaddrivers();
+      this.pageDriver();
     },
     methods:{
       selectChanges(){
@@ -285,23 +248,21 @@
         this.driver={
           name:'',
           sex:null,
-          birth: null,
-          phone:'',
-          idcard:'',
+          birthTime: null,
+          phoneNo:'',
+          identityNo:'',
           state:null,
           remark:'',
-          fkTeamid:null
         }
       },
 
-      adddriver(){
-
-        if (this.driver.driverid) {
-          this.putRequest('/pengms/driver/put',this.driver).then(res=>{
+      addDriver(){
+        if (this.driver.id) {
+          this.postRequest('/pengms/driver/edit',this.driver).then(res=>{
             if (res){
               this.dialogFormVisible = false;
               this.initdriver();
-              this.loaddrivers();
+              this.pageDriver();
             }
           });
           return;
@@ -310,13 +271,12 @@
           if (res){
             this.dialogFormVisible = false;
             this.initdriver();
-            this.loaddrivers();
+            this.pageDriver();
           }
         })
       },
-      loaddrivers(){
-        this.postRequest("/pengms/driver/getAllByPage?page="+this.currentPage+"&size="+this.pageSize+ "&name="+
-          this.searchDriver.name+ "&fkTeamid="+this.searchDriver.fkTeamid+"&state="+this.searchDriver.state).then(res=>{
+      pageDriver(){
+        this.postRequest("/pengms/driver/page",this.pageRequest).then(res=>{
           if (res){
             this.loading=false;
             this.drivers=res.data.data;
@@ -325,51 +285,48 @@
         })
       },
       doSearch(){
-        let page = 1;
-        let size = 10;
-        this.postRequest("/pengms/driver/getAllByPage?page="+page+"&size="+size+"&name="+this.searchDriver.name+
-        "&fkTeamid="+this.searchDriver.fkTeamid+"&state="+this.searchDriver.state).then(res=>{
-          if (res) {
-            this.drivers=res.data.data;
-            this.total = res.data.total;
-          }
-        })
+        this.pageDriver();
       },
       handleSizeChange(size){
-        this.pageSize = size;
-        this.loaddrivers();
+        this.pageRequest.pageSize = size;
+        this.pageDriver();
       },
       handleCurrentChange(page){
-        this.currentPage = page;
-        this.loaddrivers();
+        this.pageRequest.pageNum = page;
+        this.pageDriver();
       },
       handleSelectionChange(val) {
         this.multipleSelection=val;
 
       },
-      deleteById(id){
-        let ids = id;
-        this.deleteByIds(ids);
-        this.loaddrivers();
+      deleteDriver(id){
+        let param = {
+          idList:[]
+        };
+        param.idList.push(id);
+        this.deleteDrivers(param);
+        this.pageDriver();
       },
       multiDelete(){
-        let ids = '';
-        this.multipleSelection.forEach(data=>{
-          ids  += data.driverid+',';
+        let param = {
+          idList:[]
+        };
+        this.multipleSelection.forEach((item,index)=>{
+          param.idList.push(item.id);
         });
-        this.deleteByIds(ids);
-        this.loaddrivers();
+        this.deleteDrivers(param);
+        this.pageDriver();
       },
 
-      deleteByIds(data){
+      deleteDrivers(data){
         this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          this.deleteRequest("/pengms/driver/delete/"+data).then(res=>{
+          this.postRequest("/pengms/driver/delete/",data).then(res=>{
               if (res){
-                this.loaddrivers();
+                this.pageDriver();
               }
             }
           );
@@ -385,7 +342,6 @@
         });
       },
       showDialog(data){
-        this.loadTruckTeams();
         this.dialogFormVisible=true;
         if(data === 'add'){
           this.initdriver();
@@ -393,7 +349,14 @@
           return;
         }
         this.dialogTitle='编辑';
-        this.driver = data;
+          this.driver.id = data.id,
+          this.driver.name = data.name,
+          this.driver.sex = data.sex,
+          this.driver.birthTime = data.birthTime,
+          this.driver.phoneNo = data.phoneNo,
+          this.driver.identityNo = data.identityNo,
+          this.driver.state = data.state,
+          this.driver.remark = data.remark
 
       },
       loadTruckTeams(){

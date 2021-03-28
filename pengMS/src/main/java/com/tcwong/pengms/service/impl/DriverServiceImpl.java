@@ -11,11 +11,11 @@ import com.tcwong.pengms.dto.driver.DriverDeleteRequest;
 import com.tcwong.pengms.dto.driver.DriverEditRequest;
 import com.tcwong.pengms.dto.driver.DriverPageRequest;
 import com.tcwong.pengms.model.Driver;
+import com.tcwong.pengms.model.DriverExample;
 import com.tcwong.pengms.model.User;
-import com.tcwong.pengms.model.example.DriverExample;
 import com.tcwong.pengms.service.DriverService;
 import com.tcwong.pengms.utils.PengContext;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -41,7 +41,7 @@ public class DriverServiceImpl implements DriverService {
     @Override
     public Integer addDriver(DriverAddRequest request) {
         User user = PengContext.getUser();
-        Date nowDate = new Date();
+        LocalDateTime nowDate = LocalDateTime.now();
         Driver driver =
                 Driver.builder()
                         .name(request.getName())
@@ -91,7 +91,7 @@ public class DriverServiceImpl implements DriverService {
     @Override
     public Integer editDriver(DriverEditRequest request) {
         User user = PengContext.getUser();
-        Date nowDate = new Date();
+        LocalDateTime nowDate = LocalDateTime.now();
         Driver driver =
                 Driver.builder()
                         .id(request.getId())
@@ -123,6 +123,7 @@ public class DriverServiceImpl implements DriverService {
         DriverExample driverExample = new DriverExample();
         driverExample.setOrderByClause("id DESC");
         DriverExample.Criteria criteria = driverExample.createCriteria();
+        criteria.andIsDeleteEqualTo(DeletedEnum.UN_DELETED.getState());
         if (ObjectUtil.isNotEmpty(request.getName())) {
             criteria.andNameEqualTo(request.getName());
         }

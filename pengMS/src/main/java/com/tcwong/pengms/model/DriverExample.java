@@ -1,7 +1,7 @@
-package com.tcwong.pengms.model.example;
+package com.tcwong.pengms.model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class DriverExample {
@@ -306,52 +306,52 @@ public class DriverExample {
             return (Criteria) this;
         }
 
-        public Criteria andBirthTimeEqualTo(Date value) {
+        public Criteria andBirthTimeEqualTo(LocalDateTime value) {
             addCriterion("birth_time =", value, "birthTime");
             return (Criteria) this;
         }
 
-        public Criteria andBirthTimeNotEqualTo(Date value) {
+        public Criteria andBirthTimeNotEqualTo(LocalDateTime value) {
             addCriterion("birth_time <>", value, "birthTime");
             return (Criteria) this;
         }
 
-        public Criteria andBirthTimeGreaterThan(Date value) {
+        public Criteria andBirthTimeGreaterThan(LocalDateTime value) {
             addCriterion("birth_time >", value, "birthTime");
             return (Criteria) this;
         }
 
-        public Criteria andBirthTimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andBirthTimeGreaterThanOrEqualTo(LocalDateTime value) {
             addCriterion("birth_time >=", value, "birthTime");
             return (Criteria) this;
         }
 
-        public Criteria andBirthTimeLessThan(Date value) {
+        public Criteria andBirthTimeLessThan(LocalDateTime value) {
             addCriterion("birth_time <", value, "birthTime");
             return (Criteria) this;
         }
 
-        public Criteria andBirthTimeLessThanOrEqualTo(Date value) {
+        public Criteria andBirthTimeLessThanOrEqualTo(LocalDateTime value) {
             addCriterion("birth_time <=", value, "birthTime");
             return (Criteria) this;
         }
 
-        public Criteria andBirthTimeIn(List<Date> values) {
+        public Criteria andBirthTimeIn(List<LocalDateTime> values) {
             addCriterion("birth_time in", values, "birthTime");
             return (Criteria) this;
         }
 
-        public Criteria andBirthTimeNotIn(List<Date> values) {
+        public Criteria andBirthTimeNotIn(List<LocalDateTime> values) {
             addCriterion("birth_time not in", values, "birthTime");
             return (Criteria) this;
         }
 
-        public Criteria andBirthTimeBetween(Date value1, Date value2) {
+        public Criteria andBirthTimeBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("birth_time between", value1, value2, "birthTime");
             return (Criteria) this;
         }
 
-        public Criteria andBirthTimeNotBetween(Date value1, Date value2) {
+        public Criteria andBirthTimeNotBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("birth_time not between", value1, value2, "birthTime");
             return (Criteria) this;
         }
@@ -696,52 +696,52 @@ public class DriverExample {
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeEqualTo(Date value) {
+        public Criteria andCheckTimeEqualTo(LocalDateTime value) {
             addCriterion("check_time =", value, "checkTime");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeNotEqualTo(Date value) {
+        public Criteria andCheckTimeNotEqualTo(LocalDateTime value) {
             addCriterion("check_time <>", value, "checkTime");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeGreaterThan(Date value) {
+        public Criteria andCheckTimeGreaterThan(LocalDateTime value) {
             addCriterion("check_time >", value, "checkTime");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andCheckTimeGreaterThanOrEqualTo(LocalDateTime value) {
             addCriterion("check_time >=", value, "checkTime");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeLessThan(Date value) {
+        public Criteria andCheckTimeLessThan(LocalDateTime value) {
             addCriterion("check_time <", value, "checkTime");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeLessThanOrEqualTo(Date value) {
+        public Criteria andCheckTimeLessThanOrEqualTo(LocalDateTime value) {
             addCriterion("check_time <=", value, "checkTime");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeIn(List<Date> values) {
+        public Criteria andCheckTimeIn(List<LocalDateTime> values) {
             addCriterion("check_time in", values, "checkTime");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeNotIn(List<Date> values) {
+        public Criteria andCheckTimeNotIn(List<LocalDateTime> values) {
             addCriterion("check_time not in", values, "checkTime");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeBetween(Date value1, Date value2) {
+        public Criteria andCheckTimeBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("check_time between", value1, value2, "checkTime");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeNotBetween(Date value1, Date value2) {
+        public Criteria andCheckTimeNotBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("check_time not between", value1, value2, "checkTime");
             return (Criteria) this;
         }
@@ -956,52 +956,52 @@ public class DriverExample {
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeEqualTo(Date value) {
+        public Criteria andUpdateTimeEqualTo(LocalDateTime value) {
             addCriterion("update_time =", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeNotEqualTo(Date value) {
+        public Criteria andUpdateTimeNotEqualTo(LocalDateTime value) {
             addCriterion("update_time <>", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeGreaterThan(Date value) {
+        public Criteria andUpdateTimeGreaterThan(LocalDateTime value) {
             addCriterion("update_time >", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andUpdateTimeGreaterThanOrEqualTo(LocalDateTime value) {
             addCriterion("update_time >=", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeLessThan(Date value) {
+        public Criteria andUpdateTimeLessThan(LocalDateTime value) {
             addCriterion("update_time <", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeLessThanOrEqualTo(Date value) {
+        public Criteria andUpdateTimeLessThanOrEqualTo(LocalDateTime value) {
             addCriterion("update_time <=", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeIn(List<Date> values) {
+        public Criteria andUpdateTimeIn(List<LocalDateTime> values) {
             addCriterion("update_time in", values, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeNotIn(List<Date> values) {
+        public Criteria andUpdateTimeNotIn(List<LocalDateTime> values) {
             addCriterion("update_time not in", values, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeBetween(Date value1, Date value2) {
+        public Criteria andUpdateTimeBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("update_time between", value1, value2, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeNotBetween(Date value1, Date value2) {
+        public Criteria andUpdateTimeNotBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("update_time not between", value1, value2, "updateTime");
             return (Criteria) this;
         }
@@ -1016,52 +1016,52 @@ public class DriverExample {
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeEqualTo(Date value) {
+        public Criteria andCreateTimeEqualTo(LocalDateTime value) {
             addCriterion("create_time =", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotEqualTo(Date value) {
+        public Criteria andCreateTimeNotEqualTo(LocalDateTime value) {
             addCriterion("create_time <>", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeGreaterThan(Date value) {
+        public Criteria andCreateTimeGreaterThan(LocalDateTime value) {
             addCriterion("create_time >", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andCreateTimeGreaterThanOrEqualTo(LocalDateTime value) {
             addCriterion("create_time >=", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeLessThan(Date value) {
+        public Criteria andCreateTimeLessThan(LocalDateTime value) {
             addCriterion("create_time <", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeLessThanOrEqualTo(Date value) {
+        public Criteria andCreateTimeLessThanOrEqualTo(LocalDateTime value) {
             addCriterion("create_time <=", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeIn(List<Date> values) {
+        public Criteria andCreateTimeIn(List<LocalDateTime> values) {
             addCriterion("create_time in", values, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotIn(List<Date> values) {
+        public Criteria andCreateTimeNotIn(List<LocalDateTime> values) {
             addCriterion("create_time not in", values, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeBetween(Date value1, Date value2) {
+        public Criteria andCreateTimeBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("create_time between", value1, value2, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
+        public Criteria andCreateTimeNotBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("create_time not between", value1, value2, "createTime");
             return (Criteria) this;
         }

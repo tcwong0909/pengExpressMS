@@ -254,7 +254,7 @@
           username:'',
           sex:null,
           account: '',
-          phone:'',
+          phoneNo:'',
           email:'',
         }
       },
