@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TruckMapper {
-    int countByExample(TruckExample example);
+    long countByExample(TruckExample example);
 
     int deleteByExample(TruckExample example);
 

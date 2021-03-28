@@ -58,22 +58,22 @@
 <!--               selectByExampleQueryId="true">-->
 <!--            <columnOverride column="is_delete" javaType="Integer" />-->
 <!--        </table>        -->
-<!--        <table tableName="peng_truck" domainObjectName="Truck"
+        <table tableName="peng_truck" domainObjectName="Truck"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">
             <columnOverride column="is_delete" javaType="Integer" />
             <columnOverride column="type" javaType="Integer" />
             <columnOverride column="state" javaType="Integer" />
-        </table>      -->
-        <table tableName="peng_driver" domainObjectName="Driver"
-               enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true"
-               selectByExampleQueryId="true">
-            <columnOverride column="is_delete" javaType="Integer" />
-            <columnOverride column="state" javaType="Integer" />
-            <columnOverride column="sex" javaType="Integer" />
         </table>
+<!--        <table tableName="peng_driver" domainObjectName="Driver"-->
+<!--               enableCountByExample="true" enableUpdateByExample="true"-->
+<!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="true">-->
+<!--            <columnOverride column="is_delete" javaType="Integer" />-->
+<!--            <columnOverride column="state" javaType="Integer" />-->
+<!--            <columnOverride column="sex" javaType="Integer" />-->
+<!--        </table>-->
 <!--        <table tableName="peng_driver_truck_mapping" domainObjectName="DriverTruckMapping"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"

@@ -80,7 +80,7 @@
     id, name, sex, birth_time, phone_no, identity_no, truck_team_id, state, remark, check_time, 
     is_delete, update_by, create_by, update_time, create_time
   </sql>
-  <select id="selectByExample" parameterType="com.tcwong.pengms.model.DriverExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.tcwong.pengms.model.example.DriverExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -105,7 +105,7 @@
     delete from peng_driver
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.DriverExample">
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.example.DriverExample">
     delete from peng_driver
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -222,7 +222,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.pengms.model.DriverExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.example.DriverExample" resultType="java.lang.Long">
     select count(*) from peng_driver
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

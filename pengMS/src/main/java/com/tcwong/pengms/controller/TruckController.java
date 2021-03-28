@@ -51,7 +51,7 @@ public class TruckController {
      * @date 2021/3/20
      */
     @LogFilter(description = "车辆修改", logOperationType = LogOperationType.UPDATE)
-    @PutMapping("/edit")
+    @PostMapping("/edit")
     public WebResponse editTruck(@RequestBody TruckEditRequest request) {
         Integer num = truckService.editTruck(request);
         if (num > 0) {
@@ -69,7 +69,7 @@ public class TruckController {
      * @date 2021/3/20
      */
     @LogFilter(description = "车辆删除", logOperationType = LogOperationType.DELETE)
-    @DeleteMapping("/delete")
+    @PostMapping("/delete")
     public WebResponse deleteTruck(@RequestBody TruckDeleteRequest request) {
         Integer num = truckService.deleteTruck(request);
         if (num > 0) {

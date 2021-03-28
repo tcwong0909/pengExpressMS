@@ -15,7 +15,7 @@ import com.tcwong.pengms.model.User;
 import com.tcwong.pengms.model.example.TruckExample;
 import com.tcwong.pengms.service.TruckService;
 import com.tcwong.pengms.utils.PengContext;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -42,7 +42,7 @@ public class TruckServiceImpl implements TruckService {
     @Override
     public Integer addTruck(TruckAddRequest request) {
         User user = PengContext.getUser();
-        Date nowDate = new Date();
+        LocalDateTime nowDate = LocalDateTime.now();
         Truck truck =
                 Truck.builder()
                         .plateNo(request.getPlateNo())
@@ -74,7 +74,7 @@ public class TruckServiceImpl implements TruckService {
     @Override
     public Integer editTruck(TruckEditRequest request) {
         User user = PengContext.getUser();
-        Date nowDate = new Date();
+        LocalDateTime nowDate = LocalDateTime.now();
         Truck truck =
                 Truck.builder()
                         .id(request.getId())
@@ -125,6 +125,7 @@ public class TruckServiceImpl implements TruckService {
         TruckExample truckExample = new TruckExample();
         truckExample.setOrderByClause("id DESC");
         TruckExample.Criteria criteria = truckExample.createCriteria();
+        criteria.andIsDeleteEqualTo(DeletedEnum.UN_DELETED.getState());
         if (ObjectUtil.isNotEmpty(request.getPlateNo())) {
             criteria.andPlateNoEqualTo(request.getPlateNo());
         }

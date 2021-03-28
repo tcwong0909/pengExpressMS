@@ -1,4 +1,4 @@
-package com.tcwong.pengms.model;
+package com.tcwong.pengms.model.example;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

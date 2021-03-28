@@ -176,7 +176,7 @@
     methods:{
       resetSearch(){
         this.searchTruck={
-          number:'',
+          plateNo:'',
           type:'',
           fkTeamid:''
         }

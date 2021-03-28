@@ -1,6 +1,6 @@
 package com.tcwong.pengms.dto.truck;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,7 +30,7 @@ public class TruckAddRequest {
 
     private Integer state;
 
-    private Date buyTime;
+    private LocalDateTime buyTime;
 
     private String remark;
 }
