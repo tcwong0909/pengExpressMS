@@ -15,7 +15,7 @@ import com.tcwong.pengms.model.User;
 import com.tcwong.pengms.model.example.TruckTeamExample;
 import com.tcwong.pengms.service.TruckTeamService;
 import com.tcwong.pengms.utils.PengContext;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -41,7 +41,7 @@ public class TruckTeamServiceImpl implements TruckTeamService {
     @Override
     public Integer addTruckTeam(TruckTeamAddRequest request) {
         User user = PengContext.getUser();
-        Date nowDate = new Date();
+        LocalDateTime nowDate = LocalDateTime.now();
         TruckTeam truckTeam =
                 TruckTeam.builder()
                         .name(request.getName())
@@ -67,7 +67,7 @@ public class TruckTeamServiceImpl implements TruckTeamService {
      */
     @Override
     public Integer deleteTruckTeam(TruckTeamDeleteRequest request) {
-        Date nowDate = new Date();
+        LocalDateTime nowDate = LocalDateTime.now();
         User user = PengContext.getUser();
         TruckTeamExample truckTeamExample = new TruckTeamExample();
         truckTeamExample
@@ -80,7 +80,7 @@ public class TruckTeamServiceImpl implements TruckTeamService {
                         .updateTime(nowDate)
                         .updateBy(user.getUsername())
                         .build();
-        return truckteamMapper.updateByExample(truckTeam, truckTeamExample);
+        return truckteamMapper.updateByExampleSelective(truckTeam, truckTeamExample);
     }
 
     /**
@@ -94,7 +94,7 @@ public class TruckTeamServiceImpl implements TruckTeamService {
     @Override
     public Integer editTruckTeam(TruckTeamEditRequest request) {
         User user = PengContext.getUser();
-        Date nowDate = new Date();
+        LocalDateTime nowDate = LocalDateTime.now();
         TruckTeam truckTeam =
                 TruckTeam.builder()
                         .id(request.getId())
@@ -121,10 +121,11 @@ public class TruckTeamServiceImpl implements TruckTeamService {
         TruckTeamExample truckTeamExample = new TruckTeamExample();
         truckTeamExample.setOrderByClause("id DESC");
         TruckTeamExample.Criteria criteria = truckTeamExample.createCriteria();
+        criteria.andIsDeleteEqualTo(DeletedEnum.UN_DELETED.getState());
         if (ObjectUtil.isNotEmpty(request.getName())) {
             criteria.andNameEqualTo(request.getName());
         }
-        if (ObjectUtil.isNotNull(request.getLeader())) {
+        if (ObjectUtil.isNotEmpty(request.getLeader())) {
             criteria.andLeaderEqualTo(request.getLeader());
         }
         List<TruckTeam> truckTeamList = truckteamMapper.selectByExample(truckTeamExample);

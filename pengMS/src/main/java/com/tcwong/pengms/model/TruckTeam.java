@@ -1,16 +1,16 @@
 package com.tcwong.pengms.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Description 车队实体类
+ * Description 车队
  *
  * @author tcwong
- * @date 2021/3/20 Since 1.8
+ * @date 2021/3/29 Since 1.8
  */
 @Data
 @Builder
@@ -25,7 +25,7 @@ public class TruckTeam {
 
     private String remark;
 
-    private Date checkTime;
+    private LocalDateTime checkTime;
 
     private Integer isDelete;
 
@@ -33,7 +33,7 @@ public class TruckTeam {
 
     private String createBy;
 
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 }

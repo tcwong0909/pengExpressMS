@@ -34,7 +34,7 @@
                   <el-option
                     v-for="truckTeam in truckTeams"
                     :key="truckTeam.teamid"
-                    :label="truckTeam.teamname"
+                    :label="truckTeam.name"
                     :value="truckTeam.teamid">
                   </el-option>
                 </el-select>

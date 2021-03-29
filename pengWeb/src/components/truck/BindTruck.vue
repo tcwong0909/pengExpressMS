@@ -220,7 +220,7 @@
           fkTruckid:'',
           fkDriverid:'',
           drivername:'',
-          teamname:'',
+          name:'',
           bindId:''
         }
       },

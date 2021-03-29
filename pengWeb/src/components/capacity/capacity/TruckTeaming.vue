@@ -118,7 +118,7 @@
     methods:{
       resetSearch(){
         this.searchTeam={
-          teamname:'',
+          name:'',
           leader:''
         }
       },
