@@ -12,8 +12,8 @@ import com.tcwong.pengms.model.User;
 import com.tcwong.pengms.model.example.CostExample;
 import com.tcwong.pengms.service.CostService;
 import com.tcwong.pengms.utils.PengContext;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -58,7 +58,7 @@ public class CostServiceImpl implements CostService {
     @Override
     public Integer addCost(CostAddRequest request) {
         User user = PengContext.getUser();
-        Date nowDate = new Date();
+        LocalDateTime nowDate = LocalDateTime.now();
         Cost cost =
                 Cost.builder()
                         .insurance(request.getInsurance())

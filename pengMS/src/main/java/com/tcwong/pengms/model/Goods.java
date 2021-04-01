@@ -1,23 +1,19 @@
 package com.tcwong.pengms.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * Description 货物实体类
- *
- * @author tcwong
- * @date 2021/3/22 Since 1.8
- */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Goods {
     private Long id;
+
+    private Long billNo;
 
     private String name;
 
@@ -33,7 +29,7 @@ public class Goods {
 
     private String createBy;
 
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 }

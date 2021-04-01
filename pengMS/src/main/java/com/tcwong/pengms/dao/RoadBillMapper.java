@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface RoadBillMapper {
-    int countByExample(RoadBillExample example);
+    long countByExample(RoadBillExample example);
 
     int deleteByExample(RoadBillExample example);
 

@@ -1,24 +1,20 @@
 package com.tcwong.pengms.model;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * Description 成本实体类
- *
- * @author tcwong
- * @date 2021/3/22 Since 1.8
- */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Cost {
     private Long id;
+
+    private Long billNo;
 
     private BigDecimal insurance;
 
@@ -36,7 +32,7 @@ public class Cost {
 
     private String createBy;
 
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 }

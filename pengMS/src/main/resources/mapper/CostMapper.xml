@@ -1,38 +1,39 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.tcwong.pengms.dao.CostMapper" >
-  <resultMap id="BaseResultMap" type="com.tcwong.pengms.model.Cost" >
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="insurance" property="insurance" jdbcType="DECIMAL" />
-    <result column="transport" property="transport" jdbcType="DECIMAL" />
-    <result column="extra" property="extra" jdbcType="DECIMAL" />
-    <result column="total" property="total" jdbcType="DECIMAL" />
-    <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
-    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
-    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tcwong.pengms.dao.CostMapper">
+  <resultMap id="BaseResultMap" type="com.tcwong.pengms.model.Cost">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="bill_no" jdbcType="BIGINT" property="billNo" />
+    <result column="insurance" jdbcType="DECIMAL" property="insurance" />
+    <result column="transport" jdbcType="DECIMAL" property="transport" />
+    <result column="extra" jdbcType="DECIMAL" property="extra" />
+    <result column="total" jdbcType="DECIMAL" property="total" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -43,25 +44,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -72,174 +73,186 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List" >
-    id, insurance, transport, extra, total, remark, is_delete, update_by, create_by, 
+  <sql id="Base_Column_List">
+    id, bill_no, insurance, transport, extra, total, remark, is_delete, update_by, create_by, 
     update_time, create_time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tcwong.pengms.model.example.CostExample" >
+  <select id="selectByExample" parameterType="com.tcwong.pengms.model.example.CostExample" resultMap="BaseResultMap">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
     from peng_cost
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from peng_cost
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from peng_cost
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.example.CostExample" >
+  <delete id="deleteByExample" parameterType="com.tcwong.pengms.model.example.CostExample">
     delete from peng_cost
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.tcwong.pengms.model.Cost" >
-    insert into peng_cost (id, insurance, transport, 
-      extra, total, remark, 
-      is_delete, update_by, create_by, 
-      update_time, create_time)
-    values (#{id,jdbcType=BIGINT}, #{insurance,jdbcType=DECIMAL}, #{transport,jdbcType=DECIMAL}, 
-      #{extra,jdbcType=DECIMAL}, #{total,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, 
-      #{isDelete,jdbcType=TINYINT}, #{updateBy,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="com.tcwong.pengms.model.Cost">
+    insert into peng_cost (id, bill_no, insurance, 
+      transport, extra, total, 
+      remark, is_delete, update_by, 
+      create_by, update_time, create_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{billNo,jdbcType=BIGINT}, #{insurance,jdbcType=DECIMAL}, 
+      #{transport,jdbcType=DECIMAL}, #{extra,jdbcType=DECIMAL}, #{total,jdbcType=DECIMAL}, 
+      #{remark,jdbcType=VARCHAR}, #{isDelete,jdbcType=TINYINT}, #{updateBy,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.tcwong.pengms.model.Cost" >
+  <insert id="insertSelective" parameterType="com.tcwong.pengms.model.Cost">
     insert into peng_cost
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         id,
       </if>
-      <if test="insurance != null" >
+      <if test="billNo != null">
+        bill_no,
+      </if>
+      <if test="insurance != null">
         insurance,
       </if>
-      <if test="transport != null" >
+      <if test="transport != null">
         transport,
       </if>
-      <if test="extra != null" >
+      <if test="extra != null">
         extra,
       </if>
-      <if test="total != null" >
+      <if test="total != null">
         total,
       </if>
-      <if test="remark != null" >
+      <if test="remark != null">
         remark,
       </if>
-      <if test="isDelete != null" >
+      <if test="isDelete != null">
         is_delete,
       </if>
-      <if test="updateBy != null" >
+      <if test="updateBy != null">
         update_by,
       </if>
-      <if test="createBy != null" >
+      <if test="createBy != null">
         create_by,
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         update_time,
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         create_time,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="insurance != null" >
+      <if test="billNo != null">
+        #{billNo,jdbcType=BIGINT},
+      </if>
+      <if test="insurance != null">
         #{insurance,jdbcType=DECIMAL},
       </if>
-      <if test="transport != null" >
+      <if test="transport != null">
         #{transport,jdbcType=DECIMAL},
       </if>
-      <if test="extra != null" >
+      <if test="extra != null">
         #{extra,jdbcType=DECIMAL},
       </if>
-      <if test="total != null" >
+      <if test="total != null">
         #{total,jdbcType=DECIMAL},
       </if>
-      <if test="remark != null" >
+      <if test="remark != null">
         #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="isDelete != null" >
+      <if test="isDelete != null">
         #{isDelete,jdbcType=TINYINT},
       </if>
-      <if test="updateBy != null" >
+      <if test="updateBy != null">
         #{updateBy,jdbcType=VARCHAR},
       </if>
-      <if test="createBy != null" >
+      <if test="createBy != null">
         #{createBy,jdbcType=VARCHAR},
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.tcwong.pengms.model.example.CostExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.tcwong.pengms.model.example.CostExample" resultType="java.lang.Long">
     select count(*) from peng_cost
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective" parameterType="map">
     update peng_cost
-    <set >
-      <if test="record.id != null" >
+    <set>
+      <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.insurance != null" >
+      <if test="record.billNo != null">
+        bill_no = #{record.billNo,jdbcType=BIGINT},
+      </if>
+      <if test="record.insurance != null">
         insurance = #{record.insurance,jdbcType=DECIMAL},
       </if>
-      <if test="record.transport != null" >
+      <if test="record.transport != null">
         transport = #{record.transport,jdbcType=DECIMAL},
       </if>
-      <if test="record.extra != null" >
+      <if test="record.extra != null">
         extra = #{record.extra,jdbcType=DECIMAL},
       </if>
-      <if test="record.total != null" >
+      <if test="record.total != null">
         total = #{record.total,jdbcType=DECIMAL},
       </if>
-      <if test="record.remark != null" >
+      <if test="record.remark != null">
         remark = #{record.remark,jdbcType=VARCHAR},
       </if>
-      <if test="record.isDelete != null" >
+      <if test="record.isDelete != null">
         is_delete = #{record.isDelete,jdbcType=TINYINT},
       </if>
-      <if test="record.updateBy != null" >
+      <if test="record.updateBy != null">
         update_by = #{record.updateBy,jdbcType=VARCHAR},
       </if>
-      <if test="record.createBy != null" >
+      <if test="record.createBy != null">
         create_by = #{record.createBy,jdbcType=VARCHAR},
       </if>
-      <if test="record.updateTime != null" >
+      <if test="record.updateTime != null">
         update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.createTime != null" >
+      <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample" parameterType="map">
     update peng_cost
     set id = #{record.id,jdbcType=BIGINT},
+      bill_no = #{record.billNo,jdbcType=BIGINT},
       insurance = #{record.insurance,jdbcType=DECIMAL},
       transport = #{record.transport,jdbcType=DECIMAL},
       extra = #{record.extra,jdbcType=DECIMAL},
@@ -250,49 +263,53 @@
       create_by = #{record.createBy,jdbcType=VARCHAR},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.pengms.model.Cost" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.tcwong.pengms.model.Cost">
     update peng_cost
-    <set >
-      <if test="insurance != null" >
+    <set>
+      <if test="billNo != null">
+        bill_no = #{billNo,jdbcType=BIGINT},
+      </if>
+      <if test="insurance != null">
         insurance = #{insurance,jdbcType=DECIMAL},
       </if>
-      <if test="transport != null" >
+      <if test="transport != null">
         transport = #{transport,jdbcType=DECIMAL},
       </if>
-      <if test="extra != null" >
+      <if test="extra != null">
         extra = #{extra,jdbcType=DECIMAL},
       </if>
-      <if test="total != null" >
+      <if test="total != null">
         total = #{total,jdbcType=DECIMAL},
       </if>
-      <if test="remark != null" >
+      <if test="remark != null">
         remark = #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="isDelete != null" >
+      <if test="isDelete != null">
         is_delete = #{isDelete,jdbcType=TINYINT},
       </if>
-      <if test="updateBy != null" >
+      <if test="updateBy != null">
         update_by = #{updateBy,jdbcType=VARCHAR},
       </if>
-      <if test="createBy != null" >
+      <if test="createBy != null">
         create_by = #{createBy,jdbcType=VARCHAR},
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.tcwong.pengms.model.Cost" >
+  <update id="updateByPrimaryKey" parameterType="com.tcwong.pengms.model.Cost">
     update peng_cost
-    set insurance = #{insurance,jdbcType=DECIMAL},
+    set bill_no = #{billNo,jdbcType=BIGINT},
+      insurance = #{insurance,jdbcType=DECIMAL},
       transport = #{transport,jdbcType=DECIMAL},
       extra = #{extra,jdbcType=DECIMAL},
       total = #{total,jdbcType=DECIMAL},

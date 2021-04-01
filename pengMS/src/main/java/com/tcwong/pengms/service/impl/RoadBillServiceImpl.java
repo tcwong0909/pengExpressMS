@@ -17,7 +17,7 @@ import com.tcwong.pengms.model.example.RoadBillExample;
 import com.tcwong.pengms.service.GoodsService;
 import com.tcwong.pengms.service.RoadBillService;
 import com.tcwong.pengms.utils.PengContext;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -44,7 +44,7 @@ public class RoadBillServiceImpl implements RoadBillService {
     @Override
     public Integer addRoadBill(RoadBillAddRequest request) {
         User user = PengContext.getUser();
-        Date nowDate = new Date();
+        LocalDateTime nowDate = LocalDateTime.now();
         RoadBill roadBill =
                 RoadBill.builder()
                         .billNo(null)
@@ -70,7 +70,7 @@ public class RoadBillServiceImpl implements RoadBillService {
     @Override
     public Integer editRoadBill(RoadBillEditRequest request) {
         User user = PengContext.getUser();
-        Date nowDate = new Date();
+        LocalDateTime nowDate = LocalDateTime.now();
         RoadBill roadBill =
                 RoadBill.builder()
                         .id(request.getId())
@@ -113,7 +113,7 @@ public class RoadBillServiceImpl implements RoadBillService {
     @Override
     public Integer deleteRoadBill(RoadBillDeleteRequest request) {
         User user = PengContext.getUser();
-        Date nowDate = new Date();
+        LocalDateTime nowDate = LocalDateTime.now();
         RoadBill roadBill =
                 RoadBill.builder()
                         .isDelete(DeletedEnum.DONE_DELETED.getState())

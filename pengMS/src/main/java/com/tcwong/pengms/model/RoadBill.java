@@ -1,17 +1,11 @@
 package com.tcwong.pengms.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * Description 运单实体类
- *
- * @author tcwong
- * @date 2021/3/22 Since 1.8
- */
 @Data
 @Builder
 @NoArgsConstructor
@@ -21,9 +15,9 @@ public class RoadBill {
 
     private Long billNo;
 
-    private Date startTime;
+    private LocalDateTime startTime;
 
-    private Date endTime;
+    private LocalDateTime endTime;
 
     private Integer state;
 
@@ -35,7 +29,7 @@ public class RoadBill {
 
     private String createBy;
 
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 }
