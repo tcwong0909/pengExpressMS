@@ -36,45 +36,45 @@
             <el-step title="填写货物单"></el-step>
           </el-steps>
           <div v-show="active ===0" style="padding-top: 2vh">
-            <el-form :model="carriers">
+            <el-form :model="addBillRequest">
               <el-row style="margin-bottom: 5px">
                 <el-col :span="12">
                   <el-tag style="width: 7vw">发货单位</el-tag>
-                  <el-input v-model="carriers.sendcompany" style="width: 10vw"></el-input>
+                  <el-input v-model="addBillRequest.deliverAddressAdd.companyName" style="width: 10vw"></el-input>
                 </el-col>
                 <el-col :span="12">
                 <el-tag style="width: 9vw">发货单位地址</el-tag>
-                <el-input v-model="carriers.sendaddress" style="width: 10vw"></el-input>
+                <el-input v-model="addBillRequest.deliverAddressAdd.address" style="width: 10vw"></el-input>
                 </el-col>
               </el-row>
               <el-row style="margin-bottom: 5px">
                 <el-col :span="12">
                 <el-tag style="width: 7vw">发货人</el-tag>
-                <el-input v-model="carriers.sendlinkman" style="width: 10vw"></el-input>
+                <el-input v-model="addBillRequest.deliverAddressAdd.person" style="width: 10vw"></el-input>
                 </el-col>
                 <el-col :span="12">
                 <el-tag style="width: 9vw">发货人电话</el-tag>
-                <el-input v-model="carriers.sendphone" style="width: 10vw"></el-input>
+                <el-input v-model="addBillRequest.deliverAddressAdd.phone" style="width: 10vw"></el-input>
                 </el-col>
               </el-row>
               <el-row style="margin-bottom: 5px">
                 <el-col :span="12">
                 <el-tag style="width: 7vw">收货单位</el-tag>
-                <el-input v-model="carriers.receivecompany" style="width: 10vw"></el-input>
+                <el-input v-model="addBillRequest.receiverAddressAdd.companyName" style="width: 10vw"></el-input>
                 </el-col>
                 <el-col :span="12">
                 <el-tag style="width: 9vw">收货单位地址</el-tag>
-                <el-input v-model="carriers.fkReceiveaddress" style="width: 10vw"></el-input>
+                <el-input v-model="addBillRequest.receiverAddressAdd.address" style="width: 10vw"></el-input>
                 </el-col>
               </el-row>
               <el-row style="margin-bottom: 5px">
                 <el-col :span="12">
                 <el-tag style="width: 7vw">收货人/联系人</el-tag>
-                <el-input v-model="carriers.receivelinkman" style="width: 10vw"></el-input>
+                <el-input v-model="addBillRequest.receiverAddressAdd.person" style="width: 10vw"></el-input>
                 </el-col>
                 <el-col :span="12">
                 <el-tag style="width: 9vw">收货人电话/联系人电话</el-tag>
-                <el-input v-model="carriers.receivephone" style="width: 10vw"></el-input>
+                <el-input v-model="addBillRequest.receiverAddressAdd.phone" style="width: 10vw"></el-input>
                 </el-col>
               </el-row>
               <el-row style="margin-bottom: 5px">
@@ -82,54 +82,56 @@
                 <el-tag style="width: 7vw">承运日期</el-tag>
                 <el-date-picker
                   style="width: 10vw;"
-                  v-model="carriers.leaverdate"
+                  v-model="addBillRequest.startTime"
                   type="date"
+                  value-format="yyyy-MM-dd HH:mm:ss"
                   placeholder="请选择承运日期">
                 </el-date-picker>
                 </el-col>
                 <el-col :span="12">
                 <el-tag style="width: 9vw">收货时间</el-tag>
                 <el-date-picker
-                  v-model="carriers.receivedate"
+                  v-model="addBillRequest.endTime"
                   type="date"
+                  value-format="yyyy-MM-dd HH:mm:ss"
                   style="width: 10vw;"
                   placeholder="请选择收货日期">
                 </el-date-picker>
                 </el-col>
               </el-row>
-              <el-row style="margin-bottom: 5px">
-                <el-col :span="24">
-                <el-tag style="width: 7vw">完成情况</el-tag>
-                <el-radio v-model="carriers.finishedstate" :label= 0>待调度</el-radio>
-                <el-radio v-model="carriers.finishedstate" :label= 1>已调度</el-radio>
-                <el-radio v-model="carriers.finishedstate" :label= 2>已签收</el-radio>
-                <el-radio v-model="carriers.finishedstate" :label= 3>已结算</el-radio>
-                </el-col>
-              </el-row>
+<!--              <el-row style="margin-bottom: 5px">-->
+<!--                <el-col :span="24">-->
+<!--                <el-tag style="width: 7vw">完成情况</el-tag>-->
+<!--                <el-radio v-model="addBillRequest.finishedstate" :label= 0>待调度</el-radio>-->
+<!--                <el-radio v-model="addBillRequest.finishedstate" :label= 1>已调度</el-radio>-->
+<!--                <el-radio v-model="addBillRequest.finishedstate" :label= 2>已签收</el-radio>-->
+<!--                <el-radio v-model="addBillRequest.finishedstate" :label= 3>已结算</el-radio>-->
+<!--                </el-col>-->
+<!--              </el-row>-->
               <el-row style="margin-bottom: 5px">
                 <el-col :span="12">
                 <el-tag style="width: 7vw">保险费</el-tag>
-                <el-input v-model="carriers.insurancecost" style="width: 10vw"></el-input>
+                <el-input v-model="addBillRequest.costAdd.insurance" style="width: 10vw"></el-input>
                 </el-col>
                 <el-col :span="12">
                 <el-tag style="width: 9vw">运费</el-tag>
-                <el-input v-model="carriers.transportcost" style="width: 10vw"></el-input>
+                <el-input v-model="addBillRequest.costAdd.transport" style="width: 10vw"></el-input>
                 </el-col>
               </el-row>
               <el-row style="margin-bottom: 5px">
                 <el-col :span="12">
                   <el-tag style="width: 7vw">其他费用</el-tag>
-                  <el-input v-model="carriers.othercost" style="width: 10vw"></el-input>
+                  <el-input v-model="addBillRequest.costAdd.extra" style="width: 10vw"></el-input>
                 </el-col>
-                <el-col :span="12">
-                <el-tag style="width: 9vw">合计费用</el-tag>
-                <el-input v-model="totalcost" style="width: 10vw"></el-input>
-                </el-col>
+<!--                <el-col :span="12">-->
+<!--                <el-tag style="width: 9vw">合计费用</el-tag>-->
+<!--                <el-input v-model="totalcost" style="width: 10vw"></el-input>-->
+<!--                </el-col>-->
               </el-row>
               <el-row style="margin-bottom: 5px">
                 <el-col :span="12">
                 <el-tag style="width: 7vw">备注</el-tag>
-                <el-input v-model="carriers.remark" style="width: 10vw"></el-input>
+                <el-input v-model="addBillRequest.remark" style="width: 10vw"></el-input>
                 </el-col>
               </el-row>
 
@@ -140,22 +142,22 @@
             </div>
           </div>
           <div v-show="active ===1" style="padding-top: 2vh">
-            <el-form :model="carriers.goods">
+            <el-form :model="addBillRequest.goodsAdd">
               <el-row style="margin-bottom: 5px">
                 <el-tag>货物名称</el-tag>
-                <el-input v-model="carriers.goods.goodsname" style="width: 10vw"></el-input>
+                <el-input v-model="addBillRequest.goodsAdd.name" style="width: 10vw"></el-input>
                 </el-row>
               <el-row style="margin-bottom: 5px">
                 <el-tag >货物数量</el-tag>
-                <el-input v-model="carriers.goods.amount" style="width: 10vw"></el-input>
+                <el-input v-model="addBillRequest.goodsAdd.amount" style="width: 10vw"></el-input>
               </el-row>
               <el-row style="margin-bottom: 5px">
                 <el-tag>货物重量</el-tag>
-                <el-input v-model="carriers.goods.weight" style="width: 10vw"></el-input>
+                <el-input v-model="addBillRequest.goodsAdd.weight" style="width: 10vw"></el-input>
               </el-row>
               <el-row style="margin-bottom: 5px">
                 <el-tag >货物体积</el-tag>
-                <el-input v-model="carriers.goods.volume" style="width: 10vw"></el-input>
+                <el-input v-model="addBillRequest.goodsAdd.volume" style="width: 10vw"></el-input>
               </el-row>
 
             </el-form>
@@ -164,7 +166,7 @@
 
             <div slot="footer" class="dialog-footer" style="display: flex;justify-content: flex-end">
               <el-button @click="dialogFormVisible = false" style="margin-top: 12px;">取 消</el-button>
-              <el-button type="primary" @click="addCarrier" style="margin-top: 12px;">保存</el-button>
+              <el-button type="primary" @click="addRoadBill" style="margin-top: 12px;">保存</el-button>
             </div>
 
           </div>
@@ -172,7 +174,7 @@
       </div>
       <div style="margin-top: 5px;">
         <el-table
-          :data="Carrierss"
+          :data="roadBillList"
           border
           style="width: 100%"
           @selection-change="handleSelectionChange">
@@ -342,41 +344,42 @@
           sendcompany:'',
           receivecompany:'',
         },
-        carriers:{
-          carriersid:null,
-          sendcompany:'',
-          sendaddress:'',
-          sendlinkman:'',
-          sendphone:'',
-          receivecompany:'',
-          fkReceiveaddress:'',
-          receivelinkman:'',
-          receivephone:'',
-          leaverdate:'',
-          receivedate:'',
-          insurancecost:0,
-          transportcost:0,
-          othercost:0,
-          totalcost:0,
-          remark:'',
-          fkUserid:null,
-          checkintime:null,
-          altertime:null,
-          goods:{
-            goodsname:'',
-            amount:null,
-            weight:null,
-            volume:null
+        addBillRequest:{
+          remark:"",
+          startTime:"",
+          endTime:"",
+          deliverAddressAdd:{
+            companyName:"",
+            address:"",
+            person:"",
+            phone:""
+          },
+          receiverAddressAdd:{
+            companyName:"",
+            address:"",
+            person:"",
+            phone:""
+          },
+          costAdd:{
+            insurance:"",
+            transport:"",
+            extra:"",
+          },
+          goodsAdd:{
+            name:"",
+            amount:"",
+            weight:"",
+            volume:"",
           },
         },
-        Carrierss:[],
+        roadBillList:[],
       }
     },
     computed:{
       totalcost(){
 
-        this.carriers.totalcost = parseFloat(this.carriers.insurancecost)+parseFloat(this.carriers.transportcost)+parseFloat(this.carriers.othercost);
-    return this.carriers.totalcost;
+        this.addBillRequest.totalcost = parseFloat(this.addBillRequest.insurancecost)+parseFloat(this.addBillRequest.transportcost)+parseFloat(this.addBillRequest.othercost);
+    return this.addBillRequest.totalcost;
       }
     },
     watch:{
@@ -404,51 +407,52 @@
           receivecompany:'',
         }
       },
-      initCarrier(){
-        this.carriers={
-          carriersid:null,
-          sendcompany:'',
-          sendaddress:'',
-          sendlinkman:'',
-          sendphone:'',
-          receivecompany:'',
-          fkReceiveaddress:'',
-          receivelinkman:'',
-          receivephone:'',
-          leaverdate:'',
-          receivedate:'',
-          insurancecost:0,
-          transportcost:0,
-          othercost:0,
-          totalcost:0,
-          remark:'',
-          fkUserid:null,
-          checkintime:null,
-          altertime:null,
-          goods:{
-            goodsname:'',
-            amount:null,
-            weight:null,
-            volume:null
+      initBill(){
+        this.addBillRequest={
+          remark:"",
+          startTime:"",
+          endTime:"",
+          deliverAddressAdd:{
+            companyName:"",
+            address:"",
+            person:"",
+            phone:""
           },
+          receiverAddressAdd:{
+            companyName:"",
+            address:"",
+            person:"",
+            phone:""
+          },
+          costAdd:{
+            insurance:"",
+            transport:"",
+            extra:"",
+          },
+          goodsAdd:{
+            name:"",
+            amount:"",
+            weight:"",
+            volume:"",
+          }
         }
       },
-      addCarrier(){
-        if (this.carriers.carriersid) {
-          console.log(this.carriers);
-          this.putRequest('/pengms/carriers/put',this.carriers).then(res=>{
+      addRoadBill(){
+        if (this.addBillRequest.carriersid) {
+          console.log(this.addBillRequest);
+          this.putRequest('/pengms/carriers/put',this.addBillRequest).then(res=>{
             if (res){
               this.dialogFormVisible = false;
-              this.initCarrier();
+              this.initBill();
               this.loadCarrierss();
             }
           });
           return;
         }
-        this.postRequest("/pengms/carriers/add",this.carriers).then(res=>{
+        this.postRequest("/pengms/bill/add",this.addBillRequest).then(res=>{
           if (res){
             this.dialogFormVisible = false;
-            this.initCarrier();
+            this.initBill();
             this.loadCarrierss();
           }
         })
@@ -459,7 +463,7 @@
           "&finishedstate=" + 1).then(res => {
           if (res) {
             this.loading=false;
-            this.Carrierss = res.data.data;
+            this.roadBillList = res.data.data;
             this.total = res.data.total;
           }
         })
@@ -470,7 +474,7 @@
         this.postRequest("/pengms/carriers/getAll?page="+page+"&size="+size+
           "&sendcompany="+this.searchCarrierss.sendcompany+"&receivecompany="+this.searchCarrierss.receivecompany+"&finishedstate="+1).then(res=>{
           if (res){
-            this.Carrierss=res.data.data;
+            this.roadBillList=res.data.data;
             this.total = res.data.total;
           }
         })
@@ -527,12 +531,12 @@
       showDialog(data){
         this.dialogFormVisible=true;
         if(data === 'add'){
-          this.initCarrier();
+          this.initBill();
           this.dialogTitle = '添加承运单';
           return;
         }
         this.dialogTitle='编辑';
-        this.carriers = data;
+        this.addBillRequest = data;
 
       },
     }

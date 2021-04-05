@@ -307,7 +307,7 @@
         this.searchSchedule={
           schedulingid:'',
           fkCarriersid:'',
-          carriers:{
+          addBillRequest:{
             sendcompany:'',
             receivecompany:''
           }
