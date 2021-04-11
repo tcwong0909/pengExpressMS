@@ -180,77 +180,37 @@
           @selection-change="handleSelectionChange">
           <el-table-column
             type="selection"
-            width="35">
+            width="50">
           </el-table-column>
           <el-table-column
-            prop="carriersid"
+            prop="id"
             label="编号"
             width="50">
           </el-table-column>
           <el-table-column
-            label="发货信息"
-            width="110">
-            <template slot-scope="scope">
-              <el-popover
-                placement="top-start"
-                title="发货信息"
-                width="300"
-                trigger="hover">
-                <div>
-                  发货地址：{{scope.row.sendaddress}}
-                </div>
-                <div>
-                  发货联系人：{{scope.row.sendlinkman}}
-                </div>
-                <div>
-                  发货人联系电话：{{scope.row.sendphone}}
-                </div>
-                <el-link type="primary" slot="reference">{{scope.row.sendcompany}}</el-link>
-              </el-popover>
-            </template>
+            prop="deliverAddress.address"
+            width="100"
+            label="收货地址">
           </el-table-column>
           <el-table-column
-            width="110"
-            label="收货信息">
-            <template slot-scope="scope">
-              <el-popover
-                placement="top-start"
-                title="收货信息"
-                width="300"
-                trigger="hover">
-                <div>
-                  收货地址：{{scope.row.fkReceiveaddress}}
-                </div>
-                <div>
-                  收货联系人：{{scope.row.receivelinkman}}
-                </div>
-                <div>
-                  收货人联系电话：{{scope.row.receivephone}}
-                </div>
-                <el-link type="primary" slot="reference">{{scope.row.receivecompany}}</el-link>
-              </el-popover>
-            </template>
-          </el-table-column>
+          prop="receiverAddress.address"
+          width="100"
+          label="收货地址">
+        </el-table-column>
           <el-table-column
-            prop="leaverdate"
+            prop="startTime"
             width="100"
             label="承运日期">
           </el-table-column>
           <el-table-column
-            prop="receivedate"
+            prop="endTime"
             width="100"
             label="收货时间">
           </el-table-column>
           <el-table-column
-            label="完成情况"
-            width="80">
-            <template slot-scope="scope">
-              <el-tag v-if="scope.row.finishedstate ===1">待调度</el-tag>
-              <el-tag v-else-if="scope.row.finishedstate ===2">已调度</el-tag>
-              <el-tag v-else-if="scope.row.finishedstate ===3">已签收</el-tag>
-              <el-tag v-else-if="scope.row.finishedstate ===4">已结算</el-tag>
-              <el-tag v-else>未知</el-tag>
-            </template>
+            prop="stateName"
+            width="100"
+            label="完成情况">
           </el-table-column>
           <el-table-column
             prop="remark"
@@ -263,30 +223,30 @@
                 width="200"
                 trigger="hover">
                 <div>
-                  保险费:{{scope.row.insurancecost}}
+                  保险费:{{scope.row.cost.insurance}}
                 </div>
                 <div>
-                  运费:{{scope.row.transportcost}}
+                  运费:{{scope.row.cost.transport}}
                 </div>
                 <div>
-                  其他费用:{{scope.row.othercost}}
+                  其他费用:{{scope.row.cost.extra}}
                 </div>
                 <el-link type="primary" slot="reference">费用详情</el-link>
               </el-popover>
             </template>
           </el-table-column>
           <el-table-column
-            prop="totalcost"
+            prop="cost.total"
             width="80"
             label="合计费用">
           </el-table-column>
           <el-table-column
-            prop="checkintime"
+            prop="createTime"
             width="100"
             label="录入时间">
           </el-table-column>
             <el-table-column
-            prop="fkUserid"
+            prop="createBy"
             width="70"
             label="业务员">
             </el-table-column>
@@ -296,7 +256,7 @@
             label="备注">
           </el-table-column>
           <el-table-column
-            prop="altertime"
+            prop="updateTime"
             width="100"
             label="修改时间">
           </el-table-column>
@@ -314,10 +274,10 @@
           background
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
-          :current-page="currentPage"
+          :current-page="pageBillRequest.pageNum"
           layout="total, sizes, prev, pager, next, jumper"
           :page-sizes="[5, 10, 15, 20]"
-          :page-size="pageSize"
+          :page-size="pageBillRequest.pageSize"
           :total="total">
         </el-pagination>
       </div>
@@ -336,13 +296,16 @@
         multipleSelection: [],
         ids:"",
         total:null,
-        pageSize:10,
-        currentPage:1,
         dialogFormVisible:false,
         dialogTitle:'',
         searchCarrierss:{
           sendcompany:'',
           receivecompany:'',
+        },
+        pageBillRequest:{
+          state:null,
+          pageNum: 1,
+          pageSize: 10,
         },
         addBillRequest:{
           remark:"",
@@ -377,22 +340,12 @@
     },
     computed:{
       totalcost(){
-
         this.addBillRequest.totalcost = parseFloat(this.addBillRequest.insurancecost)+parseFloat(this.addBillRequest.transportcost)+parseFloat(this.addBillRequest.othercost);
     return this.addBillRequest.totalcost;
       }
     },
-    watch:{
-      searchCarrierss:{
-        handler(){
-          this.doSearch();
-        },
-        immediate:true,
-        deep:true
-      }
-    },
     mounted(){
-      this.loadCarrierss();
+      this.pageRoadBill();
     },
     methods:{
       next() {
@@ -444,7 +397,7 @@
             if (res){
               this.dialogFormVisible = false;
               this.initBill();
-              this.loadCarrierss();
+              this.pageRoadBill();
             }
           });
           return;
@@ -453,14 +406,12 @@
           if (res){
             this.dialogFormVisible = false;
             this.initBill();
-            this.loadCarrierss();
+            this.pageRoadBill();
           }
         })
       },
-      loadCarrierss(){
-        this.postRequest("/pengms/carriers/getAll?page=" + this.currentPage + "&size=" + this.pageSize +
-          "&sendcompany=" + this.searchCarrierss.sendcompany + "&receivecompany=" + this.searchCarrierss.receivecompany +
-          "&finishedstate=" + 1).then(res => {
+      pageRoadBill(){
+        this.postRequest("/pengms/bill/page",this.pageBillRequest).then(res => {
           if (res) {
             this.loading=false;
             this.roadBillList = res.data.data;
@@ -469,23 +420,15 @@
         })
       },
       doSearch(){
-        let page = 1;
-        let size = 10;
-        this.postRequest("/pengms/carriers/getAll?page="+page+"&size="+size+
-          "&sendcompany="+this.searchCarrierss.sendcompany+"&receivecompany="+this.searchCarrierss.receivecompany+"&finishedstate="+1).then(res=>{
-          if (res){
-            this.roadBillList=res.data.data;
-            this.total = res.data.total;
-          }
-        })
+        this.pageRoadBill();
       },
       handleSizeChange(size){
-        this.pageSize = size;
-        this.loadCarrierss();
+        this.pageBillRequest.pageSize = size;
+        this.pageRoadBill();
       },
       handleCurrentChange(page){
-        this.currentPage = page;
-        this.loadCarrierss();
+        this.pageRequest.pageNum = page;
+        this.pageRoadBill();
       },
       handleSelectionChange(val) {
         this.multipleSelection=val;
@@ -494,7 +437,7 @@
       deleteById(id){
         let ids = id;
         this.deleteByIds(ids);
-        this.loadCarrierss();
+        this.pageRoadBill();
       },
       multiDelete(){
         let ids = '';
@@ -502,7 +445,7 @@
           ids  += data.carriersid+',';
         });
         this.deleteByIds(ids);
-        this.loadCarrierss();
+        this.pageRoadBill();
       },
 
       deleteByIds(data){
@@ -513,7 +456,7 @@
         }).then(() => {
           this.deleteRequest("/pengms/carriers/delete/"+data).then(res=>{
               if (res){
-                this.loadCarrierss();
+                this.pageRoadBill();
               }
             }
           );

@@ -383,7 +383,7 @@
         this.putRequest("/pengms/schedule/dispatch",this.schedule).then(res=>{
           if (res) {
             this.outerVisible=false;
-            this.loadCarrierss();
+            this.pageRoadBill();
           }
         })
       }
